@@ -41,6 +41,14 @@
         NSAutomaticDashSubstitutionEnabled = false;
       };
 
+      CustomSystemPreferences = {
+        "com.apple.Safari" = {
+          AutoOpenSafeDownloads = false;
+          IncludeDevelopMenu = true;
+          WebAutomaticSpellingCorrectionEnabled = false;
+        };
+      };
+
       CustomUserPreferences = {
         "com.pilotmoon.scroll-reverser" = {
           ReverseTrackpad = false;
@@ -53,12 +61,6 @@
           # Avoid creating .DS_Store files on network or USB volumes
           DSDontWriteNetworkStores = true;
           DSDontWriteUSBStores = true;
-        };
-
-        "com.apple.Safari" = {
-          AutoOpenSafeDownloads = false;
-          IncludeDevelopMenu = true;
-          WebAutomaticSpellingCorrectionEnabled = false;
         };
 
         "com.apple.AdLib" = {
