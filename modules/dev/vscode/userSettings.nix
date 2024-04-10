@@ -1,4 +1,7 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  ...
+}: let
   bash = "${pkgs.bash}/bin/bash";
   terminalProfiles = {
     Nushell = {
@@ -57,8 +60,8 @@ in {
     "gitlens.showWelcomeOnInstall" = false;
     "gitlens.showWhatsNewAfterUpgrades" = false;
 
-    "terminal.external.osxExec" = "iTerm.app";
-    "terminal.external.linuxExec" = "kitty"; # TODO: Inherit this from config
+    "terminal.external.osxExec" = "kitty";
+    "terminal.external.linuxExec" = "kitty";
     "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
     "terminal.integrated.mouseWheelScrollSensitivity" = 0.1;
     "terminal.integrated.customGlyphs" = true;
