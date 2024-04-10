@@ -6,11 +6,13 @@
       "Noir" = 1592917505;
       "Magic Lasso" = 1198047227;
       "GoodLinks" = 1474335294;
+      # "Overcast" = 888422857; # Currently broken
     };
     casks = [
       "raycast"
       "1password"
       "1password-cli"
+      "setapp"
     ];
   };
 
