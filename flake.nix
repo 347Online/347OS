@@ -28,6 +28,8 @@
     nixvim,
     ...
   }: let
+    username = "katie";
+
     darwinPackages = self.darwinConfigurations."Athena".pkgs; # TODO: Remove this hardcoded system
   in {
     darwinConfigurations."Athena" = nix-darwin.lib.darwinSystem {
@@ -46,6 +48,10 @@
           home-manager.extraSpecialArgs = {inherit nixvim;};
         }
       ];
+      specialArgs = {
+        intel = false;
+        inherit username;
+      };
     };
   };
 }
