@@ -59,7 +59,7 @@ in {
 
     nushell = {
       enable = true;
-      configFile.source = ./dotfiles/.config/nushell/config.nu;
+      configFile.source = ../dotfiles/.config/nushell/config.nu;
       inherit shellAliases;
     };
 
