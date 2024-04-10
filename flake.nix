@@ -28,27 +28,24 @@
     nixvim,
     ...
   }: let
-    darwinPackages = self.darwinConfigurations."Athena".pkgs;
-    darwinBaseConfiguration = import ./darwinBaseConfiguration.nix;
+    darwinPackages = self.darwinConfigurations."Athena".pkgs; # TODO: Remove this hardcoded system
   in {
     darwinConfigurations."Athena" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
-        darwinBaseConfiguration
-        
+        ./modules/darwin
+
         home-manager.darwinModules.home-manager
+
         {
           home-manager.useGlobalPkgs = true;
-          home-manager.users.katie = import ./home-manager/home.nix {
+          home-manager.users.katie = import ./modules/home.nix {
             homeDirectory = "/Users/katie";
-            pkgs = darwinPackages;
+            pkgs = darwinPackages; # TODO: Do this a different way
           };
           home-manager.extraSpecialArgs = {inherit nixvim;};
         }
       ];
     };
-
-    # Expose the package set, including overlays, for convenience.
-    inherit darwinPackages;
   };
 }
