@@ -1,6 +1,7 @@
 {
   homebrew = {
     enable = true;
+
     masApps = {
       "1Password for Safari" = 1569813296;
       "Noir" = 1592917505;
@@ -8,11 +9,14 @@
       "GoodLinks" = 1474335294;
       # "Overcast" = 888422857; # Currently broken
     };
+
     casks = [
       "raycast"
       "1password"
       "1password-cli"
       "setapp"
+      "scroll-reverser"
+      "logi-options-plus"
     ];
   };
 

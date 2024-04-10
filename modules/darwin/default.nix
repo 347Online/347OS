@@ -10,8 +10,8 @@
 
   security.pam.enableSudoTouchIdAuth = true;
 
-  system = {
-    defaults.dock = {
+  system.defaults = {
+    dock = {
       autohide = true;
       show-recents = false;
       persistent-apps = [
@@ -29,11 +29,23 @@
         "/System/Applications/System Settings.app"
       ];
     };
+
+    NSGlobalDomain = {
+      NSAutomaticCapitalizationEnabled = false;
+      NSAutomaticSpellingCorrectionEnabled = false;
+      NSAutomaticQuoteSubstitutionEnabled = false;
+      NSAutomaticPeriodSubstitutionEnabled = false;
+      NSAutomaticDashSubstitutionEnabled = false;
+    };
+
+    startup.chime = true;
   };
 
-  programs.zsh.enable = true;
-  programs.bash.enable = true;
-  programs.fish.enable = true;
+  programs = {
+    zsh.enable = true;
+    bash.enable = true;
+    fish.enable = true;
+  };
 
   users.users."${username}" = {
     name = username;
