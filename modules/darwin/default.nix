@@ -16,11 +16,14 @@
       "Magic Lasso" = 1198047227;
       "GoodLinks" = 1474335294;
     };
+    casks = [
+      "1password"
+      "1password-cli"
+    ];
   };
 
   security.pam.enableSudoTouchIdAuth = true;
 
-  # DO NOT EDIT BELOW
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;
   programs.bash.enable = true;
@@ -53,5 +56,6 @@
     home = "/Users/${username}";
   };
 
+  # DO NOT EDIT BELOW
   system.stateVersion = 4;
 }
