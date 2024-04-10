@@ -4,6 +4,10 @@
   username,
   ...
 }: {
+  environment.systemPackages = with pkgs; [
+    raycast
+  ];
+
   security.pam.enableSudoTouchIdAuth = true;
 
   # DO NOT EDIT BELOW
