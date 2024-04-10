@@ -90,7 +90,6 @@
     mkDarwin = {
       appleSilicon ? true,
       home ? {},
-      disableHomebrewAutoMigrate ? false,
       username ? defaultUsername,
     }: let
       system = mkSystem {

@@ -3,3 +3,4 @@ Mission Control Plus
 BetterTouchTool
 InYourFace
 Rocket Typist
+Timing

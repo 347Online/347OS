@@ -13,10 +13,18 @@
     nix-homebrew = {
       enable = true;
       user = username;
+      autoMigrate = true;
     };
 
     homebrew = {
       enable = true;
+
+      onActivation = {
+        autoUpdate = true;
+        upgrade = true;
+        cleanup = "uninstall";
+
+      };
 
       masApps = {
         "1Password for Safari" = 1569813296;
