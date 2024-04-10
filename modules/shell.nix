@@ -35,10 +35,7 @@ in {
       shellIntegration.enableFishIntegration = true;
     };
 
-    bash = {
-      enable = true;
-      inherit shellAliases;
-    };
+    bash.shellAliases = shellAliases;
 
     fish = {
       enable = true;
