@@ -91,7 +91,7 @@
           // inputs;
       };
   in {
-    darwinConfigurations."Athena" = mkDarwin {home.games.enable = true;};
-    darwinConfigurations."Alice" = mkDarwin {home.games.enable = false;};
+    darwinConfigurations."Athena" = mkDarwin import ./hosts/Athena;
+    darwinConfigurations."Alice" = mkDarwin import ./hosts/Alice;
   };
 }

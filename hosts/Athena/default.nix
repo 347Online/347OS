@@ -1,0 +1,3 @@
+{...}: {
+  home.games.enable = true;
+}
