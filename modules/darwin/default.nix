@@ -1,11 +1,15 @@
 {
   pkgs,
   username,
+  home-manager,
+  nix-homebrew,
   ...
 }: {
   imports = [
     ./homebrew.nix
     ./nixConfig.nix
+    home-manager.darwinModules.home-manager
+    nix-homebrew.darwinModules.nix-homebrew
   ];
 
   security.pam.enableSudoTouchIdAuth = true;

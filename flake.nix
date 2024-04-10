@@ -45,66 +45,8 @@
     nix-vscode-extensions,
     ...
   }: let
+    inherit (import ./util.nix inputs) mkDarwin;
     username = "katie";
-
-    mkBaseSystem = {system}: {
-      pkgs = import nixpkgs {inherit system;};
-      vscode-extensions = nix-vscode-extensions.extensions.${system};
-    };
-
-    mkDarwin = {
-      appleSilicon ? true,
-      modules ? [],
-      home ? {},
-      disableHomebrewAutoMigrate ? false,
-    }: let
-      system =
-        if appleSilicon
-        then "aarch64-darwin"
-        else "x86_64-darwin";
-
-      vscode-extensions = nix-vscode-extensions.extensions.${system};
-      nixvim = nixvim-module.homeManagerModules.nixvim;
-
-      darwinArgs =
-        {
-          inherit username;
-          hostPlatform = system;
-        }
-        // inputs;
-
-      hmArgs = {inherit nixvim vscode-extensions;};
-    in
-      nix-darwin.lib.darwinSystem {
-        inherit system;
-        modules =
-          [
-            ./modules/darwin
-
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.users."${username}" = import ./modules/home.nix ({
-                  homeDirectory = "/Users/${username}";
-                  pkgs = import nixpkgs {inherit system;};
-                }
-                // home
-                // {inherit username;});
-              home-manager.extraSpecialArgs = hmArgs; #{inherit nixvim vscode-extensions;};
-            }
-
-            nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                enable = true;
-                user = username;
-              };
-            }
-          ]
-          ++ modules;
-
-        specialArgs = darwinArgs;
-      };
   in {
     # TODO: Map over files in hosts/darwin?
     darwinConfigurations."Athena" = mkDarwin (import ./hosts/Athena {});
