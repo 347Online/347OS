@@ -50,14 +50,6 @@
         else "x86_64-darwin";
     in
       nix-darwin.lib.darwinSystem {
-        specialArgs =
-          {
-            inherit username;
-
-            hostPlatform = system;
-          }
-          // inputs;
-
         inherit system;
         modules =
           [
@@ -66,12 +58,12 @@
             home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
-              home-manager.users."${username}" =
-                import ./modules/home.nix {
+              home-manager.users."${username}" = import ./modules/home.nix ({
                   homeDirectory = "/Users/${username}";
                   pkgs = darwinPackages; # TODO: Do this a different way
                 }
-                // home;
+                // home
+                // {inherit username;});
               home-manager.extraSpecialArgs = {inherit nixvim;};
             }
 
@@ -79,14 +71,19 @@
             {
               nix-homebrew = {
                 enable = true;
-                enableRosetta = appleSilicon;
                 user = username;
-
-                autoMigrate = !disableHomebrewAutoMigrate;
               };
             }
           ]
           ++ modules;
+
+        specialArgs =
+          {
+            inherit username;
+
+            hostPlatform = system;
+          }
+          // inputs;
       };
   in {
     darwinConfigurations."Athena" = mkDarwin {home.games.enable = true;};
