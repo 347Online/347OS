@@ -1,37 +1,38 @@
-{pkgs, ...}: {
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
+{
+  pkgs,
+  username,
+  intel ? false,
+  ...
+}: let
+  hostPlatform =
+    if intel
+    then "x86_64-darwin"
+    else "aarch64-darwin";
+in {
+  nixpkgs = {
+    inherit hostPlatform;
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-  nix.package = pkgs.nix;
+    config = {
+      allowUnsupportedSystem = true;
+      allowUnfree = true;
+    };
+  };
 
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
+  users.users."${username}" = {
+    name = username;
+    home = "/Users/${username}";
+  };
+
+  # DO NOT EDIT BELOW
+  system.stateVersion = 4;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina
-  programs.fish.enable = true;
 
-  # Set Git commit hash for darwin-version.
-  # system.configurationRevision = self.rev or self.dirtyRev or null;
-
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 4;
-
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
-
-  nixpkgs.config = {
-    allowUnsupportedSystem = true;
-    allowUnfree = true;
-  };
-  users.users.katie = {
-    name = "katie";
-    home = "/Users/katie";
+  # Auto upgrade nix package and the daemon service.
+  services.nix-daemon.enable = true;
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = "nix-command flakes";
   };
 }
