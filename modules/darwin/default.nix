@@ -53,8 +53,19 @@
         "com.pilotmoon.scroll-reverser" = {
           ReverseTrackpad = false;
           StartAtLogin = true;
+          HideIcon = true;
           InvertScrollingOn = true;
           ReverseX = true;
+        };
+
+        "io.fadel.missioncontrolplus.preferences" = {
+          HideMenubarItem = true;
+        };
+
+        "com.witt-software.Rocket-Typist-setapp" = {
+          AbbreviationDelimiterKey = 1;
+          AutoPasteEnabled = 1;
+          WelcomeViewHasBeenShown = 1;
         };
 
         "com.apple.desktopservices" = {
