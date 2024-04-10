@@ -91,7 +91,8 @@
           // inputs;
       };
   in {
-    darwinConfigurations."Athena" = mkDarwin import ./hosts/Athena;
-    darwinConfigurations."Alice" = mkDarwin import ./hosts/Alice;
+    # TODO: Map over files in hosts/darwin?
+    darwinConfigurations."Athena" = mkDarwin (import ./hosts/Athena {});
+    darwinConfigurations."Alice" = mkDarwin (import ./hosts/Alice {});
   };
 }
