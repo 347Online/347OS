@@ -6,9 +6,7 @@
 }: {
   imports = [
     ./shell.nix
-    ./vscode
-    ./git.nix
-    ./neovim.nix
+    ./dev
     ./games.nix
   ];
 
