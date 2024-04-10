@@ -6,7 +6,7 @@
   ...
 }: {
   options = {
-    games.enable = lib.mkEnableOption "enables video game module which handles things like Steam and Minecraft";
+    games.enable = lib.mkEnableOption "video games or game launchers like Minecraft and Steam";
   };
 
   config = lib.mkIf config.games.enable {

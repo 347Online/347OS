@@ -46,10 +46,9 @@
     ...
   }: let
     inherit (import ./util.nix inputs) mkDarwin;
-    username = "katie";
   in {
     # TODO: Map over files in hosts/darwin?
-    darwinConfigurations."Athena" = mkDarwin (import ./hosts/Athena {});
-    darwinConfigurations."Alice" = mkDarwin (import ./hosts/Alice {});
+    darwinConfigurations."Athena" = mkDarwin (import ./hosts/Athena);
+    darwinConfigurations."Alice" = mkDarwin (import ./hosts/Alice);
   };
 }

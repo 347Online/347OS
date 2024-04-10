@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./dev
-    ./games.nix
+    ./games
   ];
 
   nixpkgs.config = {
