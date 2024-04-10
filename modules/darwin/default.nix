@@ -12,6 +12,8 @@
     nix-homebrew.darwinModules.nix-homebrew
   ];
 
+  useHomebrew = true;
+
   security.pam.enableSudoTouchIdAuth = true;
 
   system = {

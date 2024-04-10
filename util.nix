@@ -41,6 +41,25 @@
       nixvim = nixvim-module.homeManagerModules.nixvim;
     };
 
+    mkHome = {
+      system,
+      username ? defaultUsername,
+      homeDirectory ? mkHomeDirectory {},
+      useGlobalPkgs ? true,
+      ...
+    } @ home: let
+      inherit (mkBaseSystem system) pkgs vscode-extensions nixvim;
+    in {
+      home-manager = {
+        inherit useGlobalPkgs;
+        extraSpecialArgs = {inherit nixvim vscode-extensions;};
+        users."${username}" = import ./modules/home.nix (
+          home // {inherit pkgs username homeDirectory;}
+        );
+      };
+    };
+
+    # UNTESTED
     mkStandalone = {
       system,
       username ? defaultUsername,
@@ -52,10 +71,7 @@
         mac = isMac system;
       };
     in
-      home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {inherit username nixvim homeDirectory;};
-      };
+      home-manager.lib.homeManagerConfiguration mkHome {};
 
     mkNixos = {
       intel ? false,
@@ -73,7 +89,6 @@
 
     mkDarwin = {
       appleSilicon ? true,
-      modules ? [],
       home ? {},
       disableHomebrewAutoMigrate ? false,
       username ? defaultUsername,
@@ -83,47 +98,28 @@
         intel = !appleSilicon;
       };
 
-      inherit (mkBaseSystem system) pkgs vscode-extensions nixvim;
+      homeDirectory = mkHomeDirectory {
+        inherit username;
+        mac = true;
+      };
 
-      darwinModules = [
-        ./modules/darwin
-      ];
+      specialArgs =
+        {
+          inherit system username homeDirectory;
+          hostPlatform = system;
+          useGlobalPkgs = true;
+        }
+        // inputs;
+
+      inherit (mkBaseSystem system) pkgs vscode-extensions nixvim;
     in
       nix-darwin.lib.darwinSystem {
-        inherit system;
+        inherit system specialArgs;
 
-        modules =
-          [
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                extraSpecialArgs = {inherit nixvim vscode-extensions;};
-                users."${username}" = import ./modules/home.nix ({
-                    inherit pkgs username;
-
-                    homeDirectory = mkHomeDirectory {
-                      inherit username;
-                      mac = true;
-                    };
-                  }
-                  // home);
-              };
-
-              nix-homebrew = {
-                enable = true;
-                user = username;
-              };
-            }
-          ]
-          ++ darwinModules
-          ++ modules;
-
-        specialArgs =
-          {
-            inherit username;
-            hostPlatform = system;
-          }
-          // inputs;
+        modules = [
+          ./modules/darwin
+          mkHome
+        ];
       };
   };
 in
