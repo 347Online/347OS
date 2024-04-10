@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./shell.nix
     ./dev
     ./games.nix
   ];

@@ -16,9 +16,10 @@
     enableFishIntegration = true;
   };
 in {
-  xdg.configFile."./kitty/startup_session".text = ''
-    launch ${pkgs.bash}/bin/bash -li -c ${pkgs.nushell}/bin/nu
-  '';
+  # TODO: Potentially change this to apply to all new windows
+  # xdg.configFile."./kitty/startup_session".text = ''
+  #   launch ${pkgs.bash}/bin/bash -li -c ${pkgs.nushell}/bin/nu
+  # '';
 
   programs = {
     kitty = {
