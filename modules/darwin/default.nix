@@ -17,7 +17,7 @@
       persistent-apps = [
         # System Apps
         "/System/Applications/App Store.app"
-        "/Applications/Safari.app"
+        "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
         "/System/Applications/Music.app"
         "/System/Applications/Messages.app"
 

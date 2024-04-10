@@ -41,8 +41,6 @@
   }: let
     username = "katie";
 
-    darwinPackages = self.darwinConfigurations."Athena".pkgs; # TODO: Remove this hardcoded system
-
     mkDarwin = {
       appleSilicon ? true,
       modules ? [],
@@ -65,7 +63,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.users."${username}" = import ./modules/home.nix ({
                   homeDirectory = "/Users/${username}";
-                  pkgs = darwinPackages; # TODO: Do this a different way
+                  pkgs = import nixpkgs {inherit system;};
                 }
                 // home
                 // {inherit username;});
