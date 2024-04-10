@@ -14,13 +14,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
+    nixvim-module = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -35,11 +40,17 @@
     nix-darwin,
     home-manager,
     nixpkgs,
-    nixvim,
+    nixvim-module,
     nix-homebrew,
+    nix-vscode-extensions,
     ...
   }: let
     username = "katie";
+
+    mkBaseSystem = {system}: {
+      pkgs = import nixpkgs {inherit system;};
+      vscode-extensions = nix-vscode-extensions.extensions.${system};
+    };
 
     mkDarwin = {
       appleSilicon ? true,
@@ -51,6 +62,18 @@
         if appleSilicon
         then "aarch64-darwin"
         else "x86_64-darwin";
+
+      vscode-extensions = nix-vscode-extensions.extensions.${system};
+      nixvim = nixvim-module.homeManagerModules.nixvim;
+
+      darwinArgs =
+        {
+          inherit username;
+          hostPlatform = system;
+        }
+        // inputs;
+
+      hmArgs = {inherit nixvim vscode-extensions;};
     in
       nix-darwin.lib.darwinSystem {
         inherit system;
@@ -67,7 +90,7 @@
                 }
                 // home
                 // {inherit username;});
-              home-manager.extraSpecialArgs = {inherit nixvim;};
+              home-manager.extraSpecialArgs = hmArgs; #{inherit nixvim vscode-extensions;};
             }
 
             nix-homebrew.darwinModules.nix-homebrew
@@ -80,13 +103,7 @@
           ]
           ++ modules;
 
-        specialArgs =
-          {
-            inherit username;
-
-            hostPlatform = system;
-          }
-          // inputs;
+        specialArgs = darwinArgs;
       };
   in {
     # TODO: Map over files in hosts/darwin?

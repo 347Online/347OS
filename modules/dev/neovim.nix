@@ -4,9 +4,8 @@
   nixvim,
   ...
 }: {
-
   imports = [
-    nixvim.homeManagerModules.nixvim
+    nixvim
   ];
 
   programs.nixvim = {
