@@ -31,27 +31,42 @@
     username = "katie";
 
     darwinPackages = self.darwinConfigurations."Athena".pkgs; # TODO: Remove this hardcoded system
-  in {
-    darwinConfigurations."Athena" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        ./modules/darwin
 
-        home-manager.darwinModules.home-manager
+    mkDarwin = {
+      appleSilicon ? true,
+      modules ? [],
+    }: let
+      system =
+        if appleSilicon
+        then "aarch64-darwin"
+        else "x86_64-darwin";
+    in
+      nix-darwin.lib.darwinSystem {
+        inherit system;
+        modules =
+          [
+            ./modules/darwin
 
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.users.katie = import ./modules/home.nix {
-            homeDirectory = "/Users/katie";
-            pkgs = darwinPackages; # TODO: Do this a different way
-          };
-          home-manager.extraSpecialArgs = {inherit nixvim;};
-        }
-      ];
-      specialArgs = {
-        intel = false;
-        inherit username;
+            home-manager.darwinModules.home-manager
+
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.users."${username}" = import ./modules/home.nix {
+                homeDirectory = "/Users/${username}";
+                pkgs = darwinPackages; # TODO: Do this a different way
+              };
+              home-manager.extraSpecialArgs = {inherit nixvim;};
+            }
+          ]
+          ++ modules;
+
+        specialArgs = {
+          inherit username;
+
+          hostPlatform = system;
+        };
       };
-    };
+  in {
+    darwinConfigurations."Athena" = mkDarwin {};
   };
 }
