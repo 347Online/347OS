@@ -1,11 +1,19 @@
 {
   pkgs,
   nix-minecraft,
+  lib,
+  config,
   ...
 }: {
-  home.packages = with pkgs; [
-    prismlauncher
-  ];
+  options = {
+    games.enable = lib.mkEnableOption "enables video game module which handles things like Steam and Minecraft";
+  };
 
-  # TODO: Expand this
+  config = lib.mkIf config.games.enable {
+    home.packages = with pkgs; [
+      # prismlauncher # TODO: Declare Minecraft... somehow
+    ];
+
+    # TODO: Expand this
+  };
 }

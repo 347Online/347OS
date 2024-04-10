@@ -18,6 +18,11 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -26,6 +31,7 @@
     home-manager,
     nixpkgs,
     nixvim,
+    nix-homebrew,
     ...
   }: let
     username = "katie";
@@ -35,6 +41,8 @@
     mkDarwin = {
       appleSilicon ? true,
       modules ? [],
+      home ? {},
+      disableHomebrewAutoMigrate ? false,
     }: let
       system =
         if appleSilicon
@@ -42,31 +50,46 @@
         else "x86_64-darwin";
     in
       nix-darwin.lib.darwinSystem {
+        specialArgs =
+          {
+            inherit username;
+
+            hostPlatform = system;
+          }
+          // inputs;
+
         inherit system;
         modules =
           [
             ./modules/darwin
 
             home-manager.darwinModules.home-manager
-
             {
               home-manager.useGlobalPkgs = true;
-              home-manager.users."${username}" = import ./modules/home.nix {
-                homeDirectory = "/Users/${username}";
-                pkgs = darwinPackages; # TODO: Do this a different way
-              };
+              home-manager.users."${username}" =
+                import ./modules/home.nix {
+                  homeDirectory = "/Users/${username}";
+                  pkgs = darwinPackages; # TODO: Do this a different way
+                }
+                // home;
               home-manager.extraSpecialArgs = {inherit nixvim;};
+            }
+
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                enable = true;
+                enableRosetta = appleSilicon;
+                user = username;
+
+                autoMigrate = !disableHomebrewAutoMigrate;
+              };
             }
           ]
           ++ modules;
-
-        specialArgs = {
-          inherit username;
-
-          hostPlatform = system;
-        };
       };
   in {
-    darwinConfigurations."Athena" = mkDarwin {};
+    darwinConfigurations."Athena" = mkDarwin {home.games.enable = true;};
+    darwinConfigurations."Alice" = mkDarwin {home.games.enable = false;};
   };
 }

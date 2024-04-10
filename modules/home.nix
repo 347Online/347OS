@@ -1,6 +1,6 @@
 {
   pkgs,
-  username ? "katie",
+  username,
   homeDirectory,
   ...
 }: {
@@ -9,6 +9,7 @@
     ./vscode
     ./git.nix
     ./neovim.nix
+    ./games.nix
   ];
 
   nixpkgs.config = {
