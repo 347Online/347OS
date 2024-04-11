@@ -34,6 +34,7 @@
       python3
       _1password-gui
       _1password
+      obsidian
       # maestral
     ];
   };

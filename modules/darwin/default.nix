@@ -1,11 +1,13 @@
-{
+inputs @ {
   pkgs,
   username,
   home-manager,
   nix-homebrew,
   dockApps,
   ...
-}: {
+}: let
+  util = import ../../util.nix inputs;
+in {
   imports = [
     ./homebrew.nix
     ./nixConfig.nix
@@ -24,14 +26,16 @@
       dock = {
         autohide = true;
         show-recents = false;
-        persistent-apps =
+        persistent-apps = with pkgs;
           [
             # System Apps
             "/System/Applications/App Store.app"
             "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
             "/System/Applications/Music.app"
-            "/${pkgs.vscodium}/Applications/VSCodium.app"
-            "/${pkgs.kitty}/Applications/kitty.app"
+            # "/${vscodium}/Applications/VSCodium.app"
+            (util.mkDockApp vscodium "VSCodium")
+            "/${kitty}/Applications/kitty.app"
+            "/${obsidian}/Applications/Obsidian.app"
           ]
           ++ dockApps
           # Make system settings the rightmost app

@@ -116,7 +116,7 @@
 
       specialArgs =
         {
-          inherit system username homeDirectory dockApps rust-toolchain;
+          inherit system pkgs username homeDirectory dockApps rust-toolchain;
           hostPlatform = system;
         }
         // inputs;
