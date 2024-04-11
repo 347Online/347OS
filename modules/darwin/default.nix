@@ -1,4 +1,5 @@
 inputs @ {
+  lib,
   pkgs,
   username,
   home-manager,
@@ -32,14 +33,17 @@ in {
             "/System/Applications/App Store.app"
             "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
             "/System/Applications/Music.app"
-            # "/${vscodium}/Applications/VSCodium.app"
-            (util.mkDockApp vscodium "VSCodium")
-            "/${kitty}/Applications/kitty.app"
-            "/${obsidian}/Applications/Obsidian.app"
           ]
           ++ dockApps
-          # Make system settings the rightmost app
-          ++ ["/System/Applications/System Settings.app"];
+          ++ [
+            (util.mkDockApp obsidian "Obsidian")
+            (util.mkDockApp vscodium "VSCodium")
+            (util.mkDockApp kitty "kitty")
+          ]
+          ++ [
+            # Make system settings the rightmost app
+            "/System/Applications/System Settings.app"
+          ];
       };
 
       NSGlobalDomain = {
