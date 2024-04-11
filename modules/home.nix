@@ -9,11 +9,6 @@
     ./games
   ];
 
-  nixpkgs.config = {
-    allowUnsupportedSystem = true;
-    allowUnfree = true;
-  };
-
   programs.home-manager.enable = true;
 
   home = {
