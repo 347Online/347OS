@@ -1,13 +1,8 @@
 {
   config,
   pkgs,
-  nixvim,
   ...
 }: {
-  imports = [
-    nixvim
-  ];
-
   programs.nixvim = {
     enable = true;
     opts = {
