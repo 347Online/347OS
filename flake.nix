@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,6 +42,7 @@
 
   outputs = inputs @ {
     self,
+    fenix,
     nix-darwin,
     home-manager,
     nixpkgs,
@@ -45,7 +51,7 @@
     nix-vscode-extensions,
     ...
   }: let
-    inherit (import ./util.nix inputs) mkDarwin;
+    inherit (import ./util.nix inputs) mkDarwin mkNixos mkStandalone;
   in {
     # TODO: Map over files in hosts/darwin?
     darwinConfigurations."Athena" = mkDarwin (import ./hosts/Athena);

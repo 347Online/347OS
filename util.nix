@@ -4,6 +4,7 @@
   nixvim-module,
   home-manager,
   nix-darwin,
+  fenix,
   ...
 } @ inputs: let
   lib = nixpkgs.lib;
@@ -42,6 +43,7 @@
           allowUnfree = true;
           allowUnsupportedSystem = true;
         };
+        overlays = [fenix.overlays.default];
       };
       vscode-extensions = nix-vscode-extensions.extensions.${system};
       nixvim = nixvim-module.homeManagerModules.nixvim;

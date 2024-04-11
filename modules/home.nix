@@ -18,11 +18,19 @@
       ;
 
     packages = with pkgs; [
-      (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
+      (fenix.complete.withComponents [
+        "cargo"
+        "clippy"
+        "rust-src"
+        "rustc"
+        "rustfmt"
+      ])
+      rust-analyzer-nightly
+
+      (nerdfonts.override {fonts = ["JetBrainsMono"];})
 
       alejandra
       bat
-      cargo
       eza
       nodejs
       python3
