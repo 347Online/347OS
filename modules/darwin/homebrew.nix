@@ -23,7 +23,6 @@
         autoUpdate = true;
         upgrade = true;
         cleanup = "uninstall";
-
       };
 
       masApps = {
@@ -36,8 +35,6 @@
 
       casks = [
         "raycast"
-        "1password"
-        "1password-cli"
         "setapp"
         "scroll-reverser"
         "logi-options-plus"
