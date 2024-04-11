@@ -36,7 +36,13 @@
     in "/${parentDir}/${username}";
 
     mkBaseSystem = system: {
-      pkgs = import nixpkgs {inherit system;};
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          allowUnsupportedSystem = true;
+        };
+      };
       vscode-extensions = nix-vscode-extensions.extensions.${system};
       nixvim = nixvim-module.homeManagerModules.nixvim;
     };
@@ -45,13 +51,11 @@
       system,
       username ? defaultUsername,
       homeDirectory ? mkHomeDirectory {},
-      useGlobalPkgs ? true,
       ...
     } @ home: let
       inherit (mkBaseSystem system) pkgs vscode-extensions nixvim;
     in {
       home-manager = {
-        inherit useGlobalPkgs;
         extraSpecialArgs = {inherit nixvim vscode-extensions;};
         users."${username}" = import ./modules/home.nix (
           home // {inherit pkgs username homeDirectory;}
@@ -106,7 +110,6 @@
         {
           inherit system username homeDirectory;
           hostPlatform = system;
-          useGlobalPkgs = true;
         }
         // inputs;
 
