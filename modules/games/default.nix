@@ -6,10 +6,10 @@
   ...
 }: {
   options = {
-    games.enable = lib.mkEnableOption "video games or game launchers like Minecraft and Steam";
+    enableGaming = lib.mkEnableOption "video games or game launchers like Minecraft and Steam";
   };
 
-  config = lib.mkIf config.games.enable {
+  config = lib.mkIf config.enableGaming {
     home.packages = with pkgs; [
       # prismlauncher # TODO: Declare Minecraft... somehow
     ];

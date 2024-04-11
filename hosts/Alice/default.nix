@@ -1,5 +1,5 @@
 {
-  home.games.enable = false;
+  home.enableGaming = false;
   dockApps = [
     "/Applications/Slack.app"
   ];

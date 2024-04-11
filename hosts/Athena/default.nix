@@ -3,5 +3,5 @@
     "/System/Applications/Messages.app"
   ];
   rust-toolchain = "beta";
-  home.games.enable = true;
+  enableGaming = true;
 }
