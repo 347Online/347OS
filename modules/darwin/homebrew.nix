@@ -6,10 +6,10 @@
   ...
 }: {
   options = {
-    useHomebrew = lib.mkEnableOption "homebrew setup";
+    enableHomebrew = lib.mkEnableOption "homebrew setup";
   };
 
-  config = lib.mkIf config.useHomebrew {
+  config = lib.mkIf config.enableHomebrew {
     nix-homebrew = {
       enable = true;
       user = username;
