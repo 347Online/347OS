@@ -53,6 +53,7 @@
       system,
       username ? defaultUsername,
       homeDirectory ? mkHomeDirectory {},
+      rust-toolchain,
       ...
     } @ home: let
       inherit (mkBaseSystem system) pkgs vscode-extensions nixvim;
@@ -60,7 +61,7 @@
       home-manager = {
         extraSpecialArgs = {inherit nixvim vscode-extensions;};
         users."${username}" = import ./modules/home.nix (
-          home // {inherit pkgs username homeDirectory;}
+          home // {inherit pkgs username homeDirectory rust-toolchain;}
         );
       };
     };
@@ -82,6 +83,7 @@
     mkNixos = {
       intel ? false,
       username ? defaultUsername,
+      rust-toolchain ? "stable",
     }: let
       system = mkSystem {inherit intel;};
       nixosModules = [
@@ -89,7 +91,7 @@
         home-manager.nixosModules.home-manager
       ];
 
-      inherit (mkBaseSystem system) pkgs vscode-extensions nixvim;
+      inherit (mkBaseSystem system) pkgs vscode-extensions nixvim rust-toolchain;
     in {
     };
 
@@ -98,6 +100,7 @@
       home ? {},
       username ? defaultUsername,
       dockApps ? [],
+      rust-toolchain ? "stable",
     }: let
       system = mkSystem {
         mac = true;
@@ -111,7 +114,7 @@
 
       specialArgs =
         {
-          inherit system username homeDirectory dockApps;
+          inherit system username homeDirectory dockApps rust-toolchain;
           hostPlatform = system;
         }
         // inputs;

@@ -2,6 +2,7 @@
   pkgs,
   username,
   homeDirectory,
+  rust-toolchain,
   ...
 }: {
   imports = [
@@ -12,13 +13,10 @@
   programs.home-manager.enable = true;
 
   home = {
-    inherit
-      username
-      homeDirectory
-      ;
+    inherit username homeDirectory;
 
     packages = with pkgs; [
-      (fenix.complete.withComponents [
+      (fenix.${rust-toolchain}.withComponents [
         "cargo"
         "clippy"
         "rust-src"
