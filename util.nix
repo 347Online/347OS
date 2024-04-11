@@ -95,6 +95,8 @@
     in {
     };
 
+    mkDockApp = pkg: name: "${pkg}/Applications/${name}.app";
+
     mkDarwin = {
       appleSilicon ? true,
       home ? {},
