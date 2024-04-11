@@ -3,6 +3,7 @@
   username,
   home-manager,
   nix-homebrew,
+  dockApps,
   ...
 }: {
   imports = [
@@ -23,20 +24,18 @@
       dock = {
         autohide = true;
         show-recents = false;
-        persistent-apps = [
-          # System Apps
-          "/System/Applications/App Store.app"
-          "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
-          "/System/Applications/Music.app"
-          "/System/Applications/Messages.app"
-
-          # Dev Tools
-          "/${pkgs.vscodium}/Applications/VSCodium.app"
-          "/${pkgs.kitty}/Applications/kitty.app"
-
+        persistent-apps =
+          [
+            # System Apps
+            "/System/Applications/App Store.app"
+            "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+            "/System/Applications/Music.app"
+            "/${pkgs.vscodium}/Applications/VSCodium.app"
+            "/${pkgs.kitty}/Applications/kitty.app"
+          ]
+          ++ dockApps
           # Make system settings the rightmost app
-          "/System/Applications/System Settings.app"
-        ];
+          ++ ["/System/Applications/System Settings.app"];
       };
 
       NSGlobalDomain = {

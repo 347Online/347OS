@@ -95,6 +95,7 @@
       appleSilicon ? true,
       home ? {},
       username ? defaultUsername,
+      dockApps ? [],
     }: let
       system = mkSystem {
         mac = true;
@@ -108,7 +109,7 @@
 
       specialArgs =
         {
-          inherit system username homeDirectory;
+          inherit system username homeDirectory dockApps;
           hostPlatform = system;
         }
         // inputs;
