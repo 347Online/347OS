@@ -1,3 +1,4 @@
+# TODO: Consider moving utils into its own flake
 {
   nixpkgs,
   nix-vscode-extensions,
@@ -7,9 +8,7 @@
   fenix,
   ...
 } @ inputs: let
-  lib = nixpkgs.lib;
   defaultUsername = "katie";
-  isMac = system: lib.strings.hasInfix system "darwin";
 
   util = rec {
     mkSystem = {
@@ -67,51 +66,47 @@
     };
 
     # UNTESTED
-    mkStandalone = {
-      system,
-      username ? defaultUsername,
-    }: let
-      inherit (mkBaseSystem system) pkgs vscode-extensions nixvim;
+    # mkStandalone = {
+    #   system,
+    #   username ? defaultUsername,
+    # }: let
+    #   inherit (mkBaseSystem system) pkgs vscode-extensions nixvim;
 
-      homeDirectory = mkHomeDirectory {
-        inherit username;
-        mac = isMac system;
-      };
-    in
-      home-manager.lib.homeManagerConfiguration mkHome {};
+    #   homeDirectory = mkHomeDirectory {
+    #     inherit username;
+    #     mac = isMac system;
+    #   };
+    # in
+    #   home-manager.lib.homeManagerConfiguration mkHome {};
 
-    mkNixos = {
-      intel ? false,
-      username ? defaultUsername,
-      rust-toolchain ? "stable",
-    }: let
-      system = mkSystem {inherit intel;};
-      nixosModules = [
-        ./modules/nixos
-        home-manager.nixosModules.home-manager
-      ];
-
-      inherit (mkBaseSystem system) pkgs vscode-extensions nixvim rust-toolchain;
-    in {
-    };
+    # mkNixos = {
+    #   intel ? false,
+    #   username ? defaultUsername,
+    #   rust-toolchain ? "stable",
+    #   home ? {},
+    # }: {
+    #   # TODO:
+    # };
 
     mkDockApp = pkg: name: "${pkg}/Applications/${name}.app";
 
     mkDarwin = {
       appleSilicon ? true,
-      home ? {},
       username ? defaultUsername,
       dockApps ? [],
       rust-toolchain ? "stable",
+      home ? {},
     }: let
       system = mkSystem {
         mac = true;
         intel = !appleSilicon;
       };
 
-      homeConfig = {
-        programs.git.extraConfig.credential.helper = "osxkeychain";
-      } // home;
+      homeConfig =
+        {
+          programs.git.extraConfig.credential.helper = "osxkeychain";
+        }
+        // home;
 
       homeDirectory = mkHomeDirectory {
         inherit username;
@@ -121,12 +116,12 @@
       specialArgs =
         {
           inherit system pkgs username homeDirectory dockApps rust-toolchain;
-          inherit (homeConfig);
           hostPlatform = system;
         }
+        // homeConfig
         // inputs;
 
-      inherit (mkBaseSystem system) pkgs vscode-extensions nixvim;
+      inherit (mkBaseSystem system) pkgs;
     in
       nix-darwin.lib.darwinSystem {
         inherit system specialArgs;
