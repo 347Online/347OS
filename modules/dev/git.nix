@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.git = {
     enable = true;
     delta.enable = true;
@@ -10,7 +10,10 @@
     extraConfig = {
       core.editor = "nvim";
       init.defaultBranch = "main";
+      # TODO: Thiw might cause problems on linux
+      credential.helper = "osxkeychain";
     };
   };
-  programs.git-credential-oauth.enable = true;
+  # TODO: Find a better way to switch between these options depending on the system
+  # programs.git-credential-oauth.enable = true;
 }
