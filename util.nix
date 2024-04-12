@@ -109,6 +109,10 @@
         intel = !appleSilicon;
       };
 
+      homeConfig = {
+        programs.git.extraConfig.credential.helper = "osxkeychain";
+      } // home;
+
       homeDirectory = mkHomeDirectory {
         inherit username;
         mac = true;
@@ -117,6 +121,7 @@
       specialArgs =
         {
           inherit system pkgs username homeDirectory dockApps rust-toolchain;
+          inherit (homeConfig);
           hostPlatform = system;
         }
         // inputs;

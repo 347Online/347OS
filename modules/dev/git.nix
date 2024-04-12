@@ -10,10 +10,8 @@
     extraConfig = {
       core.editor = "nvim";
       init.defaultBranch = "main";
-      # TODO: Thiw might cause problems on linux
-      credential.helper = "osxkeychain";
     };
   };
-  # TODO: Find a better way to switch between these options depending on the system
+  # TODO: Find a way to selectively enable this only on Linux
   # programs.git-credential-oauth.enable = true;
 }
