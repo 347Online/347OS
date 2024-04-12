@@ -38,6 +38,11 @@
       url = "github:12Boti/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nil = {
+      url = github:oxalica/nil;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
