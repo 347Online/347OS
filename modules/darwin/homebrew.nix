@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  nix-homebrew,
   username,
   ...
 }: {
