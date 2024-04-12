@@ -3,7 +3,6 @@
     "bash" = "${bash}/bin/bash";
     "branch" = "${git}/bin/git branch --show-current";
     "cat" = "${bat}/bin/bat";
-    "ls" = "${eza}/bin/eza";
     "code" = "${vscodium}/bin/codium";
     "git" = "${git}/bin/git";
     "python3" = "${python3}/bin/python";
