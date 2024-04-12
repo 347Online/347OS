@@ -1,8 +1,9 @@
 {
   home.enableGaming = false;
   dockApps = [
-    "/Applications/Fantastical.app"
     "/Applications/Slack.app"
     "/Applications/Microsoft Outlook.app"
+    "/Applications/zoom.us.app"
+    "/Applications/Fantastical.app"
   ];
 }
