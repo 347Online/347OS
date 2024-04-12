@@ -40,7 +40,7 @@
     };
 
     nil = {
-      url = github:oxalica/nil;
+      url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -56,10 +56,10 @@
     nix-vscode-extensions,
     ...
   }: let
-    inherit (import ./util.nix inputs) mkDarwin mkNixos mkStandalone;
+    util = import ./util.nix inputs;
   in {
     # TODO: Map over files in hosts/darwin?
-    darwinConfigurations."Athena" = mkDarwin (import ./hosts/Athena);
-    darwinConfigurations."Alice" = mkDarwin (import ./hosts/Alice);
+    darwinConfigurations."Athena" = util.mkDarwin (import ./hosts/Athena);
+    darwinConfigurations."Alice" = util.mkDarwin (import ./hosts/Alice);
   };
 }
