@@ -27,15 +27,23 @@
 
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
 
+      # Nix
       alejandra
+
+      # Shell Tools
       bat
       eza
+
+      # Programming Languages
       nodejs
       python3
-      _1password-gui
+
       _1password
+
+      # GUI Apps
+      _1password-gui
       obsidian
-      # maestral
+      # maestral # TODO: Fix this cross-platform
     ];
   };
 
