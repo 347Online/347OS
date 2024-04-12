@@ -29,6 +29,7 @@
 
       # Nix
       alejandra
+      nil
 
       # Shell Tools
       bat

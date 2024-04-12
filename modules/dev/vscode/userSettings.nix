@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   bash = "${pkgs.bash}/bin/bash";
   terminalProfiles = {
     Nushell = {
@@ -12,7 +9,7 @@
         "${pkgs.nushell}/bin/nu"
       ];
     };
-    # If nix.fish doesn't end up working out
+    # TODO: Compare this vs Nix.fish
     # fish = {
     #   path = "bash";
     #   args = [
@@ -97,6 +94,9 @@ in {
     "rust-analyzer.inlayHints.bindingModeHints.enable" = true;
     "rust-analyzer.rustfmt.extraArgs" = ["+nightly"];
     "rust-analyzer.showUnlinkedFileNotification" = false;
+
+    "nix.enableLanguageServer" = true;
+    "nix.serverPath" = "${pkgs.nil}/bin/nil";
 
     "cmake.configureOnOpen" = true;
     "diffEditor.ignoreTrimWhitespace" = false;
