@@ -56,9 +56,9 @@ in {
     };
 
     nushell = {
+      inherit shellAliases;
       enable = true;
       configFile.source = ../dotfiles/.config/nushell/config.nu;
-      inherit shellAliases;
     };
 
     fzf.enable = true;
