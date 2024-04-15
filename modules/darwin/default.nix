@@ -106,6 +106,15 @@ in {
         "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
         "com.apple.ImageCapture".disableHotPlug = true;
         "com.apple.commerce".AutoUpdate = true;
+
+        "com.raycast.macos" = {
+          raycastGlobalHotkey = "Command-49";
+          useHyperKeyIcon = true;
+          onboardingCompleted = true;
+          "onboarding_setupHotkey" = true;
+          "NSStatusItem Visible raycastIcon" = false;
+          "emojiPicker_skinTone" = "standard";
+        };
       };
     };
   };
