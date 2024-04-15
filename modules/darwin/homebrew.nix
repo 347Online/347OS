@@ -28,6 +28,8 @@
         "Noir" = 1592917505;
         "Magic Lasso" = 1198047227;
         "GoodLinks" = 1474335294;
+        "Numbers" = 409203825;
+        "Pages" = 409201541;
         # "Overcast" = 888422857; # Currently broken
       };
 
