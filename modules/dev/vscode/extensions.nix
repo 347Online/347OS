@@ -24,5 +24,6 @@
     sonarsource.sonarlint-vscode # TODO: Install or enable only on Alice host
     ms-vscode.live-server
     # ms-vsliveshare.vsliveshare # TODO: Figure out how to get this to build
+    rust-lang.rust-analyzer
   ];
 }
