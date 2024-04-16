@@ -77,8 +77,9 @@ in {
 
         "com.witt-software.Rocket-Typist-setapp" = {
           AbbreviationDelimiterKey = 1;
-          AutoPasteEnabled = 1;
-          WelcomeViewHasBeenShown = 1;
+          AutoPasteEnabled = true;
+          WelcomeViewHasBeenShown = true;
+          ShowRTInMenuBar = false;
         };
 
         "com.apple.desktopservices" = {
