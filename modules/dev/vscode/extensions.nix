@@ -1,8 +1,12 @@
-{pkgs, ...}: {
-  programs.vscode.extensions = with pkgs.vscode-extensions; [
+{
+  pkgs,
+  vscode-extensions,
+  ...
+}: {
+  programs.vscode.extensions = with vscode-extensions;
+  with pkgs.vscode-extensions; [
     kamadorueda.alejandra
     oderwat.indent-rainbow
-    # asvetliakov.vscode-neovim # Consider removing this, as it tends to be buggy
     dbaeumer.vscode-eslint
     esbenp.prettier-vscode
     eamodio.gitlens
@@ -21,5 +25,7 @@
     ms-vscode.live-server
     # ms-vsliveshare.vsliveshare # TODO: Figure out how to get this to build
     rust-lang.rust-analyzer
+    # TODO: Adjust the way things are setup here so nix-vscode-extensions can take priority over pkgs.vscode-extensions
+    open-vsx.yoavbls.pretty-ts-errors
   ];
 }
