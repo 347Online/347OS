@@ -1,8 +1,4 @@
-{
-  pkgs,
-  vscode-extensions,
-  ...
-}: {
+{pkgs, ...}: {
   programs.vscode.extensions = with pkgs.vscode-extensions; [
     kamadorueda.alejandra
     oderwat.indent-rainbow
