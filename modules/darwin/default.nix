@@ -77,6 +77,7 @@ in {
 
         "com.witt-software.Rocket-Typist-setapp" = {
           AbbreviationDelimiterKey = 1;
+          AbbreviationsTriggerType = 1;
           AutoPasteEnabled = true;
           WelcomeViewHasBeenShown = true;
           ShowRTInMenuBar = false;
