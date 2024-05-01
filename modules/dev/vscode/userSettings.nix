@@ -39,8 +39,11 @@ in {
     "editor.smoothScrolling" = true;
     "editor.tabSize" = 2;
 
-    "eslint.experimental.useFlatConfig" = true;
+    # "eslint.experimental.useFlatConfig" = true; // Currently broken — TODO
     "eslint.format.enable" = true;
+    "eslint.codeAction.disableRuleComment" = {
+      "enable" = false;
+    };
 
     "explorer.sortOrder" = "type";
 
@@ -185,8 +188,8 @@ in {
       "editor.defaultFormatter" = "foxundermoon.shell-format";
     };
 
-    "extensions.experimental.affinity" = {
-      "asvetliakov.vscode-neovim" = 1;
-    };
+    # "extensions.experimental.affinity" = {
+    #   "asvetliakov.vscode-neovim" = 1;
+    # };
   };
 }
