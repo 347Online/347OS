@@ -70,7 +70,7 @@ in {
     "terminal.integrated.defaultProfile.osx" = "Nushell";
     "terminal.integrated.defaultProfile.linux" = "Nushell";
 
-    "update.showReleaseNotes" = "false";
+    "update.showReleaseNotes" = false;
 
     "workbench.editor.empty.hint" = "hidden";
     "workbench.iconTheme" = "material-icon-theme";
