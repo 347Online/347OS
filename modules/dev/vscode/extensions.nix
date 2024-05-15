@@ -3,6 +3,9 @@
   vscode-extensions,
   ...
 }: {
+  # TODO: Figure out why global enable not working
+  nixpkgs.config.allowUnfree = true;
+
   programs.vscode.extensions = with vscode-extensions;
   with pkgs.vscode-extensions; [
     kamadorueda.alejandra
@@ -21,11 +24,16 @@
     tamasfe.even-better-toml
     mechatroner.rainbow-csv
     ritwickdey.liveserver
-    sonarsource.sonarlint-vscode # TODO: Install or enable only on Alice host
     ms-vscode.live-server
-    # ms-vsliveshare.vsliveshare # TODO: Figure out how to get this to build
+    ms-vsliveshare.vsliveshare # TODO: Test on an aarch64-linux system
     rust-lang.rust-analyzer
     # TODO: Adjust the way things are setup here so nix-vscode-extensions can take priority over pkgs.vscode-extensions
     open-vsx.yoavbls.pretty-ts-errors
+
+    # TODO: Install or enable these only on Alice host
+    sonarsource.sonarlint-vscode
+    redhat.java
+    vscjava.vscode-java-test
+    vscjava.vscode-java-debug
   ];
 }
