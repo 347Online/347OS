@@ -81,12 +81,19 @@
         baseModules
         ++ [
           ({pkgs, ...}: {
-            vscodeSetup.extraExtensions = with pkgs.vscode-extensions; [
-              sonarsource.sonarlint-vscode
-              redhat.java
-              vscjava.vscode-java-test
-              vscjava.vscode-java-debug
-            ];
+            home-manager.users = {
+              "${username}" = import ./modules/home;
+              modules = [
+                {
+                  vscodeSetup.extraExtensions = with pkgs.vscode-extensions; [
+                    sonarsource.sonarlint-vscode
+                    redhat.java
+                    vscjava.vscode-java-test
+                    vscjava.vscode-java-debug
+                  ];
+                }
+              ];
+            };
           })
         ];
       inherit specialArgs;
