@@ -30,6 +30,7 @@
         "GoodLinks" = 1474335294;
         "Numbers" = 409203825;
         "Pages" = 409201541;
+        "Boop" = 1518425043;
         # "Overcast" = 888422857; # Currently broken
       };
 
