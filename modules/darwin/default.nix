@@ -10,7 +10,6 @@
 }: {
   imports = [
     ./homebrew.nix
-    ./nixConfig.nix
     home-manager.darwinModules.home-manager
     nix-homebrew.darwinModules.nix-homebrew
   ];
@@ -22,6 +21,7 @@
   nix.settings.experimental-features = "nix-command flakes";
   system.configurationRevision = self.rev or self.dirtyRev or null;
   nixpkgs.hostPlatform = "aarch64-darwin"; # TODO: Consider also enabling intel as an option
+  nixpkgs.allowUnfree = true;
 
   homebrewSetup.enable = lib.mkDefault true;
 
