@@ -10,7 +10,7 @@
   ];
 
   options = with lib.types; {
-    vscodiumSetup = {
+    vscodeSetup = {
       enable = lib.mkEnableOption "vscodium setup";
       extraExtensions = lib.mkOption {
         type = listOf package;
@@ -19,7 +19,7 @@
     };
   };
 
-  config = lib.mkIf config.vscodiumSetup.enable {
+  config = lib.mkIf config.vscodeSetup.enable {
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
