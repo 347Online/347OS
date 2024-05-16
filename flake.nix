@@ -62,6 +62,9 @@
       home-manager.darwinModules.home-manager
       nix-homebrew.darwinModules.nix-homebrew
       ./modules/darwin
+      {
+        home-manager.users.${username} = import ./modules/home;
+      }
     ];
   in {
     # TODO: Move into hosts directory
@@ -69,9 +72,6 @@
       modules =
         baseModules
         ++ [
-          {
-            # gamingSetup.enable = true;
-          }
         ];
       inherit specialArgs;
     };
@@ -80,21 +80,6 @@
       modules =
         baseModules
         ++ [
-          ({pkgs, ...}: {
-            home-manager.users = {
-              "${username}" = import ./modules/home;
-              modules = [
-                {
-                  vscodeSetup.extraExtensions = with pkgs.vscode-extensions; [
-                    sonarsource.sonarlint-vscode
-                    redhat.java
-                    vscjava.vscode-java-test
-                    vscjava.vscode-java-debug
-                  ];
-                }
-              ];
-            };
-          })
         ];
       inherit specialArgs;
     };

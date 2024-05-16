@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  ...
 }: {
   options = {
     gitSetup.enable = lib.mkEnableOption "git setup";

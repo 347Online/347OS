@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  nixvim,
   ...
 }: {
   imports = [
@@ -9,7 +8,6 @@
     ./shell.nix
     ./git.nix
 
-    nixvim
     ./neovim.nix
   ];
 

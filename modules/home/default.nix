@@ -2,13 +2,15 @@
   pkgs,
   username,
   homeDirectory,
+  nixvim-module,
   ...
 }: {
   # TODO: Break up into sub-modules
 
   imports = [
-    ./code
-    ./gaming
+    nixvim-module.homeManagerModules.nixvim
+    ../code
+    ../gaming
   ];
 
   programs.home-manager.enable = true;
