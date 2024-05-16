@@ -56,7 +56,17 @@
     nix-vscode-extensions,
     ...
   }: {
-    darwinConfigurations."Athena" = {};
-    darwinConfigurations."Alice" = {};
+    # TODO: Move into hosts directory
+    darwinConfigurations."Athena" = nix-darwin.lib.darwinSystem {
+      modules = [
+        ./modules/darwin
+        {
+          gamingSetup.enable = true;
+        }
+      ];
+    };
+    darwinConfigurations."Alice" = {
+      modules = [./modules/darwin];
+    };
   };
 }

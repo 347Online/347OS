@@ -1,4 +1,5 @@
 {
+  self,
   lib,
   pkgs,
   username,
@@ -14,9 +15,15 @@
     nix-homebrew.darwinModules.nix-homebrew
   ];
 
+  # Misc config: # TODO: move to more sensible locations
   programs.git.extraConfig.credential.helper = "osxkeychain";
+  services.nix-daemon.enable = true;
+  nix.package = pkgs.nix;
+  nix.settings.experimental-features = "nix-command flakes";
+  system.configurationRevision = self.rev or self.dirtyRev or null;
+  nixpkgs.hostPlatform = "aarch64-darwin"; # TODO: Consider also enabling intel as an option
 
-  enableHomebrew = lib.mkDefault true;
+  homebrewSetup.enable = lib.mkDefault true;
 
   security.pam.enableSudoTouchIdAuth = true;
 
