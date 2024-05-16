@@ -68,7 +68,9 @@
           # gamingSetup.enable = true;
         }
       ];
-      specialArgs = {inherit inputs username;};
+      specialArgs = {
+        inherit inputs username;
+      };
     };
 
     darwinConfigurations."Alice" = {
