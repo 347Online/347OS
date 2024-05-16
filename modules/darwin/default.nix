@@ -14,6 +14,8 @@ inputs @ {
     nix-homebrew.darwinModules.nix-homebrew
   ];
 
+  programs.git.extraConfig.credential.helper = "osxkeychain";
+
   enableHomebrew = lib.mkDefault true;
 
   security.pam.enableSudoTouchIdAuth = true;
