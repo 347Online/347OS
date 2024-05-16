@@ -57,24 +57,39 @@
     ...
   }: let
     username = "katie";
+    specialArgs = {inherit inputs username;};
+    baseModules = [
+      home-manager.darwinModules.home-manager
+      nix-homebrew.darwinModules.nix-homebrew
+      ./modules/darwin
+    ];
   in {
     # TODO: Move into hosts directory
     darwinConfigurations."Athena" = nix-darwin.lib.darwinSystem {
-      modules = [
-        home-manager.darwinModules.home-manager
-        nix-homebrew.darwinModules.nix-homebrew
-        ./modules/darwin
-        {
-          # gamingSetup.enable = true;
-        }
-      ];
-      specialArgs = {
-        inherit inputs username;
-      };
+      modules =
+        baseModules
+        ++ [
+          {
+            # gamingSetup.enable = true;
+          }
+        ];
+      inherit specialArgs;
     };
 
-    darwinConfigurations."Alice" = {
-      modules = [./modules/darwin];
+    darwinConfigurations."Alice" = nix-darwin.lib.darwinSystem {
+      modules =
+        baseModules
+        ++ [
+          ({pkgs, ...}: {
+            vscodeSetup.extraExtensions = with pkgs.vscode-extensions; [
+              sonarsource.sonarlint-vscode
+              redhat.java
+              vscjava.vscode-java-test
+              vscjava.vscode-java-debug
+            ];
+          })
+        ];
+      inherit specialArgs;
     };
   };
 }

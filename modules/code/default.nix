@@ -19,7 +19,7 @@
 
   config = lib.mkIf config.codeSetup.enable {
     gitSetup.enable = true;
-    vscodiumSetup.enable = true;
+    vscodeSetup.enable = true;
     neovimSetup.enable = true;
     shellSetup.enable = true;
   };

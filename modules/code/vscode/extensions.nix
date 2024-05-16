@@ -28,9 +28,9 @@
     open-vsx.yoavbls.pretty-ts-errors
 
     # TODO: Install or enable these only on Alice host
-    sonarsource.sonarlint-vscode
-    redhat.java
-    vscjava.vscode-java-test
-    vscjava.vscode-java-debug
+    # sonarsource.sonarlint-vscode
+    # redhat.java
+    # vscjava.vscode-java-test
+    # vscjava.vscode-java-debug
   ];
 }
