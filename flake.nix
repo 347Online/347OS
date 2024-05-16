@@ -57,6 +57,10 @@
     ...
   }: let
     system = "aarch64-darwin"; # TODO: Consider possibility of linux
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
     username = "katie";
     homeDirectory = "/Users/${username}"; # TODO: Consider possibility of linux
     specialArgs = {inherit inputs username homeDirectory;};
@@ -91,6 +95,14 @@
       modules =
         baseModules
         ++ [
+          {
+            home-manager.users.${username}.vscodeSetup.extraExtensions = with pkgs.vscode-extensions; [
+              sonarsource.sonarlint-vscode
+              redhat.java
+              vscjava.vscode-java-test
+              vscjava.vscode-java-debug
+            ];
+          }
         ];
       inherit specialArgs;
     };
