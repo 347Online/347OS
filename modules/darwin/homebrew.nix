@@ -8,7 +8,7 @@
     homebrewSetup.enable = lib.mkEnableOption "homebrew setup";
   };
 
-  config = lib.mkIf config.homebrewSetup {
+  config = lib.mkIf config.homebrewSetup.enable {
     nix-homebrew = {
       enable = true;
       user = username;
