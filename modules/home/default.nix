@@ -2,15 +2,13 @@
   pkgs,
   username,
   homeDirectory,
-  rust-toolchain,
   ...
 }: {
   # TODO: Break up into sub-modules
-  # Fenix especially good candidate for this
 
   imports = [
-    ./dev
-    ./games
+    ./code
+    ./gaming
   ];
 
   programs.home-manager.enable = true;
@@ -19,15 +17,6 @@
     inherit username homeDirectory;
 
     packages = with pkgs; [
-      (fenix.${rust-toolchain}.withComponents [
-        "cargo"
-        "clippy"
-        "rust-src"
-        "rustc"
-        "rustfmt"
-      ])
-      rust-analyzer-nightly
-
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
 
       # Nix
