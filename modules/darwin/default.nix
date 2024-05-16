@@ -1,10 +1,7 @@
 {
-  self,
   lib,
   pkgs,
   username,
-  home-manager,
-  nix-homebrew,
   ...
 }: {
   imports = [
@@ -26,7 +23,7 @@
     services.nix-daemon.enable = true;
     nix.package = pkgs.nix;
     nix.settings.experimental-features = "nix-command flakes";
-    system.configurationRevision = self.rev or self.dirtyRev or null;
+    # system.configurationRevision = self.rev or self.dirtyRev or null;
     nixpkgs.hostPlatform = "aarch64-darwin"; # TODO: Consider also enabling intel as an option
     nixpkgs.config.allowUnfree = true;
 
@@ -52,7 +49,7 @@
               "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
               "/System/Applications/Music.app"
             ]
-            ++ config.dockApps
+            ++ config.dockApps or []
             ++ [
               "${obsidian}/Obsidian.app"
               "${vscodium}/VSCodium.app"
