@@ -96,12 +96,7 @@
         baseModules
         ++ [
           {
-            home-manager.users.${username}.vscodeSetup.extraExtensions = with pkgs.vscode-extensions; [
-              sonarsource.sonarlint-vscode
-              redhat.java
-              vscjava.vscode-java-test
-              vscjava.vscode-java-debug
-            ];
+            home-manager.users.${username}.code.java.enable = true;
           }
         ];
       inherit specialArgs;

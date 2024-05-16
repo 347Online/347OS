@@ -1,10 +1,11 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
-    ./vscode
+    ./codium
     ./shell.nix
     ./git.nix
 
@@ -12,12 +13,26 @@
   ];
 
   options = {
-    codeSetup.enable = lib.mkEnableOption "code setup";
+    code = {
+      enable = lib.mkEnableOption "code setup";
+      java.enable = lib.mkEnableOption "tooling catered to java development";
+    };
   };
 
-  config = lib.mkIf config.codeSetup.enable {
+  code.enable = lib.mkDefault true;
+  code.java.enable = lib.mkDefault false;
+
+  config = lib.mkIf config.code.enable {
     gitSetup.enable = true;
-    vscodeSetup.enable = true;
+    codium = {
+      enable = true;
+      extraExtensions = lib.mkIf config.java.enable (with pkgs.vscode-extensions; [
+        sonarsource.sonarlint-vscode
+        redhat.java
+        vscjava.vscode-java-test
+        vscjava.vscode-java-debug
+      ]);
+    };
     neovimSetup.enable = true;
     shellSetup.enable = true;
   };

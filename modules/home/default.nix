@@ -16,7 +16,7 @@
     ../gaming
   ];
 
-  codeSetup.enable = lib.mkDefault true;
+  code.enable = lib.mkDefault true;
 
   programs.home-manager.enable = true;
 
