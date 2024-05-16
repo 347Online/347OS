@@ -45,7 +45,7 @@
     };
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
     fenix,
     nix-darwin,
@@ -55,16 +55,22 @@
     nix-homebrew,
     nix-vscode-extensions,
     ...
-  }: {
+  }: let
+    username = "katie";
+  in {
     # TODO: Move into hosts directory
     darwinConfigurations."Athena" = nix-darwin.lib.darwinSystem {
       modules = [
+        home-manager.darwinModules.home-manager
+        nix-homebrew.darwinModules.nix-homebrew
         ./modules/darwin
         {
-          gamingSetup.enable = true;
+          # gamingSetup.enable = true;
         }
       ];
+      specialArgs = {inherit inputs username;};
     };
+
     darwinConfigurations."Alice" = {
       modules = [./modules/darwin];
     };
