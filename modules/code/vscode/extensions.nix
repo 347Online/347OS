@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   vscode-extensions,
   ...
@@ -32,5 +33,5 @@
     # redhat.java
     # vscjava.vscode-java-test
     # vscjava.vscode-java-debug
-  ];
+  ] ++ config.vscodeSetup.extraExtensions;
 }

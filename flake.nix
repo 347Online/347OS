@@ -56,14 +56,25 @@
     nix-vscode-extensions,
     ...
   }: let
+    system = "aarch64-darwin"; # TODO: Consider possibility of linux
     username = "katie";
-    specialArgs = {inherit inputs username;};
+    homeDirectory = "/Users/${username}"; # TODO: Consider possibility of linux
+    specialArgs = {inherit inputs username homeDirectory;};
+    extraSpecialArgs =
+      specialArgs
+      // {
+        vscode-extensions = nix-vscode-extensions.extensions.${system};
+        nixvim = nixvim-module.homeManagerModules.nixvim;
+      };
     baseModules = [
       home-manager.darwinModules.home-manager
       nix-homebrew.darwinModules.nix-homebrew
       ./modules/darwin
       {
-        home-manager.users.${username} = import ./modules/home;
+        home-manager = {
+          inherit extraSpecialArgs;
+          users.${username} = import ./modules/home;
+        };
       }
     ];
   in {

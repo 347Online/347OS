@@ -1,17 +1,22 @@
 {
+  lib,
   pkgs,
   username,
   homeDirectory,
-  nixvim-module,
+  nixvim,
   ...
 }: {
   # TODO: Break up into sub-modules
 
+  nixpkgs.config.allowUnfree = true;
+
   imports = [
-    nixvim-module.homeManagerModules.nixvim
+    nixvim
     ../code
     ../gaming
   ];
+
+  codeSetup.enable = lib.mkDefault true;
 
   programs.home-manager.enable = true;
 
