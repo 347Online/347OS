@@ -31,6 +31,8 @@ in {
     #   launch ${pkgs.bash}/bin/bash -li -c ${pkgs.nushell}/bin/nu
     # '';
 
+    xdg.configFile.zsh.source = ../dotfiles/.config/zsh/.p10k.zsh;
+
     programs = {
       kitty = {
         enable = true;
@@ -69,6 +71,16 @@ in {
         inherit shellAliases;
         enable = true;
         configFile.source = ../dotfiles/.config/nushell/config.nu;
+      };
+
+      zsh = {
+        inherit shellAliases;
+        enable = true;
+        initExtra = ''
+          # Powerlevel10k Zsh theme
+          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+          test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh
+        '';
       };
 
       fzf.enable = true;
