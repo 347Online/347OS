@@ -1,14 +1,25 @@
 {
+  lib,
   pkgs,
   username,
   homeDirectory,
-  rust-toolchain,
+  nixvim,
+  fenix,
   ...
 }: {
+  # TODO: Break up into sub-modules
+
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [fenix.overlays.default];
+
   imports = [
-    ./dev
-    ./games
+    nixvim
+    ../code
+    ../gaming
   ];
+
+  code.enable = lib.mkDefault true;
+  code.java.enable = lib.mkDefault false;
 
   programs.home-manager.enable = true;
 
@@ -16,15 +27,6 @@
     inherit username homeDirectory;
 
     packages = with pkgs; [
-      (fenix.${rust-toolchain}.withComponents [
-        "cargo"
-        "clippy"
-        "rust-src"
-        "rustc"
-        "rustfmt"
-      ])
-      rust-analyzer-nightly
-
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
 
       # Nix

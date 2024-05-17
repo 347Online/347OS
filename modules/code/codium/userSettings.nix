@@ -67,8 +67,8 @@ in {
     "terminal.integrated.customGlyphs" = true;
     "terminal.integrated.profiles.linux" = terminalProfiles;
     "terminal.integrated.profiles.osx" = terminalProfiles;
-    "terminal.integrated.defaultProfile.osx" = "Nushell";
-    "terminal.integrated.defaultProfile.linux" = "Nushell";
+    "terminal.integrated.defaultProfile.osx" = "zsh";
+    "terminal.integrated.defaultProfile.linux" = "zsh";
 
     "update.showReleaseNotes" = false;
 
