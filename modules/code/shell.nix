@@ -26,12 +26,8 @@ in {
   };
 
   config = lib.mkIf config.shellSetup.enable {
-    # TODO: Change this to apply to all new windows
-    # xdg.configFile."./kitty/startup_session".text = ''
-    #   launch ${pkgs.bash}/bin/bash -li -c ${pkgs.nushell}/bin/nu
-    # '';
-
     home.file.".config/zsh/.p10k.zsh".source = ../dotfiles/.config/zsh/.p10k.zsh;
+    home.file.".hushlogin".text = "";
 
     programs = {
       kitty = {
@@ -40,11 +36,11 @@ in {
         font.size = 12;
         settings = {
           confirm_os_window_close = 0;
-          startup_session = "./startup_session";
         };
         darwinLaunchOptions = [
           "--single-instance"
         ];
+
         shellIntegration.enableFishIntegration = true;
       };
 
@@ -87,6 +83,15 @@ in {
           zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
 
           eval "$(fzf --zsh)"
+
+          HISTDUP=erase
+          setopt appendhistory
+          setopt sharehistory
+          setopt hist_ignore_space
+          setopt hist_ignore_all_dups
+          setopt hist_ignore_dups
+          setopt hist_save_no_dups
+          setopt hist_find_no_dups
         '';
         shellAliases = shellAliases // {"ls" = "${pkgs.eza}/bin/eza";};
       };
