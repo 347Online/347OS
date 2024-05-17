@@ -51,6 +51,7 @@ in {
     "files.associations" = {
       "*.fish" = "fish";
       "*.nu" = "nushell";
+      "{.env,.env.*}" = "properties";
     };
 
     "git.autofetch" = true;
