@@ -19,14 +19,11 @@
     };
   };
 
-  code.enable = lib.mkDefault true;
-  code.java.enable = lib.mkDefault false;
-
   config = lib.mkIf config.code.enable {
     gitSetup.enable = true;
     codium = {
       enable = true;
-      extraExtensions = lib.mkIf config.java.enable (with pkgs.vscode-extensions; [
+      extraExtensions = lib.mkIf config.code.java.enable (with pkgs.vscode-extensions; [
         sonarsource.sonarlint-vscode
         redhat.java
         vscjava.vscode-java-test
