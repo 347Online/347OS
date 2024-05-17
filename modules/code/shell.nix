@@ -31,7 +31,7 @@ in {
     #   launch ${pkgs.bash}/bin/bash -li -c ${pkgs.nushell}/bin/nu
     # '';
 
-    xdg.configFile.zsh.source = ../dotfiles/.config/zsh/.p10k.zsh;
+    home.file.".config/zsh/.p10k.zsh".source = ../dotfiles/.config/zsh/.p10k.zsh;
 
     programs = {
       kitty = {
@@ -74,13 +74,21 @@ in {
       };
 
       zsh = {
-        inherit shellAliases;
         enable = true;
+        enableCompletion = true;
+        syntaxHighlighting.enable = true;
+        autosuggestion.enable = true;
         initExtra = ''
           # Powerlevel10k Zsh theme
           source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
           test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh
+
+          zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+          zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+
+          eval "$(fzf --zsh)"
         '';
+        shellAliases = shellAliases // {"ls" = "${pkgs.eza}/bin/eza";};
       };
 
       fzf.enable = true;

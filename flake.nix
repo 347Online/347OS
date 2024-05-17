@@ -72,6 +72,7 @@
       nix-homebrew.darwinModules.nix-homebrew
       ./modules/darwin
       {
+        environment.pathsToLink = ["/share/zsh"];
         home-manager = {
           inherit extraSpecialArgs;
           users.${username} = import ./modules/home;
