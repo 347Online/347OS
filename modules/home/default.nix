@@ -4,11 +4,13 @@
   username,
   homeDirectory,
   nixvim,
+  fenix,
   ...
 }: {
   # TODO: Break up into sub-modules
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [fenix.overlays.default];
 
   imports = [
     nixvim

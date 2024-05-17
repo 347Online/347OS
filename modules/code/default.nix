@@ -8,7 +8,7 @@
     ./codium
     ./shell.nix
     ./git.nix
-
+    ./rust.nix
     ./neovim.nix
   ];
 
@@ -32,5 +32,6 @@
     };
     neovimSetup.enable = true;
     shellSetup.enable = true;
+    rustSetup.enable = true;
   };
 }
