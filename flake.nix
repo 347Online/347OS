@@ -57,10 +57,6 @@
     ...
   }: let
     system = "aarch64-darwin"; # TODO: Consider possibility of linux
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
     username = "katie";
     homeDirectory = "/Users/${username}"; # TODO: Consider possibility of linux
     specialArgs = {inherit inputs username homeDirectory;};
@@ -69,6 +65,7 @@
       // {
         vscode-extensions = nix-vscode-extensions.extensions.${system};
         nixvim = nixvim-module.homeManagerModules.nixvim;
+        inherit fenix;
       };
     baseModules = [
       home-manager.darwinModules.home-manager
