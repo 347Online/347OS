@@ -76,6 +76,7 @@
         home-manager = {
           inherit extraSpecialArgs;
           users.${username} = import ./modules/home;
+          backupFileExtension = "bakk";
         };
       }
     ];
