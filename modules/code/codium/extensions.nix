@@ -16,7 +16,6 @@
       ms-python.python
       ms-python.black-formatter
       mkhl.direnv
-      thenuprojectcontributors.vscode-nushell-lang
       foxundermoon.shell-format
       jnoortheen.nix-ide
       bmalehorn.vscode-fish

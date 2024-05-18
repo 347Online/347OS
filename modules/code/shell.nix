@@ -16,9 +16,8 @@
   };
 
   shellIntegrations = {
-    enableBashIntegration = false;
-    enableZshIntegration = false;
-    enableNushellIntegration = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
     enableFishIntegration = true;
   };
 in {
@@ -42,7 +41,7 @@ in {
           "--single-instance"
         ];
 
-        shellIntegration.enableFishIntegration = true;
+        shellIntegration = shellIntegrations;
       };
 
       bash.shellAliases = shellAliases;
@@ -64,12 +63,6 @@ in {
         inherit shellAliases;
       };
 
-      nushell = {
-        inherit shellAliases;
-        enable = true;
-        configFile.source = ../dotfiles/.config/nushell/config.nu;
-      };
-
       zsh = {
         enable = true;
         enableCompletion = true;
@@ -89,18 +82,6 @@ in {
         enable = true;
         nix-direnv.enable = true;
       };
-
-      carapace =
-        shellIntegrations
-        // {
-          enable = true;
-        };
-
-      starship =
-        shellIntegrations
-        // {
-          enable = true;
-        };
 
       zoxide =
         shellIntegrations

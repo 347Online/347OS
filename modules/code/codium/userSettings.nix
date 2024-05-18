@@ -1,16 +1,4 @@
-{pkgs, ...}: let
-  bash = "${pkgs.bash}/bin/bash";
-  terminalProfiles = {
-    Nushell = {
-      path = bash;
-      args = [
-        "-l"
-        "-c"
-        "${pkgs.nushell}/bin/nu"
-      ];
-    };
-  };
-in {
+{pkgs, ...}: {
   programs.vscode.userSettings = {
     "editor.acceptSuggestionOnCommitCharacter" = false;
     "editor.accessibilitySupport" = "off";
@@ -40,7 +28,6 @@ in {
     "files.autoSave" = "afterDelay";
     "files.associations" = {
       "*.fish" = "fish";
-      "*.nu" = "nushell";
       "{.env,.env.*}" = "properties";
     };
 
@@ -56,8 +43,6 @@ in {
     "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
     "terminal.integrated.mouseWheelScrollSensitivity" = 0.1;
     "terminal.integrated.customGlyphs" = true;
-    "terminal.integrated.profiles.linux" = terminalProfiles;
-    "terminal.integrated.profiles.osx" = terminalProfiles;
     "terminal.integrated.defaultProfile.osx" = "zsh";
     "terminal.integrated.defaultProfile.linux" = "zsh";
 
@@ -178,9 +163,5 @@ in {
     "[ignore]" = {
       "editor.defaultFormatter" = "foxundermoon.shell-format";
     };
-
-    # "extensions.experimental.affinity" = {
-    #   "asvetliakov.vscode-neovim" = 1;
-    # };
   };
 }
