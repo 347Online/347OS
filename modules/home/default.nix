@@ -5,7 +5,22 @@
   homeDirectory,
   nixvim,
   ...
-}: {
+}: let
+  listFilesRecursive = dir: acc:
+    lib.flatten (lib.mapAttrsToList
+      (k: v:
+        if v == "regular"
+        then "${acc}${k}"
+        else listFilesRecursive dir "${acc}${k}/")
+      (builtins.readDir "${dir}/${acc}"));
+
+  toHomeFiles = dir:
+    builtins.listToAttrs
+    (map (x: {
+      name = x;
+      value = {source = "${dir}/${x}";};
+    }) (listFilesRecursive dir ""));
+in {
   # TODO: Break up into sub-modules
 
   imports = [
@@ -25,23 +40,7 @@
   home = {
     inherit username homeDirectory;
 
-    file = let
-      listFilesRecursive = dir: acc:
-        lib.flatten (lib.mapAttrsToList
-          (k: v:
-            if v == "regular"
-            then "${acc}${k}"
-            else listFilesRecursive dir "${acc}${k}/")
-          (builtins.readDir "${dir}/${acc}"));
-
-      toHomeFiles = dir:
-        builtins.listToAttrs
-        (map (x: {
-          name = x;
-          value = {source = "${dir}/${x}";};
-        }) (listFilesRecursive dir ""));
-    in
-      toHomeFiles ./dotfiles;
+    file = toHomeFiles ./dotfiles;
 
     packages = with pkgs; [
       # Essentials
