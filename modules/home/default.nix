@@ -11,7 +11,6 @@
   imports = [
     nixvim
 
-    # ./dotfiles
     ./nix.nix
 
     ../code
@@ -42,7 +41,7 @@
           value = {source = "${dir}/${x}";};
         }) (listFilesRecursive dir ""));
     in
-      toHomeFiles ../home/dotfiles;
+      toHomeFiles ./dotfiles;
 
     packages = with pkgs; [
       # Essentials
