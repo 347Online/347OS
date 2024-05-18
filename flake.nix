@@ -86,6 +86,11 @@
       modules =
         baseModulesDarwin
         ++ [
+          {
+            home-manager.users.${username} = {
+              code.rust.toolchain = "beta";
+            };
+          }
         ];
       inherit specialArgs;
     };
