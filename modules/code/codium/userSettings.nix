@@ -45,6 +45,10 @@
     "terminal.integrated.customGlyphs" = true;
     "terminal.integrated.defaultProfile.osx" = "zsh";
     "terminal.integrated.defaultProfile.linux" = "zsh";
+    "terminal.integrated.enableVisualBell" = true;
+    "accessibility.signals.terminalBell" = {
+      sound = "on";
+    };
 
     "update.showReleaseNotes" = false;
 
@@ -77,7 +81,6 @@
     "nix.enableLanguageServer" = true;
     "nix.serverPath" = "${pkgs.nil}/bin/nil";
 
-    "cmake.configureOnOpen" = true;
     "diffEditor.ignoreTrimWhitespace" = false;
     "livePreview.openPreviewTarget" = "External Browser";
     "liveServer.settings.donotShowInfoMsg" = true;
