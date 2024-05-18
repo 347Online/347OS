@@ -8,11 +8,7 @@
     code.rust = {
       enable = lib.mkEnableOption "rust setup";
       toolchain = lib.mkOption {
-        type = lib.types.oneOf [
-          "stable"
-          "beta"
-          "nightly"
-        ];
+        type = lib.types.enum ["stable" "beta" "nightly"];
         default = "stable";
       };
     };
