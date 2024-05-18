@@ -19,7 +19,6 @@
   ];
 
   code.enable = lib.mkDefault true;
-  code.java.enable = lib.mkDefault false;
 
   programs.home-manager.enable = true;
 

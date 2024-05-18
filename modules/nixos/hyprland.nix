@@ -29,7 +29,7 @@ in {
         monitor = ",preferred,auto,auto";
         exec-once = ''${startupScript}/bin/start'';
 
-        "$terminal" = "kitty"; # TODO: Use nix path
+        "$terminal" = "${pkgs.kitty}/bin/kitty"; # UNTESTED
         "$menu" = "rofi -show drun -show-icons";
 
         input = {

@@ -9,15 +9,6 @@
         "${pkgs.nushell}/bin/nu"
       ];
     };
-    # TODO: Compare this vs Nix.fish
-    # fish = {
-    #   path = "bash";
-    #   args = [
-    #     "-l"
-    #     "-c"
-    #     "${pkgs.fish}/bin/fish"
-    #   ];
-    # };
   };
 in {
   programs.vscode.userSettings = {
@@ -39,7 +30,6 @@ in {
     "editor.smoothScrolling" = true;
     "editor.tabSize" = 2;
 
-    # "eslint.experimental.useFlatConfig" = true; // Currently broken — TODO
     "eslint.format.enable" = true;
     "eslint.codeAction.disableRuleComment" = {
       "enable" = false;
