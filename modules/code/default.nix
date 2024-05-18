@@ -21,7 +21,5 @@
     codium.enable = lib.mkDefault true;
     neovimSetup.enable = lib.mkDefault true;
     shellSetup.enable = lib.mkDefault true;
-    rustSetup.enable = lib.mkDefault true;
-    java.enable = lib.mkDefault false;
   };
 }
