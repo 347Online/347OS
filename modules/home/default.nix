@@ -11,7 +11,7 @@
   imports = [
     nixvim
 
-    ./dotfiles
+    # ./dotfiles
     ./nix.nix
 
     ../code
@@ -25,6 +25,24 @@
 
   home = {
     inherit username homeDirectory;
+
+    file = let
+      listFilesRecursive = dir: acc:
+        lib.flatten (lib.mapAttrsToList
+          (k: v:
+            if v == "regular"
+            then "${acc}${k}"
+            else listFilesRecursive dir "${acc}${k}/")
+          (builtins.readDir "${dir}/${acc}"));
+
+      toHomeFiles = dir:
+        builtins.listToAttrs
+        (map (x: {
+          name = x;
+          value = {source = "${dir}/${x}";};
+        }) (listFilesRecursive dir ""));
+    in
+      toHomeFiles ../home/dotfiles;
 
     packages = with pkgs; [
       # Essentials

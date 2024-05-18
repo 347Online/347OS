@@ -8,6 +8,8 @@
     "bash" = "${bash}/bin/bash";
     "branch" = "${git}/bin/git branch --show-current";
     "cat" = "${bat}/bin/bat";
+    "ls" = "${pkgs.eza}/bin/eza";
+    "grep" = "${pkgs.ripgrep}/bin/rg";
     "code" = "${vscodium}/bin/codium";
     "git" = "${git}/bin/git";
     "python3" = "${python3}/bin/python";
@@ -29,6 +31,7 @@ in {
     home.packages = with pkgs; [
       bat
       eza
+      ripgrep
     ];
 
     programs = {
@@ -70,7 +73,12 @@ in {
         enableCompletion = true;
         syntaxHighlighting.enable = true;
         autosuggestion.enable = true;
-        shellAliases = shellAliases // {"ls" = "${pkgs.eza}/bin/eza";};
+        initExtraFirst = ''
+          # Powerlevel10k Zsh theme
+          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+          ${builtins.readFile ./.zshrc}
+        '';
+        inherit shellAliases;
       };
 
       fzf.enable = true;
