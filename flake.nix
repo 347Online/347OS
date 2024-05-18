@@ -78,7 +78,6 @@
           users.${username} = import ./modules/home;
           backupFileExtension = "bakk";
         };
-        
       }
     ];
   in {

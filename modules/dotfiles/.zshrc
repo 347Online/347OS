@@ -1,3 +1,7 @@
+fpath=(~/.config/zsh/completions $fpath)
+autoload -U compinit
+compinit
+
 test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'

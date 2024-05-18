@@ -26,9 +26,6 @@ in {
   };
 
   config = lib.mkIf config.code.shell.enable {
-    home.file.".config/zsh/.p10k.zsh".source = ../dotfiles/.config/zsh/.p10k.zsh;
-    home.file.".hushlogin".text = "";
-
     programs = {
       kitty = {
         enable = true;
@@ -68,11 +65,6 @@ in {
         enableCompletion = true;
         syntaxHighlighting.enable = true;
         autosuggestion.enable = true;
-        initExtraFirst = ''
-          # Powerlevel10k Zsh theme
-          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-          ${builtins.readFile ../dotfiles/.zshrc}
-        '';
         shellAliases = shellAliases // {"ls" = "${pkgs.eza}/bin/eza";};
       };
 
