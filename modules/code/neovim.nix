@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  # pkgs,
   ...
 }: {
   options = {
@@ -60,9 +59,6 @@
           };
         };
       };
-
-      # extraPlugins = with pkgs.vimPlugins; [
-      # ];
     };
   };
 }

@@ -1,23 +1,23 @@
 {
   pkgs,
+  lib,
   username,
   homeDirectory,
   nixvim,
-  fenix,
   ...
 }: {
   # TODO: Break up into sub-modules
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [fenix.overlays.default];
-
   imports = [
     nixvim
+
+    ./nix.nix
+
     ../code
     ../gaming
   ];
 
-  code.enable = true;
+  code.enable = lib.mkDefault true;
 
   programs.home-manager.enable = true;
 
@@ -25,25 +25,14 @@
     inherit username homeDirectory;
 
     packages = with pkgs; [
+      # Essentials
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
 
-      # Nix
-      alejandra
-      nil
-
-      # Shell Tools
-      bat
-      eza
-
-      # Programming Languages
-      nodejs
-      python3
-
       _1password
-
-      # GUI Apps
       _1password-gui
-      obsidian 
+
+      obsidian
+
       maestral # Untested on Linux
     ];
   };

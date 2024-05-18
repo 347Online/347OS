@@ -26,6 +26,11 @@ in {
   };
 
   config = lib.mkIf config.code.shell.enable {
+    home.packages = with pkgs; [
+      bat
+      eza
+    ];
+
     programs = {
       kitty = {
         enable = true;
