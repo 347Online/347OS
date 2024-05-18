@@ -1,17 +1,13 @@
 {
-  pkgs,
-  nix-minecraft,
   lib,
   config,
   ...
 }: {
   options = {
-    gamingSetup.enable = lib.mkEnableOption "gaming setup";
+    gaming.enable = lib.mkEnableOption "gaming";
   };
 
-  config = lib.mkIf config.gamingSetup.enable {
-    home.packages = with pkgs; [
-      # prismlauncher # TODO: Declare Minecraft... somehow
-    ];
+  config = lib.mkIf config.gaming.enable {
+    # Gaming stuff
   };
 }
