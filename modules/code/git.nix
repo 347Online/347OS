@@ -4,10 +4,10 @@
   ...
 }: {
   options = {
-    gitSetup.enable = lib.mkEnableOption "git setup";
+    code.git.enable = lib.mkEnableOption "git setup";
   };
 
-  config = lib.mkIf config.gitSetup.enable {
+  config = lib.mkIf config.code.git.enable {
     programs.git = {
       enable = true;
       delta.enable = true;

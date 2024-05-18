@@ -94,7 +94,9 @@
         baseModules
         ++ [
           {
-            home-manager.users.${username}.code.java.enable = true;
+            home-manager.users.${username} = {
+              code.java.enable = true;
+            };
           }
         ];
       inherit specialArgs;

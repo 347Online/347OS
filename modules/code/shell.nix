@@ -23,10 +23,10 @@
   };
 in {
   options = {
-    shellSetup.enable = lib.mkEnableOption "shell setup";
+    code.shell.enable = lib.mkEnableOption "shell setup";
   };
 
-  config = lib.mkIf config.shellSetup.enable {
+  config = lib.mkIf config.code.shell.enable {
     home.file.".config/zsh/.p10k.zsh".source = ../dotfiles/.config/zsh/.p10k.zsh;
     home.file.".hushlogin".text = "";
 

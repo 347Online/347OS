@@ -17,9 +17,11 @@
   };
 
   config = lib.mkIf config.code.enable {
-    gitSetup.enable = lib.mkDefault true;
-    codium.enable = lib.mkDefault true;
-    neovimSetup.enable = lib.mkDefault true;
-    shellSetup.enable = lib.mkDefault true;
+    code = {
+      git.enable = lib.mkDefault true;
+      codium.enable = lib.mkDefault true;
+      neovim.enable = lib.mkDefault true;
+      shell.enable = lib.mkDefault true;
+    };
   };
 }

@@ -18,7 +18,7 @@
     ../gaming
   ];
 
-  code.enable = lib.mkDefault true;
+  code.enable = true;
 
   programs.home-manager.enable = true;
 

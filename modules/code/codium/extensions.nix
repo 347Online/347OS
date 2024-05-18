@@ -29,5 +29,5 @@
       # TODO: Adjust the way things are setup here so nix-vscode-extensions can take priority over pkgs.vscode-extensions
       open-vsx.yoavbls.pretty-ts-errors
     ]
-    ++ config.codium.extraExtensions;
+    ++ config.code.codium.extraExtensions;
 }

@@ -4,6 +4,8 @@
     ./rust.nix
   ];
 
-  java.enable = lib.mkDefault false;
-  rustSetup.enable = lib.mkDefault true;
+  code = {
+    java.enable = lib.mkDefault false;
+    rust.enable = lib.mkDefault true;
+  };
 }

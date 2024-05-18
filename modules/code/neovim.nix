@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    neovimSetup.enable = lib.mkEnableOption "neovim setup";
+    code.neovim.enable = lib.mkEnableOption "neovim setup";
   };
 
-  config = lib.mkIf config.neovimSetup.enable {
+  config = lib.mkIf config.code.neovim.enable {
     programs.nixvim = {
       enable = true;
       opts = {
