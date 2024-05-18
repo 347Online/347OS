@@ -43,8 +43,8 @@
 
       # GUI Apps
       _1password-gui
-      obsidian
-      # maestral # TODO: Fix this cross-platform
+      obsidian 
+      maestral # Untested on Linux
     ];
   };
 
