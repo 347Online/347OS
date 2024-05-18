@@ -21,8 +21,6 @@
       value = {source = "${dir}/${x}";};
     }) (listFilesRecursive dir ""));
 in {
-  # TODO: Break up into sub-modules
-
   imports = [
     nixvim
 
