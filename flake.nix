@@ -88,7 +88,7 @@
         ++ [
           {
             home-manager.users.${username} = {
-              code.rust.toolchain = "beta";
+              lang.rust.toolchain = "beta";
             };
           }
         ];
@@ -101,7 +101,7 @@
         ++ [
           {
             home-manager.users.${username} = {
-              code.java.enable = true;
+              lang.java.enable = true;
             };
           }
         ];

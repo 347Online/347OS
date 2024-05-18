@@ -5,7 +5,7 @@
   ...
 }: {
   options = {
-    code.rust = {
+    lang.rust = {
       enable = lib.mkEnableOption "rust setup";
       toolchain = lib.mkOption {
         type = lib.types.enum ["stable" "beta" "nightly"];
@@ -14,9 +14,9 @@
     };
   };
 
-  config = lib.mkIf config.code.rust.enable {
+  config = lib.mkIf config.lang.rust.enable {
     home.packages = with pkgs; [
-      (fenix.${config.code.rust.toolchain}.withComponents [
+      (fenix.${config.lang.rust.toolchain}.withComponents [
         "cargo"
         "clippy"
         "rust-src"

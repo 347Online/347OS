@@ -5,6 +5,8 @@
 }: {
   imports = [
     ./java.nix
+    ./nodejs.nix
+    ./python.nix
     ./rust.nix
   ];
 
