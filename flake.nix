@@ -67,7 +67,7 @@
         nixvim = nixvim-module.homeManagerModules.nixvim;
         inherit fenix;
       };
-    baseModules = [
+    baseModulesDarwin = [
       home-manager.darwinModules.home-manager
       nix-homebrew.darwinModules.nix-homebrew
       ./modules/darwin
@@ -78,13 +78,14 @@
           users.${username} = import ./modules/home;
           backupFileExtension = "bakk";
         };
+        
       }
     ];
   in {
     # TODO: Move into hosts directory
     darwinConfigurations."Athena" = nix-darwin.lib.darwinSystem {
       modules =
-        baseModules
+        baseModulesDarwin
         ++ [
         ];
       inherit specialArgs;
@@ -92,7 +93,7 @@
 
     darwinConfigurations."Alice" = nix-darwin.lib.darwinSystem {
       modules =
-        baseModules
+        baseModulesDarwin
         ++ [
           {
             home-manager.users.${username} = {

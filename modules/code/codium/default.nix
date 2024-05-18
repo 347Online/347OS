@@ -9,11 +9,11 @@
     ./extensions.nix
   ];
 
-  options = with lib.types; {
+  options = {
     code.codium = {
       enable = lib.mkEnableOption "vscodium setup";
       extraExtensions = lib.mkOption {
-        type = listOf package;
+        type = with lib.types; listOf package;
         default = [];
       };
     };
