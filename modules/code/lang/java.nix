@@ -15,5 +15,9 @@
       vscjava.vscode-java-test
       vscjava.vscode-java-debug
     ];
+
+    home.packages = with pkgs; [
+      jdk17
+    ];
   };
 }
