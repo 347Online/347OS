@@ -7,26 +7,28 @@
   programs.vscode.extensions = with vscode-extensions;
   with pkgs.vscode-extensions;
     [
-      kamadorueda.alejandra
-      oderwat.indent-rainbow
+      # Essentials
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
       eamodio.gitlens
-      pkief.material-icon-theme
-      ms-python.python
-      ms-python.black-formatter
       mkhl.direnv
+      ms-vsliveshare.vsliveshare # Untested on aarch64-linux
+
+      # Formatting
       foxundermoon.shell-format
-      jnoortheen.nix-ide
       bmalehorn.vscode-fish
       tamasfe.even-better-toml
       mechatroner.rainbow-csv
-      ritwickdey.liveserver
-      ms-vscode.live-server
-      ms-vsliveshare.vsliveshare # TODO: Test on an aarch64-linux system
-      rust-lang.rust-analyzer
       # TODO: Adjust the way things are setup here so nix-vscode-extensions can take priority over pkgs.vscode-extensions
       open-vsx.yoavbls.pretty-ts-errors
+
+      # Visuals
+      pkief.material-icon-theme
+      oderwat.indent-rainbow
+
+      # Do we really need two of these?
+      ritwickdey.liveserver
+      ms-vscode.live-server
     ]
     ++ config.code.codium.extraExtensions;
 }

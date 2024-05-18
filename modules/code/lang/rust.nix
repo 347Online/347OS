@@ -25,5 +25,9 @@
       ])
       rust-analyzer-nightly
     ];
+
+    code.codium.extraExtensions = with pkgs.vscode-extensions; [
+      rust-lang.rust-analyzer
+    ];
   };
 }
