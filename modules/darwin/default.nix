@@ -52,9 +52,9 @@
             ]
             ++ config.dockApps or []
             ++ [
-              "${obsidian}/Obsidian.app"
-              "${vscodium}/VSCodium.app"
-              "${kitty}/kitty.app"
+              "${obsidian}/Applications/Obsidian.app"
+              "${vscodium}/Applications/VSCodium.app"
+              "${kitty}/Applications/kitty.app"
 
               # Make system settings the rightmost app
               "/System/Applications/System Settings.app"
