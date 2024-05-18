@@ -11,10 +11,10 @@
   code = {
     java.enable = lib.mkDefault false;
     rust.enable = lib.mkDefault true;
-
-    home.packages = with pkgs; [
-      nodejs
-      python3
-    ];
   };
+
+  home.packages = with pkgs; [
+    nodejs
+    python3
+  ];
 }
