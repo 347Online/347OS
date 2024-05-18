@@ -11,6 +11,7 @@
   imports = [
     nixvim
 
+    ./dotfiles
     ./nix.nix
 
     ../code
