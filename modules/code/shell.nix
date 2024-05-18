@@ -15,6 +15,7 @@
     "python3" = "${python3}/bin/python";
     "vi" = "nvim";
     "vim" = "nvim";
+    "rtx" = "${rtx}/bin/mise";
   };
 
   shellIntegrations = {

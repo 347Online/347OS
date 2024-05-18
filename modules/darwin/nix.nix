@@ -7,7 +7,7 @@
   };
 
   nixpkgs = {
-    hostPlatform = "aarch64-darwin"; # TODO: Consider also enabling intel as an option
+    hostPlatform = "aarch64-darwin";
     config.allowUnfree = true;
   };
 }

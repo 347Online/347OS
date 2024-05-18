@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./java.nix
     ./nodejs.nix
@@ -12,4 +16,8 @@
     python.enable = lib.mkDefault true;
     rust.enable = lib.mkDefault true;
   };
+
+  home.packages = with pkgs; [
+    rtx
+  ];
 }
