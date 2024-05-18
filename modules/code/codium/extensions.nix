@@ -28,12 +28,6 @@
       rust-lang.rust-analyzer
       # TODO: Adjust the way things are setup here so nix-vscode-extensions can take priority over pkgs.vscode-extensions
       open-vsx.yoavbls.pretty-ts-errors
-
-      # TODO: Install or enable these only on Alice host
-      # sonarsource.sonarlint-vscode
-      # redhat.java
-      # vscjava.vscode-java-test
-      # vscjava.vscode-java-debug
     ]
     ++ config.codium.extraExtensions;
 }
