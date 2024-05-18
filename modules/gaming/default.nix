@@ -13,7 +13,5 @@
     home.packages = with pkgs; [
       # prismlauncher # TODO: Declare Minecraft... somehow
     ];
-
-    # TODO: Expand this
   };
 }
