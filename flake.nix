@@ -59,7 +59,7 @@
     system = "aarch64-darwin"; # TODO: Consider possibility of linux
     username = "katie";
     homeDirectory = "/Users/${username}"; # TODO: Consider possibility of linux
-    specialArgs = {inherit inputs username homeDirectory;};
+    specialArgs = {inherit inputs system username homeDirectory;};
     extraSpecialArgs =
       specialArgs
       // {

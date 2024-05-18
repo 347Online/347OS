@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  system,
   ...
 }: {
   options = {
@@ -19,6 +20,7 @@
       extraConfig = {
         core.editor = "nvim";
         init.defaultBranch = "main";
+        credential.helper = lib.mkIf (lib.hasSuffix "darwin" system) "osxkeychain";
       };
     };
   };
