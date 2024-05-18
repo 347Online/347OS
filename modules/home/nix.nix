@@ -6,6 +6,8 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [fenix.overlays.default];
 
+    services.nix-daemon.enable = true;
+
   code.codium.extraExtensions = with pkgs.vscode-extensions; [
     kamadorueda.alejandra
     jnoortheen.nix-ide
