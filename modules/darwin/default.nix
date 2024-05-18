@@ -39,6 +39,10 @@
     system = {
       startup.chime = true;
 
+      activationScripts.postActivation.text = ''
+        killall Dock
+      '';
+
       defaults = {
         dock = {
           autohide = true;
@@ -78,6 +82,16 @@
         };
 
         CustomUserPreferences = {
+          "com.apple.dock" = {
+            wvous-br-corner = 4;
+            wvous-br-modifier = 1048576;
+          };
+
+          "com.apple.WindowManager" = {
+            EnableStandardClickToShowDesktop = 0;
+            HasDisplayedShowDesktopEducation = 1;
+          };
+
           "com.pilotmoon.scroll-reverser" = {
             ReverseTrackpad = false;
             StartAtLogin = true;
