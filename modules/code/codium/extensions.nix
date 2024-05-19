@@ -19,7 +19,6 @@
       bmalehorn.vscode-fish
       tamasfe.even-better-toml
       mechatroner.rainbow-csv
-      # TODO: Adjust the way things are setup here so nix-vscode-extensions can take priority over pkgs.vscode-extensions
       open-vsx.yoavbls.pretty-ts-errors
 
       # Visuals

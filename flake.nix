@@ -58,7 +58,10 @@
   }: let
     system = "aarch64-darwin"; # TODO: Consider possibility of linux
     username = "katie";
-    homeDirectory = "/Users/${username}"; # TODO: Consider possibility of linux
+    homeDirectory =
+      if inputs.lib.hasSuffix "darwin"
+      then "/Users/${username}"
+      else "/home/${username}";
     specialArgs = {inherit inputs system username homeDirectory;};
     extraSpecialArgs =
       specialArgs
