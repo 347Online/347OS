@@ -16,9 +16,9 @@
 
   toHomeFiles = dir:
     builtins.listToAttrs
-    (map (x: {
-      name = x;
-      value = {source = "${dir}/${x}";};
+    (map (name: {
+      inherit name;
+      value = {source = "${dir}/${name}";};
     }) (listFilesRecursive dir ""));
 in {
   imports = [
@@ -42,6 +42,7 @@ in {
 
     activation = {
       ensureToolsInstalled = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        # rtx has been renamed to mise
         ${pkgs.rtx}/bin/mise install
       '';
     };

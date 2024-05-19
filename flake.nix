@@ -56,10 +56,11 @@
     nix-vscode-extensions,
     ...
   }: let
-    system = "aarch64-darwin"; # TODO: Consider possibility of linux
+    # Magic value will need to be adapted to run flake on non-darwin or non-ARM systems
+    system = "aarch64-darwin";
     username = "katie";
     homeDirectory =
-      if inputs.lib.hasSuffix "darwin"
+      if nixpkgs.lib.hasSuffix "darwin" system
       then "/Users/${username}"
       else "/home/${username}";
     specialArgs = {inherit inputs system username homeDirectory;};
@@ -70,6 +71,7 @@
         nixvim = nixvim-module.homeManagerModules.nixvim;
         inherit fenix;
       };
+
     baseModulesDarwin = [
       home-manager.darwinModules.home-manager
       nix-homebrew.darwinModules.nix-homebrew
@@ -77,39 +79,20 @@
       {
         environment.pathsToLink = ["/share/zsh"];
         home-manager = {
-          inherit extraSpecialArgs;
           users.${username} = import ./modules/home;
           backupFileExtension = "bakk";
+          inherit extraSpecialArgs;
         };
       }
     ];
-  in {
-    # TODO: Move into hosts directory
-    darwinConfigurations."Athena" = nix-darwin.lib.darwinSystem {
-      modules =
-        baseModulesDarwin
-        ++ [
-          {
-            home-manager.users.${username} = {
-              lang.rust.toolchain = "beta";
-              gaming.enable = true;
-            };
-          }
-        ];
-      inherit specialArgs;
-    };
 
-    darwinConfigurations."Alice" = nix-darwin.lib.darwinSystem {
-      modules =
-        baseModulesDarwin
-        ++ [
-          {
-            home-manager.users.${username} = {
-              lang.java.enable = true;
-            };
-          }
-        ];
-      inherit specialArgs;
-    };
+    mkDarwin = module:
+      nix-darwin.lib.darwinSystem {
+        modules = baseModulesDarwin ++ [module];
+        inherit specialArgs;
+      };
+  in {
+    darwinConfigurations."Athena" = mkDarwin (import ./hosts/darwin/Athena.nix);
+    darwinConfigurations."Alice" = mkDarwin (import ./hosts/darwin/Alice.nix);
   };
 }
