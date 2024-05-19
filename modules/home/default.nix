@@ -40,6 +40,12 @@ in {
 
     file = toHomeFiles ./dotfiles;
 
+    activation = {
+      ensureToolsInstalled = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        ${pkgs.rtx}/bin/mise install
+      '';
+    };
+
     packages = with pkgs; [
       # Essentials
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
