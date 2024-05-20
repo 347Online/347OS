@@ -16,8 +16,7 @@ in {
       delta.enable = true;
       ignores = [
         ".DS_Store"
-        ".rtx.toml"
-        ".mise.toml"
+        ".mise.*.toml"
       ];
       userName = "347Online | Katie Janzen";
       userEmail = "katiejanzen@347online.me";
