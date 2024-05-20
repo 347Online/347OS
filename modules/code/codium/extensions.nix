@@ -28,6 +28,8 @@
       # Do we really need two of these?
       ritwickdey.liveserver
       ms-vscode.live-server
+      
+      vscode-marketplace.cweijan.vscode-database-client2
     ]
     ++ config.code.codium.extraExtensions;
 }
