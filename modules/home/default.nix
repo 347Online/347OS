@@ -41,7 +41,7 @@ in {
     file = toHomeFiles ./dotfiles;
 
     activation = {
-      ensureToolsInstalled = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      miseInstall = lib.hm.dag.entryAfter ["installPackages"] ''
         # rtx has been renamed to mise
         ${pkgs.rtx}/bin/mise install
       '';
