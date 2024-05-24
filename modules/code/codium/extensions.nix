@@ -24,11 +24,12 @@
       # Visuals
       pkief.material-icon-theme
       oderwat.indent-rainbow
+      bradlc.vscode-tailwindcss
 
       # Do we really need two of these?
       ritwickdey.liveserver
       ms-vscode.live-server
-      
+
       vscode-marketplace.cweijan.vscode-database-client2
     ]
     ++ config.code.codium.extraExtensions;
