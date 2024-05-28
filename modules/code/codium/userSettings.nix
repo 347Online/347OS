@@ -67,10 +67,6 @@
     "javascript.autoClosingTags" = false;
     "typescript.suggest.autoImports" = false;
     "typescript.autoClosingTags" = false;
-    "typescript.preferences.autoImportFileExcludePatterns" = [
-      "**/node_modules/**"
-      "**/dist/**"
-    ];
 
     "python.analysis.autoImportCompletions" = false;
 
