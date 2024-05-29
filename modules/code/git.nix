@@ -23,7 +23,6 @@ in {
       extraConfig = {
         core.editor = "nvim";
         init.defaultBranch = "main";
-        credential.helper = lib.mkIf isDarwin "osxkeychain";
       };
     };
     programs.git-credential-oauth.enable = lib.mkIf (!isDarwin) true;
