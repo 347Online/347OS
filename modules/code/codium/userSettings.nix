@@ -57,6 +57,9 @@
     "workbench.list.mouseWheelScrollSensitivity" = 0.3;
     "workbench.startupEditor" = "none";
     "workbench.welcomePage.walkthroughs.openOnInstall" = false;
+    "workbench.editorAssociations" = {
+      "*.bin" = "hexEditor.hexedit";
+    };
 
     "html.autoClosingTags" = false;
     "html.autoCreateQuotes" = false;
