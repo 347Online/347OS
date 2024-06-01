@@ -31,6 +31,7 @@
       ms-vscode.live-server
 
       vscode-marketplace.cweijan.vscode-database-client2
+      ms-vscode.hexeditor
     ]
     ++ config.code.codium.extraExtensions;
 }

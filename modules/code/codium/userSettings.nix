@@ -75,7 +75,6 @@
     "rust-analyzer.completion.callable.snippets" = "none";
     "rust-analyzer.hover.actions.implementations.enable" = false;
     "rust-analyzer.inlayHints.bindingModeHints.enable" = true;
-    "rust-analyzer.rustfmt.extraArgs" = ["+nightly"];
     "rust-analyzer.showUnlinkedFileNotification" = false;
 
     "nix.enableLanguageServer" = true;
