@@ -26,6 +26,7 @@ in {
         pull.ff = "only";
       };
     };
+    # TODO: Add caching, this was triggering CONSTANTLY
     programs.git-credential-oauth.enable = lib.mkIf (!isDarwin) true;
   };
 }
