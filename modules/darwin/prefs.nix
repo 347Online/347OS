@@ -39,8 +39,10 @@
     CustomSystemPreferences = {
       "com.apple.Safari" = {
         AutoOpenSafeDownloads = false;
+        ShowFavoritesBar = true;
         IncludeDevelopMenu = true;
         WebAutomaticSpellingCorrectionEnabled = false;
+        WebKitTabToLinksPreferenceKey = true;
       };
     };
 
@@ -53,26 +55,6 @@
       "com.apple.WindowManager" = {
         EnableStandardClickToShowDesktop = 0;
         HasDisplayedShowDesktopEducation = 1;
-      };
-
-      "com.pilotmoon.scroll-reverser" = {
-        ReverseTrackpad = false;
-        StartAtLogin = true;
-        HideIcon = true;
-        InvertScrollingOn = true;
-        ReverseX = true;
-      };
-
-      "io.fadel.missioncontrolplus.preferences" = {
-        HideMenubarItem = true;
-      };
-
-      "com.witt-software.Rocket-Typist-setapp" = {
-        AbbreviationDelimiterKey = 1;
-        AbbreviationsTriggerType = 1;
-        AutoPasteEnabled = true;
-        WelcomeViewHasBeenShown = true;
-        ShowRTInMenuBar = false;
       };
 
       "com.apple.desktopservices" = {
@@ -100,6 +82,26 @@
       "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
       "com.apple.ImageCapture".disableHotPlug = true;
       "com.apple.commerce".AutoUpdate = true;
+
+      "com.pilotmoon.scroll-reverser" = {
+        StartAtLogin = true;
+        HideIcon = true;
+        ReverseTrackpad = false;
+        InvertScrollingOn = true;
+        ReverseX = true;
+      };
+
+      "io.fadel.missioncontrolplus.preferences" = {
+        HideMenubarItem = true;
+      };
+
+      "com.witt-software.Rocket-Typist-setapp" = {
+        AbbreviationDelimiterKey = 1;
+        AbbreviationsTriggerType = 1;
+        AutoPasteEnabled = true;
+        WelcomeViewHasBeenShown = true;
+        ShowRTInMenuBar = false;
+      };
 
       "com.raycast.macos" = {
         raycastGlobalHotkey = "Command-49";
