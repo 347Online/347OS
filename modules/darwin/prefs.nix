@@ -27,6 +27,7 @@
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticDashSubstitutionEnabled = false;
+      NSAutomaticInlinePredictionEnabled = false;
     };
 
     CustomSystemPreferences = {
