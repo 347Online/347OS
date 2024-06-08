@@ -31,9 +31,9 @@
     system = {
       startup.chime = true;
 
-      activationScripts.postActivation.text = ''
-        killall Dock
-      '';
+      # activationScripts.postActivation.text = ''
+      #   killall Dock
+      # '';
     };
 
     programs = {
