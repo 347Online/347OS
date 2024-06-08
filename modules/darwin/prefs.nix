@@ -33,6 +33,7 @@
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticDashSubstitutionEnabled = false;
+      # Currently not working
       # NSAutomaticInlinePredictionEnabled = false;
     };
 
