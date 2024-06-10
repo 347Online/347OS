@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   system.defaults = {
     dock = {
       autohide = true;
@@ -7,10 +12,11 @@
         [
           # System Apps
           "/System/Applications/App Store.app"
-          "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+          (lib.mkIf (config.darwin.dock.browser == "Safari") "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app")
+          (lib.mkIf (config.darwin.dock.browser == "Chrome") "/Applications/Google Chrome.app")
           "/System/Applications/Music.app"
         ]
-        ++ config.darwin.dockApps or []
+        ++ config.darwin.dock.apps or []
         ++ [
           "${obsidian}/Applications/Obsidian.app"
           "${vscodium}/Applications/VSCodium.app"
@@ -27,7 +33,7 @@
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticDashSubstitutionEnabled = false;
-      NSAutomaticInlinePredictionEnabled = false;
+      # NSAutomaticInlinePredictionEnabled = false;
     };
 
     CustomSystemPreferences = {

@@ -10,10 +10,16 @@
     ./prefs.nix
   ];
 
-  options = {
-    darwin.dockApps = lib.mkOption {
-      type = with lib.types; listOf str;
-      default = [];
+  options = with lib.types; {
+    darwin.dock = {
+      browser = lib.mkOption {
+        type = enum ["Chrome" "Safari"];
+        default = "Safari";
+      };
+      apps = lib.mkOption {
+        type = listOf str;
+        default = [];
+      };
     };
   };
 
