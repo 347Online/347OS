@@ -23,6 +23,7 @@ in {
       extraConfig = {
         core.editor = "nvim";
         init.defaultBranch = "main";
+        pull.ff = "only";
       };
     };
     programs.git-credential-oauth.enable = lib.mkIf (!isDarwin) true;
