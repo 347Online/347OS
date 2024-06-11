@@ -1,30 +1,8 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
   system.defaults = {
     dock = {
       autohide = true;
       show-recents = false;
-      persistent-apps = with pkgs;
-        [
-          # System Apps
-          "/System/Applications/App Store.app"
-          (lib.mkIf (config.darwin.dock.browser == "Safari") "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app")
-          (lib.mkIf (config.darwin.dock.browser == "Chrome") "/Applications/Google Chrome.app")
-          "/System/Applications/Music.app"
-        ]
-        ++ config.darwin.dock.apps or []
-        ++ [
-          "${obsidian}/Applications/Obsidian.app"
-          "${vscodium}/Applications/VSCodium.app"
-          "${kitty}/Applications/kitty.app"
-
-          # Make system settings the rightmost app
-          "/System/Applications/System Settings.app"
-        ];
     };
 
     NSGlobalDomain = {
@@ -33,8 +11,6 @@
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticDashSubstitutionEnabled = false;
-      # Currently not working
-      # NSAutomaticInlinePredictionEnabled = false;
     };
 
     CustomSystemPreferences = {
@@ -48,6 +24,12 @@
     };
 
     CustomUserPreferences = {
+      NSGlobalDomain = {
+        NSAutomaticSpellingCorrectionEnabled = false;
+        NSAutomaticInlinePredictionEnabled = false;
+        TSWPAutomaticSpellingCorrection = false;
+      };
+
       "com.apple.dock" = {
         wvous-br-corner = 4;
         wvous-br-modifier = 1048576;

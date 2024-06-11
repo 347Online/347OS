@@ -1,9 +1,14 @@
 {
+  config,
   lib,
   pkgs,
   username,
   ...
-}: {
+}: let
+  mkLoginItem = app: ''
+    osascript -e 'tell application "System Events" to make login item at end with properties {path:"${app}", hidden:true}'
+  '';
+in {
   imports = [
     ./homebrew.nix
     ./nix.nix
@@ -11,6 +16,10 @@
   ];
 
   options = with lib.types; {
+    darwin.loginItems = lib.mkOption {
+      type = listOf str;
+      default = [];
+    };
     darwin.dock = {
       browser = lib.mkOption {
         type = enum ["Chrome" "Safari"];
@@ -24,16 +33,31 @@
   };
 
   config = {
-    darwin.homebrew.enable = lib.mkDefault true;
-
     security.pam.enableSudoTouchIdAuth = true;
 
     system = {
+      defaults.dock.persistent-apps = with pkgs;
+        [
+          # System Apps
+          "/System/Applications/App Store.app"
+          (lib.mkIf (config.darwin.dock.browser == "Safari") "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app")
+          (lib.mkIf (config.darwin.dock.browser == "Chrome") "/Applications/Google Chrome.app")
+          "/System/Applications/Music.app"
+        ]
+        ++ config.darwin.dock.apps
+        ++ [
+          "${obsidian}/Applications/Obsidian.app"
+          "${vscodium}/Applications/VSCodium.app"
+          "${kitty}/Applications/kitty.app"
+
+          # Make system settings the rightmost app
+          "/System/Applications/System Settings.app"
+        ];
       startup.chime = true;
 
-      # activationScripts.postActivation.text = ''
-      #   killall Dock
-      # '';
+      activationScripts.postActivation.text = ''
+        killall Dock
+      '';
     };
 
     programs = {
