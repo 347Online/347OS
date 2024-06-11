@@ -33,6 +33,8 @@ in {
   };
 
   config = {
+    darwin.homebrew.enable = lib.mkDefault true;
+
     security.pam.enableSudoTouchIdAuth = true;
 
     system = {
@@ -46,6 +48,7 @@ in {
         ]
         ++ config.darwin.dock.apps
         ++ [
+          "/Applications/Fantastical.app"
           "${obsidian}/Applications/Obsidian.app"
           "${vscodium}/Applications/VSCodium.app"
           "${kitty}/Applications/kitty.app"
