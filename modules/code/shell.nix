@@ -6,15 +6,24 @@
 }: let
   shellAliases = with pkgs; {
     "bash" = "${bash}/bin/bash";
-    "branch" = "${git}/bin/git branch --show-current";
     "cat" = "${bat}/bin/bat";
     "ls" = "${pkgs.eza}/bin/eza";
+    "tree" = "${pkgs.eza}/bin/eza --tree";
     "grep" = "${pkgs.ripgrep}/bin/rg";
+
+    # TODO: Move into codium module
     "code" = "${vscodium}/bin/codium";
+
+    # TODO: Move into git module
     "git" = "${git}/bin/git";
+    "branch" = "${git}/bin/git branch --show-current";
+
+    # TODO: Move into python module
     "python3" = "${python3}/bin/python";
     "vi" = "nvim";
     "vim" = "nvim";
+
+    # TODO: Move into lang module
     "rtx" = "${rtx}/bin/mise";
   };
 
