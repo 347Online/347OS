@@ -7,6 +7,7 @@
       "/Applications/zoom.us.app"
     ];
   };
+
   home-manager.users.${username} = {
     lang.java.enable = true;
   };
