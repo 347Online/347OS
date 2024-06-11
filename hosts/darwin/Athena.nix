@@ -1,5 +1,5 @@
 {username, ...}: {
-  darwin.dockApps = [
+  darwin.dock.apps = [
     "/Applications/Overcast.app"
   ];
   home-manager.users.${username} = {
