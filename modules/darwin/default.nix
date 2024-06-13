@@ -8,6 +8,21 @@
   mkLoginItem = app: ''
     osascript -e 'tell application "System Events" to make login item at end with properties {path:"${app}", hidden:true}'
   '';
+  listFilesRecursive = dir: acc:
+    lib.flatten (lib.mapAttrsToList
+      (k: v:
+        if v == "regular"
+        then "${acc}${k}"
+        else listFilesRecursive dir "${acc}${k}/")
+      (builtins.readDir "${dir}/${acc}"));
+
+  # TODO: Merge this function definition with the one in home
+  toHomeFiles = dir:
+    builtins.listToAttrs
+    (map (name: {
+      inherit name;
+      value = {source = "${dir}/${name}";};
+    }) (listFilesRecursive dir ""));
 in {
   imports = [
     ./homebrew.nix
@@ -61,6 +76,10 @@ in {
       activationScripts.postActivation.text = ''
         killall Dock
       '';
+    };
+
+    home-manager.users.${username} = {
+      home.file = toHomeFiles ./dotfiles;
     };
 
     programs = {
