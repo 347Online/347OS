@@ -16,6 +16,12 @@
         WebAutomaticSpellingCorrectionEnabled = false;
         WebKitTabToLinksPreferenceKey = true;
       };
+
+      "com.apple.mail" = {
+        NSUserKeyEquivalents = {
+          Archive = "e";
+        };
+      };
     };
 
     CustomUserPreferences = {
@@ -25,18 +31,12 @@
         TSWPAutomaticSpellingCorrection = false;
       };
 
-      "com.apple.mail" = {
-        NSUserKeyEquivalents = {
-          Archive = "e";
-        };
-      };
-
       "com.apple.dock" = {
         wvous-br-corner = 4;
         wvous-br-modifier = 1048576;
         autohide = true;
         show-recents = false;
-        showAppExposeGestureEnabled = 1;
+        showAppExposeGestureEnabled = true;
       };
 
       "com.apple.WindowManager" = {
