@@ -16,12 +16,6 @@
         WebAutomaticSpellingCorrectionEnabled = false;
         WebKitTabToLinksPreferenceKey = true;
       };
-
-      "com.apple.mail" = {
-        NSUserKeyEquivalents = {
-          Archive = "e";
-        };
-      };
     };
 
     CustomUserPreferences = {
@@ -29,6 +23,12 @@
         NSAutomaticSpellingCorrectionEnabled = false;
         NSAutomaticInlinePredictionEnabled = false;
         TSWPAutomaticSpellingCorrection = false;
+      };
+
+      "com.apple.mail" = {
+        NSUserKeyEquivalents = {
+          Archive = "e";
+        };
       };
 
       "com.apple.dock" = {

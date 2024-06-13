@@ -79,7 +79,7 @@ in {
     };
 
     home-manager.users.${username} = {
-      home.file = toHomeFiles ./dotfiles;
+      # home.file = toHomeFiles ./dotfiles;
     };
 
     programs = {
