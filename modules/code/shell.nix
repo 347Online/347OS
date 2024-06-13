@@ -10,6 +10,7 @@
     "ls" = "${pkgs.eza}/bin/eza";
     "tree" = "${pkgs.eza}/bin/eza --tree";
     "grep" = "${pkgs.ripgrep}/bin/rg";
+    "diff" = "${pkgs.delta}/bin/delta";
 
     # TODO: Move into codium module
     "code" = "${vscodium}/bin/codium";
