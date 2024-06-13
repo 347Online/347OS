@@ -55,8 +55,6 @@ in {
       _1password-gui
 
       obsidian
-
-      maestral # Untested on Linux
     ];
   };
 
