@@ -1,10 +1,5 @@
 {
   system.defaults = {
-    dock = {
-      autohide = true;
-      show-recents = false;
-    };
-
     NSGlobalDomain = {
       NSAutomaticCapitalizationEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
@@ -33,6 +28,9 @@
       "com.apple.dock" = {
         wvous-br-corner = 4;
         wvous-br-modifier = 1048576;
+        autohide = true;
+        show-recents = false;
+        showAppExposeGestureEnabled = 1;
       };
 
       "com.apple.WindowManager" = {
@@ -74,6 +72,16 @@
         ReverseX = true;
       };
 
+      "com.raycast.macos" = {
+        raycastGlobalHotkey = "Command-49";
+        useHyperKeyIcon = true;
+        onboardingCompleted = true;
+        "onboarding_setupHotkey" = true;
+        "NSStatusItem Visible raycastIcon" = false;
+        "emojiPicker_skinTone" = "standard";
+      };
+
+      # SetApp Apps
       "io.fadel.missioncontrolplus.preferences" = {
         HideMenubarItem = true;
       };
@@ -86,13 +94,17 @@
         ShowRTInMenuBar = false;
       };
 
-      "com.raycast.macos" = {
-        raycastGlobalHotkey = "Command-49";
-        useHyperKeyIcon = true;
-        onboardingCompleted = true;
-        "onboarding_setupHotkey" = true;
-        "NSStatusItem Visible raycastIcon" = false;
-        "emojiPicker_skinTone" = "standard";
+      "com.getcleanshot.app-setapp" = {
+        afterScreenshotActions = [0 1 2];
+        afterVideoActions = [0 1 2];
+        analyticsAllowed = true;
+        autoClosePopup = true;
+        captureWithoutDesktopIcons = true;
+        deletePopupAfterDragging = true;
+        exportPath = "/Users/katie/Library/Mobile Documents/com~apple~CloudDocs/Files/Screenshots";
+        freezeScreen = true;
+        popupAskForDestinationWhenSaving = false;
+        showMenuBarIcon = true;
       };
     };
   };
