@@ -24,6 +24,7 @@ in {
         core.editor = "nvim";
         init.defaultBranch = "main";
         pull.ff = "only";
+        credential.helper = lib.mkIf isDarwin "osxkeychain";
       };
     };
     # TODO: Add caching, this was triggering CONSTANTLY
