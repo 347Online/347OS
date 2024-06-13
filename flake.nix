@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    # See branch `nur`
     # nur.url = "github:nix-community/NUR";
 
     nix-darwin = {
