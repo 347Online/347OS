@@ -22,16 +22,26 @@
 
       plugins = {
         telescope.enable = true;
-        oil.enable = true;
         treesitter.enable = true;
         luasnip.enable = true;
         lualine.enable = true;
+        comment.enable = true;
+
+        neo-tree = {
+          enable = true;
+
+          closeIfLastWindow = true;
+          window = {
+            width = 30;
+            autoExpandWidth = true;
+          };
+        };
 
         lsp = {
           enable = true;
           servers = {
             tsserver.enable = true;
-            # lua-ls.enable = true;
+            lua-ls.enable = true;
             rust-analyzer = {
               enable = true;
               installRustc = false;
@@ -59,6 +69,15 @@
           };
         };
       };
+
+      keymaps = [
+        {
+          mode = "n";
+          key = "<leader>n";
+          action = ":Neotree action=focus reveal toggle<CR>";
+          options.silent = true;
+        }
+      ];
     };
   };
 }
