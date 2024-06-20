@@ -41,6 +41,11 @@
       url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvim = {
+      url = "path:./nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -51,6 +56,7 @@
     nixpkgs,
     nix-homebrew,
     nix-vscode-extensions,
+    nixvim,
     ...
   }: let
     # Magic value will need to be adapted to run flake on non-darwin or non-ARM systems
@@ -70,6 +76,7 @@
 
     baseModulesHomeManager = [
       ./modules/home
+      {home.packages = [nixvim.packages.${system}.default];}
     ];
 
     baseModulesDarwin = [
