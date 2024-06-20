@@ -3,7 +3,6 @@
   lib,
   username,
   homeDirectory,
-  nixvim,
   ...
 }: let
   listFilesRecursive = dir: acc:
@@ -22,8 +21,6 @@
     }) (listFilesRecursive dir ""));
 in {
   imports = [
-    nixvim
-
     ./nix.nix
 
     ../code

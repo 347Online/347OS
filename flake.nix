@@ -22,11 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim-module = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,7 +49,6 @@
     nix-darwin,
     home-manager,
     nixpkgs,
-    nixvim-module,
     nix-homebrew,
     nix-vscode-extensions,
     ...
@@ -71,7 +65,6 @@
       specialArgs
       // {
         vscode-extensions = nix-vscode-extensions.extensions.${system};
-        nixvim = nixvim-module.homeManagerModules.nixvim;
         inherit fenix;
       };
 

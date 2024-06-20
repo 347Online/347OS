@@ -8,7 +8,6 @@
     ./lang
 
     ./git.nix
-    ./neovim.nix
     ./shell.nix
   ];
 
@@ -20,7 +19,6 @@
     code = {
       git.enable = lib.mkDefault true;
       codium.enable = lib.mkDefault true;
-      neovim.enable = lib.mkDefault true;
       shell.enable = lib.mkDefault true;
     };
   };
