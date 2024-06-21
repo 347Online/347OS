@@ -23,13 +23,17 @@
         NSAutomaticSpellingCorrectionEnabled = false;
         NSAutomaticInlinePredictionEnabled = false;
         TSWPAutomaticSpellingCorrection = false;
-      };
 
-      "com.apple.mail" = {
         NSUserKeyEquivalents = {
-          Archive = "e";
+          "Minimize" = "\0";
         };
       };
+
+      # "com.apple.mail" = {
+      #   NSUserKeyEquivalents = {
+      #     Archive = "e";
+      #   };
+      # };
 
       "com.apple.dock" = {
         wvous-br-corner = 4;
