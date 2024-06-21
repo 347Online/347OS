@@ -1,5 +1,7 @@
 {
-  imports = [./bufferline.nix];
+  imports = [
+    ./bufferline.nix
+  ];
 
   opts = {
     wrap = false;
@@ -9,7 +11,10 @@
     expandtab = true;
   };
 
-  colorschemes.tokyonight.enable = true;
+  colorschemes.tokyonight = {
+    settings.style = "night";
+    enable = true;
+  };
 
   plugins = {
     telescope.enable = true;
@@ -21,7 +26,7 @@
     neo-tree = {
       enable = true;
 
-      closeIfLastWindow = true;
+      closeIfLastWindow = false;
       window = {
         width = 30;
         autoExpandWidth = true;
@@ -33,6 +38,7 @@
       servers = {
         tsserver.enable = true;
         lua-ls.enable = true;
+        # nil.enable = true;
         rust-analyzer = {
           enable = true;
           installRustc = false;
