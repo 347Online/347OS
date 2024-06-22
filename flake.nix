@@ -43,7 +43,7 @@
     };
 
     nixvim = {
-      url = "path:./nixvim";
+      url = "github:347Online/nvim-config-kt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -71,7 +71,6 @@
     #     zjstatus = zjstatus.packages.${prev.system}.default;
     #   })
     # ];
-
     # Magic value will need to be adapted to run flake on non-darwin or non-ARM systems
     system = "aarch64-darwin";
     username = "katie";
