@@ -4,6 +4,7 @@
   pkgs,
   ...
 }: let
+  isDarwin = pkgs.stdenv.isDarwin;
   shellAliases = with pkgs; {
     "bash" = "${bash}/bin/bash";
     "cat" = "${bat}/bin/bat";
@@ -23,9 +24,6 @@
     "python3" = "${python3}/bin/python";
     "vi" = "nvim";
     "vim" = "nvim";
-
-    # TODO: Move into lang module
-    "rtx" = "${rtx}/bin/mise";
   };
 
   shellIntegrations = {
@@ -46,6 +44,23 @@ in {
     ];
 
     programs = {
+      alacritty = {
+        enable = true;
+        settings = {
+          import = [
+            "${pkgs.alacritty-theme}/alacritty_0_12.toml"
+          ];
+          window.option_as_alt = lib.mkIf isDarwin "Both";
+          env.term = "xterm-256color";
+          font = {
+            normal.family = "JetBrainsMono Nerd Font";
+            size =
+              if isDarwin
+              then 13
+              else 6;
+          };
+        };
+      };
       kitty = {
         enable = true;
         font.name = "JetBrainsMono Nerd Font";
@@ -97,6 +112,17 @@ in {
       direnv = {
         enable = true;
         nix-direnv.enable = true;
+      };
+
+      tmux = {
+        enable = true;
+        baseIndex = 1;
+        shortcut = "Space";
+        mouse = true;
+        keyMode = "vi";
+        extraConfig = ''
+          set-option -ag terminal-overrides ",$TERM:Tc"
+        '';
       };
 
       zoxide =
