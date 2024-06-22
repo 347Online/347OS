@@ -46,6 +46,11 @@
       url = "path:./nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zjstatus = {
+      url = "github:dj95/zjstatus";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -57,8 +62,16 @@
     nix-homebrew,
     nix-vscode-extensions,
     nixvim,
+    zjstatus,
     ...
   }: let
+    # overlays = with inputs; [
+    #   # ...
+    #   (final: prev: {
+    #     zjstatus = zjstatus.packages.${prev.system}.default;
+    #   })
+    # ];
+
     # Magic value will need to be adapted to run flake on non-darwin or non-ARM systems
     system = "aarch64-darwin";
     username = "katie";
