@@ -114,12 +114,15 @@ in {
         nix-direnv.enable = true;
       };
 
-      zellij = {
-        enable = true;
-        settings = {
-          pane_frames = false;
-        };
-      } // shellIntegrations;
+      zellij =
+        {
+          enable = true;
+          settings = {
+            pane_frames = false;
+            default_layout = "compact";
+          };
+        }
+        // shellIntegrations;
 
       zoxide =
         {
@@ -128,7 +131,8 @@ in {
             "--cmd"
             "cd"
           ];
-        } // shellIntegrations;
+        }
+        // shellIntegrations;
     };
   };
 }
