@@ -1,10 +1,10 @@
 {
   config,
+  pkgs,
   lib,
-  system,
   ...
 }: let
-  isDarwin = lib.hasSuffix "darwin" system;
+  isDarwin = pkgs.stdenv.isDarwin;
 in {
   options = {
     code.git.enable = lib.mkEnableOption "git setup";
