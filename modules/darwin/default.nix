@@ -65,7 +65,6 @@ in {
         ++ [
           "/Applications/Fantastical.app"
           "${obsidian}/Applications/Obsidian.app"
-          "${vscodium}/Applications/VSCodium.app"
           "${alacritty}/Applications/Alacritty.app"
 
           # Make system settings the rightmost app
