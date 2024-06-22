@@ -48,7 +48,7 @@ in {
         enable = true;
         settings = {
           import = [
-            "${pkgs.alacritty-theme}/alacritty_0_12.toml"
+            "${pkgs.alacritty-theme}/iterm.toml"
           ];
           window.option_as_alt = lib.mkIf isDarwin "Both";
           env.term = "xterm-256color";
@@ -114,16 +114,9 @@ in {
         nix-direnv.enable = true;
       };
 
-      tmux = {
+      zellij = {
         enable = true;
-        baseIndex = 1;
-        shortcut = "Space";
-        mouse = true;
-        keyMode = "vi";
-        extraConfig = ''
-          set-option -ag terminal-overrides ",$TERM:Tc"
-        '';
-      };
+      } // shellIntegrations;
 
       zoxide =
         shellIntegrations
