@@ -116,17 +116,19 @@ in {
 
       zellij = {
         enable = true;
+        settings = {
+          pane_frames = false;
+        };
       } // shellIntegrations;
 
       zoxide =
-        shellIntegrations
-        // {
+        {
           enable = true;
           options = [
             "--cmd"
             "cd"
           ];
-        };
+        } // shellIntegrations;
     };
   };
 }
