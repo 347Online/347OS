@@ -42,11 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "path:./nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zjstatus = {
       url = "github:dj95/zjstatus";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,7 +56,6 @@
     nixpkgs,
     nix-homebrew,
     nix-vscode-extensions,
-    nixvim,
     zjstatus,
     ...
   }: let
@@ -71,7 +65,6 @@
     #     zjstatus = zjstatus.packages.${prev.system}.default;
     #   })
     # ];
-
     # Magic value will need to be adapted to run flake on non-darwin or non-ARM systems
     system = "aarch64-darwin";
     username = "katie";
@@ -89,7 +82,6 @@
 
     baseModulesHomeManager = [
       ./modules/home
-      {home.packages = [nixvim.packages.${system}.default];}
     ];
 
     baseModulesDarwin = [
