@@ -25,7 +25,7 @@
         TSWPAutomaticSpellingCorrection = false;
 
         NSUserKeyEquivalents = {
-          "Minimize" = "\0";
+          "Minimize" = "'\0'";
         };
       };
 
