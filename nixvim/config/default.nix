@@ -26,6 +26,14 @@
     neo-tree = {
       enable = true;
 
+      filesystem = {
+        filteredItems = {
+          visible = true;
+          hideDotfiles = false;
+          hideGitignored = true;
+        };
+      };
+
       closeIfLastWindow = false;
       window = {
         width = 30;
