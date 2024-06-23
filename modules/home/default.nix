@@ -35,6 +35,8 @@ in {
   home = {
     inherit username homeDirectory;
 
+    sessionVariables.EDITOR = "nvim";
+
     file = toHomeFiles ./dotfiles;
 
     activation = {
