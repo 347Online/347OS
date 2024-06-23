@@ -114,15 +114,12 @@ in {
         nix-direnv.enable = true;
       };
 
-      zellij =
-        {
-          enable = true;
-          settings = {
-            pane_frames = false;
-            default_layout = "compact";
-          };
-        }
-        // shellIntegrations;
+      tmux = {
+        enable = true;
+        baseIndex = 1;
+        shortcut = "Space";
+        terminal = "xterm-256color";
+      };
 
       zoxide =
         {
