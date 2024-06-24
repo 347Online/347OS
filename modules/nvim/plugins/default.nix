@@ -1,4 +1,12 @@
 {pkgs, ...}: {
+  imports = [
+    ./cmp.nix
+    ./conform.nix
+    ./gitsigns.nix
+    ./lsp.nix
+    ./neo-tree.nix
+  ];
+
   extraPlugins = with pkgs.vimPlugins; [
     delimitMate
   ];
