@@ -72,10 +72,11 @@
     #   })
     # ];
     # Magic value will need to be adapted to run flake on non-darwin or non-ARM systems
+    pkgs' = import nixpkgs {};
     system = "aarch64-darwin";
     username = "katie";
     homeDirectory =
-      if nixpkgs.stdenv.isDarwin
+      if pkgs'.stdenv.isDarwin
       then "/Users/${username}"
       else "/home/${username}";
     specialArgs = {

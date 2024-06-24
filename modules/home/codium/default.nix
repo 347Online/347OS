@@ -22,7 +22,10 @@
     };
   };
 
-  config = lib.mkIf config.lang.jdk.enable {
+  config = {
+    code.codium.rust = lib.mkDefault true;
+    code.codium.java = lib.mkDefault true;
+
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;

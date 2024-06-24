@@ -21,12 +21,12 @@
     }) (listFilesRecursive dir ""));
 in {
   imports = [
+    ./codium
+    ./git.nix
     ./nix.nix
     ./rust.nix
+    ./shell.nix
   ];
-
-  code.enable = lib.mkDefault true;
-  gaming.enable = lib.mkDefault false;
 
   programs.home-manager.enable = true;
 
