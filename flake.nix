@@ -36,6 +36,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixvim-config = {
       url = "github:347Online/nvim-config-kt";
       inputs.nixpkgs.follows = "nixpkgs";
