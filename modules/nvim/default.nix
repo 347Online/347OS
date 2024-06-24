@@ -3,11 +3,12 @@
     ./plugins
   ];
 
-  extraConfigVim = ''
-    let delimitMate_expand_cr = 1
-    let delimitMate_expand_inside_quotes = 1
-    let delimitMate_autoclose = 0
-  '';
+  globals = {
+    mapleader = ",";
+    delimitMate_expand_cr = true;
+    delimitMate_expand_inside_quotes = true;
+    delimitMate_autoclose = false;
+  };
 
   opts = {
     wrap = false;
