@@ -27,8 +27,6 @@ in {
     ./shell.nix
   ];
 
-  programs.home-manager.enable = true;
-
   home = {
     inherit username homeDirectory;
 
