@@ -6,11 +6,6 @@
 
     # nur.url = "github:nix-community/NUR";
 
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +50,6 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    flake-parts,
     nix-darwin,
     home-manager,
     fenix,
@@ -72,8 +66,8 @@
     #     zjstatus = zjstatus.packages.${prev.system}.default;
     #   })
     # ];
-    pkgs' = import nixpkgs {};
     system = "aarch64-darwin";
+    pkgs' = import nixpkgs {inherit system;};
     username = "katie";
     homeDirectory =
       if pkgs'.stdenv.isDarwin
