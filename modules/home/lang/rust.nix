@@ -6,15 +6,15 @@
 }: {
   options = {
     lang.rust = {
-      enable = lib.mkEnableOption "rust setup";
       toolchain = lib.mkOption {
         type = lib.types.enum ["stable" "beta" "nightly"];
         default = "stable";
       };
+      vscodeExtension = lib.mkEnableOption "rust-analyzer vscode extension";
     };
   };
 
-  config = lib.mkIf config.lang.rust.enable {
+  config = {
     home.packages = with pkgs; [
       (fenix.${config.lang.rust.toolchain}.withComponents [
         "cargo"
@@ -26,8 +26,9 @@
       rust-analyzer-nightly
     ];
 
-    code.codium.extraExtensions = with pkgs.vscode-extensions; [
-      rust-lang.rust-analyzer-nightly
-    ];
+    code.codium.extraExtensions = with pkgs.vscode-extensions;
+      lib.mkIf config.lang.rust.vscodeExtension [
+        rust-lang.rust-analyzer-nightly
+      ];
   };
 }

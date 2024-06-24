@@ -14,7 +14,10 @@
     java.enable = lib.mkDefault false;
     nodejs.enable = lib.mkDefault true;
     python.enable = lib.mkDefault true;
-    rust.enable = lib.mkDefault true;
+    rust = {
+      enable = lib.mkDefault true;
+      vscodeExtension = lib.mkDefault true;
+    };
   };
 
   home.packages = with pkgs; [
