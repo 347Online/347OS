@@ -12,6 +12,7 @@
   ];
 
   plugins = {
+    bufferline.enable = true;
     telescope.enable = true;
     luasnip.enable = true;
     lualine.enable = true;
