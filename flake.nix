@@ -87,14 +87,14 @@
       };
 
     baseModulesHomeManager = [
-      ./modules/home
+      ./home
       {home.packages = [nixvim-config.packages.${system}.default];}
     ];
 
     baseModulesDarwin = [
       home-manager.darwinModules.home-manager
       nix-homebrew.darwinModules.nix-homebrew
-      ./modules/darwin
+      ./darwin
       {
         environment.pathsToLink = ["/share/zsh"];
         home-manager = {
