@@ -12,23 +12,14 @@
     "grep" = "${pkgs.ripgrep}/bin/rg";
     "diff" = "${pkgs.delta}/bin/delta";
 
-    # TODO: Move into codium module
     "code" = "${vscodium}/bin/codium";
 
-    # TODO: Move into git module
     "git" = "${git}/bin/git";
     "branch" = "${git}/bin/git branch --show-current";
 
-    # TODO: Move into python module
     "python3" = "${python3}/bin/python";
     "vi" = "nvim";
     "vim" = "nvim";
-  };
-
-  shellIntegrations = {
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-    enableFishIntegration = true;
   };
 in {
   home.packages = with pkgs; [
@@ -66,27 +57,10 @@ in {
         "--single-instance"
       ];
 
-      shellIntegration = shellIntegrations;
+      shellIntegration.enableZshIntegration = true;
     };
 
     bash.shellAliases = shellAliases;
-
-    fish = {
-      enable = true;
-      plugins = [
-        # Experimental
-        {
-          name = "nix.fish";
-          src = pkgs.fetchFromGitHub {
-            owner = "kidonng";
-            repo = "nix.fish";
-            rev = "master";
-            sha256 = "sha256-GMV0GyORJ8Tt2S9wTCo2lkkLtetYv0rc19aA5KJbo48=";
-          };
-        }
-      ];
-      inherit shellAliases;
-    };
 
     zsh = {
       inherit shellAliases;
@@ -118,14 +92,13 @@ in {
       terminal = "xterm-256color";
     };
 
-    zoxide =
-      {
-        enable = true;
-        options = [
-          "--cmd"
-          "cd"
-        ];
-      }
-      // shellIntegrations;
+    zoxide = {
+      enable = true;
+      options = [
+        "--cmd"
+        "cd"
+      ];
+      enableZshIntegration = true;
+    };
   };
 }
