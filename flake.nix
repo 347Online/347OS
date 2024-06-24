@@ -61,6 +61,7 @@
     fenix,
     nix-homebrew,
     nix-vscode-extensions,
+    nil,
     nixvim-config,
     zjstatus,
     ...
@@ -71,7 +72,6 @@
     #     zjstatus = zjstatus.packages.${prev.system}.default;
     #   })
     # ];
-    # Magic value will need to be adapted to run flake on non-darwin or non-ARM systems
     pkgs' = import nixpkgs {};
     system = "aarch64-darwin";
     username = "katie";
