@@ -43,6 +43,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    precognition-nvim = {
+      url = "github:tris203/precognition.nvim";
+      flake = false;
+    };
+
     zjstatus = {
       url = "github:dj95/zjstatus";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -100,14 +105,23 @@
     util = import ./modules/util.nix;
 
     system = "aarch64-darwin";
-    pkgs' = import nixpkgs {inherit system;};
+    pkgs = import nixpkgs {inherit system;};
     username = "katie";
     homeDirectory =
-      if pkgs'.stdenv.isDarwin
+      if pkgs.stdenv.isDarwin
       then "/Users/${username}"
       else "/home/${username}";
 
     nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+      pkgs = pkgs.extend (final: prev: {
+        vimPlugins = prev.vimPlugins.extend (final': prev': {
+          precognition-nvim = prev.vimUtils.buildVimPlugin {
+            pname = "precognition-nvim";
+            src = inputs.precognition-nvim;
+            version = inputs.precognition-nvim.shortRev;
+          };
+        });
+      });
       module = import ./modules/nvim;
     };
 

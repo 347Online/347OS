@@ -9,6 +9,7 @@
 
   extraPlugins = with pkgs.vimPlugins; [
     delimitMate
+    precognition-nvim
   ];
 
   plugins = {
