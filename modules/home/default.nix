@@ -24,7 +24,6 @@ in {
     ./programs
     ./nix.nix
     ./rust.nix
-    ./shell.nix
   ];
 
   home = {
@@ -42,15 +41,17 @@ in {
     };
 
     packages = with pkgs; [
-      # Essentials
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
+
+      bat
+      eza
+      ripgrep
+      rtx
 
       _1password
       _1password-gui
 
       obsidian
-
-      rtx
     ];
   };
 

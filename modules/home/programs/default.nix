@@ -8,6 +8,7 @@
     ./zsh
 
     ./alacritty.nix
+    ./direnv.nix
     ./git.nix
     ./tmux.nix
     ./zoxide.nix
