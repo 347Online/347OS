@@ -15,13 +15,6 @@
       # indent = true;
     };
 
-    gitsigns = {
-      enable = true;
-      settings = {
-        current_line_blame = true;
-      };
-    };
-
     conform-nvim = {
       enable = true;
       formatOnSave = {
