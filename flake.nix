@@ -4,8 +4,12 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    # See branch `nur`
     # nur.url = "github:nix-community/NUR";
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -32,11 +36,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-minecraft = {
-      url = "github:12Boti/nix-minecraft";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nil = {
       url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,10 +54,11 @@
 
   outputs = inputs @ {
     self,
-    fenix,
+    nixpkgs,
+    flake-parts,
     nix-darwin,
     home-manager,
-    nixpkgs,
+    fenix,
     nix-homebrew,
     nix-vscode-extensions,
     nixvim-config,
