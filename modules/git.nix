@@ -1,33 +1,27 @@
 {
-  config,
   pkgs,
   lib,
   ...
 }: let
   isDarwin = pkgs.stdenv.isDarwin;
 in {
-  options = {
-    code.git.enable = lib.mkEnableOption "git setup";
+  programs.git = {
+    enable = true;
+    delta.enable = true;
+    ignores = [
+      ".DS_Store"
+      ".mise.*.toml"
+    ];
+    userName = "347Online | Katie Janzen";
+    userEmail = "katiejanzen@347online.me";
+    extraConfig = {
+      core.editor = "nvim";
+      init.defaultBranch = "main";
+      pull.ff = "only";
+      credential.helper = lib.mkIf isDarwin "osxkeychain";
+    };
   };
 
-  config = lib.mkIf config.code.git.enable {
-    programs.git = {
-      enable = true;
-      delta.enable = true;
-      ignores = [
-        ".DS_Store"
-        ".mise.*.toml"
-      ];
-      userName = "347Online | Katie Janzen";
-      userEmail = "katiejanzen@347online.me";
-      extraConfig = {
-        core.editor = "nvim";
-        init.defaultBranch = "main";
-        pull.ff = "only";
-        credential.helper = lib.mkIf isDarwin "osxkeychain";
-      };
-    };
-    # TODO: Add caching, this was triggering CONSTANTLY
-    programs.git-credential-oauth.enable = lib.mkIf (!isDarwin) true;
-  };
+  # TODO: Add caching or something, this was triggering CONSTANTLY
+  programs.git-credential-oauth.enable = lib.mkIf (!isDarwin) true;
 }

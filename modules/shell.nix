@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -32,105 +31,99 @@
     enableFishIntegration = true;
   };
 in {
-  options = {
-    code.shell.enable = lib.mkEnableOption "shell setup";
-  };
+  home.packages = with pkgs; [
+    bat
+    eza
+    ripgrep
+  ];
 
-  config = lib.mkIf config.code.shell.enable {
-    home.packages = with pkgs; [
-      bat
-      eza
-      ripgrep
-    ];
-
-    programs = {
-      alacritty = {
-        enable = true;
-        settings = {
-          import = [
-            "${pkgs.alacritty-theme}/iterm.toml"
-          ];
-          window.option_as_alt = lib.mkIf isDarwin "Both";
-          env.term = "xterm-256color";
-          font = {
-            normal.family = "JetBrainsMono Nerd Font";
-            size =
-              if isDarwin
-              then 13
-              else 6;
-          };
+  programs = {
+    alacritty = {
+      enable = true;
+      settings = {
+        import = [
+          "${pkgs.alacritty-theme}/iterm.toml"
+        ];
+        window.option_as_alt = lib.mkIf isDarwin "Both";
+        env.term = "xterm-256color";
+        font = {
+          normal.family = "JetBrainsMono Nerd Font";
+          size =
+            if isDarwin
+            then 13
+            else 6;
         };
       };
-      kitty = {
-        enable = true;
-        font.name = "JetBrainsMono Nerd Font";
-        font.size = 12;
-        settings = {
-          confirm_os_window_close = 0;
-        };
-        darwinLaunchOptions = [
-          "--single-instance"
-        ];
-
-        shellIntegration = shellIntegrations;
-      };
-
-      bash.shellAliases = shellAliases;
-
-      fish = {
-        enable = true;
-        plugins = [
-          # Experimental
-          {
-            name = "nix.fish";
-            src = pkgs.fetchFromGitHub {
-              owner = "kidonng";
-              repo = "nix.fish";
-              rev = "master";
-              sha256 = "sha256-GMV0GyORJ8Tt2S9wTCo2lkkLtetYv0rc19aA5KJbo48=";
-            };
-          }
-        ];
-        inherit shellAliases;
-      };
-
-      zsh = {
-        enable = true;
-        enableCompletion = true;
-        syntaxHighlighting.enable = true;
-        autosuggestion.enable = true;
-        initExtraFirst = ''
-          # Powerlevel10k Zsh theme
-          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-          ${builtins.readFile ./.zshrc}
-        '';
-        inherit shellAliases;
-      };
-
-      fzf.enable = true;
-
-      direnv = {
-        enable = true;
-        nix-direnv.enable = true;
-      };
-
-      tmux = {
-        enable = true;
-        baseIndex = 1;
-        mouse = true;
-        shortcut = "Space";
-        terminal = "xterm-256color";
-      };
-
-      zoxide =
-        {
-          enable = true;
-          options = [
-            "--cmd"
-            "cd"
-          ];
-        }
-        // shellIntegrations;
     };
+    kitty = {
+      enable = true;
+      font.name = "JetBrainsMono Nerd Font";
+      font.size = 12;
+      settings = {
+        confirm_os_window_close = 0;
+      };
+      darwinLaunchOptions = [
+        "--single-instance"
+      ];
+
+      shellIntegration = shellIntegrations;
+    };
+
+    bash.shellAliases = shellAliases;
+
+    fish = {
+      enable = true;
+      plugins = [
+        # Experimental
+        {
+          name = "nix.fish";
+          src = pkgs.fetchFromGitHub {
+            owner = "kidonng";
+            repo = "nix.fish";
+            rev = "master";
+            sha256 = "sha256-GMV0GyORJ8Tt2S9wTCo2lkkLtetYv0rc19aA5KJbo48=";
+          };
+        }
+      ];
+      inherit shellAliases;
+    };
+
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+      autosuggestion.enable = true;
+      initExtraFirst = ''
+        # Powerlevel10k Zsh theme
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        ${builtins.readFile ./.zshrc}
+      '';
+      inherit shellAliases;
+    };
+
+    fzf.enable = true;
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
+    tmux = {
+      enable = true;
+      baseIndex = 1;
+      mouse = true;
+      shortcut = "Space";
+      terminal = "xterm-256color";
+    };
+
+    zoxide =
+      {
+        enable = true;
+        options = [
+          "--cmd"
+          "cd"
+        ];
+      }
+      // shellIntegrations;
   };
 }
