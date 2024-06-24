@@ -9,6 +9,9 @@
   };
 
   home-manager.users.${username} = {
-    lang.java.enable = true;
+    code.codium = {
+      rust = false;
+      java = true;
+    };
   };
 }
