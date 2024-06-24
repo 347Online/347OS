@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./codium
+    ./nvim
     ./zsh
 
     ./alacritty.nix

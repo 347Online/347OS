@@ -41,11 +41,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim-config = {
-      url = "github:347Online/nvim-config-kt";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zjstatus = {
       url = "github:dj95/zjstatus";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,7 +57,7 @@
     nix-homebrew,
     nix-vscode-extensions,
     nil,
-    nixvim-config,
+    nixvim,
     zjstatus,
     ...
   }: let
@@ -92,8 +87,16 @@
       };
 
     baseModulesHomeManager = [
+      nixvim.homeManagerModules.nixvim
+      {
+        programs.nixvim = {
+          enable = true;
+          viAlias = true;
+          vimAlias = true;
+          defaultEditor = true;
+        };
+      }
       ./home
-      {home.packages = [nixvim-config.packages.${system}.default];}
     ];
 
     baseModulesDarwin = [

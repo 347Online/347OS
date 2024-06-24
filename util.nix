@@ -15,8 +15,8 @@ let
         "branch" = "${git}/bin/git branch --show-current";
 
         "python3" = "${python3}/bin/python";
-        "vi" = "nvim";
-        "vim" = "nvim";
+        # "vi" = "nvim";
+        # "vim" = "nvim";
       };
   };
 in

@@ -1,17 +1,5 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  imports = [
-    ./bufferline.nix
-  ];
-
-  options.nixvim-config = lib.mkOption {
-    type = lib.types.attrs;
-  };
-
-  config.nixvim-config = {
+{pkgs, ...}: {
+  programs.nixvim = {
     extraPlugins = with pkgs.vimPlugins; [
       delimitMate
     ];
@@ -37,6 +25,7 @@
     };
 
     plugins = {
+      bufferline.enable = true;
       telescope.enable = true;
       treesitter = {
         enable = true;
