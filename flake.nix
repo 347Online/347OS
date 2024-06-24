@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    # nur.url = "github:nix-community/NUR";
+    nur.url = "github:nix-community/NUR";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -50,6 +50,7 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    nur,
     nix-darwin,
     home-manager,
     fenix,
