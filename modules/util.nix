@@ -13,10 +13,6 @@ let
 
         "git" = "${git}/bin/git";
         "branch" = "${git}/bin/git branch --show-current";
-
-        "python3" = "${python3}/bin/python";
-        # "vi" = "nvim";
-        # "vim" = "nvim";
       };
   };
 in

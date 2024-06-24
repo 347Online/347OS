@@ -6,6 +6,8 @@
 
     nur.url = "github:nix-community/NUR";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +53,7 @@
     self,
     nixpkgs,
     nur,
+    flake-parts,
     nix-darwin,
     home-manager,
     fenix,
@@ -61,12 +64,44 @@
     zjstatus,
     ...
   }: let
+    nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+      module = import ./modules/home/programs/nvim/config;
+    };
     # overlays = with inputs; [
     #   # ...
     #   (final: prev: {
     #     zjstatus = zjstatus.packages.${prev.system}.default;
     #   })
     # ];
+    linuxSystems = [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
+    darwinSystems = [
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+    supportedSystems = linuxSystems ++ darwinSystems;
+
+    forSystem = system: f:
+      f rec {
+        inherit system;
+
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = self.overlays.default;
+        };
+      };
+
+    forSystems = f: systems:
+      nixpkgs.lib.genAttrs systems (system: (forSystem system f));
+
+    forAllSystems = f:
+      forSystems f
+      supportedSystems;
+
+    util = import ./modules/util.nix;
+
     system = "aarch64-darwin";
     pkgs' = import nixpkgs {inherit system;};
     username = "katie";
@@ -75,9 +110,8 @@
       then "/Users/${username}"
       else "/home/${username}";
 
-    util = import ./modules/util.nix;
     specialArgs = {
-      inherit inputs username homeDirectory util;
+      inherit inputs username homeDirectory util system;
     };
     extraSpecialArgs =
       specialArgs
@@ -113,5 +147,7 @@
   in {
     darwinConfigurations."Athena" = mkDarwin (import ./modules/hosts/Athena.nix);
     darwinConfigurations."Alice" = mkDarwin (import ./modules/hosts/Alice.nix);
+
+    nvim = nvim;
   };
 }
