@@ -1,5 +1,10 @@
 {pkgs, ...}: {
   programs.nixvim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    defaultEditor = true;
+
     extraPlugins = with pkgs.vimPlugins; [
       delimitMate
     ];

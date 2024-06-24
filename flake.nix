@@ -75,7 +75,7 @@
       then "/Users/${username}"
       else "/home/${username}";
 
-    util = import ./util.nix;
+    util = import ./modules/util.nix;
     specialArgs = {
       inherit inputs username homeDirectory util;
     };
@@ -88,21 +88,13 @@
 
     baseModulesHomeManager = [
       nixvim.homeManagerModules.nixvim
-      {
-        programs.nixvim = {
-          enable = true;
-          viAlias = true;
-          vimAlias = true;
-          defaultEditor = true;
-        };
-      }
-      ./home
+      ./modules/home
     ];
 
     baseModulesDarwin = [
       home-manager.darwinModules.home-manager
       nix-homebrew.darwinModules.nix-homebrew
-      ./darwin
+      ./modules/darwin
       {
         environment.pathsToLink = ["/share/zsh"];
         home-manager = {
@@ -119,7 +111,7 @@
         modules = baseModulesDarwin ++ [module];
       };
   in {
-    darwinConfigurations."Athena" = mkDarwin (import ./hosts/Athena.nix);
-    darwinConfigurations."Alice" = mkDarwin (import ./hosts/Alice.nix);
+    darwinConfigurations."Athena" = mkDarwin (import ./modules/hosts/Athena.nix);
+    darwinConfigurations."Alice" = mkDarwin (import ./modules/hosts/Alice.nix);
   };
 }
