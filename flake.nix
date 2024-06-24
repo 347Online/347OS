@@ -42,7 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
+    nixvim-config = {
       url = "github:347Online/nvim-config-kt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -61,7 +61,7 @@
     nixpkgs,
     nix-homebrew,
     nix-vscode-extensions,
-    nixvim,
+    nixvim-config,
     zjstatus,
     ...
   }: let
@@ -75,20 +75,22 @@
     system = "aarch64-darwin";
     username = "katie";
     homeDirectory =
-      if nixpkgs.lib.hasSuffix "darwin" system
+      if nixpkgs.stdenv.isDarwin
       then "/Users/${username}"
       else "/home/${username}";
-    specialArgs = {inherit inputs system username homeDirectory;};
+    specialArgs = {
+      inherit inputs username homeDirectory;
+    };
     extraSpecialArgs =
       specialArgs
       // {
-        vscode-extensions = nix-vscode-extensions.extensions.${system};
         inherit fenix;
+        vscode-extensions = nix-vscode-extensions.extensions.${system};
       };
 
     baseModulesHomeManager = [
       ./modules/home
-      {home.packages = [nixvim.packages.${system}.default];}
+      {home.packages = [nixvim-config.packages.${system}.default];}
     ];
 
     baseModulesDarwin = [
@@ -98,17 +100,17 @@
       {
         environment.pathsToLink = ["/share/zsh"];
         home-manager = {
+          inherit extraSpecialArgs;
           users.${username}.imports = baseModulesHomeManager;
           backupFileExtension = "bakk";
-          inherit extraSpecialArgs;
         };
       }
     ];
 
     mkDarwin = module:
       nix-darwin.lib.darwinSystem {
-        modules = baseModulesDarwin ++ [module];
         inherit specialArgs;
+        modules = baseModulesDarwin ++ [module];
       };
   in {
     darwinConfigurations."Athena" = mkDarwin (import ./hosts/darwin/Athena.nix);
