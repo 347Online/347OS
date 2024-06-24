@@ -117,7 +117,7 @@
     extraSpecialArgs =
       specialArgs
       // {
-        inherit fenix;
+        inherit fenix nvim;
         vscode-extensions = nix-vscode-extensions.extensions.${system};
       };
 

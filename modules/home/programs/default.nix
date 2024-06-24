@@ -1,11 +1,11 @@
 {
   pkgs,
   util,
+  nvim,
   ...
 }: {
   imports = [
     ./codium
-    ./nvim
     ./zsh
 
     ./alacritty.nix
@@ -14,6 +14,8 @@
     ./tmux.nix
     ./zoxide.nix
   ];
+
+  home.packages = [nvim];
 
   programs.home-manager.enable = true;
   programs.fzf.enable = true;
