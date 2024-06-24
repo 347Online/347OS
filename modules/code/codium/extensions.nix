@@ -12,7 +12,7 @@
       esbenp.prettier-vscode
       eamodio.gitlens
       mkhl.direnv
-      ms-vsliveshare.vsliveshare # Untested on aarch64-linux
+      ms-vsliveshare.vsliveshare
 
       # Formatting
       foxundermoon.shell-format
@@ -26,12 +26,11 @@
       oderwat.indent-rainbow
       bradlc.vscode-tailwindcss
 
-      # Do we really need two of these?
+      # Utilities
       ritwickdey.liveserver
-      ms-vscode.live-server
-
       vscode-marketplace.cweijan.vscode-database-client2
       ms-vscode.hexeditor
+      vscodevim.vim
     ]
     ++ config.code.codium.extraExtensions;
 }
