@@ -12,10 +12,9 @@
   options = {
     code.codium = {
       enable = lib.mkEnableOption "vscodium setup";
-      python = lib.mkEnableOption "python integration";
       rust = lib.mkEnableOption "rust integration";
       java = lib.mkEnableOption "java integration";
-      
+
       extraExtensions = lib.mkOption {
         type = with lib.types; listOf package;
         default = [];

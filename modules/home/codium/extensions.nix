@@ -12,12 +12,14 @@ with vscode-extensions pkgs.vscode-extensions;
         [
           # Essentials
           dbaeumer.vscode-eslint
-          esbenp.prettier-vscode
           eamodio.gitlens
           mkhl.direnv
           ms-vsliveshare.vsliveshare
+          ms-python.python
 
           # Formatting
+          ms-python.black-formatter
+          esbenp.prettier-vscode
           foxundermoon.shell-format
           bmalehorn.vscode-fish
           tamasfe.even-better-toml
@@ -44,13 +46,6 @@ with vscode-extensions pkgs.vscode-extensions;
           redhat.java
           vscjava.vscode-java-test
           vscjava.vscode-java-debug
-        ];
-      })
-    (lib.mkIf config.code.codium.python
-      {
-        programs.vscode.extensions = [
-          ms-python.python
-          ms-python.black-formatter
         ];
       })
   ]
