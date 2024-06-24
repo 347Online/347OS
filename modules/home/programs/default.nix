@@ -1,4 +1,8 @@
 {
+  pkgs,
+  util,
+  ...
+}: {
   imports = [
     ./codium
     ./zsh
@@ -9,4 +13,6 @@
 
   programs.home-manager.enable = true;
   programs.fzf.enable = true;
+
+  programs.shellAliases = util.mkShellAliases pkgs;
 }

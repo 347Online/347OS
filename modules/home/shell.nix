@@ -1,8 +1,4 @@
-{
-  util,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     bat
     eza
@@ -10,8 +6,6 @@
   ];
 
   programs = {
-    bash.shellAliases = util.mkShellAliases pkgs;
-
     direnv = {
       enable = true;
       nix-direnv.enable = true;
