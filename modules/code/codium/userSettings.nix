@@ -83,6 +83,10 @@
     "nix.enableLanguageServer" = true;
     "nix.serverPath" = "${pkgs.nil}/bin/nil";
 
+    "extensions.experimental.affinity" = {
+      "asvetliakov.vscode-neovim" = 1;
+    };
+
     "diffEditor.ignoreTrimWhitespace" = false;
     "livePreview.openPreviewTarget" = "External Browser";
     "liveServer.settings.donotShowInfoMsg" = true;
