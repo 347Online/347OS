@@ -21,8 +21,7 @@
     }) (listFilesRecursive dir ""));
 in {
   imports = [
-    ./codium
-    ./git.nix
+    ./programs
     ./nix.nix
     ./rust.nix
     ./shell.nix
