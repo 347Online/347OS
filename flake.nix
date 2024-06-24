@@ -74,8 +74,10 @@
       if pkgs'.stdenv.isDarwin
       then "/Users/${username}"
       else "/home/${username}";
+
+    util = import ./util.nix;
     specialArgs = {
-      inherit inputs username homeDirectory;
+      inherit inputs username homeDirectory util;
     };
     extraSpecialArgs =
       specialArgs
