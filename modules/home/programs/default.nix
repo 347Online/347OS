@@ -2,6 +2,8 @@
   imports = [
     ./codium
     ./zsh
+
+    ./alacritty.nix
     ./git.nix
   ];
 
