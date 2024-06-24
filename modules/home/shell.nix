@@ -18,14 +18,5 @@
       shortcut = "Space";
       terminal = "xterm-256color";
     };
-
-    zoxide = {
-      enable = true;
-      options = [
-        "--cmd"
-        "cd"
-      ];
-      enableZshIntegration = true;
-    };
   };
 }
