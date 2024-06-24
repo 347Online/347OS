@@ -9,6 +9,8 @@
 
     ./alacritty.nix
     ./git.nix
+    ./tmux.nix
+    ./zoxide.nix
   ];
 
   programs.home-manager.enable = true;
