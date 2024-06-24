@@ -3,12 +3,7 @@
     ./plugins
   ];
 
-  globals = {
-    mapleader = ",";
-    delimitMate_expand_cr = true;
-    delimitMate_expand_inside_quotes = true;
-    delimitMate_autoclose = false;
-  };
+  globals.mapleader = ",";
 
   opts = {
     wrap = false;
