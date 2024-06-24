@@ -5,15 +5,15 @@
 
   plugins = {
     telescope.enable = true;
-    treesitter = {
-      enable = true;
-      # indent = true;
-    };
     luasnip.enable = true;
     lualine.enable = true;
     comment.enable = true;
     indent-blankline.enable = true;
     nix.enable = true;
+    treesitter = {
+      enable = true;
+      # indent = true;
+    };
 
     gitsigns = {
       enable = true;
