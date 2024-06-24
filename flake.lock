@@ -555,6 +555,22 @@
         "type": "github"
       }
     },
+    "precognition-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718574317,
+        "narHash": "sha256-ykKAJcHdr8bB093Aqb4MRuD7LXnjJ/DxgXG/376WFSQ=",
+        "owner": "tris203",
+        "repo": "precognition.nvim",
+        "rev": "02dcc8f8db677fe02d2dd68da6155177283fe711",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tris203",
+        "repo": "precognition.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "fenix": "fenix",
@@ -567,6 +583,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
         "nur": "nur",
+        "precognition-nvim": "precognition-nvim",
         "zjstatus": "zjstatus"
       }
     },
