@@ -14,5 +14,5 @@
   programs.home-manager.enable = true;
   programs.fzf.enable = true;
 
-  programs.shellAliases = util.mkShellAliases pkgs;
+  programs.bash.shellAliases = util.mkShellAliases pkgs;
 }
