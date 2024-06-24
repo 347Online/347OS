@@ -113,7 +113,7 @@
         modules = baseModulesDarwin ++ [module];
       };
   in {
-    darwinConfigurations."Athena" = mkDarwin (import ./hosts/darwin/Athena.nix);
-    darwinConfigurations."Alice" = mkDarwin (import ./hosts/darwin/Alice.nix);
+    darwinConfigurations."Athena" = mkDarwin (import ./hosts/Athena.nix);
+    darwinConfigurations."Alice" = mkDarwin (import ./hosts/Alice.nix);
   };
 }
