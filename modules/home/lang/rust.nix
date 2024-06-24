@@ -5,12 +5,9 @@
   ...
 }: {
   options = {
-    lang.rust = {
-      toolchain = lib.mkOption {
-        type = lib.types.enum ["stable" "beta" "nightly"];
-        default = "stable";
-      };
-      vscodeExtension = lib.mkEnableOption "rust-analyzer vscode extension";
+    lang.rust.toolchain = lib.mkOption {
+      type = lib.types.enum ["stable" "beta" "nightly"];
+      default = "stable";
     };
   };
 

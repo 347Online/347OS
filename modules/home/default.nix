@@ -22,9 +22,7 @@
 in {
   imports = [
     ./nix.nix
-
-    ../code
-    ../gaming
+    ./rust.nix
   ];
 
   code.enable = lib.mkDefault true;
