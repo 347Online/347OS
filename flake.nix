@@ -64,9 +64,6 @@
     zjstatus,
     ...
   }: let
-    nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
-      module = import ./modules/home/programs/nvim/config;
-    };
     # overlays = with inputs; [
     #   # ...
     #   (final: prev: {
@@ -109,6 +106,10 @@
       if pkgs'.stdenv.isDarwin
       then "/Users/${username}"
       else "/home/${username}";
+
+    nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+      module = import ./modules/nvim;
+    };
 
     specialArgs = {
       inherit inputs username homeDirectory util system;
