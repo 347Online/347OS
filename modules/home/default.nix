@@ -52,6 +52,8 @@ in {
       _1password-gui
 
       obsidian
+
+      rtx
     ];
   };
 
