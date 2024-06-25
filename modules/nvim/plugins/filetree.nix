@@ -27,13 +27,13 @@
   keymaps = [
     {
       mode = "n";
-      key = "<leader>n";
+      key = "<leader>N";
       action = ":Neotree action=focus reveal toggle<CR>";
       options.silent = true;
     }
     {
       mode = "n";
-      key = "<leader>N";
+      key = "<leader>n";
       action = ":Neotree action=focus reveal<CR>";
     }
   ];
