@@ -1,4 +1,7 @@
-{
+{pkgs, ...}: {
+  extraPlugins = with pkgs.vimPlugins; [
+    vim-fugitive
+  ];
   plugins.gitsigns = {
     enable = true;
     settings = {
