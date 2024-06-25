@@ -9,6 +9,7 @@
         hideGitignored = true;
         neverShow = [
           ".git"
+          ".DS_Store"
         ];
       };
     };
