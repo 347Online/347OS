@@ -9,13 +9,16 @@
 
   extraPlugins = with pkgs.vimPlugins; [
     delimitMate
-    {
-      plugin = precognition-nvim;
-      config = ''
-        lua require("Precognition").setup()
-      '';
-    }
+    precognition-nvim
   ];
+
+  extraConfigLua =
+    /*
+    lua
+    */
+    ''
+      require("Precognition").setup()
+    '';
 
   globals = {
     delimitMate_expand_cr = true;
