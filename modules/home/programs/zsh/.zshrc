@@ -7,7 +7,7 @@ test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-eval "$(fzf --zsh)"
+# eval "$(fzf --zsh)"
 
 HISTDUP=erase
 setopt appendhistory

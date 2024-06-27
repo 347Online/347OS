@@ -69,12 +69,6 @@
     zjstatus,
     ...
   }: let
-    # overlays = with inputs; [
-    #   # ...
-    #   (final: prev: {
-    #     zjstatus = zjstatus.packages.${prev.system}.default;
-    #   })
-    # ];
     linuxSystems = [
       "aarch64-linux"
       "x86_64-linux"

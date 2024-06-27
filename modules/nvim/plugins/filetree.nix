@@ -17,7 +17,6 @@
     enableGitStatus = true;
     enableModifiedMarkers = true;
     enableRefreshOnWrite = true;
-    closeIfLastWindow = true;
     window = {
       width = 30;
       autoExpandWidth = false;
