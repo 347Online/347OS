@@ -1,4 +1,9 @@
 {
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToEscape = true;
+  };
+
   system.defaults = {
     NSGlobalDomain = {
       NSAutomaticCapitalizationEnabled = false;
@@ -6,6 +11,7 @@
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticDashSubstitutionEnabled = false;
+      AppleEnableSwipeNavigateWithScrolls = true;
     };
 
     CustomSystemPreferences = {
