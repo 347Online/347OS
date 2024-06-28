@@ -3,9 +3,9 @@
     ./cokeline.nix
     ./completion.nix
     ./formatting.nix
-    ./filetree.nix
     ./git.nix
     ./lsp.nix
+    ./neo-tree.nix
   ];
 
   extraPlugins = with pkgs.vimPlugins; [
