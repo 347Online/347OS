@@ -16,7 +16,6 @@
     enableDiagnostics = true;
     enableGitStatus = true;
     enableModifiedMarkers = true;
-    enableRefreshOnWrite = true;
     window = {
       width = 30;
       autoExpandWidth = false;
