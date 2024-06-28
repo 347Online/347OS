@@ -17,7 +17,7 @@
     enableGitStatus = true;
     enableModifiedMarkers = true;
     window = {
-      width = 30;
+      width = 35;
       autoExpandWidth = false;
     };
   };
