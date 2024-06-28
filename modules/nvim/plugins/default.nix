@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./cokeline.nix
     ./completion.nix
     ./formatting.nix
     ./filetree.nix
@@ -18,6 +19,7 @@
     */
     ''
       require("Precognition").setup()
+      require("cokeline").setup()
     '';
 
   globals = {
@@ -27,7 +29,6 @@
   };
 
   plugins = {
-    bufferline.enable = true;
     telescope.enable = true;
     luasnip.enable = true;
     lualine.enable = true;
