@@ -51,9 +51,9 @@
     zjstatus = {
       url = "github:dj95/zjstatus";
       inputs.nixpkgs.follows = "nixpkgs";
-    }; 
+    };
 
-    apple-silicon-support ={ url ="github:tpwrules/nixos-apple-silicon";};
+    apple-silicon-support = {url = "github:tpwrules/nixos-apple-silicon";};
   };
 
   outputs = inputs @ {
@@ -158,6 +158,22 @@
   in {
     darwinConfigurations."Athena" = mkDarwin (import ./modules/hosts/Athena.nix);
     darwinConfigurations."Alice" = mkDarwin (import ./modules/hosts/Alice.nix);
+
+    nixosConfigurations."Arctic" = nixpkgs.lib.nixosSystem {
+      inherit specialArgs;
+
+      modules = [
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            inherit extraSpecialArgs;
+            users.${username}.imports = baseModulesHomeManager;
+            backupFileExtension = "bakk";
+          };
+        }
+        ./modules/hosts/Arctic
+      ];
+    };
 
     nvim = nvim;
   };

@@ -34,10 +34,10 @@ in {
     file = toHomeFiles ./dotfiles;
 
     activation = {
-      miseInstall = lib.hm.dag.entryAfter ["installPackages"] ''
-        # rtx has been renamed to mise
-        ${pkgs.rtx}/bin/mise install
-      '';
+      # miseInstall = lib.hm.dag.entryAfter ["installPackages"] ''
+      #   # rtx has been renamed to mise
+      #   ${pkgs.rtx}/bin/mise install
+      # '';
     };
 
     packages = with pkgs; [
