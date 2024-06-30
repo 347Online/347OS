@@ -51,7 +51,9 @@
     zjstatus = {
       url = "github:dj95/zjstatus";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
+    }; 
+
+    apple-silicon-support ={ url ="github:tpwrules/nixos-apple-silicon";};
   };
 
   outputs = inputs @ {
@@ -98,7 +100,7 @@
 
     util = import ./modules/util.nix;
 
-    system = "aarch64-darwin";
+    system = "aarch64-linux";
     pkgs = import nixpkgs {inherit system;};
     username = "katie";
     homeDirectory =

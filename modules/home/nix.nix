@@ -8,6 +8,7 @@
     overlays = [fenix.overlays.default];
     config = {
       allowUnfree = true;
+      allowUnsupportedSystem = true;
       packageOverrides = pkgs: {
         inherit nur;
         # nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
