@@ -5,12 +5,13 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./apple-silicon-support
+    inputs.apple-silicon-support.nixosModules.apple-silicon-support
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
