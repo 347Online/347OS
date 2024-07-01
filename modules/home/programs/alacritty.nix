@@ -18,7 +18,7 @@ in {
         size =
           if isDarwin
           then 13
-          else 6;
+          else 9;
       };
     };
   };
