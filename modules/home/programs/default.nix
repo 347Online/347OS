@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./codium
+    ./firefox
     ./zsh
 
     ./alacritty.nix
