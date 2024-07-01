@@ -5,5 +5,6 @@
     mouse = true;
     shortcut = "Space";
     terminal = "xterm-256color";
+    extraConfig = '''';
   };
 }
