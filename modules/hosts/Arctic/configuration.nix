@@ -21,6 +21,7 @@
   boot.loader.efi.canTouchEfiVariables = false;
   boot.kernelParams = ["apple_dcp.show_notch=1"];
   hardware.asahi.useExperimentalGPUDriver = true;
+  hardware.asahi.extractPeripheralFirmware = false;
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
   networking.wireless.iwd = {
     enable = true;
@@ -32,6 +33,7 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   programs.zsh.enable = true;
+  programs.firefox.enable = true;
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
