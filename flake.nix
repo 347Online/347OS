@@ -167,7 +167,7 @@
         {
           home-manager = {
             inherit extraSpecialArgs;
-            users.${username}.imports = baseModulesHomeManager;
+            users.${username}.imports = baseModulesHomeManager ++ [./modules/linux];
             backupFileExtension = "bakk";
           };
         }

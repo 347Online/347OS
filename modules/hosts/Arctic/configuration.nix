@@ -20,9 +20,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
   boot.kernelParams = ["apple_dcp.show_notch=1"];
+
   hardware.asahi.useExperimentalGPUDriver = true;
-  hardware.asahi.extractPeripheralFirmware = false;
+  hardware.asahi.extractPeripheralFirmware = true;
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
+  hardware.asahi.experimentalGPUInstallMode = "overlay";
+
+  hardware.bluetooth.enable = true;
   networking.wireless.iwd = {
     enable = true;
     settings.General.EnableNetworkConfiguration = true;
@@ -31,8 +35,43 @@
   networking.hostName = "Arctic"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  # networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   programs.zsh.enable = true;
+  programs.hyprland = {
+    enable = true;
+    # xwayland.enable = true;
+  };
+  # services.xserver.displayManager.gdm.enable = false;
+  # services.xserver.desktopManager.gnome.enable = false;
+
+  services = {
+    greetd = {
+      enable = true;
+      settings = let
+        session = "${pkgs.hyprland}/bin/Hyprland";
+      in {
+        initial_session = {
+          command = session;
+          user = "katie";
+        };
+      };
+    };
+    openssh.enable = true;
+    printing.enable = true;
+    displayManager = {
+      autoLogin = {
+        enable = true;
+        user = "katie";
+      };
+      # user = "katie";
+    };
+    # xserver = {
+    #   # displayManager.user = "katie";
+    #   enable = true;
+    #   xkb.layout = "us";
+    # };
+  };
+
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
@@ -49,10 +88,6 @@
   # };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -97,7 +132,6 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
