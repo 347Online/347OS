@@ -5,11 +5,11 @@
   ...
 }: let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-    1password --silent &
+    # 1password --silent & disown
+    # firefox & disown
+    # mako
     # webcord -m &
     # waybar &
-    #
-    # mako
   '';
 in {
   home.sessionVariables = {
@@ -18,7 +18,7 @@ in {
   };
 
   wayland.windowManager.hyprland = {
-    enable = true;
+    # enable = true;
 
     settings = {
       monitor = ",preferred,auto,auto";

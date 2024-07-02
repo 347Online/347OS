@@ -48,8 +48,8 @@
       flake = false;
     };
 
-    zjstatus = {
-      url = "github:dj95/zjstatus";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -68,7 +68,7 @@
     nix-vscode-extensions,
     nil,
     nixvim,
-    zjstatus,
+    hyprland,
     ...
   }: let
     linuxSystems = [
@@ -163,11 +163,19 @@
       inherit specialArgs;
 
       modules = [
+        # {
+        #   programs.hyprland.package = null;
+        # }
         home-manager.nixosModules.home-manager
         {
           home-manager = {
             inherit extraSpecialArgs;
-            users.${username}.imports = baseModulesHomeManager ++ [./modules/linux];
+            users.${username}.imports =
+              baseModulesHomeManager
+              ++ [
+                # hyprland.homeManagerModules.default
+                ./modules/linux
+              ];
             backupFileExtension = "bakk";
           };
         }

@@ -39,21 +39,22 @@
   programs.zsh.enable = true;
   programs.hyprland = {
     enable = true;
-    # xwayland.enable = true;
+    xwayland.enable = true;
   };
-  # services.xserver.displayManager.gdm.enable = false;
+  services.xserver.displayManager.gdm.enable = false;
   # services.xserver.desktopManager.gnome.enable = false;
 
   services = {
     greetd = {
-      enable = true;
+      enable = false;
       settings = let
         session = "${pkgs.hyprland}/bin/Hyprland";
       in {
-        initial_session = {
-          command = session;
-          user = "katie";
-        };
+        # initial_session = {
+        #   # command = session;
+        #   command = "Hyprland";
+        #   user = "katie";
+        # };
       };
     };
     openssh.enable = true;
