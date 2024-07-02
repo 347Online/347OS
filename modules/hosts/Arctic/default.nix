@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  nvim,
+  ...
+}: {
   imports = [
     ./hardware.nix
   ];
@@ -44,7 +48,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    neovim
+    nvim
   ];
 
   # DO NOT EDIT

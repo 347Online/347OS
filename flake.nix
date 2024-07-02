@@ -36,6 +36,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,6 +65,7 @@
     nix-homebrew,
     nix-vscode-extensions,
     nil,
+    neovim-nightly-overlay,
     nixvim,
     ...
   }: let
@@ -93,7 +99,9 @@
     util = import ./modules/util.nix;
 
     system = "aarch64-linux";
-    pkgs = import nixpkgs {inherit system;};
+    pkgs = import nixpkgs {
+      inherit system;
+    };
     username = "katie";
     homeDirectory =
       if pkgs.stdenv.isDarwin
@@ -110,16 +118,16 @@
           };
         });
       });
-      module = import ./modules/nvim;
+      module = (import ./modules/nvim) // {package = neovim-nightly-overlay.packages.${system}.default;};
     };
 
     specialArgs = {
-      inherit inputs username homeDirectory util system;
+      inherit inputs username homeDirectory util system nvim;
     };
     extraSpecialArgs =
       specialArgs
       // {
-        inherit fenix nvim;
+        inherit fenix;
         vscode-extensions = nix-vscode-extensions.extensions.${system};
       };
 
