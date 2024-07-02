@@ -16,6 +16,11 @@ let
 
         "nvim-next" = "nix run ~/src/nix-systems#nvim";
       };
+
+    mkHomeDirectory = pkgs: username:
+      if pkgs.stdenv.isDarwin
+      then "/Users/${username}"
+      else "/home/${username}";
   };
 in
   util

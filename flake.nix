@@ -69,6 +69,7 @@
     nixvim,
     ...
   }: let
+    username = "katie";
     linuxSystems = [
       "aarch64-linux"
       "x86_64-linux"
@@ -85,7 +86,7 @@
 
         pkgs = import nixpkgs {
           inherit system;
-          overlays = self.overlays.default;
+          # overlays = self.overlays.default;
         };
       };
 
@@ -102,24 +103,22 @@
     pkgs = import nixpkgs {
       inherit system;
     };
-    username = "katie";
-    homeDirectory =
-      if pkgs.stdenv.isDarwin
-      then "/Users/${username}"
-      else "/home/${username}";
-
-    nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
-      pkgs = pkgs.extend (final: prev: {
-        vimPlugins = prev.vimPlugins.extend (final': prev': {
-          precognition-nvim = prev.vimUtils.buildVimPlugin {
-            pname = "precognition-nvim";
-            src = inputs.precognition-nvim;
-            version = inputs.precognition-nvim.shortRev;
-          };
+    homeDirectory = util.mkHomeDirectory pkgs username;
+    mkNvim = pkgs:
+      inputs.nixvim.legacyPackages.${pkgs.system}.makeNixvimWithModule {
+        pkgs = pkgs.extend (final: prev: {
+          vimPlugins = prev.vimPlugins.extend (final': prev': {
+            precognition-nvim = prev.vimUtils.buildVimPlugin {
+              pname = "precognition-nvim";
+              src = inputs.precognition-nvim;
+              version = inputs.precognition-nvim.shortRev;
+            };
+          });
         });
-      });
-      module = (import ./modules/nvim) // {package = neovim-nightly-overlay.packages.${system}.default;};
-    };
+        module = (import ./modules/nvim) // {package = neovim-nightly-overlay.packages.${system}.default;};
+      };
+
+    nvim = mkNvim pkgs;
 
     specialArgs = {
       inherit inputs username homeDirectory util system nvim;
@@ -178,7 +177,13 @@
         ./modules/hosts/Arctic
       ];
     };
+    packages = forAllSystems ({
+      pkgs,
+      system,
+    }: {
+      nvim = mkNvim pkgs;
+    });
 
-    nvim = nvim;
+    # nvim.packages.aarch64-linux = mkNvimst:;gc
   };
 }
