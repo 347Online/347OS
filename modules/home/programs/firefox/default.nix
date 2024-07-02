@@ -1,5 +1,9 @@
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.firefox = {
-    enable = true;
+    enable = lib.mkIf (!pkgs.stdenv.isDarwin) true;
   };
 }

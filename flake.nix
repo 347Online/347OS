@@ -99,7 +99,11 @@
 
     util = import ./modules/util.nix;
 
-    mkPkgs = system: import nixpkgs {inherit system;};
+    mkPkgs = system:
+      import nixpkgs {
+        inherit system;
+        # overlays = [fenix.overlays.default];
+      };
 
     mkNvim = pkgs: let
       system = pkgs.system;
@@ -121,53 +125,43 @@
       system = pkgs.system;
     in {
       inherit inputs username util system;
-      homeDirectory = util.mkHomeDirectory pkgs;
+      homeDirectory = util.mkHomeDirectory pkgs username;
     };
 
     mkExtraSpecialArgs = pkgs: let
       system = pkgs.system;
     in
-      (mkSpecialArgs system)
+      (mkSpecialArgs pkgs)
       // {
         inherit fenix;
         vscode-extensions = nix-vscode-extensions.extensions.${system};
+        nvim = mkNvim pkgs;
       };
 
     baseModulesHomeManager = [
       nixvim.homeManagerModules.nixvim
       ./modules/home
     ];
-    #   home-manager.darwinModules.home-manager
-    #   nix-homebrew.darwinModules.nix-homebrew
-    #   ./modules/darwin
-    #   {
-    #     environment.pathsToLink = ["/share/zsh"];
-    #     home-manager = {
-    #       inherit extraSpecialArgs;
-    #       users.${username}.imports = baseModulesHomeManager;
-    #       backupFileExtension = "bakk";
-    #     };
-    #   }
-    # ];
 
-    mkDarwinSystem = system: module:
+    mkDarwinSystem = system: module: let
+      pkgs = mkPkgs system;
+    in
       nix-darwin.lib.darwinSystem {
-        specialArgs = mkSpecialArgs: system;
-        modules =
-          [
-            home-manager.darwinModules.home-manager
-            nix-homebrew.darwinModules.nix-homebrew
-            (import ./modules/darwin)
-            {
-              environment.pathsToLink = ["/share/zsh"];
-              home-manager = {
-                extraSpecialArgs = mkExtraSpecialArgs system;
-                users.${username}.imports = baseModulesHomeManager;
-                backupFileExtension = "bakk";
-              };
-            }
-          ]
-          ++ [module];
+        specialArgs = mkSpecialArgs pkgs;
+        modules = [
+          home-manager.darwinModules.home-manager
+          nix-homebrew.darwinModules.nix-homebrew
+          (import ./modules/darwin)
+          {
+            environment.pathsToLink = ["/share/zsh"];
+            home-manager = {
+              extraSpecialArgs = mkExtraSpecialArgs pkgs;
+              users.${username}.imports = baseModulesHomeManager;
+              backupFileExtension = "bakk";
+            };
+          }
+          module
+        ];
       };
     mkDarwin = module: mkDarwinSystem "aarch64-darwin" module;
     mkDarwinIntel = module: (mkDarwinSystem "x86_64-darwin" module);
@@ -175,28 +169,28 @@
     darwinConfigurations."Athena" = mkDarwin (import ./modules/hosts/Athena.nix);
     darwinConfigurations."Alice" = mkDarwin (import ./modules/hosts/Alice.nix);
 
-    nixosConfigurations."Arctic" = let
-      system = "aarch64-linux";
-    in
-      nixpkgs.lib.nixosSystem {
-        specialArgs = mkSpecialArgs system;
-
-        modules = [
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              extraSpecialArgs = mkExtraSpecialArgs system;
-              users.${username}.imports =
-                baseModulesHomeManager
-                ++ [
-                  ./modules/linux
-                ];
-              backupFileExtension = "bakk";
-            };
-          }
-          ./modules/hosts/Arctic
-        ];
-      };
+    # nixosConfigurations."Arctic" = let
+    #   system = "aarch64-linux";
+    # in
+    #   nixpkgs.lib.nixosSystem {
+    #     specialArgs = mkSpecialArgs system;
+    #
+    #     modules = [
+    #       home-manager.nixosModules.home-manager
+    #       {
+    #         home-manager = {
+    #           extraSpecialArgs = mkExtraSpecialArgs system;
+    #           users.${username}.imports =
+    #             baseModulesHomeManager
+    #             ++ [
+    #               ./modules/linux
+    #             ];
+    #           backupFileExtension = "bakk";
+    #         };
+    #       }
+    #       ./modules/hosts/Arctic
+    #     ];
+    #   };
     packages = forAllSystems ({
       pkgs,
       system,
