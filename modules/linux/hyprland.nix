@@ -103,8 +103,7 @@ in {
 
       bind = [
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        "$mainMod, Q, exec, $terminal"
-        "$mainMod, C, killactive, "
+        "$mainMod, Q, killactive, "
         "$mainMod, M, exit, "
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating, "
