@@ -4,6 +4,10 @@
   nur,
   ...
 }: {
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nixpkgs = {
     overlays = [fenix.overlays.default];
     config = {
@@ -11,9 +15,6 @@
       allowUnsupportedSystem = true;
       packageOverrides = pkgs: {
         inherit nur;
-        # nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-        #   inherit pkgs;
-        # };
       };
     };
   };
