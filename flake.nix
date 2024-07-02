@@ -6,8 +6,6 @@
 
     nur.url = "github:nix-community/NUR";
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,15 +39,12 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     precognition-nvim = {
       url = "github:tris203/precognition.nvim";
       flake = false;
-    };
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
     };
 
     apple-silicon-support = {url = "github:tpwrules/nixos-apple-silicon";};
@@ -59,7 +54,6 @@
     self,
     nixpkgs,
     nur,
-    flake-parts,
     nix-darwin,
     home-manager,
     fenix,
@@ -67,7 +61,6 @@
     nix-vscode-extensions,
     nil,
     nixvim,
-    hyprland,
     ...
   }: let
     linuxSystems = [
@@ -162,9 +155,6 @@
       inherit specialArgs;
 
       modules = [
-        # {
-        #   programs.hyprland.package = null;
-        # }
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -172,7 +162,6 @@
             users.${username}.imports =
               baseModulesHomeManager
               ++ [
-                # hyprland.homeManagerModules.default
                 ./modules/linux
               ];
             backupFileExtension = "bakk";
