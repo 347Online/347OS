@@ -6,7 +6,6 @@
 }: let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     1password --silent &
-    firefox &
     # mako
     # webcord -m &
     # waybar &
@@ -17,9 +16,6 @@ in {
     # QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
-  home.packages = with pkgs; [
-    rofi
-  ];
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -27,7 +23,7 @@ in {
       exec-once = ''${startupScript}/bin/start'';
 
       "$terminal" = "${pkgs.alacritty}/bin/alacritty";
-      "$menu" = "[floating] rofi -show drun -show-icons";
+      "$menu" = "[floating] ${pkgs.fuzzel}/bin/fuzzel -f Dina:size=18";
 
       input = {
         kb_layout = "us";
