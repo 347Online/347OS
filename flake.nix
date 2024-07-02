@@ -127,6 +127,7 @@
     in {
       inherit inputs username util system;
       homeDirectory = util.mkHomeDirectory pkgs username;
+      nvim = mkNvim pkgs;
     };
 
     mkExtraSpecialArgs = pkgs: let
@@ -136,7 +137,6 @@
       // {
         inherit fenix;
         vscode-extensions = nix-vscode-extensions.extensions.${system};
-        nvim = mkNvim pkgs;
       };
 
     baseModulesHomeManager = [
@@ -144,7 +144,10 @@
       ./modules/home
     ];
 
-    mkDarwinSystem = system: module: let
+    mkDarwin = {
+      module,
+      system ? "aarch64-darwin",
+    }: let
       pkgs = mkPkgs system;
     in
       nix-darwin.lib.darwinSystem {
@@ -164,34 +167,33 @@
           module
         ];
       };
-    mkDarwin = module: mkDarwinSystem "aarch64-darwin" module;
-    mkDarwinIntel = module: (mkDarwinSystem "x86_64-darwin" module);
   in {
-    darwinConfigurations."Athena" = mkDarwin (import ./modules/hosts/Athena.nix);
-    darwinConfigurations."Alice" = mkDarwin (import ./modules/hosts/Alice.nix);
+    darwinConfigurations."Athena" = mkDarwin {module = import ./modules/hosts/Athena.nix;};
+    darwinConfigurations."Alice" = mkDarwin {module = import ./modules/hosts/Alice.nix;};
 
-    # nixosConfigurations."Arctic" = let
-    #   system = "aarch64-linux";
-    # in
-    #   nixpkgs.lib.nixosSystem {
-    #     specialArgs = mkSpecialArgs system;
-    #
-    #     modules = [
-    #       home-manager.nixosModules.home-manager
-    #       {
-    #         home-manager = {
-    #           extraSpecialArgs = mkExtraSpecialArgs system;
-    #           users.${username}.imports =
-    #             baseModulesHomeManager
-    #             ++ [
-    #               ./modules/linux
-    #             ];
-    #           backupFileExtension = "bakk";
-    #         };
-    #       }
-    #       ./modules/hosts/Arctic
-    #     ];
-    #   };
+    nixosConfigurations."Arctic" = let
+      system = "aarch64-linux";
+      pkgs = mkPkgs system;
+    in
+      nixpkgs.lib.nixosSystem {
+        specialArgs = mkSpecialArgs pkgs;
+
+        modules = [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              extraSpecialArgs = mkExtraSpecialArgs pkgs;
+              users.${username}.imports =
+                baseModulesHomeManager
+                ++ [
+                  ./modules/linux
+                ];
+              backupFileExtension = "bakk";
+            };
+          }
+          ./modules/hosts/Arctic
+        ];
+      };
     packages = forAllSystems ({
       pkgs,
       system,
