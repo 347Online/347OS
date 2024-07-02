@@ -99,12 +99,11 @@
 
     util = import ./modules/util.nix;
 
-    system = "aarch64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-    };
-    homeDirectory = util.mkHomeDirectory pkgs username;
-    mkNvim = pkgs:
+    mkPkgs = system: import nixpkgs {inherit system;};
+
+    mkNvim = pkgs: let
+      system = pkgs.system;
+    in
       inputs.nixvim.legacyPackages.${pkgs.system}.makeNixvimWithModule {
         pkgs = pkgs.extend (final: prev: {
           vimPlugins = prev.vimPlugins.extend (final': prev': {
@@ -118,13 +117,17 @@
         module = (import ./modules/nvim) // {package = neovim-nightly-overlay.packages.${system}.default;};
       };
 
-    nvim = mkNvim pkgs;
-
-    specialArgs = {
-      inherit inputs username homeDirectory util system nvim;
+    mkSpecialArgs = pkgs: let
+      system = pkgs.system;
+    in {
+      inherit inputs username util system;
+      homeDirectory = util.mkHomeDirectory pkgs;
     };
-    extraSpecialArgs =
-      specialArgs
+
+    mkExtraSpecialArgs = pkgs: let
+      system = pkgs.system;
+    in
+      (mkSpecialArgs system)
       // {
         inherit fenix;
         vscode-extensions = nix-vscode-extensions.extensions.${system};
@@ -134,56 +137,71 @@
       nixvim.homeManagerModules.nixvim
       ./modules/home
     ];
+    #   home-manager.darwinModules.home-manager
+    #   nix-homebrew.darwinModules.nix-homebrew
+    #   ./modules/darwin
+    #   {
+    #     environment.pathsToLink = ["/share/zsh"];
+    #     home-manager = {
+    #       inherit extraSpecialArgs;
+    #       users.${username}.imports = baseModulesHomeManager;
+    #       backupFileExtension = "bakk";
+    #     };
+    #   }
+    # ];
 
-    baseModulesDarwin = [
-      home-manager.darwinModules.home-manager
-      nix-homebrew.darwinModules.nix-homebrew
-      ./modules/darwin
-      {
-        environment.pathsToLink = ["/share/zsh"];
-        home-manager = {
-          inherit extraSpecialArgs;
-          users.${username}.imports = baseModulesHomeManager;
-          backupFileExtension = "bakk";
-        };
-      }
-    ];
-
-    mkDarwin = module:
+    mkDarwinSystem = system: module:
       nix-darwin.lib.darwinSystem {
-        inherit specialArgs;
-        modules = baseModulesDarwin ++ [module];
+        specialArgs = mkSpecialArgs: system;
+        modules =
+          [
+            home-manager.darwinModules.home-manager
+            nix-homebrew.darwinModules.nix-homebrew
+            (import ./modules/darwin)
+            {
+              environment.pathsToLink = ["/share/zsh"];
+              home-manager = {
+                extraSpecialArgs = mkExtraSpecialArgs system;
+                users.${username}.imports = baseModulesHomeManager;
+                backupFileExtension = "bakk";
+              };
+            }
+          ]
+          ++ [module];
       };
+    mkDarwin = module: mkDarwinSystem "aarch64-darwin" module;
+    mkDarwinIntel = module: (mkDarwinSystem "x86_64-darwin" module);
   in {
     darwinConfigurations."Athena" = mkDarwin (import ./modules/hosts/Athena.nix);
     darwinConfigurations."Alice" = mkDarwin (import ./modules/hosts/Alice.nix);
 
-    nixosConfigurations."Arctic" = nixpkgs.lib.nixosSystem {
-      inherit specialArgs;
+    nixosConfigurations."Arctic" = let
+      system = "aarch64-linux";
+    in
+      nixpkgs.lib.nixosSystem {
+        specialArgs = mkSpecialArgs system;
 
-      modules = [
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            inherit extraSpecialArgs;
-            users.${username}.imports =
-              baseModulesHomeManager
-              ++ [
-                ./modules/linux
-              ];
-            backupFileExtension = "bakk";
-          };
-        }
-        ./modules/hosts/Arctic
-      ];
-    };
+        modules = [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              extraSpecialArgs = mkExtraSpecialArgs system;
+              users.${username}.imports =
+                baseModulesHomeManager
+                ++ [
+                  ./modules/linux
+                ];
+              backupFileExtension = "bakk";
+            };
+          }
+          ./modules/hosts/Arctic
+        ];
+      };
     packages = forAllSystems ({
       pkgs,
       system,
     }: {
       nvim = mkNvim pkgs;
     });
-
-    # nvim.packages.aarch64-linux = mkNvimst:;gc
   };
 }
