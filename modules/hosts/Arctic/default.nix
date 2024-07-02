@@ -20,7 +20,7 @@
           user = "katie";
         };
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks";
           user = "greeter";
         };
       };
