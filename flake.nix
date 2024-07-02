@@ -50,7 +50,6 @@
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     apple-silicon-support = {url = "github:tpwrules/nixos-apple-silicon";};
