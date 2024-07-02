@@ -13,15 +13,16 @@
 
   services = {
     greetd = {
-      enable = false;
-      settings = let
-        session = "${pkgs.hyprland}/bin/Hyprland";
-      in {
-        # initial_session = {
-        #   # command = session;
-        #   command = "Hyprland";
-        #   user = "katie";
-        # };
+      enable = true;
+      settings = {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland";
+          user = "katie";
+        };
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+          user = "greeter";
+        };
       };
     };
     openssh.enable = true;
