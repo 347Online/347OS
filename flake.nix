@@ -98,7 +98,7 @@
       forSystems f
       supportedSystems;
 
-    util = import ./modules/util.nix;
+    util = import ./modules/util.nix inputs;
 
     mkPkgs = system:
       import nixpkgs {
@@ -135,7 +135,7 @@
     in
       (mkSpecialArgs pkgs)
       // {
-        inherit fenix;
+        inherit fenix util;
         vscode-extensions = nix-vscode-extensions.extensions.${system};
       };
 

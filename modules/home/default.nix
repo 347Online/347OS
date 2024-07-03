@@ -3,23 +3,9 @@
   lib,
   username,
   homeDirectory,
+  util,
   ...
-}: let
-  listFilesRecursive = dir: acc:
-    lib.flatten (lib.mapAttrsToList
-      (k: v:
-        if v == "regular"
-        then "${acc}${k}"
-        else listFilesRecursive dir "${acc}${k}/")
-      (builtins.readDir "${dir}/${acc}"));
-
-  toHomeFiles = dir:
-    builtins.listToAttrs
-    (map (name: {
-      inherit name;
-      value = {source = "${dir}/${name}";};
-    }) (listFilesRecursive dir ""));
-in {
+}: {
   imports = [
     ./programs
     ./nix.nix
@@ -31,7 +17,7 @@ in {
 
     sessionVariables.EDITOR = "nvim";
 
-    file = toHomeFiles ./dotfiles;
+    file = util.toHomeFiles ./dotfiles;
 
     activation = {
       # miseInstall = lib.hm.dag.entryAfter ["installPackages"] ''
