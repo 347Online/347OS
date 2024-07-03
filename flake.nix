@@ -54,6 +54,11 @@
     };
 
     apple-silicon-support = {url = "github:tpwrules/nixos-apple-silicon";};
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
