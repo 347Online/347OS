@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./actions-preview.nix
     ./cokeline.nix
     ./completion.nix
     ./formatting.nix
