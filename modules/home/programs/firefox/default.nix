@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  config,
   ...
 }: {
   programs.firefox = {
@@ -13,7 +14,8 @@
         user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
         user_pref("browser.startup.page", 3);
       '';
-      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+      extensions = with config.nur.repos.rycee.firefox-addons; [
+        onepassword-password-manager
         darkreader
         youtube-shorts-block
         ublock-origin

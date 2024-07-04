@@ -187,6 +187,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
+              sharedModules = [nur.hmModules.nur];
               extraSpecialArgs = mkExtraSpecialArgs pkgs;
               users.${username}.imports =
                 baseModulesHomeManager
