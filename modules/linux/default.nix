@@ -4,8 +4,8 @@
   ...
 }: {
   imports = [
+    ./hyprland
     ./cursor.nix
-    ./hyprland.nix
   ];
 
   # home.file = util.toHomeFiles ./dotfiles;
