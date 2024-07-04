@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   extraPlugins = with pkgs.vimPlugins; [
-    nvim-cokeline
+    precognition-nvim
   ];
 
   extraConfigLua =
@@ -8,6 +8,6 @@
     lua
     */
     ''
-      require("cokeline").setup()
+      require("precognition").setup()
     '';
 }

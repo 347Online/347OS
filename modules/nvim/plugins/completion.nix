@@ -5,6 +5,7 @@
       experimental.ghost_text = true;
       sources = [
         {name = "nvim_lsp";}
+        {name = "otter";}
         {name = "path";}
         {name = "buffer";}
       ];

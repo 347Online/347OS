@@ -12,7 +12,7 @@
     }
     {
       mode = "n";
-      key = "<leader>F";
+      key = "<leader>f";
       action = ":Telescope live_grep<CR>";
       options.silent = true;
     }
