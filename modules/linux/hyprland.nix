@@ -6,8 +6,8 @@
 }: let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     1password --silent &
+    webcord -m &
     # mako
-    # webcord -m &
     # waybar &
   '';
 in {
@@ -145,6 +145,14 @@ in {
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
       ];
+
+      # bindel = [
+      # "XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+      #   "XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      # ];
+
+      # bindl = ["XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"];
+      bindel = [",XF86AudioPlay, exec, playerctl play-pause"];
 
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging

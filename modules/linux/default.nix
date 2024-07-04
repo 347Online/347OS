@@ -12,5 +12,7 @@
 
   home.packages = with pkgs; [
     webcord
+    blueberry
+    pavucontrol
   ];
 }

@@ -188,6 +188,8 @@
           {nixpkgs.config.allowUnfree = true;}
           {
             environment.systemPackages = with pkgs; [
+              wev
+              playerctl
               pkgsUnsupported.cider
             ];
             programs._1password.enable = true;
