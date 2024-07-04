@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hyprland
+    ./bar.nix
     ./cursor.nix
   ];
 
