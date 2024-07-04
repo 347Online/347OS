@@ -174,11 +174,28 @@
     nixosConfigurations."Arctic" = let
       system = "aarch64-linux";
       pkgs = mkPkgs system;
+      pkgsUnsupported = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        config.allowUnsupportedSystem = true;
+      };
     in
       nixpkgs.lib.nixosSystem {
         specialArgs = mkSpecialArgs pkgs;
 
+        # TODO: Much of this can be in nixos-specific module(s) rather than baked into Arctic or the flake
         modules = [
+          {nixpkgs.config.allowUnfree = true;}
+          {
+            environment.systemPackages = with pkgs; [
+              pkgsUnsupported.cider
+            ];
+            programs._1password.enable = true;
+            programs._1password-gui = {
+              enable = true;
+              polkitPolicyOwners = [username];
+            };
+          }
           home-manager.nixosModules.home-manager
           {
             home-manager = {
