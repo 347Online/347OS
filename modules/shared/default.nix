@@ -33,10 +33,6 @@
           fi
         '';
     };
-
-    packages = with pkgs; [
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
-    ];
   };
 
   news.display = "silent";

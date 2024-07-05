@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+
     nur.url = "github:nix-community/NUR";
 
     nix-darwin = {
@@ -65,6 +67,7 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    nixos-hardware,
     nur,
     nix-darwin,
     home-manager,
@@ -148,6 +151,7 @@
 
     baseModulesHomeManager = [
       nixvim.homeManagerModules.nixvim
+      {stylix.targets.alacritty.enable = false;}
       ./modules/shared
     ];
 
@@ -162,6 +166,7 @@
         modules = [
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
+          stylix.darwinModules.stylix
           (import ./modules/darwin)
           {
             environment.pathsToLink = ["/share/zsh"];
@@ -200,7 +205,11 @@
               polarity = "dark";
 
               image = ./modules/linux/wp-neon-city.jpg;
-              # fonts.monospace
+              imageScalingMode = "fit";
+              fonts.monospace = {
+                package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+                name = "JetBrainsMono Nerd Font";
+              };
             };
           }
           {nixpkgs.config.allowUnfree = true;}

@@ -2,12 +2,19 @@
   pkgs,
   fenix,
   nur,
+  inputs,
   ...
 }: {
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix = {
+    registry = {
+      nixpkgs.flake = inputs.nixpkgs;
+      nixos-hardware.flake = inputs.nixos-hardware;
+    };
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
   nixpkgs = {
     overlays = [fenix.overlays.default];
     config = {

@@ -22,6 +22,7 @@
     bat
     eza
     ripgrep
+    fd
     mise
     _1password
     prettierd
