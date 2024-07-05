@@ -17,6 +17,7 @@ in {
     extraConfig = {
       core.editor = "nvim";
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
       pull.ff = "only";
       credential.helper = lib.mkIf isDarwin "osxkeychain";
     };
