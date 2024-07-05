@@ -8,6 +8,7 @@ test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
 
+bindkey -e
 HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
