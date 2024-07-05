@@ -16,7 +16,7 @@
       }
       {
         plugin = battery;
-        extraConfig = "set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '";
+        extraConfig = "set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | '";
       }
       {
         plugin = resurrect;
