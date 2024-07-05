@@ -119,7 +119,7 @@
             };
           });
         });
-        module = (import ./modules/nvim) // {package = neovim-nightly-overlay.packages.${system}.default;};
+        module = (import ./modules/shared/programs/nvim) // {package = neovim-nightly-overlay.packages.${system}.default;};
       };
 
     mkSpecialArgs = pkgs: let
@@ -168,8 +168,8 @@
         ];
       };
   in {
-    darwinConfigurations."Athena" = mkDarwin {module = import ./modules/hosts/Athena.nix;};
-    darwinConfigurations."Alice" = mkDarwin {module = import ./modules/hosts/Alice.nix;};
+    darwinConfigurations."Athena" = mkDarwin {module = import ./hosts/Athena.nix;};
+    darwinConfigurations."Alice" = mkDarwin {module = import ./hosts/Alice.nix;};
 
     nixosConfigurations."Arctic" = let
       system = "aarch64-linux";
