@@ -93,7 +93,7 @@ in {
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         "$mainMod, Q, killactive, "
         "$mainMod, E, exec, $fileManager"
-        "$mainMod, V, togglefloating, "
+        "$mainMod, M, togglefloating, "
         "$mainMod, SPACE, exec, $menu"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
