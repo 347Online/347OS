@@ -53,6 +53,12 @@
       flake = false;
     };
 
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     apple-silicon-support = {url = "github:tpwrules/nixos-apple-silicon";};
   };
 
@@ -68,6 +74,7 @@
     nil,
     neovim-nightly-overlay,
     nixvim,
+    stylix,
     ...
   }: let
     username = "katie";
@@ -185,6 +192,7 @@
 
         # TODO: Much of this can be in nixos-specific module(s) rather than baked into Arctic or the flake
         modules = [
+          stylix.nixosModules.stylix
           {nixpkgs.config.allowUnfree = true;}
           {
             environment.systemPackages = with pkgs; [
