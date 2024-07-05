@@ -193,6 +193,16 @@
         # TODO: Much of this can be in nixos-specific module(s) rather than baked into Arctic or the flake
         modules = [
           stylix.nixosModules.stylix
+          {
+            stylix = {
+              enable = true;
+              base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
+              polarity = "dark";
+
+              image = ./modules/linux/wp-neon-city.jpg;
+              # fonts.monospace
+            };
+          }
           {nixpkgs.config.allowUnfree = true;}
           {
             environment.systemPackages = with pkgs; [

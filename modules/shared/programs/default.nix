@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   util,
   nvim,
@@ -27,6 +28,7 @@
 
     obsidian
 
+    # (nvim.extend {colorschemes.base16 = config.programs.nixvim.colorschemes.base16;})
     nvim
   ];
 

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.vscode.userSettings = {
     "editor.acceptSuggestionOnCommitCharacter" = false;
     "editor.accessibilitySupport" = "off";
@@ -8,7 +12,7 @@
     "editor.autoClosingQuotes" = "never";
     "editor.autoSurround" = "never";
     "editor.codeLens" = false;
-    "editor.fontFamily" = "JetBrainsMono Nerd Font";
+    "editor.fontFamily" = lib.mkDefault "JetBrainsMono Nerd Font";
     "editor.fontLigatures" = true;
     "editor.formatOnSave" = true;
     "editor.inlayHints.enabled" = "offUnlessPressed";
@@ -40,7 +44,7 @@
 
     "terminal.external.osxExec" = "kitty";
     "terminal.external.linuxExec" = "kitty";
-    "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
+    "terminal.integrated.fontFamily" = lib.mkDefault "JetBrainsMono Nerd Font";
     "terminal.integrated.mouseWheelScrollSensitivity" = 0.1;
     "terminal.integrated.customGlyphs" = true;
     "terminal.integrated.defaultProfile.osx" = "zsh";
