@@ -36,15 +36,6 @@
 
     packages = with pkgs; [
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
-
-      bat
-      eza
-      ripgrep
-      mise
-
-      _1password
-
-      obsidian
     ];
   };
 

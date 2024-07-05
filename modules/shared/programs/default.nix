@@ -17,7 +17,18 @@
     ./zoxide.nix
   ];
 
-  home.packages = [nvim];
+  home.packages = with pkgs; [
+    bat
+    eza
+    ripgrep
+    mise
+    _1password
+    prettierd
+
+    obsidian
+
+    nvim
+  ];
 
   programs.home-manager.enable = true;
 
