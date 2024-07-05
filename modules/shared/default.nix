@@ -20,10 +20,18 @@
     file = util.toHomeFiles ./dotfiles;
 
     activation = {
-      # miseInstall = lib.hm.dag.entryAfter ["installPackages"] ''
-      #   # rtx has been renamed to mise
-      #   ${pkgs.rtx}/bin/mise install
-      # '';
+      miseInstall =
+        lib.hm.dag.entryAfter ["installPackages"]
+        /*
+        bash
+        */
+        ''
+          if ${pkgs.mise}/bin/mise install; then
+            echo "mise install succeeded"
+          else
+            echo "mise install failed"
+          fi
+        '';
     };
 
     packages = with pkgs; [
@@ -32,10 +40,9 @@
       bat
       eza
       ripgrep
-      rtx
+      mise
 
       _1password
-      _1password-gui
 
       obsidian
     ];

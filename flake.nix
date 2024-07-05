@@ -190,6 +190,7 @@
             environment.systemPackages = with pkgs; [
               wev
               playerctl
+              element-desktop
               pkgsUnsupported.cider
             ];
             programs._1password.enable = true;
