@@ -141,7 +141,7 @@
 
     baseModulesHomeManager = [
       nixvim.homeManagerModules.nixvim
-      ./modules/home
+      ./modules/shared
     ];
 
     mkDarwin = {
@@ -211,7 +211,7 @@
               backupFileExtension = "bakk";
             };
           }
-          ./modules/hosts/Arctic
+          ./hosts/Arctic
         ];
       };
     packages = forAllSystems ({
