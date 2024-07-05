@@ -15,5 +15,6 @@
     webcord
     blueberry
     pavucontrol
+    acpi
   ];
 }

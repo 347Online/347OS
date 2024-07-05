@@ -8,6 +8,23 @@
     baseIndex = 1;
     mouse = true;
     shortcut = "Space";
-    terminal = "xterm-256color";
+    terminal = "xterm-256color"; # TODO: This needs to be set to an environment var or something for correct behavior in tty
+    plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = battery;
+        extraConfig = "set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '";
+      }
+      {
+        plugin = resurrect;
+        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+      }
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '60' # minutes
+        '';
+      }
+    ];
   };
 }
