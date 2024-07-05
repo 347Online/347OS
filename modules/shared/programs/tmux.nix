@@ -11,6 +11,10 @@
     terminal = "xterm-256color"; # TODO: This needs to be set to an environment var or something for correct behavior in tty
     plugins = with pkgs.tmuxPlugins; [
       {
+        plugin = power-theme;
+        extraConfig = "set -g @tmux_power_theme 'default'";
+      }
+      {
         plugin = battery;
         extraConfig = "set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '";
       }

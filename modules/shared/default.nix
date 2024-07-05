@@ -18,21 +18,6 @@
     sessionVariables.EDITOR = "nvim";
 
     file = util.toHomeFiles ./dotfiles;
-
-    activation = {
-      miseInstall =
-        lib.hm.dag.entryAfter ["installPackages"]
-        /*
-        bash
-        */
-        ''
-          if ${pkgs.mise}/bin/mise install; then
-            echo "mise install succeeded"
-          else
-            echo "mise install failed"
-          fi
-        '';
-    };
   };
 
   news.display = "silent";
