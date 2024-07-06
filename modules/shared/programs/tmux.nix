@@ -23,5 +23,15 @@
         extraConfig = "set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | '";
       }
     ];
+
+    extraConfig =
+      /*
+      tmux
+      */
+      ''
+        bind '"' split-window -c "#{pane_current_path}"
+        bind % split-window -h -c "#{pane_current_path}"
+        bind c new-window -c "#{pane_current_path}"
+      '';
   };
 }
