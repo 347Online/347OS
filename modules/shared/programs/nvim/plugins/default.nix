@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./autopairs.nix
     ./actions-preview.nix
     ./cokeline.nix
     ./completion.nix
