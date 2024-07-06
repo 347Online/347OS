@@ -3,7 +3,6 @@
   util = rec {
     mkShellAliases = pkgs:
       with pkgs; {
-        "bash" = "${bash}/bin/bash";
         "cat" = "${bat}/bin/bat";
         "ls" = "${eza}/bin/eza";
         "tree" = "${eza}/bin/eza --tree";
