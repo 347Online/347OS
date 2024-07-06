@@ -3,7 +3,6 @@
     ./actions-preview.nix
     ./cokeline.nix
     ./completion.nix
-    ./delimitMate.nix
     ./formatting.nix
     ./git.nix
     ./lsp.nix

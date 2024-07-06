@@ -7,7 +7,6 @@
     };
     notifyOnError = true;
     formattersByFt = {
-      liquidsoap = ["liquidsoap-prettier"];
       html = [["prettierd" "prettier"]];
       css = [["prettierd" "prettier"]];
       javascript = [["prettierd" "prettier"]];

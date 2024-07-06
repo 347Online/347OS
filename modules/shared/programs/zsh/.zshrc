@@ -17,3 +17,9 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_dups
 setopt hist_save_no_dups
 setopt hist_find_no_dups
+
+tmux_default_session_name="default"
+if [ -z "$TMUX" ]; then
+    tmux attach -t  || tmux new -s default
+fi
+
