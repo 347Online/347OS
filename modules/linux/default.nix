@@ -5,8 +5,9 @@
 }: {
   imports = [
     ./hyprland
-    ./bar.nix
+
     ./cursor.nix
+    ./waybar.nix
   ];
 
   # home.file = util.toHomeFiles ./dotfiles;
