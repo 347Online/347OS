@@ -13,6 +13,7 @@ in {
     ./homebrew.nix
     ./nix.nix
     ./prefs.nix
+    ../shared/stylix.nix
   ];
 
   options = with lib.types; {

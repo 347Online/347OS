@@ -186,7 +186,7 @@
       };
   in {
     darwinConfigurations."Athena" = mkDarwin {module = import ./hosts/Athena.nix;};
-    darwinConfigurations."Alice" = mkDarwin {module = import ./hosts/Alice.nix;};
+    darwinConfigurations."Alice" = mkDarwin {module = ./hosts/Alice;};
 
     nixosConfigurations."Arctic" = let
       system = "aarch64-linux";
@@ -203,19 +203,9 @@
         # TODO: Much of this can be in nixos-specific module(s) rather than baked into Arctic or the flake
         modules = [
           stylix.nixosModules.stylix
+          ./modules/shared/stylix.nix
           {
-            stylix = {
-              enable = true;
-              base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
-              polarity = "dark";
-
-              image = ./modules/linux/wp-neon-city.jpg;
-              imageScalingMode = "fit";
-              fonts.monospace = {
-                package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-                name = "JetBrainsMono Nerd Font";
-              };
-            };
+            stylix.image = ./modules/linux/wp-neon-city.jpg;
           }
           {nixpkgs.config.allowUnfree = true;}
           {
