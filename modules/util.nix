@@ -3,6 +3,7 @@
   util = rec {
     mkShellAliases = pkgs:
       with pkgs; {
+        # TODO: Use lib.getExe or whatever it's called
         "cat" = "${bat}/bin/bat";
         "ls" = "${eza}/bin/eza";
         "tree" = "${eza}/bin/eza --tree";

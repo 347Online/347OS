@@ -151,7 +151,12 @@
 
     baseModulesHomeManager = [
       nixvim.homeManagerModules.nixvim
-      {stylix.targets.alacritty.enable = false;}
+      {
+        stylix.targets = {
+          alacritty.enable = false;
+          waybar.enable = false;
+        };
+      }
       ./modules/shared
     ];
 
@@ -219,6 +224,7 @@
               playerctl
               element-desktop
               pkgsUnsupported.cider
+              killall
             ];
             programs._1password.enable = true;
             programs._1password-gui = {

@@ -16,25 +16,30 @@
   };
 
   services = {
-    greetd = {
-      enable = true;
-      settings = {
-        initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland";
-          user = "katie";
-        };
-        default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks";
-          user = "greeter";
-        };
-      };
-    };
+    # greetd = {
+    #   enable = false;
+    #   settings = {
+    #     initial_session = {
+    #       command = "${pkgs.hyprland}/bin/Hyprland";
+    #       user = "katie";
+    #     };
+    #     default_session = {
+    #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks";
+    #       user = "greeter";
+    #     };
+    #   };
+    # };
     openssh.enable = true;
     printing.enable = true;
     displayManager = {
       autoLogin = {
-        enable = true;
+        enable = false;
         user = "katie";
+      };
+      sddm = {
+        enable = false;
+        enableHidpi = true;
+        wayland.enable = true;
       };
     };
   };
