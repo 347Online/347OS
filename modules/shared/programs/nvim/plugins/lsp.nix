@@ -15,4 +15,12 @@
       };
     };
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>r";
+      action.__raw = "vim.lsp.buf.rename";
+    }
+  ];
 }
