@@ -18,10 +18,4 @@
     settings.style = "night";
     enable = true;
   };
-  # colorschemes.cyberdream.enable = true;
-  # colorschemes.vscode
-  # colorschemes.onedark = {
-  #   # enable = true;
-  #   settings.style = "warmer";
-  # };
 }
