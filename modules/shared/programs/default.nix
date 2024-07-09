@@ -15,6 +15,7 @@
     ./fzf.nix
     ./git.nix
     ./tmux.nix
+    ./wezterm.nix
     ./zoxide.nix
   ];
 
