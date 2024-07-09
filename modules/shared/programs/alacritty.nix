@@ -18,8 +18,6 @@ in {
       font = {
         normal.family = lib.mkDefault "JetBrainsMono Nerd Font";
 
-        #   then 13
-        #   else 9;
         size = lib.mkMerge [
           (lib.mkIf isDarwin (lib.mkForce 13))
           (lib.mkIf (!isDarwin) (lib.mkForce 9))

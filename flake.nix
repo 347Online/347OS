@@ -129,7 +129,11 @@
             };
           });
         });
-        module = (import ./modules/shared/programs/nvim) // {package = neovim-nightly-overlay.packages.${system}.default;};
+        module =
+          (import ./modules/shared/programs/nvim)
+          // {
+            package = neovim-nightly-overlay.packages.${system}.default;
+          };
       };
 
     mkSpecialArgs = pkgs: let

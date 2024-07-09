@@ -32,7 +32,8 @@
       ritwickdey.liveserver
       vscode-marketplace.cweijan.vscode-database-client2
       ms-vscode.hexeditor
-      asvetliakov.vscode-neovim
+      # asvetliakov.vscode-neovim
+      vscodevim.vim
     ]
     ++ config.code.codium.extraExtensions;
 }
