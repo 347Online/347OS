@@ -1,5 +1,8 @@
 {
-  plugins.lspsaga.enable = true;
+  imports = [
+    ./lspsaga.nix
+  ];
+
   plugins.lsp = {
     enable = true;
     servers = {

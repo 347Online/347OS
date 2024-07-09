@@ -14,6 +14,7 @@
       mode = "n";
       key = "<leader>gp";
       action = ":Gitsigns preview_hunk<CR>";
+      options.silent = true;
     }
   ];
 }

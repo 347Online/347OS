@@ -1,14 +1,14 @@
 {pkgs, ...}: {
   imports = [
+    ./lsp
+
     ./autopairs.nix
-    ./actions-preview.nix
+    # ./actions-preview.nix
     ./cokeline.nix
     ./completion.nix
     ./formatting.nix
     ./git.nix
-    ./lsp.nix
     ./neo-tree.nix
-    # ./precognition.nix
     ./telescope.nix
   ];
 
