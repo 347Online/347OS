@@ -8,7 +8,7 @@
     ./git.nix
     ./lsp.nix
     ./neo-tree.nix
-    ./precognition.nix
+    # ./precognition.nix
     ./telescope.nix
   ];
 

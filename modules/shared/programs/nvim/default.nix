@@ -12,7 +12,6 @@
     shiftwidth = 2;
     expandtab = true;
     autoindent = true;
-    termguicolors = true;
   };
 
   colorschemes.tokyonight = {
