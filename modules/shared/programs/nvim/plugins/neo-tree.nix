@@ -11,13 +11,14 @@
           ".DS_Store"
         ];
       };
-    };
 
+      useLibuvFileWatcher = true;
+    };
     enableDiagnostics = true;
     enableGitStatus = true;
     enableModifiedMarkers = true;
     window = {
-      width = 35;
+      width = 40;
       autoExpandWidth = false;
     };
   };
@@ -26,13 +27,13 @@
     {
       mode = "n";
       key = "<leader>N";
-      action = ":Neotree action=focus reveal toggle<CR>";
+      action = ":Neotree action=focus reveal toggle left<CR>";
       options.silent = true;
     }
     {
       mode = "n";
       key = "<leader>n";
-      action = ":Neotree action=focus reveal<CR>";
+      action = ":Neotree action=focus reveal left<CR>";
       options.silent = true;
     }
   ];
