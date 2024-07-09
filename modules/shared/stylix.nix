@@ -12,9 +12,11 @@
 
     # image = ./modules/linux/wp-neon-city.jpg;
     # imageScalingMode = "fit";
-    fonts.monospace = {
-      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-      name = "JetBrainsMono Nerd Font";
+    fonts = {
+      monospace = {
+        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+        name = "JetBrainsMono Nerd Font";
+      };
     };
   };
   # home-manager.users.${username}.stylix = {

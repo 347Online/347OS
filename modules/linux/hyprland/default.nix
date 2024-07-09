@@ -19,7 +19,7 @@ in {
       exec-once = ''${startupScript}/bin/start'';
 
       "$terminal" = "${pkgs.alacritty}/bin/alacritty";
-      "$menu" = "[floating] ${pkgs.fuzzel}/bin/fuzzel -f Dina:size=18";
+      "$menu" = "[floating] fuzzel -f Dina:size=18";
 
       input = {
         kb_layout = "us";
