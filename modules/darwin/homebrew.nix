@@ -21,6 +21,7 @@
       onActivation = {
         autoUpdate = true;
         upgrade = true;
+        cleanup = "uninstall";
       };
 
       masApps = {
@@ -43,6 +44,7 @@
     };
 
     environment.variables = {
+      HOMEBREW_NO_ENV_HINTS = "1";
       HOMEBREW_PREFIX = "/opt/homebrew";
       HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
       HOMEBREW_REPOSITORY = "/opt/homebrew/Library/.homebrew-is-managed-by-nix";

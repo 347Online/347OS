@@ -12,6 +12,7 @@ in {
   imports = [
     ./homebrew.nix
     ./nix.nix
+    ./pam.nix
     ./prefs.nix
     ../shared/stylix.nix
   ];
@@ -33,10 +34,15 @@ in {
     };
   };
 
-  config = {
+  config = let
+    x = builtins.deepSeq config.system.activationScripts.extraActivation;
+    y = builtins.trace x;
+  in {
     darwin.homebrew.enable = lib.mkDefault true;
 
-    security.pam.enableSudoTouchIdAuth = true;
+    # See ./pam.nix
+    # security.pam.enableSudoTouchIdAuth = true;
+    security.pam.enableCustomSudoTouchIdAuth = true;
 
     system = {
       defaults.dock.persistent-apps = with pkgs;
@@ -71,7 +77,6 @@ in {
     programs = {
       zsh.enable = true;
       bash.enable = true;
-      fish.enable = true;
     };
 
     environment.systemPackages = with pkgs; [
