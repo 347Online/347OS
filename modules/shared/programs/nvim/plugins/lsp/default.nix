@@ -20,21 +20,21 @@
     };
   };
 
-  keymaps = [
-    {
-      mode = "n";
-      key = "<leader>r";
-      action.__raw = "vim.lsp.buf.rename";
-    }
-    {
-      mode = "n";
-      key = "<leader>l";
-      action.__raw = "vim.lsp.buf.signature_help";
-    }
-    {
-      mode = "n";
-      key = "gd";
-      action.__raw = "vim.lsp.buf.definition";
-    }
-  ];
+  # keymaps = [
+  #   # {
+  #   #   mode = "n";
+  #   #   key = "<leader>r";
+  #   #   action.__raw = "vim.lsp.buf.rename";
+  #   # }
+  #   # {
+  #   #   mode = "n";
+  #   #   key = "<leader>l";
+  #   #   action.__raw = "vim.lsp.buf.signature_help";
+  #   # }
+  #   # {
+  #   #   mode = "n";
+  #   #   key = "gd";
+  #   #   action.__raw = "vim.lsp.buf.definition";
+  #   # }
+  # ];
 }
