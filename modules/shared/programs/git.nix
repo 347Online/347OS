@@ -19,10 +19,10 @@ in {
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.ff = "only";
-      credential.helper = lib.mkIf isDarwin "osxkeychain";
     };
   };
 
   # TODO: Add caching or something, this was triggering CONSTANTLY
+  # Better still, see if we can just let 1Password handle this
   programs.git-credential-oauth.enable = lib.mkIf (!isDarwin) true;
 }
