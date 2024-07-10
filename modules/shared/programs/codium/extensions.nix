@@ -13,6 +13,8 @@
       mkhl.direnv
       ms-vsliveshare.vsliveshare
       ms-python.python
+      kamadorueda.alejandra
+      jnoortheen.nix-ide
 
       # Formatting
       ms-python.black-formatter

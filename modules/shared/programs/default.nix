@@ -20,12 +20,14 @@
   ];
 
   home.packages = with pkgs; [
+    alejandra
+    nil
     bat
     eza
     ripgrep
     fd
     mise
-    _1password
+    _1password # TODO: Attempt to fix and contribute upstream
     prettierd
 
     obsidian
