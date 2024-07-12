@@ -41,8 +41,8 @@
     "gitlens.showWelcomeOnInstall" = false;
     "gitlens.showWhatsNewAfterUpgrades" = false;
 
-    "terminal.external.osxExec" = "alacritty";
-    "terminal.external.linuxExec" = "alacritty";
+    "terminal.external.osxExec" = "wezterm";
+    "terminal.external.linuxExec" = "wezterm";
     "terminal.integrated.mouseWheelScrollSensitivity" = 0.1;
     "terminal.integrated.customGlyphs" = true;
     "terminal.integrated.defaultProfile.osx" = "zsh";

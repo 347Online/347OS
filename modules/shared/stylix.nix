@@ -21,7 +21,6 @@
   };
   # home-manager.users.${username}.stylix = {
   #   targets = {
-  #     alacritty.enable = false;
   #     waybar.enable = lib.mkIf (!pkgs.stdenv.isDarwin) false;
   #   };
   # };

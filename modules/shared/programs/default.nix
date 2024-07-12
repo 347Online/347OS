@@ -10,7 +10,6 @@
     ./firefox
     ./zsh
 
-    ./alacritty.nix
     ./direnv.nix
     ./fzf.nix
     ./git.nix

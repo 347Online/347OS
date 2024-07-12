@@ -157,7 +157,6 @@
       nixvim.homeManagerModules.nixvim
       {
         stylix.targets = {
-          alacritty.enable = false;
           waybar.enable = false;
         };
       }

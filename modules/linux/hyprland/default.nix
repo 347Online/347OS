@@ -18,7 +18,7 @@ in {
       monitor = ",preferred,auto,auto";
       exec-once = ''${startupScript}/bin/start'';
 
-      "$terminal" = "${pkgs.alacritty}/bin/alacritty";
+      "$terminal" = "${pkgs.wezterm}/bin/wezterm";
       "$menu" = "[floating] fuzzel -f Dina:size=18";
 
       input = {
