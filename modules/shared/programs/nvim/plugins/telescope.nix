@@ -1,8 +1,4 @@
 {
-  plugins.telescope = {
-    enable = true;
-  };
-
   keymaps = [
     {
       mode = "n";
