@@ -3,7 +3,6 @@
     ./lsp
 
     ./autopairs.nix
-    # ./actions-preview.nix
     ./cokeline.nix
     ./completion.nix
     ./formatting.nix
