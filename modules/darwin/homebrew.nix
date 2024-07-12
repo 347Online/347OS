@@ -36,6 +36,7 @@
       };
 
       casks = [
+        "1password"
         "raycast"
         "setapp"
         "scroll-reverser"
