@@ -44,26 +44,14 @@
     }
     {
       mode = "n";
-      key = "<leader>gd";
+      key = "gd";
       action = ":Lspsaga goto_definition<CR>";
       options.silent = true;
     }
     {
       mode = "n";
-      key = "<leader>gt";
+      key = "gt";
       action = ":Lspsaga goto_type_definition<CR>";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>xd";
-      action = ":Lspsaga peek_definition<CR>";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>xt";
-      action = ":Lspsaga peek_type_definition<CR>";
       options.silent = true;
     }
   ];
