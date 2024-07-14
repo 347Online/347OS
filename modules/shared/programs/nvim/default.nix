@@ -6,6 +6,7 @@
   globals.mapleader = ",";
 
   opts = {
+    foldenable = false;
     wrap = false;
     number = true;
     relativenumber = true;
