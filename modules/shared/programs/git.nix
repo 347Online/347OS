@@ -1,10 +1,8 @@
 {
-  pkgs,
   lib,
+  isDarwin,
   ...
-}: let
-  isDarwin = pkgs.stdenv.isDarwin;
-in {
+}: {
   programs.git = {
     enable = true;
     delta.enable = true;

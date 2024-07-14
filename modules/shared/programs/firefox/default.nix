@@ -1,12 +1,11 @@
 {
-  pkgs,
   lib,
-  inputs,
+  isDarwin,
   config,
   ...
 }: {
   programs.firefox = {
-    enable = lib.mkIf (!pkgs.stdenv.isDarwin) true;
+    enable = lib.mkIf (!isDarwin) true;
 
     profiles.katie = {
       isDefault = true;

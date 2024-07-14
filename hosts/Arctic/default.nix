@@ -8,6 +8,7 @@
   ];
 
   networking.hostName = "Arctic";
+  stylix.image = ./wp-neon-city.jpg;
 
   programs.zsh.enable = true;
   programs.hyprland = {

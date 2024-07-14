@@ -18,6 +18,12 @@
         "nvim-next" = "nix run ~/src/nix-systems#nvim";
       };
 
+    mkIfElse = condition: trueValue: falseValue:
+      lib.mkMerge [
+        (lib.mkIf condition trueValue)
+        (lib.mkIf (!condition) falseValue)
+      ];
+
     mkHomeDirectory = pkgs: username:
       if pkgs.stdenv.isDarwin
       then "/Users/${username}"

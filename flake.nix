@@ -143,6 +143,7 @@
       system = pkgs.system;
     in {
       inherit inputs username util system;
+      inherit (pkgs.stdenv) isDarwin;
       homeDirectory = util.mkHomeDirectory pkgs username;
       nvim = mkNvim pkgs;
     };
@@ -210,9 +211,6 @@
         modules = [
           stylix.nixosModules.stylix
           ./modules/shared/stylix.nix
-          {
-            stylix.image = ./modules/linux/wp-neon-city.jpg;
-          }
           {nixpkgs.config.allowUnfree = true;}
           {
             environment.systemPackages = with pkgs; [
