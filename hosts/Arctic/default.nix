@@ -11,9 +11,9 @@
   stylix.image = ./wp-neon-city.jpg;
 
   programs.zsh.enable = true;
-  programs.hyprland = {
+  programs.sway = {
     enable = true;
-    xwayland.enable = true;
+    wrapperFeatures.gtk = true;
   };
 
   services = {
