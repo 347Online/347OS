@@ -4,8 +4,6 @@
   ...
 }: {
   imports = [
-    ./hyprland
-
     ./cursor.nix
     ./waybar.nix
   ];
