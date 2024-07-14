@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   nvim,
   ...
@@ -17,24 +18,24 @@
   };
 
   services = {
-    # greetd = {
-    #   enable = false;
-    #   settings = {
-    #     initial_session = {
-    #       command = "${pkgs.hyprland}/bin/Hyprland";
-    #       user = "katie";
-    #     };
-    #     default_session = {
-    #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks";
-    #       user = "greeter";
-    #     };
-    #   };
-    # };
+    greetd = {
+      enable = true;
+      settings = {
+        initial_session = {
+          command = "${pkgs.sway}/bin/sway";
+          user = "katie";
+        };
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks";
+          user = "greeter";
+        };
+      };
+    };
     openssh.enable = true;
     printing.enable = true;
     displayManager = {
       autoLogin = {
-        enable = false;
+        enable = true;
         user = "katie";
       };
       sddm = {
