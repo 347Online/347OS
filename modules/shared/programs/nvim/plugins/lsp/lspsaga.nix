@@ -1,24 +1,13 @@
 {
   plugins.lspsaga = let
-    quitKeys = [
-      "<Esc><Esc>"
-      "q"
-    ];
   in {
     enable = true;
     lightbulb.virtualText = false;
-    finder.keys.quit = quitKeys;
     rename = {
       autoSave = true;
       inSelect = false;
-      keys.quit = quitKeys;
     };
-    outline.keys.quit = quitKeys;
-    callhierarchy.keys.quit = quitKeys;
-    definition.keys.quit = quitKeys;
-    diagnostic.keys.quit = quitKeys;
     codeAction = {
-      keys.quit = quitKeys;
       extendGitSigns = true;
     };
   };
