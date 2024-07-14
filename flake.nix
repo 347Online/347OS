@@ -61,7 +61,10 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    apple-silicon-support = {url = "github:tpwrules/nixos-apple-silicon";};
+    apple-silicon-support = {
+      url = "github:tpwrules/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
