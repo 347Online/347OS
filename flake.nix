@@ -191,7 +191,7 @@
         ];
       };
   in {
-    darwinConfigurations."Athena" = mkDarwin {module = import ./hosts/Athena.nix;};
+    darwinConfigurations."Athena" = mkDarwin {module = ./hosts/Athena;};
     darwinConfigurations."Alice" = mkDarwin {module = ./hosts/Alice;};
 
     nixosConfigurations."Arctic" = let
