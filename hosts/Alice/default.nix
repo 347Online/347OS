@@ -9,6 +9,9 @@
     ];
   };
 
+  # TODO: Try to use the version packaged in nixpkgs instead
+  homebrew.brews = ["awscli"];
+
   home-manager.users.${username} = {
     code.codium = {
       rust = false;
