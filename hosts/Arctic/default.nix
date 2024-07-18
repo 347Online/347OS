@@ -12,10 +12,6 @@
   stylix.image = ./wp-neon-city.jpg;
 
   programs.zsh.enable = true;
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
 
   services = {
     greetd = {
