@@ -8,8 +8,7 @@
 }: {
   stylix = {
     enable = true;
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/standardized-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/spacemacs.yaml";
     polarity = "dark";
 
     fonts = {
