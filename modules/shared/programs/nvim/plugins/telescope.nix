@@ -1,5 +1,5 @@
 {
-  plugins.telescope = {
+  plugins.telescope.settings = {
     pickers = {
       find_files.hidden = true;
     };
