@@ -2,7 +2,7 @@
   plugins.lspsaga = let
   in {
     enable = true;
-    lightbulb.virtualText = false;
+    lightbulb.enable = false;
     rename = {
       autoSave = true;
       inSelect = false;
