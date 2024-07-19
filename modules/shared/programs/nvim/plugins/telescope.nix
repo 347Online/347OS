@@ -1,4 +1,9 @@
 {
+  plugins.telescope = {
+    pickers = {
+      find_files.hidden = true;
+    };
+  };
   keymaps = [
     {
       mode = "n";
