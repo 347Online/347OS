@@ -7,6 +7,7 @@
     ./conform-nvim.nix
     ./gitsigns.nix
     ./neo-tree.nix
+    ./oil.nix
     ./telescope.nix
   ];
 
@@ -22,6 +23,7 @@
     luasnip.enable = true;
     neo-tree.enable = true;
     nix.enable = true;
+    oil.enable = true;
     telescope.enable = true;
     treesitter.enable = true;
   };
