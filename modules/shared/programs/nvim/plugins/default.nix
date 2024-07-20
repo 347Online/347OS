@@ -2,6 +2,7 @@
   imports = [
     ./lsp
 
+    ./auto-session.nix
     ./cmp.nix
     ./conform-nvim.nix
     ./gitsigns.nix
@@ -11,6 +12,7 @@
 
   plugins = {
     nvim-autopairs.enable = true;
+    auto-session.enable = true;
     cmp.enable = true;
     conform-nvim.enable = true;
     fugitive.enable = true;

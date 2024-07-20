@@ -7,6 +7,7 @@
     enable = true;
     delta.enable = true;
     ignores = [
+      "Session.vim"
       ".DS_Store"
       ".mise.*.toml"
     ];
