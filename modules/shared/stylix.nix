@@ -8,7 +8,10 @@
 }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/spacemacs.yaml";
+    base16Scheme = let
+      themePrefix = "${pkgs.base16-schemes}/share/themes";
+    in
+      util.mkIfElse isDarwin "${themePrefix}/standardized-dark.yaml" "${themePrefix}/spacemacs.yaml";
     polarity = "dark";
 
     fonts = {
