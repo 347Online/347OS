@@ -13,8 +13,20 @@
     }
     {
       mode = "n";
-      key = "<leader>fa";
+      key = "<leader>fg";
       action = ":Telescope live_grep<CR>";
+      options.silent = true;
+    }
+    {
+      mode = "n";
+      key = "<leader>fb";
+      action = ":Telescope buffers<CR>";
+      options.silent = true;
+    }
+    {
+      mode = "n";
+      key = "<leader>fh";
+      action = ":Telescope help_tags<CR>";
       options.silent = true;
     }
     {
