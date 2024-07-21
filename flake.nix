@@ -254,6 +254,11 @@
         inherit system;
         overlays = [fenix.overlays.default];
       };
+      profiles = {
+        stable = "stable";
+        beta = "beta";
+        nightly = "complete";
+      };
       mkRust = toolchain:
         pkgs.mkShell {
           buildInputs = with pkgs; [
@@ -267,6 +272,10 @@
             rust-analyzer-nightly
             rustup
           ];
+
+          shellHook = ''
+            echo "Using Rust devShell - $(cargo --version)"
+          '';
         };
     in {
       rust = mkRust "stable";
