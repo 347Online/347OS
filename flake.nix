@@ -254,11 +254,10 @@
         inherit system;
         overlays = [fenix.overlays.default];
       };
-    in
-      with pkgs; {
-        rust = mkShell {
-          buildInputs = [
-            (pkgs.fenix.complete.withComponents [
+      mkRust = toolchain:
+        pkgs.mkShell {
+          buildInputs = with pkgs; [
+            (pkgs.fenix.${toolchain}.withComponents [
               "cargo"
               "clippy"
               "rust-src"
@@ -269,6 +268,10 @@
             rustup
           ];
         };
-      });
+    in {
+      rust = mkRust "stable";
+      rust-beta = mkRust "beta";
+      rust-nightly = mkRust "complete";
+    });
   };
 }
