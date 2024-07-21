@@ -7,6 +7,7 @@
 }: let
   cfg = config.wayland.windowManager.sway.config;
 in {
+  # TODO: Make it so these are not strictly HM modules
   imports = [
     ./cursor.nix
     ./waybar.nix

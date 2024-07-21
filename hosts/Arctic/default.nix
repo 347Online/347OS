@@ -40,6 +40,7 @@
         wayland.enable = true;
       };
     };
+    gnome.gnome-keyring.enable = true;
   };
 
   time.timeZone = "America/Chicago";
