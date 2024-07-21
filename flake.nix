@@ -248,5 +248,27 @@
     }: {
       nvim = mkNvim pkgs;
     });
+
+    devShells = forAllSystems ({system, ...}: let
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [fenix.overlays.default];
+      };
+    in
+      with pkgs; {
+        rust = mkShell {
+          buildInputs = [
+            (pkgs.fenix.complete.withComponents [
+              "cargo"
+              "clippy"
+              "rust-src"
+              "rustc"
+              "rustfmt"
+            ])
+            rust-analyzer-nightly
+            rustup
+          ];
+        };
+      });
   };
 }
