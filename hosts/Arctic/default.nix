@@ -8,6 +8,8 @@
     ./hardware.nix
   ];
 
+  boot.binfmt.emulatedSystems = ["x86_64-linux"];
+
   networking.hostName = "Arctic";
   stylix.image = ./wp-neon-city.jpg;
 
