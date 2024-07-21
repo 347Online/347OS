@@ -6,7 +6,6 @@
     ./cmp.nix
     ./conform-nvim.nix
     ./gitsigns.nix
-    ./neo-tree.nix
     ./oil.nix
     ./telescope.nix
   ];
@@ -21,7 +20,6 @@
     indent-blankline.enable = true;
     lualine.enable = true;
     luasnip.enable = true;
-    neo-tree.enable = true;
     nix.enable = true;
     oil.enable = true;
     telescope.enable = true;
