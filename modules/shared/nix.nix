@@ -10,10 +10,13 @@
       nixpkgs.flake = inputs.nixpkgs;
       nixos-hardware.flake = inputs.nixos-hardware;
     };
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    settings = {
+      trusted-users = ["katie" "root"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
   };
   nixpkgs = {
     overlays = [fenix.overlays.default];
