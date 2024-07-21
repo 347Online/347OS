@@ -28,6 +28,7 @@
     id = ["28646857"];
   };
 
+  programs.sway.enable = true;
   programs.zsh.enable = true;
   programs.gnupg.agent = {
     enable = true;
@@ -41,7 +42,7 @@
       enable = true;
       settings = {
         initial_session = {
-          command = "${pkgs.sway}/bin/sway";
+          command = "${pkgs.sway}/bin/sway"; # TODO: Only if not headless
           user = "katie";
         };
         default_session = {
@@ -56,11 +57,6 @@
       autoLogin = {
         enable = true;
         user = "katie";
-      };
-      sddm = {
-        enable = false;
-        enableHidpi = true;
-        wayland.enable = true;
       };
     };
     gnome.gnome-keyring.enable = true;
