@@ -137,6 +137,7 @@
           // {
             package = neovim-nightly-overlay.packages.${system}.default;
           };
+        extraSpecialArgs = {inherit util;};
       };
 
     mkSpecialArgs = pkgs: let
