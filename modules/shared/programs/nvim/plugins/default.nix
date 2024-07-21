@@ -27,16 +27,4 @@
     telescope.enable = true;
     treesitter.enable = true;
   };
-
-  extraPlugins = with pkgs.vimPlugins; [
-    nvim-cokeline
-  ];
-
-  extraConfigLua =
-    /*
-    lua
-    */
-    ''
-      require("cokeline").setup()
-    '';
 }
