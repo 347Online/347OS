@@ -8,14 +8,35 @@
     ./hardware.nix
   ];
 
-  boot.binfmt.emulatedSystems = ["x86_64-linux"];
+  # LOCAL
 
+  boot.binfmt.emulatedSystems = ["x86_64-linux"];
   networking.hostName = "Arctic";
   stylix.image = ./wp-neon-city.jpg;
 
+  # SHARED # TODO Move to module
+
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
+
+  security.pam.yubico = {
+    enable = true;
+    debug = true;
+    mode = "challenge-response";
+    id = ["28646857"];
+  };
+
   programs.zsh.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   services = {
+    pcscd.enable = true;
+    udev.packages = with pkgs; [yubikey-personalization];
     greetd = {
       enable = true;
       settings = {
