@@ -19,6 +19,9 @@
         "${modifier}+space" = "exec ${menu}";
         "${modifier}+d" = null;
       };
+      startup = [
+        {command = "1password --silent";}
+      ];
     };
   };
 
