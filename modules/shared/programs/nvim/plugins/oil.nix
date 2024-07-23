@@ -1,8 +1,12 @@
 {util, ...}: {
-  plugins.oil.settings = {
-    keymaps = {
-      "-" = false;
-      "<BS>" = "actions.parent";
+  plugins.oil = {
+    enable = true;
+
+    settings = {
+      keymaps = {
+        "-" = false;
+        "<BS>" = "actions.parent";
+      };
     };
   };
 

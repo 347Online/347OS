@@ -1,28 +1,19 @@
-{pkgs, ...}: {
+{
   imports = [
     ./lsp
 
     ./auto-session.nix
     ./cmp.nix
     ./conform-nvim.nix
+    ./fugitive.nix
     ./gitsigns.nix
+    ./indent-blankline.nix
+    ./lualine.nix
+    ./luasnip.nix
+    ./nix.nix
+    ./nvim-autopairs.nix
     ./oil.nix
     ./telescope.nix
+    ./treesitter.nix
   ];
-
-  plugins = {
-    nvim-autopairs.enable = true;
-    auto-session.enable = true;
-    cmp.enable = true;
-    conform-nvim.enable = true;
-    fugitive.enable = true;
-    gitsigns.enable = true;
-    indent-blankline.enable = true;
-    lualine.enable = true;
-    luasnip.enable = true;
-    nix.enable = true;
-    oil.enable = true;
-    telescope.enable = true;
-    treesitter.enable = true;
-  };
 }

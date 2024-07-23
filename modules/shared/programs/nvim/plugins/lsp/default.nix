@@ -5,6 +5,7 @@
 
   plugins.lsp = {
     enable = true;
+
     servers = {
       eslint.enable = true;
       html.enable = true;

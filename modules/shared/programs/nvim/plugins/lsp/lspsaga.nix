@@ -1,7 +1,7 @@
 {
-  plugins.lspsaga = let
-  in {
+  plugins.lspsaga = {
     enable = true;
+
     lightbulb.enable = false;
     rename = {
       autoSave = true;

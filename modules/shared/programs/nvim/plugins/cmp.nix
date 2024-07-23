@@ -1,5 +1,7 @@
 {
   plugins.cmp = {
+    enable = true;
+
     settings = {
       experimental.ghost_text = true;
       sources = [

@@ -1,12 +1,17 @@
 {
-  plugins.telescope.settings = {
-    pickers = {
-      find_files = {
-        hidden = true;
-        file_ignore_patterns = ["^./.git/" "^node_modules/"];
+  plugins.telescope = {
+    enable = true;
+
+    settings = {
+      pickers = {
+        find_files = {
+          hidden = true;
+          file_ignore_patterns = ["^./.git/" "^node_modules/"];
+        };
       };
     };
   };
+
   keymaps = [
     {
       mode = "n";
