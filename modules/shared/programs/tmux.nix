@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -11,6 +7,10 @@
     terminal = "$TERM"; # TODO: This needs to be set to an environment var or something for correct behavior in tty
     # terminal = "xterm-256color"; # TODO: This needs to be set to an environment var or something for correct behavior in tty
     plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = tmuxPlugins.resurrect;
+        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+      }
       {
         plugin = better-mouse-mode;
         extraConfig = "set -g @emulate-scroll-for-no-mouse-alternate-buffer 'on'";
