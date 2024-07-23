@@ -1,4 +1,4 @@
-{
+{util, ...}: {
   plugins.telescope = {
     enable = true;
 
@@ -13,35 +13,11 @@
   };
 
   keymaps = [
-    {
-      mode = "n";
-      key = "<leader>ff";
-      action = ":Telescope find_files<CR>";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>fg";
-      action = ":Telescope live_grep<CR>";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>fb";
-      action = ":Telescope buffers<CR>";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>fh";
-      action = ":Telescope help_tags<CR>";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>fc";
-      action = ":Telescope current_buffer_fuzzy_find<CR>";
-      options.silent = true;
-    }
+    (util.vimBind "n" "<leader>f?" ":Telescope<CR>")
+    (util.vimBind "n" "<leader>ff" ":Telescope find_files<CR>")
+    (util.vimBind "n" "<leader>fg" ":Telescope live_grep<CR>")
+    (util.vimBind "n" "<leader>fb" ":Telescope buffers<CR>")
+    (util.vimBind "n" "<leader>fh" ":Telescope help_tags<CR>")
+    (util.vimBind "n" "<leader>fc" ":Telescope current_buffer_fuzzy_find<CR>")
   ];
 }

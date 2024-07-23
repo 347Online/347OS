@@ -44,15 +44,13 @@
         value = {source = "${dir}/${name}";};
       }) (listFilesRecursive dir ""));
 
-    vim = rec {
-      bindSimple = mode: key: action: {
-        inherit mode key;
-        options.silent = true;
-        action =
-          if lib.hasPrefix ":" action
-          then action
-          else {__raw = action;};
-      };
+    vimBind = mode: key: action: {
+      inherit mode key;
+      options.silent = true;
+      action =
+        if lib.hasPrefix ":" action
+        then action
+        else {__raw = action;};
     };
   };
 in

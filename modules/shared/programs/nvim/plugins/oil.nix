@@ -11,6 +11,6 @@
   };
 
   keymaps = [
-    (util.vim.bindSimple "n" "-" ":Oil<CR>")
+    (util.vimBind "n" "-" ":Oil<CR>")
   ];
 }

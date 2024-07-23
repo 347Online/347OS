@@ -1,4 +1,4 @@
-{
+{util, ...}: {
   plugins.gitsigns = {
     enable = true;
 
@@ -8,11 +8,6 @@
   };
 
   keymaps = [
-    {
-      mode = "n";
-      key = "<leader>gp";
-      action = ":Gitsigns preview_hunk<CR>";
-      options.silent = true;
-    }
+    (util.vimBind "n" "<leader>gp" ":Gitsigns preview_hunk<CR>")
   ];
 }
