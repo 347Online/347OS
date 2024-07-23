@@ -16,7 +16,6 @@
     aliases = {
       br = "branch";
       ci = "commit";
-      cm = "!f() { git add -A && git commit \"$@\"; };f";
       co = "checkout";
       p = "push";
       P = "pull";

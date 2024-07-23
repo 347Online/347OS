@@ -13,7 +13,7 @@
     ./direnv.nix
     ./fzf.nix
     ./git.nix
-    ./gitui.nix
+    ./lazygit.nix
     ./tmux.nix
     ./wezterm.nix
     ./zoxide.nix

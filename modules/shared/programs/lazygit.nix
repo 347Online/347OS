@@ -1,5 +1,5 @@
 {
-  programs.gitui = {
+  programs.lazygit = {
     enable = true;
   };
 }
