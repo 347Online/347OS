@@ -13,16 +13,19 @@
     ];
     userName = "347Online | Katie Janzen";
     userEmail = "katiejanzen@347online.me";
-    aliases = {
+    aliases = rec {
       br = "branch";
-      ci = "commit";
+      c = "commit";
       co = "checkout";
       p = "push";
-      P = "pull";
-      Pr = "pull --rebase=interactive";
-      st = "status";
-
+      pl = "pull";
+      pr = "pull --rebase=interactive";
+      pm = "pull --no-rebase";
+      s = "status";
+      st = s;
+      statsu = s;
       last = "log -1 HEAD";
+      prev = last;
     };
     extraConfig = {
       core.editor = "nvim";
