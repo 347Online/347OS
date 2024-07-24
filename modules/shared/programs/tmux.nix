@@ -8,7 +8,7 @@
     # terminal = "xterm-256color"; # TODO: This needs to be set to an environment var or something for correct behavior in tty
     plugins = with pkgs.tmuxPlugins; [
       {
-        plugin = tmuxPlugins.resurrect;
+        plugin = resurrect;
         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
       }
       {
