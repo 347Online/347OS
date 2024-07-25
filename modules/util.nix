@@ -6,13 +6,13 @@
         # TODO: Use programs.{bat, eza}.enable instead
         cat = "${bat}/bin/bat";
         ls = "${eza}/bin/eza";
-        "tree" = "eza --tree";
-        "diff" = "delta";
+        tree = "eza --tree";
+        diff = "delta";
 
-        "branch" = "git branch --show-current";
-        "branchhelp" = "git branch --list | rg -v '\\\*' | fzf | awk '{$1=$1};1'";
+        branch = "git branch --show-current";
+        branchhelp = "git branch --list | rg -v '\\\*' | fzf | awk '{$1=$1};1'";
 
-        "nvim-next" = "nix run ~/src/nix-systems#nvim";
+        nvim-next = "nix run ~/src/nix-systems#nvim";
       };
 
     mkIfElse = condition: trueValue: falseValue:
