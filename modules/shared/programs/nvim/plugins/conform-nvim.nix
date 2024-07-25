@@ -10,6 +10,8 @@
     formattersByFt = {
       html = [["prettierd" "prettier"]];
       css = [["prettierd" "prettier"]];
+      json = [["prettierd" "prettier"] "eslint_d"];
+      jsonc = [["prettierd" "prettier"] "eslint_d"];
       javascript = [["prettierd" "prettier"] "eslint_d"];
       javascriptreact = [["prettierd" "prettier"] "eslint_d"];
       typescript = [["prettierd" "prettier"] "eslint_d"];
