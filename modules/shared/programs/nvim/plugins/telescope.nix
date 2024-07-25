@@ -19,5 +19,6 @@
     (util.vimBind "n" "<leader>fb" ":Telescope buffers<CR>")
     (util.vimBind "n" "<leader>fh" ":Telescope help_tags<CR>")
     (util.vimBind "n" "<leader>fc" ":Telescope current_buffer_fuzzy_find<CR>")
+    (util.vimBind "n" "<leader>fr" ":Telescope registers<CR>")
   ];
 }
