@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   util,
   nvim,
@@ -27,7 +26,6 @@
     ripgrep
     fd
     mise
-    _1password
     prettierd
 
     obsidian #TODO: only if darwin or a gui

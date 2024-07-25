@@ -184,9 +184,10 @@
           {
             environment.pathsToLink = ["/share/zsh"];
             home-manager = {
+              backupFileExtension = "bakk";
+              sharedModules = [nur.hmModules.nur];
               extraSpecialArgs = mkExtraSpecialArgs pkgs;
               users.${username}.imports = baseModulesHomeManager;
-              backupFileExtension = "bakk";
             };
           }
           module
@@ -199,47 +200,25 @@
     nixosConfigurations."Arctic" = let
       system = "aarch64-linux";
       pkgs = mkPkgs system;
-      pkgsUnsupported = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        config.allowUnsupportedSystem = true;
-      };
     in
       nixpkgs.lib.nixosSystem {
         specialArgs = mkSpecialArgs pkgs;
 
-        # TODO: Much of this can be in nixos-specific module(s) rather than baked into Arctic or the flake
         modules = [
           stylix.nixosModules.stylix
-          ./modules/shared/stylix.nix
-          {nixpkgs.config.allowUnfree = true;}
-          {
-            environment.systemPackages = with pkgs; [
-              wev
-              playerctl
-              element-desktop
-              pkgsUnsupported.cider
-              killall
-            ];
-            programs._1password.enable = true;
-            programs._1password-gui = {
-              enable = true;
-              polkitPolicyOwners = [username];
-            };
-          }
           home-manager.nixosModules.home-manager
           {
+            nixpkgs.config.allowUnfree = true;
             home-manager = {
+              backupFileExtension = "bakk";
               sharedModules = [nur.hmModules.nur];
               extraSpecialArgs = mkExtraSpecialArgs pkgs;
-              users.${username}.imports =
-                baseModulesHomeManager
-                ++ [
-                  ./modules/linux
-                ];
-              backupFileExtension = "bakk";
+              users.${username}.imports = baseModulesHomeManager;
             };
           }
+
+          ./modules/shared/stylix.nix
+          ./modules/linux
           ./hosts/Arctic
         ];
       };
@@ -254,11 +233,6 @@
       pkgs = import nixpkgs {
         inherit system;
         overlays = [fenix.overlays.default];
-      };
-      profiles = {
-        stable = "stable";
-        beta = "beta";
-        nightly = "complete";
       };
       mkRust = toolchain:
         pkgs.mkShell {
