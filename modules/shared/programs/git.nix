@@ -18,6 +18,7 @@
       c = "commit";
       co = "checkout";
       p = "push";
+      pf = "push --force-with-lease";
       pl = "pull";
       pr = "pull --rebase=interactive";
       pm = "pull --no-rebase";
