@@ -3,17 +3,14 @@
   util = rec {
     mkShellAliases = pkgs:
       with pkgs; {
-        # TODO: Use lib.getExe or whatever it's called
-        "cat" = "${bat}/bin/bat";
-        "ls" = "${eza}/bin/eza";
-        "tree" = "${eza}/bin/eza --tree";
-        "grep" = "${ripgrep}/bin/rg";
-        "diff" = "${delta}/bin/delta";
+        # TODO: Use programs.{bat, eza}.enable instead
+        cat = "${bat}/bin/bat";
+        ls = "${eza}/bin/eza";
+        "tree" = "eza --tree";
+        "diff" = "delta";
 
-        "code" = "${vscodium}/bin/codium";
-
-        "git" = "${git}/bin/git";
-        "branch" = "${git}/bin/git branch --show-current";
+        "branch" = "git branch --show-current";
+        "branchhelp" = "git branch --list | rg -v '\\\*' | fzf | awk '{$1=$1};1'";
 
         "nvim-next" = "nix run ~/src/nix-systems#nvim";
       };
