@@ -6,10 +6,6 @@
   nvim,
   ...
 }: {
-  imports = [
-    ./apps
-  ];
-
   options = with lib.types; {
     linux = {
       headless = lib.mkEnableOption "headless operation";
@@ -82,6 +78,12 @@
       environment.systemPackages = with pkgs; [
         wev
         playerctl
+        webcord
+        paper-plane
+        element-desktop # TODO: Only if a private machine
+        blueberry
+        pavucontrol
+        acpi
       ];
 
       home-manager = {
