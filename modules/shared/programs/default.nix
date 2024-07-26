@@ -31,8 +31,8 @@
     mise
     prettierd
 
-    # TODO: Remove obsidian altogether
-    (lib.mkIf ((!config.linux.headless) or isDarwin) obsidian) #TODO: only if darwin or a gui
+    # TODO: delet tihs
+    obsidian
 
     nvim
   ];

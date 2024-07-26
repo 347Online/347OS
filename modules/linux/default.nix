@@ -21,7 +21,6 @@
         };
         yubico = {
           enable = true;
-          debug = true;
           mode = "challenge-response";
           id = ["28646857"];
         };
@@ -84,6 +83,7 @@
         blueberry
         pavucontrol
         acpi
+        obsidian
       ];
 
       home-manager = {

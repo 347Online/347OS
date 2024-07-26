@@ -36,8 +36,4 @@
       rerere.enabled = true;
     };
   };
-
-  # TODO: Add caching or something, this was triggering CONSTANTLY
-  # Better still, see if we can just let 1Password handle this
-  programs.git-credential-oauth.enable = lib.mkIf (!isDarwin) true;
 }
