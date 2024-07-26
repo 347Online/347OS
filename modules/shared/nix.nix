@@ -10,7 +10,6 @@
       nixos-hardware.flake = inputs.nixos-hardware;
     };
     settings = {
-      trusted-users = ["katie" "root"];
       experimental-features = [
         "nix-command"
         "flakes"

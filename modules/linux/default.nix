@@ -6,6 +6,10 @@
   nvim,
   ...
 }: {
+  imports = [
+    ./nix.nix
+  ];
+
   options = with lib.types; {
     linux = {
       headless = lib.mkEnableOption "headless operation";
