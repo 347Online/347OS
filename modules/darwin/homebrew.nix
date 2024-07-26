@@ -41,6 +41,7 @@
         "setapp"
         "scroll-reverser"
         "logi-options-plus"
+        "obsidian"
       ];
     };
 

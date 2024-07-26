@@ -56,7 +56,7 @@ in {
         ++ config.darwin.dock.apps
         ++ [
           "/Applications/Fantastical.app"
-          "${obsidian}/Applications/Obsidian.app"
+          "/Applications/Obsidian.app"
           "${wezterm}/Applications/wezterm.app"
 
           # Make system settings the rightmost app

@@ -31,9 +31,6 @@
     mise
     prettierd
 
-    # TODO: delet tihs
-    obsidian
-
     nvim
   ];
 
