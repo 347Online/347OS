@@ -9,10 +9,19 @@
         tree = "eza --tree";
         diff = "delta";
 
-        branch = "git branch --show-current";
-        branchhelp = "git branch --list | rg -v '\\\*' | fzf | awk '{$1=$1};1'";
+        branch =
+          # sh
+          "git branch --show-current";
 
-        nvim-next = "nix run ~/src/nix-systems#nvim";
+        branchhelp =
+          # sh
+          ''
+            git branch --list | rg -v '\\\*' | fzf | awk '{$1=$1}'
+          '';
+
+        nvim-next =
+          # sh
+          "nix run ~/src/nix-systems#nvim";
       };
 
     mkIfElse = condition: trueValue: falseValue:

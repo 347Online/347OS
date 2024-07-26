@@ -13,24 +13,28 @@ with lib;
     mkSudoTouchIdAuthScript = isEnabled: let
       file = "/etc/pam.d/sudo";
       option = "security.pam.enableCustomSudoTouchIdAuth";
-    in ''
-      # Unconditionally remove first. If enabled, we'll add it back. This ensures we update pam_reattach.so.
-      if grep '${option}' ${file} > /dev/null; then
-        /usr/bin/sed -i "" '/${option}/d' ${file}
-      fi
-      ${
-        if isEnabled
-        then ''
-          # Enable sudo Touch ID authentication
-          /usr/bin/sed -i "" '2i\
-          auth       optional     ${pkgs.pam-reattach}/lib/pam/pam_reattach.so # nix-darwin: ${option}\
-          auth       sufficient     pam_tid.so # nix-darwin: ${option}
-          ' ${file}
+    in
+      # sh
+      ''
+        # Unconditionally remove first. If enabled, we'll add it back. This ensures we update pam_reattach.so.
+        if grep '${option}' ${file} > /dev/null; then
+          /usr/bin/sed -i "" '/${option}/d' ${file}
+        fi
+        ${
+          if isEnabled
+          then
+            # sh
+            ''
+              # Enable sudo Touch ID authentication
+              /usr/bin/sed -i "" '2i\
+              auth       optional     ${pkgs.pam-reattach}/lib/pam/pam_reattach.so # nix-darwin: ${option}\
+              auth       sufficient     pam_tid.so # nix-darwin: ${option}
+              ' ${file}
 
-        ''
-        else ""
-      }
-    '';
+            ''
+          else ""
+        }
+      '';
   in {
     options = {
       security.pam.enableCustomSudoTouchIdAuth = mkEnableOption ''
@@ -45,10 +49,12 @@ with lib;
     };
 
     config = {
-      system.activationScripts.extraActivation.text = ''
-        # PAM settings
-        echo >&2 "setting up pam..."
-        ${mkSudoTouchIdAuthScript cfg.enableCustomSudoTouchIdAuth}
-      '';
+      system.activationScripts.extraActivation.text =
+        # sh
+        ''
+          # PAM settings
+          echo >&2 "setting up pam..."
+          ${mkSudoTouchIdAuthScript cfg.enableCustomSudoTouchIdAuth}
+        '';
     };
   }

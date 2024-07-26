@@ -9,22 +9,26 @@
     plugins = with pkgs.tmuxPlugins; [
       {
         plugin = resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+        extraConfig =
+          # tmux
+          "set -g @resurrect-strategy-nvim 'session'";
       }
       {
         plugin = better-mouse-mode;
-        extraConfig = "set -g @emulate-scroll-for-no-mouse-alternate-buffer 'on'";
+        extraConfig =
+          # tmux
+          "set -g @emulate-scroll-for-no-mouse-alternate-buffer 'on'";
       }
       {
         plugin = power-theme;
-        extraConfig = "set -g @tmux_power_theme 'default'";
+        extraConfig =
+          # tmux
+          "set -g @tmux_power_theme 'default'";
       }
     ];
 
     extraConfig =
-      /*
-      tmux
-      */
+      # tmux
       ''
         bind C-Space popup
         bind BSpace last-window
