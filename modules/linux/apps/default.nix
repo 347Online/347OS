@@ -9,6 +9,8 @@
       webcord
       paper-plane
       element-desktop # TODO: Only if a private machine
+      blueberry
+      pavucontrol
     ];
   };
 }

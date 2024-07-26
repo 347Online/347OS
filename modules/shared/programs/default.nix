@@ -2,6 +2,9 @@
   pkgs,
   util,
   nvim,
+  lib,
+  config,
+  isDarwin,
   ...
 }: {
   imports = [
@@ -28,7 +31,8 @@
     mise
     prettierd
 
-    obsidian #TODO: only if darwin or a gui
+    # TODO: Remove obsidian altogether
+    (lib.mkIf ((!config.linux.headless) or isDarwin) obsidian) #TODO: only if darwin or a gui
 
     # (nvim.extend {colorschemes.base16 = config.programs.nixvim.colorschemes.base16;})
     nvim

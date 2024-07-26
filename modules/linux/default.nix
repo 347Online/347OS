@@ -114,8 +114,6 @@
           };
 
           home.packages = with pkgs; [
-            blueberry
-            pavucontrol
             acpi
           ];
         };
