@@ -160,13 +160,18 @@
 
     baseModulesHomeManager = [
       nixvim.homeManagerModules.nixvim
-      {
-        stylix.targets = {
-          waybar.enable = false;
-        };
-      }
       ./modules/shared
     ];
+
+    baseModulesHomeManagerGui =
+      baseModulesHomeManager
+      ++ [
+        {
+          stylix.targets = {
+            waybar.enable = false;
+          };
+        }
+      ];
 
     mkDarwin = {
       module,
@@ -187,7 +192,7 @@
               backupFileExtension = "bakk";
               sharedModules = [nur.hmModules.nur];
               extraSpecialArgs = mkExtraSpecialArgs pkgs;
-              users.${username}.imports = baseModulesHomeManager;
+              users.${username}.imports = baseModulesHomeManagerGui;
             };
           }
           module
@@ -213,7 +218,7 @@
               backupFileExtension = "bakk";
               sharedModules = [nur.hmModules.nur];
               extraSpecialArgs = mkExtraSpecialArgs pkgs;
-              users.${username}.imports = baseModulesHomeManager;
+              users.${username}.imports = baseModulesHomeManagerGui;
             };
           }
 
@@ -222,6 +227,31 @@
           ./hosts/Arctic
         ];
       };
+
+    nixosConfigurations."Arukenia" = let
+      system = "x86_64-linux";
+      pkgs = mkPkgs system;
+    in
+      nixpkgs.lib.nixosSystem {
+        specialArgs = mkSpecialArgs pkgs;
+
+        modules = [
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.config.allowUnfree = true;
+            home-manager = {
+              backupFileExtension = "bakk";
+              sharedModules = [nur.hmModules.nur];
+              extraSpecialArgs = mkExtraSpecialArgs pkgs;
+              users.${username}.imports = baseModulesHomeManager;
+            };
+          }
+
+          ./modules/linux
+          ./hosts/Arukenia
+        ];
+      };
+
     packages = forAllSystems ({
       pkgs,
       system,
