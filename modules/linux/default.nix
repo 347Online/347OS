@@ -6,7 +6,10 @@
   nvim,
   ...
 }: {
-  # TODO: Make it so these are not strictly HM modules
+  imports = [
+    ./apps
+  ];
+
   options = with lib.types; {
     linux = {
       headless = lib.mkEnableOption "headless operation";
@@ -79,7 +82,6 @@
       environment.systemPackages = with pkgs; [
         wev
         playerctl
-        element-desktop # TODO: Only if a private machine
       ];
 
       home-manager = {
@@ -112,7 +114,6 @@
           };
 
           home.packages = with pkgs; [
-            webcord
             blueberry
             pavucontrol
             acpi
