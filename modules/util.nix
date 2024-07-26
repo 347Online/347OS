@@ -1,28 +1,26 @@
 {nixpkgs, ...}: let
   lib = nixpkgs.lib;
   util = rec {
-    mkShellAliases = pkgs:
-      with pkgs; {
-        # TODO: Use programs.{bat, eza}.enable instead
-        cat = "${bat}/bin/bat";
-        ls = "${eza}/bin/eza";
-        tree = "eza --tree";
-        diff = "delta";
+    mkShellAliases = pkgs: {
+      cat = "bat";
+      ls = "eza";
+      tree = "eza --tree";
+      diff = "delta";
 
-        branch =
-          # sh
-          "git branch --show-current";
+      branch =
+        # sh
+        "git branch --show-current";
 
-        branchhelp =
-          # sh
-          ''
-            git branch --list | rg -v '\\\*' | fzf | awk '{$1=$1}'
-          '';
+      branchhelp =
+        # sh
+        ''
+          git branch --list | rg -v '\\\*' | fzf | awk '{$1=$1}'
+        '';
 
-        nvim-next =
-          # sh
-          "nix run ~/src/nix-systems#nvim";
-      };
+      nvim-next =
+        # sh
+        "nix run ~/src/nix-systems#nvim";
+    };
 
     mkIfElse = condition: trueValue: falseValue:
       lib.mkMerge [

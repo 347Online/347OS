@@ -12,7 +12,9 @@
     ./firefox
     ./zsh
 
+    ./bat.nix
     ./direnv.nix
+    ./eza.nix
     ./fzf.nix
     ./git.nix
     ./lazygit.nix

@@ -10,7 +10,6 @@
     ./programs
 
     ./nix.nix
-    # ./rust.nix
   ];
 
   home = {
