@@ -2,7 +2,6 @@
   imports = [
     ./lsp
 
-    ./auto-session.nix
     ./cmp.nix
     ./conform-nvim.nix
     ./fugitive.nix
