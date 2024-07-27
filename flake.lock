@@ -864,22 +864,6 @@
         "type": "github"
       }
     },
-    "precognition-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1719353867,
-        "narHash": "sha256-XLcyRB4ow5nPoQ0S29bx0utV9Z/wogg7c3rozYSqlWE=",
-        "owner": "tris203",
-        "repo": "precognition.nvim",
-        "rev": "2a566f03eb06859298eff837f3a6686dfa5304a5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tris203",
-        "repo": "precognition.nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "apple-silicon-support": "apple-silicon-support",
@@ -894,8 +878,8 @@
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
         "nur": "nur",
-        "precognition-nvim": "precognition-nvim",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "vim-be-good": "vim-be-good"
       }
     },
     "rust-analyzer-src": {
@@ -1066,6 +1050,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "vim-be-good": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1706662485,
+        "narHash": "sha256-XVFq3Gb4C95Y0NYKk08ZjZaGLVF6ayPicIAccba+VRs=",
+        "owner": "ThePrimeagen",
+        "repo": "vim-be-good",
+        "rev": "4fa57b7957715c91326fcead58c1fa898b9b3625",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ThePrimeagen",
+        "repo": "vim-be-good",
         "type": "github"
       }
     }

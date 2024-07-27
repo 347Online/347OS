@@ -50,9 +50,9 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    precognition-nvim = {
-      url = "github:tris203/precognition.nvim";
+    vim-be-good = {
       flake = false;
+      url = "github:ThePrimeagen/vim-be-good";
     };
 
     stylix = {
@@ -100,7 +100,6 @@
 
         pkgs = import nixpkgs {
           inherit system;
-          # overlays = self.overlays.default;
         };
       };
 
@@ -116,7 +115,6 @@
     mkPkgs = system:
       import nixpkgs {
         inherit system;
-        # overlays = [fenix.overlays.default];
       };
 
     mkNvim = pkgs: let
@@ -125,10 +123,10 @@
       inputs.nixvim.legacyPackages.${pkgs.system}.makeNixvimWithModule {
         pkgs = pkgs.extend (final: prev: {
           vimPlugins = prev.vimPlugins.extend (final': prev': {
-            precognition-nvim = prev.vimUtils.buildVimPlugin {
-              pname = "precognition-nvim";
-              src = inputs.precognition-nvim;
-              version = inputs.precognition-nvim.shortRev;
+            vim-be-good = prev.vimUtils.buildVimPlugin {
+              pname = "vim-be-good";
+              src = inputs.vim-be-good;
+              version = inputs.vim-be-good.shortRev;
             };
           });
         });
