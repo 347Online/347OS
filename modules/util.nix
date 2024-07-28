@@ -2,10 +2,16 @@
   lib = nixpkgs.lib;
   util = rec {
     mkShellAliases = pkgs: {
+      # TODO: We can do this better
+      # A) We don't need pkgs anymore
+      # B) We should be able to add them to the relevant shell configs in one spot
       cat = "bat";
       ls = "eza";
       tree = "eza --tree";
       diff = "delta";
+      vi = "nvim";
+      vim = "nvim";
+      nivm = "nvim";
 
       branch =
         # sh

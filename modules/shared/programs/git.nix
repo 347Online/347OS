@@ -25,6 +25,7 @@
       s = "status";
       st = s;
       statsu = s;
+      unstage = "restore --staged";
       last = "log -1 HEAD";
       prev = last;
     };
