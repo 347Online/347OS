@@ -18,6 +18,7 @@
     ./fzf.nix
     ./git.nix
     ./lazygit.nix
+    ./neomutt.nix
     ./tmux.nix
     ./wezterm.nix
     ./zoxide.nix
