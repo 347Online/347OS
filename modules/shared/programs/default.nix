@@ -23,15 +23,18 @@
   ];
 
   home.packages = with pkgs; [
+    _1password
     alejandra
-    nil
     bat
     eza
-    ripgrep
     fd
     mise
+    nil
     prettierd
+    ripgrep
 
+    # TODO: Use standalone nixvim for standalone config
+    # Use programs.nixvim = eval config // {enable = true;}
     nvim
   ];
 
