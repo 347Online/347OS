@@ -1,5 +1,4 @@
 {
-  pkgs,
   fenix,
   nur,
   inputs,

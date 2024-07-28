@@ -75,15 +75,17 @@
       };
 
       environment.systemPackages = with pkgs; [
+        # Electron Apps
+        # webcord
+        # element-desktop # TODO: Only if a private machine
+        # obsidian
+
         wev
         playerctl
-        webcord
         paper-plane
-        element-desktop # TODO: Only if a private machine
         blueberry
         pavucontrol
         acpi
-        obsidian
       ];
 
       home-manager = {
