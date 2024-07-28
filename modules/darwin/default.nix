@@ -34,10 +34,7 @@ in {
     };
   };
 
-  config = let
-    x = builtins.deepSeq config.system.activationScripts.extraActivation;
-    y = builtins.trace x;
-  in {
+  config = {
     darwin.homebrew.enable = lib.mkDefault true;
 
     # See ./pam.nix

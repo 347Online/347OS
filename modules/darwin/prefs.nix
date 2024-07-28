@@ -27,6 +27,7 @@
     CustomUserPreferences = {
       NSGlobalDomain = {
         NSAutomaticSpellingCorrectionEnabled = false;
+        # TODO: PR got merged, use the built-in option
         NSAutomaticInlinePredictionEnabled = false;
         TSWPAutomaticSpellingCorrection = false;
 
