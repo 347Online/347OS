@@ -51,7 +51,8 @@
       ssh = {
         enable = true;
         # TODO: Consider disabling if headless
-        extraConfig = "IdentityAgent ~/.1password/agent.sock";
+        extraConfig =
+          util.mkIfElse isDarwin ''IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'' "IdentityAgent ~/.1password/agent.sock";
       };
       home-manager.enable = true;
       bash.shellAliases = util.mkShellAliases pkgs;
