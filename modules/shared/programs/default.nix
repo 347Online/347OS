@@ -4,6 +4,7 @@
   pkgs,
   util,
   nvim,
+  isDarwin,
   ...
 }: {
   imports = [
@@ -47,6 +48,11 @@
     ];
 
     programs = {
+      ssh = {
+        enable = true;
+        # TODO: Consider disabling if headless
+        extraConfig = "IdentityAgent ~/.1password/agent.sock";
+      };
       home-manager.enable = true;
       bash.shellAliases = util.mkShellAliases pkgs;
     };
