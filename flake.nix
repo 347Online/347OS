@@ -144,7 +144,6 @@
       inherit inputs username util system;
       inherit (pkgs.stdenv) isDarwin;
       homeDirectory = util.mkHomeDirectory pkgs username;
-      nvim = mkNvim pkgs;
     };
 
     mkExtraSpecialArgs = pkgs: let
@@ -153,6 +152,7 @@
       (mkSpecialArgs pkgs)
       // {
         inherit fenix util;
+        nvim = mkNvim pkgs;
         vscode-extensions = nix-vscode-extensions.extensions.${system};
       };
 

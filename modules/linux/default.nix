@@ -3,14 +3,13 @@
   pkgs,
   lib,
   username,
-  nvim,
   ...
 }: {
   imports = [
     ./nix.nix
   ];
 
-  options = with lib.types; {
+  options = {
     linux = {
       headless = lib.mkEnableOption "headless operation";
     };
@@ -54,7 +53,7 @@
       # home.file = util.toHomeFiles ./dotfiles;
 
       environment.systemPackages = with pkgs; [
-        nvim
+        vim
         killall
       ];
     }

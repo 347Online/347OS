@@ -1,9 +1,12 @@
-{
+{username, ...}: {
   imports = [
     ./hardware-configuration.nix
   ];
 
   linux.headless = true;
+  home-manager.users.${username} = {
+    nvim-setup.enable = false;
+  };
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only

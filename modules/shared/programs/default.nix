@@ -1,4 +1,6 @@
 {
+  lib,
+  config,
   pkgs,
   util,
   nvim,
@@ -22,23 +24,31 @@
     ./zoxide.nix
   ];
 
-  home.packages = with pkgs; [
-    _1password
-    alejandra
-    bat
-    eza
-    fd
-    mise
-    nil
-    prettierd
-    ripgrep
+  options = {
+    nvim-setup.enable = lib.mkEnableOption "neovim setup";
+  };
 
-    # TODO: Use standalone nixvim for standalone config
-    # Use programs.nixvim = eval config // {enable = true;}
-    nvim
-  ];
+  config = {
+    nvim-setup.enable = lib.mkDefault true;
 
-  programs.home-manager.enable = true;
+    home.packages = with pkgs; [
+      _1password
+      alejandra
+      bat
+      eza
+      fd
+      mise
+      nil
+      prettierd
+      ripgrep
+      vim
 
-  programs.bash.shellAliases = util.mkShellAliases pkgs;
+      (lib.mkIf config.nvim-setup.enable nvim)
+    ];
+
+    programs = {
+      home-manager.enable = true;
+      bash.shellAliases = util.mkShellAliases pkgs;
+    };
+  };
 }

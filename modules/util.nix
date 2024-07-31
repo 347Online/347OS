@@ -9,9 +9,6 @@
       ls = "eza";
       tree = "eza --tree";
       diff = "delta";
-      vi = "nvim";
-      vim = "nvim";
-      nivm = "nvim";
 
       branch =
         # sh
