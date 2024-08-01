@@ -15,8 +15,28 @@
     autoindent = true;
   };
 
-  colorschemes.tokyonight = {
-    settings.style = "night";
+  # TODO: Create some kinda option for this
+
+  # Catppuccin kinda mood
+  # colorschemes.catppuccin = {
+  #   enable = true;
+  #   settings = {
+  #     flavour = "mocha";
+  #   };
+  # };
+
+  # VSCode kinda mood
+  colorschemes.vscode = {
     enable = true;
+    settings = {
+      italic_comments = true;
+      underline_links = true;
+    };
   };
+
+  # Tokyo Night kinda mood
+  # colorschemes.tokyonight = {
+  #   settings.style = "night";
+  #   enable = true;
+  # };
 }
