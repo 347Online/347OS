@@ -17,7 +17,7 @@
       branchhelp =
         # sh
         ''
-          git branch --list | rg -v '\\\*' | fzf | awk '{$1=$1}'
+          git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
         '';
 
       nvim-next =
