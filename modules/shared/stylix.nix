@@ -19,7 +19,7 @@
         package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
         name = "JetBrainsMono Nerd Font";
       };
-      sizes.terminal = util.mkIfElse isDarwin 12 9;
+      sizes.terminal = util.mkIfElse isDarwin 13 9;
     };
   };
 }
