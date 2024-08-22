@@ -14,6 +14,7 @@
     ./oil.nix
     ./telescope.nix
     ./treesitter.nix
+    ./trouble.nix
     ./vim-be-good.nix
   ];
 }
