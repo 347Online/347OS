@@ -40,6 +40,7 @@
     "gitlens.plusFeatures.enabled" = false;
     "gitlens.showWelcomeOnInstall" = false;
     "gitlens.showWhatsNewAfterUpgrades" = false;
+    "scm.showHistoryGraph" = false;
 
     "terminal.external.osxExec" = "wezterm";
     "terminal.external.linuxExec" = "wezterm";
