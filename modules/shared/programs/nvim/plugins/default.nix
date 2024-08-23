@@ -3,6 +3,7 @@
     ./lsp
 
     ./cmp.nix
+    ./comment.nix
     ./conform-nvim.nix
     ./fugitive.nix
     ./gitsigns.nix
