@@ -1,7 +1,7 @@
 {username, ...}: {
   stylix.image = ./wp-desert.jpg;
   darwin.dock = {
-    browser = "Chrome";
+    browser = "Arc";
     apps = [
       "/Applications/Slack.app"
       "/Applications/Microsoft Outlook.app"
