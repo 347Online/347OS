@@ -24,7 +24,7 @@ in {
     };
     darwin.dock = {
       browser = lib.mkOption {
-        type = enum ["Chrome" "Safari"];
+        type = enum ["Chrome" "Safari" "Arc" "Firefox"];
         default = "Safari";
       };
       apps = lib.mkOption {
@@ -48,6 +48,8 @@ in {
           "/System/Applications/App Store.app"
           (lib.mkIf (config.darwin.dock.browser == "Safari") "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app")
           (lib.mkIf (config.darwin.dock.browser == "Chrome") "/Applications/Google Chrome.app")
+          (lib.mkIf (config.darwin.dock.browser == "Arc") "/Applications/Arc.app")
+          (lib.mkIf (config.darwin.dock.browser == "Firefox") "/Applications/Firefox.app")
           "/System/Applications/Music.app"
         ]
         ++ config.darwin.dock.apps
