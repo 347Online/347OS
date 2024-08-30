@@ -1,4 +1,8 @@
-{username, ...}: {
+{
+  username,
+  pkgs,
+  ...
+}: {
   stylix.image = ./wp-desert.jpg;
   darwin.dock = {
     browser = "Arc";
@@ -9,10 +13,8 @@
     ];
   };
 
-  # TODO: Try to use the version packaged in nixpkgs instead
-  homebrew.brews = ["awscli"];
-
   home-manager.users.${username} = {
+    home.packages = with pkgs; [awscli2];
     code.codium = {
       rust = false;
       java = true;
