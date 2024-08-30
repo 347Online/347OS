@@ -40,27 +40,30 @@ in {
   plugins.conform-nvim = {
     enable = true;
 
-    formatOnSave = {
-      lspFallback = true;
-      timeoutMs = 500;
-    };
+    settings = {
+      format_on_save = {
+        lsp_fallback = true;
+        timeout_ms = 500;
+      };
 
-    notifyOnError = true;
-    formattersByFt = {
-      html.__raw = prettier;
-      css.__raw = prettier;
-      markdown.__raw = prettier;
+      notify_on_error = true;
 
-      json.__raw = prettier-eslint;
-      jsonc.__raw = prettier-eslint;
-      javascript.__raw = prettier-eslint;
-      javascriptreact.__raw = prettier-eslint;
-      typescript.__raw = prettier-eslint;
-      typescriptreact.__raw = prettier-eslint;
+      formatters_by_ft = {
+        html.__raw = prettier;
+        css.__raw = prettier;
+        markdown.__raw = prettier;
 
-      lua = ["stylua"];
-      nix = ["alejandra"];
-      yaml = ["yamllint" "yamlfmt"];
+        json.__raw = prettier-eslint;
+        jsonc.__raw = prettier-eslint;
+        javascript.__raw = prettier-eslint;
+        javascriptreact.__raw = prettier-eslint;
+        typescript.__raw = prettier-eslint;
+        typescriptreact.__raw = prettier-eslint;
+
+        lua = ["stylua"];
+        nix = ["alejandra"];
+        yaml = ["yamllint" "yamlfmt"];
+      };
     };
   };
 }
