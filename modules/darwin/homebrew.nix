@@ -21,7 +21,8 @@
       onActivation = {
         autoUpdate = true;
         upgrade = true;
-        cleanup = "uninstall";
+        # TODO: Uncomment after homebrew update
+        # cleanup = "uninstall";
       };
 
       masApps = {
