@@ -197,6 +197,9 @@
         ];
       };
   in {
+    # TODO: hosts.nix file loaded by flake.nix
+    # Could provide the relevant functions like mkDarwin
+    # mkDarwin and mkLinux could call a mkHome
     darwinConfigurations."Athena" = mkDarwin {module = ./hosts/Athena;};
     darwinConfigurations."Alice" = mkDarwin {module = ./hosts/Alice;};
 
