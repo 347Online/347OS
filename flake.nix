@@ -66,6 +66,11 @@
       url = "github:tpwrules/nixos-apple-silicon/fc4503fa956c4f07b5cb0b7d446a04be25786402";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wezterm-flake = {
+      url = "github:wez/wezterm?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
