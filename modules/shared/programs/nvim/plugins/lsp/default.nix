@@ -11,6 +11,7 @@
       html.enable = true;
       marksman.enable = true;
       tsserver.enable = true;
+      jdt-language-server.enable = true;
       lua-ls.enable = true;
       nil-ls.enable = true;
       rust-analyzer = {
