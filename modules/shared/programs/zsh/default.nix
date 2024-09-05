@@ -11,11 +11,16 @@
 
     shellAliases = util.mkShellAliases pkgs;
 
-    initExtraFirst = ''
-      # TODO: Rework this config for .zshrc in dotfiles, remove readFile kludge
-      # Powerlevel10k Zsh theme
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      ${builtins.readFile ./.zshrc}
-    '';
+    initExtraFirst =
+      /*
+      sh
+      */
+      ''
+        # TODO: Rework this config for .zshrc in dotfiles, remove readFile kludge
+        # TODO: Remove Powerlevel10k in favor of oh my posh or similar
+        # Powerlevel10k Zsh theme
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        ${builtins.readFile ./.zshrc}
+      '';
   };
 }
