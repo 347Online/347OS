@@ -1,30 +1,6 @@
 {nixpkgs, ...}: let
   lib = nixpkgs.lib;
   util = rec {
-    mkShellAliases = pkgs: {
-      # TODO: We can do this better
-      # A) We don't need pkgs anymore
-      # B) We should be able to add them to the relevant shell configs in one spot
-      cat = "bat";
-      ls = "eza";
-      tree = "eza --tree";
-      diff = "delta";
-
-      branch =
-        # sh
-        "git branch --show-current";
-
-      branchhelp =
-        # sh
-        ''
-          git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
-        '';
-
-      nvim-next =
-        # sh
-        "nix run ~/src/nix-systems#nvim";
-    };
-
     mkIfElse = condition: trueValue: falseValue:
       lib.mkMerge [
         (lib.mkIf condition trueValue)

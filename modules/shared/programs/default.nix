@@ -47,7 +47,28 @@
       (lib.mkIf config.nvim-setup.enable nvim)
     ];
 
-    programs = {
+    programs = let
+      shellAliases = {
+        cat = "bat";
+        ls = "eza";
+        tree = "eza --tree";
+        diff = "delta";
+
+        branch =
+          # sh
+          "git branch --show-current";
+
+        branchhelp =
+          # sh
+          ''
+            git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
+          '';
+
+        nvim-next =
+          # sh
+          "nix run ~/src/nix-systems#nvim";
+      };
+    in {
       ssh = {
         enable = true;
         # TODO: Consider disabling if headless
@@ -55,7 +76,8 @@
           util.mkIfElse isDarwin ''IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'' "IdentityAgent ~/.1password/agent.sock";
       };
       home-manager.enable = true;
-      bash.shellAliases = util.mkShellAliases pkgs;
+      bash.shellAliases = shellAliases;
+      zsh.shellAliases = shellAliases;
     };
   };
 }
