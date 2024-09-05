@@ -45,8 +45,7 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      # TODO: refollow nixpkgs
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-darwin.follows = "nix-darwin";
       inputs.home-manager.follows = "home-manager";
     };
