@@ -1,11 +1,6 @@
 {
-  inputs,
-  system,
-  ...
-}: {
   programs.wezterm = {
     enable = true;
-    package = inputs.wezterm-flake.packages.${system}.default;
     enableZshIntegration = true;
     enableBashIntegration = true;
     extraConfig =
@@ -15,7 +10,8 @@
           initial_cols = 100,
           initial_rows = 40,
           window_close_confirmation = 'NeverPrompt',
-          hide_tab_bar_if_only_one_tab = true
+          hide_tab_bar_if_only_one_tab = true,
+          front_end = "WebGpu"
         }
       '';
   };
