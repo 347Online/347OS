@@ -3,6 +3,7 @@
     ./hardware.nix
   ];
 
+  games.enable = true;
   boot.binfmt.emulatedSystems = ["x86_64-linux"];
 
   networking.hostName = "Arctic";

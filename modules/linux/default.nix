@@ -6,6 +6,8 @@
   ...
 }: {
   imports = [
+    ../games
+
     ./keyd.nix
     ./nix.nix
   ];
