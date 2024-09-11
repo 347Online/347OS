@@ -43,6 +43,7 @@
       prettierd
       ripgrep
       vim
+      rustup
 
       (lib.mkIf config.nvim-setup.enable nvim)
     ];
