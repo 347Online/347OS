@@ -58,9 +58,8 @@
       environment.systemPackages = with pkgs; [
         vim
         killall
-
-        # TODO: Rust option
         lld
+        gcc
       ];
     }
 
