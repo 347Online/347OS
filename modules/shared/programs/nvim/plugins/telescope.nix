@@ -2,11 +2,23 @@
   plugins.telescope = {
     enable = true;
 
-    settings = {
+    settings.defaults = {
       pickers = {
         find_files = {
           hidden = true;
           file_ignore_patterns = ["^./.git/" "^node_modules/"];
+        };
+      };
+      mappings = {
+        n = {
+          "<C-d>".__raw = ''
+            require("telescope.actions").delete_buffer
+          '';
+        };
+        i = {
+          "<C-d>".__raw = ''
+            require("telescope.actions").delete_buffer
+          '';
         };
       };
     };
