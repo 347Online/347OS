@@ -1,5 +1,4 @@
 {
-  fenix,
   nur,
   inputs,
   ...
@@ -17,7 +16,6 @@
     };
   };
   nixpkgs = {
-    overlays = [fenix.overlays.default];
     config = {
       allowUnfree = true;
       allowUnsupportedSystem = true;

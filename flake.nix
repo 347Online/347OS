@@ -18,11 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,7 +69,6 @@
     nur,
     nix-darwin,
     home-manager,
-    fenix,
     nix-homebrew,
     nix-vscode-extensions,
     nil,
@@ -151,7 +145,7 @@
     in
       (mkSpecialArgs pkgs)
       // {
-        inherit fenix util;
+        inherit util;
         nvim = mkNvim pkgs;
         vscode-extensions = nix-vscode-extensions.extensions.${system};
       };
@@ -258,35 +252,6 @@
       system,
     }: {
       nvim = mkNvim pkgs;
-    });
-
-    devShells = forAllSystems ({system, ...}: let
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [fenix.overlays.default];
-      };
-      mkRust = toolchain:
-        pkgs.mkShell {
-          buildInputs = with pkgs; [
-            (pkgs.fenix.${toolchain}.withComponents [
-              "cargo"
-              "clippy"
-              "rust-src"
-              "rustc"
-              "rustfmt"
-            ])
-            rust-analyzer-nightly
-            rustup
-          ];
-
-          shellHook = ''
-            echo "Using Rust devShell - $(cargo --version)"
-          '';
-        };
-    in {
-      rust = mkRust "stable";
-      rust-beta = mkRust "beta";
-      rust-nightly = mkRust "complete";
     });
   };
 }
