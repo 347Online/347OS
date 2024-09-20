@@ -58,8 +58,9 @@ in {
           "/Applications/Obsidian.app"
           "${wezterm}/Applications/wezterm.app"
 
-          # Make system settings the rightmost app
+          # Right-most apps
           "/System/Applications/System Settings.app"
+          "/System/Applications/iPhone Mirroring.app"
         ];
       startup.chime = true;
 
