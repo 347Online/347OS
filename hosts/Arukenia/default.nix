@@ -6,11 +6,9 @@
   stylix.image = ./wp-desert.jpg;
   linux.headless.enable = true;
   home-manager.users.${username} = {
-    nvim-setup.enable = false;
+    shared.nixvim.enable = false;
   };
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
   networking.hostName = "Arukenia";
   time.timeZone = "America/Chicago";
 

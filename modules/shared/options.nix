@@ -1,6 +1,7 @@
 {lib, ...}: {
   options = {
     shared = {
+      nixvim.enable = lib.mkEnableOption "nixvim setup";
       codium = {
         enable = lib.mkEnableOption "vscodium setup";
 
@@ -13,5 +14,9 @@
 
     # DO NOT SET MANUALLY
     __headless.enable = lib.mkEnableOption "headless operation";
+  };
+
+  config = {
+    shared.nixvim.enable = lib.mkDefault true;
   };
 }
