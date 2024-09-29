@@ -78,38 +78,8 @@
     ...
   }: let
     username = "katie";
-    linuxSystems = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
-    darwinSystems = [
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
-    supportedSystems = linuxSystems ++ darwinSystems;
 
-    forSystem = system: f:
-      f rec {
-        inherit system;
-
-        pkgs = import nixpkgs {
-          inherit system;
-        };
-      };
-
-    forSystems = f: systems:
-      nixpkgs.lib.genAttrs systems (system: (forSystem system f));
-
-    forAllSystems = f:
-      forSystems f
-      supportedSystems;
-
-    util = import ./modules/util.nix inputs;
-
-    mkPkgs = system:
-      import nixpkgs {
-        inherit system;
-      };
+    util = import ./util.nix inputs;
 
     mkNvim = pkgs: let
       system = pkgs.system;
@@ -155,15 +125,10 @@
       ./modules/shared
     ];
 
-    baseModulesHomeManagerGui =
-      baseModulesHomeManager
-      ++ [
-        {
-          stylix.targets = {
-            waybar.enable = false;
-          };
-        }
-      ];
+    mkPkgs = system:
+      import nixpkgs {
+        inherit system;
+      };
 
     mkDarwin = {
       module,
@@ -183,7 +148,7 @@
               backupFileExtension = "bakk";
               sharedModules = [nur.hmModules.nur];
               extraSpecialArgs = mkExtraSpecialArgs pkgs;
-              users.${username}.imports = baseModulesHomeManagerGui;
+              users.${username}.imports = baseModulesHomeManager;
             };
           }
 
@@ -238,7 +203,7 @@
     nixosConfigurations."Arctic" = mkLinux {module = ./hosts/Arctic;};
     nixosConfigurations."Arukenia" = mkLinux {module = ./hosts/Arukenia;};
 
-    packages = forAllSystems ({
+    packages = util.forAllSystems ({
       pkgs,
       system,
     }: {

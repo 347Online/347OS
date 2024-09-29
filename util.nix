@@ -1,6 +1,34 @@
 {nixpkgs, ...}: let
   lib = nixpkgs.lib;
   util = rec {
+    linuxSystems = [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
+
+    darwinSystems = [
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+
+    supportedSystems = linuxSystems ++ darwinSystems;
+
+    forSystem = system: f:
+      f rec {
+        inherit system;
+
+        pkgs = import nixpkgs {
+          inherit system;
+        };
+      };
+
+    forSystems = f: systems:
+      nixpkgs.lib.genAttrs systems (system: (forSystem system f));
+
+    forAllSystems = f:
+      forSystems f
+      supportedSystems;
+
     mkIfElse = condition: trueValue: falseValue:
       lib.mkMerge [
         (lib.mkIf condition trueValue)
