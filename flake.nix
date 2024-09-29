@@ -177,7 +177,6 @@
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
           stylix.darwinModules.stylix
-          (import ./modules/darwin)
           {
             environment.pathsToLink = ["/share/zsh"];
             home-manager = {
@@ -187,6 +186,45 @@
               users.${username}.imports = baseModulesHomeManagerGui;
             };
           }
+
+          ./modules/darwin
+          module
+        ];
+      };
+
+    mkLinux = {
+      module,
+      system ? "aarch64-linux",
+    }: let
+      pkgs = mkPkgs system;
+    in
+      nixpkgs.lib.nixosSystem {
+        specialArgs = mkSpecialArgs pkgs;
+
+        modules = [
+          home-manager.nixosModules.home-manager
+          stylix.nixosModules.stylix
+          ({
+            lib,
+            config,
+            ...
+          }: {
+            nixpkgs.config.allowUnfree = true;
+            home-manager = {
+              backupFileExtension = "bakk";
+              sharedModules = [nur.hmModules.nur];
+              extraSpecialArgs = mkExtraSpecialArgs pkgs;
+              users.${username}.imports =
+                baseModulesHomeManager
+                ++ [
+                  {
+                    __headless.enable = lib.mkForce config.linux.headless.enable;
+                  }
+                ];
+            };
+          })
+
+          ./modules/linux
           module
         ];
       };
@@ -197,55 +235,8 @@
     darwinConfigurations."Athena" = mkDarwin {module = ./hosts/Athena;};
     darwinConfigurations."Alice" = mkDarwin {module = ./hosts/Alice;};
 
-    nixosConfigurations."Arctic" = let
-      system = "aarch64-linux";
-      pkgs = mkPkgs system;
-    in
-      nixpkgs.lib.nixosSystem {
-        specialArgs = mkSpecialArgs pkgs;
-
-        modules = [
-          stylix.nixosModules.stylix
-          home-manager.nixosModules.home-manager
-          {
-            nixpkgs.config.allowUnfree = true;
-            home-manager = {
-              backupFileExtension = "bakk";
-              sharedModules = [nur.hmModules.nur];
-              extraSpecialArgs = mkExtraSpecialArgs pkgs;
-              users.${username}.imports = baseModulesHomeManagerGui;
-            };
-          }
-
-          ./modules/shared/stylix.nix
-          ./modules/linux
-          ./hosts/Arctic
-        ];
-      };
-
-    nixosConfigurations."Arukenia" = let
-      system = "x86_64-linux";
-      pkgs = mkPkgs system;
-    in
-      nixpkgs.lib.nixosSystem {
-        specialArgs = mkSpecialArgs pkgs;
-
-        modules = [
-          home-manager.nixosModules.home-manager
-          {
-            nixpkgs.config.allowUnfree = true;
-            home-manager = {
-              backupFileExtension = "bakk";
-              sharedModules = [nur.hmModules.nur];
-              extraSpecialArgs = mkExtraSpecialArgs pkgs;
-              users.${username}.imports = baseModulesHomeManager;
-            };
-          }
-
-          ./modules/linux
-          ./hosts/Arukenia
-        ];
-      };
+    nixosConfigurations."Arctic" = mkLinux {module = ./hosts/Arctic;};
+    nixosConfigurations."Arukenia" = mkLinux {module = ./hosts/Arukenia;};
 
     packages = forAllSystems ({
       pkgs,

@@ -6,17 +6,13 @@
   ...
 }: {
   imports = [
-    ../games
+    ./games
 
     ./keyd.nix
     ./nix.nix
+    ./options.nix
+    ../shared/stylix.nix
   ];
-
-  options = {
-    linux = {
-      headless = lib.mkEnableOption "headless operation";
-    };
-  };
 
   config = lib.mkMerge [
     {
@@ -63,7 +59,7 @@
       ];
     }
 
-    (lib.mkIf (!config.linux.headless) {
+    (lib.mkIf (!config.linux.headless.enable) {
       programs.sway.enable = true;
       programs._1password-gui.enable = true;
 

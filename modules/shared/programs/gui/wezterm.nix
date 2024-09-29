@@ -1,4 +1,9 @@
 {
+  lib,
+  config,
+  ...
+}:
+lib.mkIf (!config.__headless.enable) {
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;

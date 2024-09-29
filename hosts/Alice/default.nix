@@ -15,9 +15,5 @@
 
   home-manager.users.${username} = {
     home.packages = with pkgs; [awscli2];
-    code.codium = {
-      rust = false;
-      java = true;
-    };
   };
 }

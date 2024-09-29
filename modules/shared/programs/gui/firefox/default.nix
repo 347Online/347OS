@@ -1,9 +1,10 @@
 {
   lib,
-  isDarwin,
   config,
+  isDarwin,
   ...
-}: {
+}:
+lib.mkIf (!config.__headless.enable) {
   programs.firefox = {
     enable = lib.mkIf (!isDarwin) true;
 

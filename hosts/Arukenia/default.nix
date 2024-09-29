@@ -3,7 +3,8 @@
     ./hardware-configuration.nix
   ];
 
-  linux.headless = true;
+  stylix.image = ./wp-desert.jpg;
+  linux.headless.enable = true;
   home-manager.users.${username} = {
     nvim-setup.enable = false;
   };

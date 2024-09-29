@@ -3,11 +3,11 @@
     ./hardware.nix
   ];
 
+  stylix.image = ./wp-neon-city.jpg;
   games.enable = true;
   boot.binfmt.emulatedSystems = ["x86_64-linux"];
 
   networking.hostName = "Arctic";
-  stylix.image = ./wp-neon-city.jpg;
   time.timeZone = "America/Chicago";
 
   home-manager.users.${username} = {

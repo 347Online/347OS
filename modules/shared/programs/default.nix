@@ -8,8 +8,7 @@
   ...
 }: {
   imports = [
-    ./codium
-    ./firefox
+    ./gui
     ./zsh
 
     ./bat.nix
@@ -21,7 +20,6 @@
     ./ledger.nix
     ./neomutt.nix
     ./tmux.nix
-    ./wezterm.nix
     ./zoxide.nix
   ];
 
