@@ -4,6 +4,6 @@
   config,
   ...
 }:
-lib.mkIf config.games.enable {
+lib.mkIf config.linux.gaming.enable {
   environment.systemPackages = with pkgs; [prismlauncher];
 }
