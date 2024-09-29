@@ -13,9 +13,11 @@
     ./nix.nix
     ./nvim-autopairs.nix
     ./oil.nix
+    ./otter.nix
     ./telescope.nix
     ./treesitter.nix
     ./trouble.nix
     ./vim-be-good.nix
+    ./web-devicons.nix
   ];
 }
