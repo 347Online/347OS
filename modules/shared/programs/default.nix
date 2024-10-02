@@ -32,6 +32,7 @@
     mise
     nil
     prettierd
+    eslint_d
     ripgrep
     vim
     rustup
