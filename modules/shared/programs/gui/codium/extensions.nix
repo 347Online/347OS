@@ -31,6 +31,7 @@
       bradlc.vscode-tailwindcss
 
       # Utilities
+      open-vsx."1password".op-vscode
       ritwickdey.liveserver
       vscode-marketplace.cweijan.vscode-database-client2
       ms-vscode.hexeditor

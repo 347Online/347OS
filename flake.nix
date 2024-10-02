@@ -108,16 +108,14 @@
       inherit inputs username util system;
       inherit (pkgs.stdenv) isDarwin;
       homeDirectory = util.mkHomeDirectory pkgs username;
+      vscode-extensions = nix-vscode-extensions.extensions.${system};
     };
 
-    mkExtraSpecialArgs = pkgs: let
-      system = pkgs.system;
-    in
+    mkExtraSpecialArgs = pkgs:
       (mkSpecialArgs pkgs)
       // {
         inherit util;
         nvim = mkNvim pkgs;
-        vscode-extensions = nix-vscode-extensions.extensions.${system};
       };
 
     baseModulesHomeManager = [
