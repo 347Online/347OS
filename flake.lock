@@ -825,6 +825,7 @@
         "nixvim": "nixvim",
         "nur": "nur",
         "stylix": "stylix",
+        "tsc-nvim": "tsc-nvim",
         "vim-be-good": "vim-be-good"
       }
     },
@@ -1040,6 +1041,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "tsc-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723644951,
+        "narHash": "sha256-mpJWipLdqxoMe0ixMnhgZguKQK+1iCqH5/v2NQ4vypE=",
+        "owner": "dmmulroy",
+        "repo": "tsc.nvim",
+        "rev": "82c37ebfe45d30763db6f45b54e18f1e485bb52c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dmmulroy",
+        "repo": "tsc.nvim",
         "type": "github"
       }
     },

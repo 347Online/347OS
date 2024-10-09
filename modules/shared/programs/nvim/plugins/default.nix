@@ -17,6 +17,7 @@
     ./telescope.nix
     ./treesitter.nix
     ./trouble.nix
+    ./tsc-nvim.nix
     ./vim-be-good.nix
     ./web-devicons.nix
   ];
