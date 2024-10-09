@@ -29,6 +29,7 @@ lib.mkIf config.darwin.homebrew.enable {
       "Numbers" = 409203825;
       "Pages" = 409201541;
       "Fantastical" = 975937182;
+      "StopTheMadness Pro" = 6471380298;
       # "Overcast" = 888422857; # Currently broken
     };
 
