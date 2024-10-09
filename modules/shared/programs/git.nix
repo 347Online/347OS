@@ -1,11 +1,6 @@
 {
-  lib,
-  isDarwin,
-  ...
-}: {
   programs.git = {
     enable = true;
-    delta.enable = true;
     ignores = [
       "Session.vim"
       ".DS_Store"
@@ -31,6 +26,7 @@
     };
     extraConfig = {
       core.editor = "nvim";
+      core.pager = "LESS='FR --redraw-on-quit' delta";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.ff = "only";

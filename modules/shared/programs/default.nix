@@ -18,6 +18,7 @@
     ./git.nix
     ./lazygit.nix
     ./ledger.nix
+    ./less.nix
     ./neomutt.nix
     ./tmux.nix
     ./zoxide.nix
@@ -28,6 +29,7 @@
     alejandra
     bat
     eza
+    delta
     fd
     mise
     nil
