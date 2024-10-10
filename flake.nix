@@ -209,7 +209,14 @@
     darwinConfigurations."Alice" = mkDarwin {module = ./hosts/Alice;};
 
     nixosConfigurations."Arctic" = mkLinux {module = ./hosts/Arctic;};
-    nixosConfigurations."Arukenia" = mkLinux {module = ./hosts/Arukenia;};
+    nixosConfigurations."Arukenia" = mkLinux {
+      module = ./hosts/Arukenia;
+      system = "x86_64-linux";
+    };
+    nixosConfigurations."Ariel" = mkLinux {
+      module = ./hosts/Ariel;
+      system = "x86_64-linux";
+    };
 
     packages = util.forAllSystems ({
       pkgs,

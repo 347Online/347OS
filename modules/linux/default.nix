@@ -42,6 +42,7 @@
         extraGroups = ["wheel"];
       };
 
+      programs.git.enable = true;
       programs.zsh.enable = true;
       programs._1password.enable = true;
       programs.gnupg.agent = {

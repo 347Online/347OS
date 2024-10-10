@@ -6,7 +6,7 @@
   stylix.image = ./wp-desert.jpg;
   linux.headless.enable = true;
   home-manager.users.${username} = {
-    shared.nixvim.enable = false;
+    # home-config here
   };
 
   networking.hostName = "Arukenia";
