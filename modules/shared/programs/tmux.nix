@@ -2,6 +2,7 @@
   programs.tmux = {
     enable = true;
     baseIndex = 1;
+    sensibleOnTop = false;
     mouse = true;
     shortcut = "Space";
     terminal = "$TERM"; # TODO: This needs to be set to an environment var or something for correct behavior in tty
