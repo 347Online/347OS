@@ -55,29 +55,35 @@
       environment.systemPackages = with pkgs; [
         vim
         killall
-        lld
-        gcc
+        # lld
+        # gcc
       ];
     }
 
     (lib.mkIf (!config.linux.headless.enable) {
-      programs.sway.enable = true;
+      # programs.sway.enable = true;
       programs._1password-gui.enable = true;
 
-      services.greetd = {
-        # TODO: only if not headless
+      services.desktopManager.plasma6.enable = true;
+      services.displayManager.sddm = {
         enable = true;
-        settings = {
-          initial_session = {
-            command = "${pkgs.sway}/bin/sway";
-            user = "katie";
-          };
-          default_session = {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks";
-            user = "greeter";
-          };
-        };
+        wayland.enable = true;
       };
+
+      # services.greetd = {
+      #   # TODO: only if not headless
+      #   enable = true;
+      #   settings = {
+      #     initial_session = {
+      #       command = "${pkgs.sway}/bin/sway";
+      #       user = "katie";
+      #     };
+      #     default_session = {
+      #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks";
+      #       user = "greeter";
+      #     };
+      #   };
+      # };
 
       environment.systemPackages = with pkgs; [
         # Electron Apps
@@ -95,21 +101,21 @@
 
       home-manager = {
         users.${username} = {
-          wayland.windowManager.sway = {
-            enable = true;
-            config = rec {
-              terminal = "${pkgs.wezterm}/bin/wezterm";
-              modifier = "Mod4";
-              menu = "${pkgs.fuzzel}/bin/fuzzel -f Dina:size=18 | ${pkgs.findutils}/bin/xargs swaymsg exec --";
-              keybindings = lib.mkOptionDefault {
-                "${modifier}+space" = "exec ${menu}";
-                "${modifier}+d" = null;
-              };
-              startup = [
-                {command = "1password --silent";}
-              ];
-            };
-          };
+          # wayland.windowManager.sway = {
+          #   enable = true;
+          #   config = rec {
+          #     terminal = "${pkgs.wezterm}/bin/wezterm";
+          #     modifier = "Mod4";
+          #     menu = "${pkgs.fuzzel}/bin/fuzzel -f Dina:size=18 | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+          #     keybindings = lib.mkOptionDefault {
+          #       "${modifier}+space" = "exec ${menu}";
+          #       "${modifier}+d" = null;
+          #     };
+          #     startup = [
+          #       {command = "1password --silent";}
+          #     ];
+          #   };
+          # };
 
           programs.fuzzel.enable = true;
           programs.waybar = {
