@@ -194,19 +194,23 @@
 
     mkIso = system: let
       pkgs = mkPkgs system;
-      specialArgs = mkSpecialArgs pkgs;
     in
       nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
+        specialArgs = mkSpecialArgs pkgs;
 
         modules = [
+          stylix.nixosModules.stylix
           {
+            stylix.image = ./wallpapers/desert.jpg;
+
             environment.systemPackages = with pkgs; [
               (mkNvim system)
               git
               vim
               lvm2
             ];
+
+            nixpkgs.hostPlatform = system;
           }
         ];
       };
