@@ -13,7 +13,7 @@
     };
 
     # DO NOT SET MANUALLY
-    __headless.enable = lib.mkEnableOption "headless operation";
+    shared.gui.enable = lib.mkEnableOption "graphical interface and programs";
   };
 
   config = {

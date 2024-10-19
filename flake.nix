@@ -115,7 +115,7 @@
     mkSpecialArgs = pkgs: let
       system = pkgs.system;
     in {
-      inherit inputs username util system;
+      inherit inputs self username util system;
       inherit (pkgs.stdenv) isDarwin;
       homeDirectory = util.mkHomeDirectory pkgs username;
       vscode-extensions = nix-vscode-extensions.extensions.${system};
@@ -167,7 +167,7 @@
 
     mkLinux = {
       module,
-      system ? "aarch64-linux",
+      system,
     }: let
       pkgs = mkPkgs system;
     in
@@ -191,7 +191,7 @@
                 baseModulesHomeManager
                 ++ [
                   {
-                    __headless.enable = lib.mkForce config.linux.headless.enable;
+                    shared.gui.enable = lib.mkForce config.linux.gui.enable;
                   }
                 ];
             };
@@ -208,7 +208,10 @@
     darwinConfigurations."Athena" = mkDarwin {module = ./hosts/Athena;};
     darwinConfigurations."Alice" = mkDarwin {module = ./hosts/Alice;};
 
-    nixosConfigurations."Arctic" = mkLinux {module = ./hosts/Arctic;};
+    nixosConfigurations."Arctic" = mkLinux {
+      module = ./hosts/Arctic;
+      system = "aarch64-linux";
+    };
     nixosConfigurations."Arukenia" = mkLinux {
       module = ./hosts/Arukenia;
       system = "x86_64-linux";
@@ -219,6 +222,14 @@
     };
     nixosConfigurations."Ariel" = mkLinux {
       module = ./hosts/Ariel;
+      system = "x86_64-linux";
+    };
+    nixosConfigurations."ISO-ARM" = mkLinux {
+      module = ./hosts/iso;
+      system = "aarch64-linux";
+    };
+    nixosConfigurations."ISO-INTEL" = mkLinux {
+      module = ./hosts/iso;
       system = "x86_64-linux";
     };
 

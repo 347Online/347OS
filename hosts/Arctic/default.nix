@@ -9,6 +9,7 @@
   time.timeZone = "America/Chicago";
 
   linux.gaming.enable = true;
+  linux.gui.enable = true;
 
   home-manager.users.${username} = {
     programs.ssh.matchBlocks = {

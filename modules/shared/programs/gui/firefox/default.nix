@@ -4,7 +4,7 @@
   isDarwin,
   ...
 }:
-lib.mkIf (!config.__headless.enable) {
+lib.mkIf config.shared.gui.enable {
   programs.firefox = {
     enable = lib.mkIf (!isDarwin) true;
 

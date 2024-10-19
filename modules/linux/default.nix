@@ -60,7 +60,7 @@
       ];
     }
 
-    (lib.mkIf (!config.linux.headless.enable) {
+    (lib.mkIf config.linux.gui.enable {
       programs._1password-gui.enable = true;
 
       services.desktopManager.plasma6.enable = true;

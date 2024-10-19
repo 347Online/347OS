@@ -1,7 +1,7 @@
 {lib, ...}: {
   options = {
     linux = {
-      headless.enable = lib.mkEnableOption "headless operation";
+      gui.enable = lib.mkEnableOption "graphical interface and programs";
       gaming.enable = lib.mkEnableOption "gaming";
     };
   };

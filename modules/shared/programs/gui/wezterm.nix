@@ -3,7 +3,7 @@
   config,
   ...
 }:
-lib.mkIf (!config.__headless.enable) {
+lib.mkIf config.shared.gui.enable {
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;
