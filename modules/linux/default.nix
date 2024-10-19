@@ -21,18 +21,21 @@
           login.u2fAuth = true;
           sudo.u2fAuth = true;
         };
-        yubico = {
-          enable = true;
-          mode = "challenge-response";
-          id = ["28646857"];
-        };
+        # yubico = {
+        #   enable = true;
+        #   mode = "challenge-response";
+        #   id = ["28646857"];
+        # };
       };
 
       services = {
-        pcscd.enable = true;
+        # pcscd.enable = true;
         openssh.enable = true;
         printing.enable = true;
-        udev.packages = with pkgs; [yubikey-personalization];
+        # udev.packages = with pkgs; [
+        #   yubikey-personalization
+        #   libu2f-host
+        # ];
       };
 
       users.users.katie = {
