@@ -165,6 +165,24 @@
         ];
       };
 
+    mkIso = system: let
+      pkgs = mkPkgs system;
+      specialArgs = mkSpecialArgs pkgs;
+    in
+      nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+
+        modules = [
+          {
+            environment.systemPackages = with pkgs; [
+              (mkNvim system)
+              git
+              vim
+            ];
+          }
+        ];
+      };
+
     mkLinux = {
       module,
       system,
@@ -224,14 +242,9 @@
       module = ./hosts/Ariel;
       system = "x86_64-linux";
     };
-    nixosConfigurations."ISO-ARM" = mkLinux {
-      module = ./hosts/iso;
-      system = "aarch64-linux";
-    };
-    nixosConfigurations."ISO-INTEL" = mkLinux {
-      module = ./hosts/iso;
-      system = "x86_64-linux";
-    };
+
+    nixosConfigurations."ISO-ARM" = mkIso "aarch64-linux";
+    nixosConfigurations."ISO-INTEL" = mkIso "x86_64-linux";
 
     packages = util.forAllSystems ({
       pkgs,
