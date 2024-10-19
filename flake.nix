@@ -104,11 +104,7 @@
             };
           });
         });
-        module =
-          (import ./modules/shared/programs/nvim)
-          // {
-            # package = neovim-nightly-overlay.packages.${system}.default;
-          };
+        module = ./modules/shared/programs/nvim;
         extraSpecialArgs = {inherit util;};
       };
 
@@ -138,10 +134,7 @@
         inherit system;
       };
 
-    mkDarwin = {
-      module,
-      system ? "aarch64-darwin",
-    }: let
+    mkDarwin = system: module: let
       pkgs = mkPkgs system;
     in
       nix-darwin.lib.darwinSystem {
@@ -165,28 +158,7 @@
         ];
       };
 
-    mkIso = system: let
-      pkgs = mkPkgs system;
-      specialArgs = mkSpecialArgs pkgs;
-    in
-      nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-
-        modules = [
-          {
-            environment.systemPackages = with pkgs; [
-              (mkNvim system)
-              git
-              vim
-            ];
-          }
-        ];
-      };
-
-    mkLinux = {
-      module,
-      system,
-    }: let
+    mkLinux = system: module: let
       pkgs = mkPkgs system;
     in
       nixpkgs.lib.nixosSystem {
@@ -219,29 +191,35 @@
           module
         ];
       };
+
+    mkIso = system: let
+      pkgs = mkPkgs system;
+      specialArgs = mkSpecialArgs pkgs;
+    in
+      nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+
+        modules = [
+          {
+            environment.systemPackages = with pkgs; [
+              (mkNvim system)
+              git
+              vim
+              lvm2
+            ];
+          }
+        ];
+      };
   in {
     # TODO: hosts.nix file loaded by flake.nix
     # Could provide the relevant functions like mkDarwin
     # mkDarwin and mkLinux could call a mkHome
-    darwinConfigurations."Athena" = mkDarwin {module = ./hosts/Athena;};
-    darwinConfigurations."Alice" = mkDarwin {module = ./hosts/Alice;};
+    darwinConfigurations."Athena" = mkDarwin "aarch64-linux" ./hosts/Athena;
+    darwinConfigurations."Alice" = mkDarwin "x86_64-linux" ./hosts/Alice;
 
-    nixosConfigurations."Arctic" = mkLinux {
-      module = ./hosts/Arctic;
-      system = "aarch64-linux";
-    };
-    nixosConfigurations."Arukenia" = mkLinux {
-      module = ./hosts/Arukenia;
-      system = "x86_64-linux";
-    };
-    nixosConfigurations."Aspen" = mkLinux {
-      module = ./hosts/Aspen;
-      system = "x86_64-linux";
-    };
-    nixosConfigurations."Ariel" = mkLinux {
-      module = ./hosts/Ariel;
-      system = "x86_64-linux";
-    };
+    nixosConfigurations."Arctic" = mkLinux "aarch64-linux" ./hosts/Arctic;
+    nixosConfigurations."Arukenia" = mkLinux "x86_64-linux" ./hosts/Arukenia;
+    nixosConfigurations."Aspen" = mkLinux "x86_64-linux" ./hosts/Aspen;
 
     nixosConfigurations."ISO-ARM" = mkIso "aarch64-linux";
     nixosConfigurations."ISO-INTEL" = mkIso "x86_64-linux";
