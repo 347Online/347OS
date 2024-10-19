@@ -32,7 +32,6 @@
         pcscd.enable = true;
         openssh.enable = true;
         printing.enable = true;
-        gnome.gnome-keyring.enable = true;
         udev.packages = with pkgs; [yubikey-personalization];
       };
 
@@ -68,28 +67,17 @@
       };
 
       environment.systemPackages = with pkgs; [
-        # Electron Apps
-        # webcord
-        # element-desktop # TODO: Only if a private machine
-        # obsidian
-
-        wev
-        playerctl
-        paper-plane
-        blueberry
-        pavucontrol
         acpi
       ];
 
       home-manager = {
         users.${username} = {
-          home.pointerCursor = {
-            gtk.enable = true;
-            x11.enable = true;
-          };
-
           home.packages = with pkgs; [
-            acpi
+            # Electron Apps
+            # webcord
+            # element-desktop # TODO: Only if a private machine
+            # obsidian
+            paper-plane
           ];
         };
       };
