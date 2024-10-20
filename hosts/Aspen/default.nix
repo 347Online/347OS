@@ -10,7 +10,6 @@
 
   stylix.image = "${self}/wallpapers/desert.jpg";
 
-  linux.headless.enable = true;
   home-manager.users.${username} = {
     # home-config here
   };
