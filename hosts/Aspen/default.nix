@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./services.nix
   ];
 
   stylix.image = "${self}/wallpapers/desert.jpg";
