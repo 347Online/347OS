@@ -18,7 +18,7 @@
   home-manager.users.${username} = {
     programs.ssh.matchBlocks = {
       Aspen = {
-        hostname = "konundream.com";
+        hostname = "fatgirl.cloud";
         user = username;
         port = 5892;
       };
