@@ -111,7 +111,7 @@
     mkSpecialArgs = pkgs: let
       system = pkgs.system;
     in {
-      inherit inputs self username util system;
+      inherit self inputs username util system;
       inherit (pkgs.stdenv) isDarwin;
       homeDirectory = util.mkHomeDirectory pkgs username;
       vscode-extensions = nix-vscode-extensions.extensions.${system};

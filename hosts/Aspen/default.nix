@@ -1,9 +1,13 @@
-{username, ...}: {
+{
+  self,
+  username,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
 
-  stylix.image = ./wp-desert.jpg;
+  stylix.image = "${self}/wallpapers/desert.jpg";
 
   linux.headless.enable = true;
   home-manager.users.${username} = {

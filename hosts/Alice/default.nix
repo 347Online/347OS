@@ -1,10 +1,12 @@
 {
+  self,
   username,
   pkgs,
   vscode-extensions,
   ...
 }: {
-  stylix.image = ./wp-desert.jpg;
+  stylix.image = "${self}/wallpapers/desert.jpg";
+
   darwin.dock = {
     browser = "Safari";
     apps = [

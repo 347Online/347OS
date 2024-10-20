@@ -1,9 +1,13 @@
-{username, ...}: {
+{
+  self,
+  username,
+  ...
+}: {
   imports = [
     ./hardware.nix
   ];
 
-  stylix.image = ./wp-neon-city.jpg;
+  stylix.image = "${self}/wallpapers/neon-city.jpg";
 
   networking.hostName = "Arctic";
   time.timeZone = "America/Chicago";
@@ -13,7 +17,7 @@
 
   home-manager.users.${username} = {
     programs.ssh.matchBlocks = {
-      Arukenia = {
+      Aspen = {
         hostname = "konundream.com";
         user = username;
         port = 5892;

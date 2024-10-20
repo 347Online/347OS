@@ -1,5 +1,6 @@
-{
-  stylix.image = ./wp-sunset.jpg;
+{self, ...}: {
+  stylix.image = "${self}/wallpapers/sunset.jpg";
+
   darwin.dock.apps = [
     "/Applications/Overcast.app"
     "/System/Applications/Messages.app"
