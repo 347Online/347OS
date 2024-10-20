@@ -16,8 +16,6 @@
 
   config = lib.mkMerge [
     {
-      networking.networkmanager.enable = true;
-
       security.pam = {
         services = {
           login.u2fAuth = true;
@@ -64,6 +62,8 @@
 
     (lib.mkIf config.linux.gui.enable {
       programs._1password-gui.enable = true;
+
+      networking.networkmanager.enable = true;
 
       services.desktopManager.plasma6.enable = true;
       services.displayManager.sddm = {
