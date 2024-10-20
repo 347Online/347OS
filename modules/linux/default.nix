@@ -16,6 +16,8 @@
 
   config = lib.mkMerge [
     {
+      networking.networkmanager.enable = true;
+
       security.pam = {
         services = {
           login.u2fAuth = true;

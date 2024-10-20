@@ -200,18 +200,23 @@
 
         modules = [
           stylix.nixosModules.stylix
-          {
+          ({modulesPath, ...}: {
+            imports = [
+              "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
+            ];
+
             stylix.image = ./wallpapers/desert.jpg;
 
             environment.systemPackages = with pkgs; [
-              (mkNvim system)
+              (mkNvim pkgs)
+              alejandra
               git
               vim
               lvm2
             ];
 
             nixpkgs.hostPlatform = system;
-          }
+          })
         ];
       };
   in {
