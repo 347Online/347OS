@@ -213,6 +213,10 @@
       module = ./hosts/Arukenia;
       system = "x86_64-linux";
     };
+    nixosConfigurations."Aspen" = mkLinux {
+      module = ./hosts/Aspen;
+      system = "x86_64-linux";
+    };
     nixosConfigurations."Ariel" = mkLinux {
       module = ./hosts/Ariel;
       system = "x86_64-linux";
