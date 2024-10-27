@@ -1,5 +1,6 @@
 {lib, ...}: {
   options = with lib.types; {
+    darwin.gui.enable = lib.mkEnableOption "graphical interface and programs";
     darwin.homebrew.enable = lib.mkEnableOption "homebrew setup";
     darwin.loginItems = lib.mkOption {
       type = listOf str;

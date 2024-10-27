@@ -18,6 +18,7 @@ in {
     ../shared/stylix.nix
   ];
 
+  darwin.gui.enable = lib.mkDefault true;
   darwin.homebrew.enable = lib.mkDefault true;
 
   # See ./pam.nix

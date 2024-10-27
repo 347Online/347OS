@@ -143,15 +143,25 @@
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
           stylix.darwinModules.stylix
-          {
+          ({
+            lib,
+            config,
+            ...
+          }: {
             environment.pathsToLink = ["/share/zsh"];
             home-manager = {
               backupFileExtension = "bakk";
               sharedModules = [nur.hmModules.nur];
               extraSpecialArgs = mkExtraSpecialArgs pkgs;
-              users.${username}.imports = baseModulesHomeManager;
+              users.${username}.imports =
+                baseModulesHomeManager
+                ++ [
+                  {
+                    shared.gui.enable = lib.mkForce config.darwin.gui.enable;
+                  }
+                ];
             };
-          }
+          })
 
           ./modules/darwin
           module
@@ -223,8 +233,8 @@
     # TODO: hosts.nix file loaded by flake.nix
     # Could provide the relevant functions like mkDarwin
     # mkDarwin and mkLinux could call a mkHome
-    darwinConfigurations."Athena" = mkDarwin "aarch64-linux" ./hosts/Athena;
-    darwinConfigurations."Alice" = mkDarwin "x86_64-linux" ./hosts/Alice;
+    darwinConfigurations."Athena" = mkDarwin "aarch64-darwin" ./hosts/Athena;
+    darwinConfigurations."Alice" = mkDarwin "x86_64-darwin" ./hosts/Alice;
 
     nixosConfigurations."Arctic" = mkLinux "aarch64-linux" ./hosts/Arctic;
     nixosConfigurations."Arukenia" = mkLinux "x86_64-linux" ./hosts/Arukenia;
