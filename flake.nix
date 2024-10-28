@@ -243,6 +243,23 @@
     nixosConfigurations."ISO-ARM" = mkIso "aarch64-linux";
     nixosConfigurations."ISO-INTEL" = mkIso "x86_64-linux";
 
+    # Needs testing
+    homeConfigurations."katie" = let
+      system = "x86_64-linux";
+      pkgs = mkPkgs system;
+    in
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        extraSpecialArgs = mkExtraSpecialArgs pkgs;
+
+        modules =
+          [
+            stylix.homeManagerModules.stylix
+          ]
+          ++ baseModulesHomeManager;
+      };
+
     packages = util.forAllSystems ({
       pkgs,
       system,
