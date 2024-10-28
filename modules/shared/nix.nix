@@ -5,7 +5,6 @@
   ...
 }: {
   nix = {
-    package = pkgs.nix;
     registry = {
       nixpkgs.flake = inputs.nixpkgs;
       nixos-hardware.flake = inputs.nixos-hardware;

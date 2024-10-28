@@ -248,6 +248,7 @@
       system,
     }: {
       nvim = mkNvim pkgs;
+
       homeConfigurations."katie" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
@@ -257,6 +258,7 @@
           [
             stylix.homeManagerModules.stylix
             {
+              nix.package = pkgs.nix;
               shared.gui.enable = true;
             }
             ./modules/shared/stylix.nix
