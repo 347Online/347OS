@@ -245,7 +245,7 @@
 
     # Needs testing
     homeConfigurations."katie" = let
-      system = "x86_64-linux";
+      system = "aarch64-darwin";
       pkgs = mkPkgs system;
     in
       home-manager.lib.homeManagerConfiguration {
@@ -256,6 +256,10 @@
         modules =
           [
             stylix.homeManagerModules.stylix
+            {
+              shared.gui.enable = true;
+            }
+            ./modules/shared/stylix.nix
           ]
           ++ baseModulesHomeManager;
       };
