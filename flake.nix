@@ -243,12 +243,12 @@
     nixosConfigurations."ISO-ARM" = mkIso "aarch64-linux";
     nixosConfigurations."ISO-INTEL" = mkIso "x86_64-linux";
 
-    # Needs testing
-    homeConfigurations."katie" = let
-      system = "aarch64-darwin";
-      pkgs = mkPkgs system;
-    in
-      home-manager.lib.homeManagerConfiguration {
+    packages = util.forAllSystems ({
+      pkgs,
+      system,
+    }: {
+      nvim = mkNvim pkgs;
+      homeConfigurations."katie" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         extraSpecialArgs = mkExtraSpecialArgs pkgs;
@@ -263,12 +263,6 @@
           ]
           ++ baseModulesHomeManager;
       };
-
-    packages = util.forAllSystems ({
-      pkgs,
-      system,
-    }: {
-      nvim = mkNvim pkgs;
     });
   };
 }
