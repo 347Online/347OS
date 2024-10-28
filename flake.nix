@@ -258,6 +258,7 @@
           [
             stylix.homeManagerModules.stylix
             {
+              stylix.image = ./wallpapers/desert.jpg;
               nix.package = pkgs.nix;
               shared.gui.enable = true;
             }
