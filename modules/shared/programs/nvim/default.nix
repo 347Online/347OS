@@ -26,17 +26,17 @@
   # };
 
   # VSCode kinda mood
-  colorschemes.vscode = {
-    enable = true;
-    settings = {
-      italic_comments = true;
-      underline_links = true;
-    };
-  };
+  # colorschemes.vscode = {
+  #   enable = true;
+  #   settings = {
+  #     italic_comments = true;
+  #     underline_links = true;
+  #   };
+  # };
 
   # Tokyo Night kinda mood
-  # colorschemes.tokyonight = {
-  #   settings.style = "night";
-  #   enable = true;
-  # };
+  colorschemes.tokyonight = {
+    # settings.style = "night";
+    enable = true;
+  };
 }

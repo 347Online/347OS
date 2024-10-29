@@ -1,10 +1,10 @@
 {
-  pkgs,
   nur,
   inputs,
   ...
 }: {
   nix = {
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     registry = {
       nixpkgs.flake = inputs.nixpkgs;
       nixos-hardware.flake = inputs.nixos-hardware;

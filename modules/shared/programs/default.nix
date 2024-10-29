@@ -32,7 +32,8 @@
     delta
     fd
     mise
-    nil
+    # nil
+    nixd
     prettierd
     eslint_d
     ripgrep

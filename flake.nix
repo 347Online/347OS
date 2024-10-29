@@ -161,6 +161,8 @@
                   }
                 ];
             };
+
+            nixpkgs.hostPlatform = system;
           })
 
           ./modules/darwin
