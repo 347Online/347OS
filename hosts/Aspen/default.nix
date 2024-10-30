@@ -6,7 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ./services.nix
-    ./wireguard.nix
+    # ./wireguard.nix
   ];
 
   stylix.image = "${self}/wallpapers/desert.jpg";
