@@ -1,5 +1,19 @@
-{self, ...}: {
+{
+  self,
+  username,
+  ...
+}: {
   stylix.image = "${self}/wallpapers/sunset.jpg";
+
+  home-manager.users.${username} = {
+    programs.ssh.matchBlocks = {
+      Aspen = {
+        hostname = "fatgirl.cloud";
+        user = username;
+        port = 5892;
+      };
+    };
+  };
 
   darwin.dock.apps = [
     "/Applications/Overcast.app"
