@@ -236,8 +236,6 @@
     darwinConfigurations."Athena" = mkDarwin "aarch64-darwin" ./hosts/Athena;
     darwinConfigurations."Alice" = mkDarwin "x86_64-darwin" ./hosts/Alice;
 
-    nixosConfigurations."Arctic" = mkLinux "aarch64-linux" ./hosts/Arctic;
-    nixosConfigurations."Arukenia" = mkLinux "x86_64-linux" ./hosts/Arukenia;
     nixosConfigurations."Aspen" = mkLinux "x86_64-linux" ./hosts/Aspen;
 
     nixosConfigurations."ISO-ARM" = mkIso "aarch64-linux";
