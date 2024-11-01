@@ -39,7 +39,6 @@ in {
       ++ config.darwin.dock.apps
       ++ [
         "/Applications/Fantastical.app"
-        "/Applications/Obsidian.app"
         "${wezterm}/Applications/wezterm.app"
 
         # Right-most apps
