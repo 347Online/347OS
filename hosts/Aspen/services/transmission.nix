@@ -1,8 +1,4 @@
 {
-  services.plex = {
-    enable = true;
-    openFirewall = true;
-  };
   services.transmission = {
     enable = true;
     openRPCPort = true;

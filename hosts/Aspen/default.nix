@@ -4,6 +4,8 @@
   ...
 }: {
   imports = [
+    ./services
+
     ./hardware-configuration.nix
     ./services.nix
     # ./wireguard.nix
