@@ -33,11 +33,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,11 +55,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
-    apple-silicon-support = {
-      url = "github:tpwrules/nixos-apple-silicon/fc4503fa956c4f07b5cb0b7d446a04be25786402";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {
@@ -77,7 +67,6 @@
     nix-homebrew,
     nix-vscode-extensions,
     nil,
-    neovim-nightly-overlay,
     nixvim,
     stylix,
     ...
