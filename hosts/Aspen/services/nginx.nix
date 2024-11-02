@@ -28,10 +28,11 @@
         }
 
         add_header Strict-Transport-Security $hsts_header;
-        # add_header Content-Security-Policy "script-src 'self unsafe-inline'; object-src 'none'; base-uri 'none';" always;
         add_header X-Frame-Options DENY;
         add_header X-Content-Type-Options nosniff;
-        add_header 'Referrer-Policy' 'origin-when-cross-origin';
+        add_header Referrer-Policy 'same-origin';
+        add_header Permissions-Policy "geolocation=(), microphone=()";
+        # add_header Content-Security-Policy "script-src 'self'; object-src 'none'; base-uri 'none';" always;
 
         proxy_cookie_path / "/; secure; HttpOnly; SameSite=strict";
       '';
