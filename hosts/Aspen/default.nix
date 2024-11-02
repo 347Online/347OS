@@ -16,11 +16,6 @@
     # home-config here
   };
 
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "katiejanzen@347online.me";
-  };
-
   networking.hostName = "Aspen";
   networking.firewall.allowedTCPPorts = [80 443];
   time.timeZone = "America/Chicago";

@@ -1,4 +1,17 @@
 {
+  security.acme = {
+    certs."fatgirl.cloud".extraDomainNames = ["www.fatgirl.cloud"];
+    acceptTerms = true;
+    defaults = {
+      webroot = "/var/www/fatgirl";
+      email = "katiejanzen@347online.me";
+    };
+  };
+
+  users.users.nginx.extraGroups = ["acme"];
+  users.users.acme.extraGroups = ["nginx"];
+  users.users.katie.extraGroups = ["nginx"];
+
   services.nginx = {
     enable = true;
 
@@ -35,6 +48,24 @@
           "/".proxyPass = "http://127.0.0.1:${toString port}/";
         };
     in {
+      "fatgirl.cloud" = {
+        default = true;
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          root = "/var/www/fatgirl";
+          extraConfig =
+            # nginx
+            ''
+              default_type text/html;
+            '';
+        };
+      };
+      "www.fatgirl.cloud" = {
+        useACMEHost = "fatgirl.cloud";
+        forceSSL = true;
+        globalRedirect = "fatgirl.cloud";
+      };
       "transmission.fatgirl.cloud" = proxy 9091;
       "plex.fatgirl.cloud" =
         proxy 32400
