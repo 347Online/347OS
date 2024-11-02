@@ -44,9 +44,16 @@
         forceSSL = true;
         enableACME = true;
       };
-      proxy = port:
+      proxy = {
+        ip ? "127.0.0.1",
+        port ? null,
+      }:
         base {
-          "/".proxyPass = "http://127.0.0.1:${toString port}/";
+          "/".proxyPass = "http://${ip}${
+            if port != null
+            then ":${toString port}"
+            else ""
+          }";
         };
     in {
       "fatgirl.cloud" = {
@@ -67,9 +74,9 @@
         forceSSL = true;
         globalRedirect = "fatgirl.cloud";
       };
-      "transmission.fatgirl.cloud" = proxy 9091;
+      "transmission.fatgirl.cloud" = proxy {port = 9091;};
       "plex.fatgirl.cloud" =
-        proxy 32400
+        proxy {port = 32400;}
         // {
           sslCertificate = "/https-cert.pem";
           sslCertificateKey = "/https-key.pem";
