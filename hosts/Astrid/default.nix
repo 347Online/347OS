@@ -4,10 +4,8 @@
   ...
 }: {
   imports = [
-    ./services
-
     ./hardware-configuration.nix
-    # ./wireguard.nix
+    ./nginx.nix
   ];
 
   stylix.image = "${self}/wallpapers/desert.jpg";
@@ -16,11 +14,13 @@
     # home-config here
   };
 
-  networking.hostName = "Aspen";
-  time.timeZone = "America/Chicago";
+  networking = {
+    hostName = "Astrid";
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+    firewall.allowedTCPPorts = [80 443];
+  };
 
-  # Enables cross-build to ARM systems
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  time.timeZone = "America/Chicago";
 
   # DO NOT EDIT
   system.stateVersion = "24.11";

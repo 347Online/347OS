@@ -77,9 +77,15 @@
         globalRedirect = "fatgirl.cloud";
       };
       # "bmc.fatgirl.cloud" = proxy {ip = "192.168.4.43";};
-      "transmission.fatgirl.cloud" = proxy {port = 9091;};
+      "transmission.fatgirl.cloud" = proxy {
+        ip = "192.168.4.55";
+        port = 9091;
+      };
       "plex.fatgirl.cloud" =
-        proxy {port = 32400;}
+        proxy {
+          ip = "192.168.4.55";
+          port = 32400;
+        }
         // {
           sslCertificate = "/https-cert.pem";
           sslCertificateKey = "/https-key.pem";
