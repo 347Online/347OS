@@ -15,6 +15,8 @@
   services.nginx = {
     enable = true;
 
+    enableReload = true;
+
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
     recommendedProxySettings = true;
@@ -74,6 +76,7 @@
         forceSSL = true;
         globalRedirect = "fatgirl.cloud";
       };
+      # "bmc.fatgirl.cloud" = proxy {ip = "192.168.4.43";};
       "transmission.fatgirl.cloud" = proxy {port = 9091;};
       "plex.fatgirl.cloud" =
         proxy {port = 32400;}
