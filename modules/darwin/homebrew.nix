@@ -23,14 +23,15 @@ lib.mkIf config.darwin.homebrew.enable {
 
     masApps = {
       "1Password for Safari" = 1569813296;
-      "Noir" = 1592917505;
-      "Magic Lasso" = 1198047227;
-      "GoodLinks" = 1474335294;
-      "Numbers" = 409203825;
-      "Pages" = 409201541;
+      "Broadcasts" = 1469995354;
       "Fantastical" = 975937182;
-      "StopTheMadness Pro" = 6471380298;
+      "GoodLinks" = 1474335294;
+      "Magic Lasso" = 1198047227;
+      "Noir" = 1592917505;
+      "Numbers" = 409203825;
       # "Overcast" = 888422857; # Currently broken
+      "Pages" = 409201541;
+      "StopTheMadness Pro" = 6471380298;
     };
 
     casks = [
