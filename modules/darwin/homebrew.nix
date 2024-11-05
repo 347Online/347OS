@@ -36,11 +36,12 @@ lib.mkIf config.darwin.homebrew.enable {
 
     casks = [
       "1password"
-      "raycast"
-      "setapp"
-      "scroll-reverser"
       "logi-options-plus"
+      "monitorcontrol"
       "obsidian"
+      "raycast"
+      "scroll-reverser"
+      "setapp"
     ];
   };
 

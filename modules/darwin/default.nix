@@ -35,6 +35,7 @@ in {
         (lib.mkIf (config.darwin.dock.browser == "Arc") "/Applications/Arc.app")
         (lib.mkIf (config.darwin.dock.browser == "Firefox") "/Applications/Firefox.app")
         "/System/Applications/Music.app"
+        "/Applications/Broadcasts.app"
       ]
       ++ config.darwin.dock.apps
       ++ [
@@ -60,10 +61,6 @@ in {
     zsh.enable = true;
     bash.enable = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    monitorcontrol
-  ];
 
   users.users."${username}" = {
     name = username;
