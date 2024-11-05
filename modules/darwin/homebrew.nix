@@ -17,8 +17,7 @@ lib.mkIf config.darwin.homebrew.enable {
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      # TODO: Uncomment after homebrew update
-      # cleanup = "uninstall";
+      cleanup = "zap";
     };
 
     masApps = {
@@ -36,7 +35,7 @@ lib.mkIf config.darwin.homebrew.enable {
 
     casks = [
       "1password"
-      "logi-options-plus"
+      "logi-options+"
       "monitorcontrol"
       "obsidian"
       "raycast"
