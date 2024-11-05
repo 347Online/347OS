@@ -7,6 +7,8 @@
   imports = [inputs.nix-minecraft.nixosModules.minecraft-servers];
   nixpkgs.overlays = [inputs.nix-minecraft.overlay];
 
+  users.users.katie.extraGroups = ["minecraft"];
+
   services.minecraft-servers = {
     enable = true;
     eula = true;
@@ -16,7 +18,9 @@
       vanilla = {
         enable = true;
 
-        # More config here
+        serverProperties = {
+          spawn-protection = 0;
+        };
       };
     };
   };
