@@ -1,7 +1,6 @@
 {lib, ...}: {
   options = {
     shared = {
-      nixvim.enable = lib.mkEnableOption "nixvim setup";
       codium = {
         enable = lib.mkEnableOption "vscodium setup";
 
@@ -10,6 +9,10 @@
           default = [];
         };
       };
+
+      gaming.enable = lib.mkEnableOption "gaming";
+
+      nixvim.enable = lib.mkEnableOption "nixvim setup";
     };
 
     # DO NOT SET MANUALLY

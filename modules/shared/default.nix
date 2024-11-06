@@ -7,6 +7,7 @@
   ...
 }: {
   imports = [
+    ./games
     ./programs
 
     ./nix.nix

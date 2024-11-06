@@ -6,6 +6,8 @@
   stylix.image = "${self}/wallpapers/sunset.jpg";
 
   home-manager.users.${username} = {
+    shared.gaming.enable = true;
+
     programs.ssh.matchBlocks = {
       Aspen = {
         hostname = "fatgirl.cloud";
