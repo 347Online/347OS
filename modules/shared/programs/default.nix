@@ -2,9 +2,7 @@
   lib,
   config,
   pkgs,
-  util,
   nvim,
-  isDarwin,
   ...
 }: {
   imports = [
@@ -16,6 +14,7 @@
     ./eza.nix
     ./fzf.nix
     ./git.nix
+    ./jq.nix
     ./lazygit.nix
     ./ledger.nix
     ./less.nix
