@@ -27,16 +27,17 @@
     _1password-cli
     alejandra
     bat
+    eslint_d
     eza
     delta
     fd
     mise
     nil
+    nix-search-cli
     prettierd
-    eslint_d
     ripgrep
-    vim
     rustup
+    vim
 
     (lib.mkIf config.shared.nixvim.enable nvim)
   ];
