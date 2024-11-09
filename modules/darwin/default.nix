@@ -55,6 +55,7 @@ in {
 
   home-manager.users.${username} = {
     # home.file = toHomeFiles ./dotfiles;
+    home.packages = with pkgs; [net-news-wire];
   };
 
   programs = {
