@@ -1,6 +1,6 @@
 {
   services.gotosocial = {
-    enable = true;
+    enable = false;
 
     openFirewall = true;
 
