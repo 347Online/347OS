@@ -5,6 +5,11 @@
 }: {
   stylix.image = "${self}/wallpapers/sunset.jpg";
 
+  homebrew = {
+    taps = ["qmk/qmk"];
+    brews = ["qmk/qmk/qmk"];
+  };
+
   home-manager.users.${username} = {
     shared.gaming.enable = true;
 
