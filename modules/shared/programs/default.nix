@@ -32,6 +32,7 @@
     delta
     fd
     mise
+    moreutils
     nil
     nix-search-cli
     prettierd
