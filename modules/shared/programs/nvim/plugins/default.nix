@@ -15,6 +15,7 @@
     ./nvim-jdtls.nix
     ./oil.nix
     ./otter.nix
+    ./scrollview.nix
     ./telescope.nix
     ./treesitter.nix
     ./trouble.nix

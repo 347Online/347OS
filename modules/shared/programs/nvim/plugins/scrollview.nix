@@ -1,0 +1,5 @@
+{
+  plugins.scrollview = {
+    enable = true;
+  };
+}
