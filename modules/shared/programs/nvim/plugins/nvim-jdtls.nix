@@ -1,4 +1,6 @@
 {
+  pkgs,
+  lib,
   util,
   isDarwin,
   homeDirectory,
@@ -12,11 +14,13 @@
       "${workspace_dir}/config_linux";
   in {
     enable = true;
-    data.__raw =
-      # lua
-      ''
-        '${workspace_dir}/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
-      '';
-    inherit configuration;
+    cmd = [
+      (lib.getExe pkgs.jdt-language-server)
+      "-data"
+      workspace_dir
+      "-configuration"
+      configuration
+      "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar"
+    ];
   };
 }
