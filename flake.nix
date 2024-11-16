@@ -80,7 +80,10 @@
 
     util = import ./util.nix inputs;
 
-    mkNvim = pkgs: let
+    mkNvim = {
+      pkgs,
+      specialArgs ? {},
+    }: let
       system = pkgs.system;
     in
       inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
@@ -99,7 +102,7 @@
           });
         });
         module = ./modules/shared/programs/nvim;
-        extraSpecialArgs = {inherit util;};
+        extraSpecialArgs = {inherit util;} // specialArgs;
       };
 
     mkSpecialArgs = pkgs: let
@@ -111,11 +114,13 @@
       vscode-extensions = nix-vscode-extensions.extensions.${system};
     };
 
-    mkExtraSpecialArgs = pkgs:
-      (mkSpecialArgs pkgs)
+    mkExtraSpecialArgs = pkgs: let
+      specialArgs = mkSpecialArgs pkgs;
+    in
+      specialArgs
       // {
         inherit util;
-        nvim = mkNvim pkgs;
+        nvim = mkNvim {inherit pkgs specialArgs;};
       };
 
     baseModulesHomeManager = [
@@ -211,8 +216,10 @@
 
             stylix.image = ./wallpapers/desert.jpg;
 
-            environment.systemPackages = with pkgs; [
-              (mkNvim pkgs)
+            environment.systemPackages = with pkgs; let
+              nvim = mkNvim {inherit pkgs specialArgs;};
+            in [
+              nvim
               alejandra
               git
               vim
@@ -239,8 +246,10 @@
     packages = util.forAllSystems ({
       pkgs,
       system,
-    }: {
-      nvim = mkNvim pkgs;
+    }: let
+      specialArgs = mkSpecialArgs pkgs;
+    in {
+      nvim = mkNvim {inherit pkgs specialArgs;};
 
       homeConfigurations."katie" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
