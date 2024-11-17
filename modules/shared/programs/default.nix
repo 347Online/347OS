@@ -33,7 +33,7 @@
     fd
     mise
     moreutils
-    nil
+    nixd
     nix-search-cli
     prettierd
     ripgrep

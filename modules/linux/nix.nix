@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   nix = {
     package = pkgs.nix;
     settings = {
@@ -6,6 +10,7 @@
       experimental-features = "nix-command flakes";
       trusted-users = ["katie"];
     };
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
 
   nixpkgs = {

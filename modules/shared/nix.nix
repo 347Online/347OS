@@ -15,6 +15,7 @@
         "flakes"
       ];
     };
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
   nixpkgs = {
     config = {
