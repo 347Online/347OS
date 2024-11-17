@@ -11,6 +11,7 @@
     number = true;
     relativenumber = true;
     shiftwidth = 2;
+    tabstop = 4;
     expandtab = true;
     autoindent = true;
   };
