@@ -18,6 +18,14 @@
 
   # TODO: Create some kinda option for this
 
+  # Onedark kinda mood
+  colorschemes.onedark = {
+    enable = true;
+    settings = {
+      style = "warmer";
+    };
+  };
+
   # Catppuccin kinda mood
   # colorschemes.catppuccin = {
   #   enable = true;
@@ -27,13 +35,13 @@
   # };
 
   # VSCode kinda mood
-  colorschemes.vscode = {
-    enable = true;
-    settings = {
-      italic_comments = true;
-      underline_links = true;
-    };
-  };
+  # colorschemes.vscode = {
+  #   enable = true;
+  #   settings = {
+  #     italic_comments = true;
+  #     underline_links = true;
+  #   };
+  # };
 
   # Tokyo Night kinda mood
   # colorschemes.tokyonight = {
