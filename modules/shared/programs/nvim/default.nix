@@ -10,11 +10,21 @@
     wrap = false;
     number = true;
     relativenumber = true;
+    shiftround = true;
     shiftwidth = 2;
-    tabstop = 4;
+    tabstop = 2;
     expandtab = true;
     autoindent = true;
+    smartindent = true;
+    cursorline = true;
   };
+
+  extraFiles."ftplugin/go.lua".text =
+    # lua
+    ''
+      vim.opt.tabstop = 4
+      vim.opt.shiftwidth = 4
+    '';
 
   # TODO: Create some kinda option for this
 
