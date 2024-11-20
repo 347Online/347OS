@@ -8,6 +8,7 @@
   homebrew = {
     taps = ["qmk/qmk"];
     brews = ["qmk/qmk/qmk"];
+    casks = ["krita"];
   };
 
   home-manager.users.${username} = {
