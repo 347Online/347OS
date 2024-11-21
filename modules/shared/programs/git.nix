@@ -23,6 +23,9 @@
       unstage = "restore --staged";
       last = "log -1 HEAD";
       prev = last;
+      ri = "rebase -i";
+      rc = "rebase --continue";
+      ra = "rebase --abort";
     };
     extraConfig = {
       core.editor = "nvim";
