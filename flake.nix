@@ -40,11 +40,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    vim-be-good = {
-      flake = false;
-      url = "github:ThePrimeagen/vim-be-good";
-    };
-
     tsc-nvim = {
       flake = false;
       url = "github:dmmulroy/tsc.nvim";
@@ -71,7 +66,6 @@
     home-manager,
     nix-homebrew,
     nix-vscode-extensions,
-    nil,
     nixvim,
     stylix,
     ...
@@ -89,11 +83,6 @@
       inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
         pkgs = pkgs.extend (final: prev: {
           vimPlugins = prev.vimPlugins.extend (final': prev': {
-            vim-be-good = prev.vimUtils.buildVimPlugin {
-              pname = "vim-be-good";
-              src = inputs.vim-be-good;
-              version = inputs.vim-be-good.shortRev;
-            };
             tsc-nvim = prev.vimUtils.buildVimPlugin {
               pname = "tsc-nvim";
               src = inputs.tsc-nvim;
