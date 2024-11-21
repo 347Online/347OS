@@ -8,6 +8,7 @@
     ./fugitive.nix
     ./gitsigns.nix
     ./indent-blankline.nix
+    ./lazygit.nix
     ./lualine.nix
     ./luasnip.nix
     ./nix.nix
