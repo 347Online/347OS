@@ -26,6 +26,7 @@
       ri = "rebase -i";
       rc = "rebase --continue";
       ra = "rebase --abort";
+      cp = "cherry-pick";
     };
     extraConfig = {
       core.editor = "nvim";
