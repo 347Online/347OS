@@ -4,10 +4,14 @@ This is my setup for managing my computing life with Nix
 
 ## Features
 
-- Modules for system configuration for both NixOS or macOS via nix-darwin
-- Modules for portable userspace configuration via Home-Manager (WIP)
-- Configurations for Work Laptop, Personal Laptop (both macOS and NixOS), and Home Server defined in hosts directory
 - Portable Neovim setup
+- Modules for system configuration for both NixOS or macOS via nix-darwin
+- Modules for portable userspace configuration via Home-Manager
+- Host Configurations:
+  - Alice - Work Laptop
+  - Athena - Personal Laptop
+  - Aspen - Primary Home Server
+  - Astrid - Home Server Satellite Unit
 
 ## Usage
 
