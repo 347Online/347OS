@@ -1,6 +1,8 @@
 {
   imports = [
     ./plugins
+
+    ./keymaps.nix
   ];
 
   globals.mapleader = ",";
