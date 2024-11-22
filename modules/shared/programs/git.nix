@@ -26,6 +26,7 @@
       ri = "rebase -i";
       rc = "rebase --continue";
       ra = "rebase --abort";
+      re = "rebase --edit-todo";
       cp = "cherry-pick";
     };
     extraConfig = {
