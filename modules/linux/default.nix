@@ -4,7 +4,8 @@
   lib,
   username,
   ...
-}: {
+}:
+{
   imports = [
     ./keyd.nix
     ./nix.nix
@@ -39,7 +40,7 @@
       users.users.katie = {
         isNormalUser = true;
         shell = pkgs.zsh;
-        extraGroups = ["wheel"];
+        extraGroups = [ "wheel" ];
       };
 
       programs.git.enable = true;

@@ -3,7 +3,8 @@
   nur,
   inputs,
   ...
-}: {
+}:
+{
   nix = {
     registry = {
       nixpkgs.flake = inputs.nixpkgs;
@@ -15,7 +16,7 @@
         "flakes"
       ];
     };
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
   nixpkgs = {
     config = {

@@ -1,4 +1,5 @@
-{util, ...}: {
+{ util, ... }:
+{
   keymaps = [
     (util.vimBindCmd "v" ">" ">gv")
     (util.vimBindCmd "v" "<" "<gv")

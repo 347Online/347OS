@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   programs.vscode.userSettings = {
     "editor.acceptSuggestionOnCommitCharacter" = false;
     "editor.accessibilitySupport" = "off";
@@ -67,7 +68,7 @@
     "html.autoClosingTags" = false;
     "html.autoCreateQuotes" = false;
 
-    "prettier.documentSelectors" = ["*.js"];
+    "prettier.documentSelectors" = [ "*.js" ];
 
     "javascript.suggest.autoImports" = false;
     "javascript.autoClosingTags" = false;
@@ -159,7 +160,7 @@
       "editor.defaultFormatter" = "rust-lang.rust-analyzer";
     };
     "[python]" = {
-      "gitlens.codeLens.symbolScopes" = ["!Module"];
+      "gitlens.codeLens.symbolScopes" = [ "!Module" ];
       "editor.wordBasedSuggestions" = "off";
       "editor.formatOnType" = true;
     };

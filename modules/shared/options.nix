@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   options = {
     shared = {
       codium = {
@@ -6,7 +7,7 @@
 
         extraExtensions = lib.mkOption {
           type = with lib.types; listOf package;
-          default = [];
+          default = [ ];
         };
       };
 

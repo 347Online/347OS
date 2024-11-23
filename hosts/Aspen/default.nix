@@ -2,7 +2,8 @@
   self,
   username,
   ...
-}: {
+}:
+{
   imports = [
     ./services
 
@@ -20,7 +21,7 @@
   time.timeZone = "America/Chicago";
 
   # Enables cross-build to ARM systems
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # DO NOT EDIT
   system.stateVersion = "24.11";

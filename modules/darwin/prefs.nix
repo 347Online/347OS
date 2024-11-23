@@ -113,8 +113,16 @@
       };
 
       "com.getcleanshot.app-setapp" = {
-        afterScreenshotActions = [0 1 2];
-        afterVideoActions = [0 1 2];
+        afterScreenshotActions = [
+          0
+          1
+          2
+        ];
+        afterVideoActions = [
+          0
+          1
+          2
+        ];
         analyticsAllowed = true;
         autoClosePopup = true;
         captureWithoutDesktopIcons = true;

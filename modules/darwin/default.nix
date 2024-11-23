@@ -4,11 +4,13 @@
   pkgs,
   username,
   ...
-}: let
+}:
+let
   mkLoginItem = app: ''
     osascript -e 'tell application "System Events" to make login item at end with properties {path:"${app}", hidden:true}'
   '';
-in {
+in
+{
   imports = [
     ./homebrew.nix
     ./nix.nix
@@ -26,11 +28,14 @@ in {
   security.pam.enableCustomSudoTouchIdAuth = true;
 
   system = {
-    defaults.dock.persistent-apps = with pkgs;
+    defaults.dock.persistent-apps =
+      with pkgs;
       [
         # System Apps
         "/System/Applications/App Store.app"
-        (lib.mkIf (config.darwin.dock.browser == "Safari") "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app")
+        (lib.mkIf (
+          config.darwin.dock.browser == "Safari"
+        ) "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app")
         (lib.mkIf (config.darwin.dock.browser == "Chrome") "/Applications/Google Chrome.app")
         (lib.mkIf (config.darwin.dock.browser == "Arc") "/Applications/Arc.app")
         (lib.mkIf (config.darwin.dock.browser == "Firefox") "/Applications/Firefox.app")
@@ -55,7 +60,7 @@ in {
 
   home-manager.users.${username} = {
     # home.file = toHomeFiles ./dotfiles;
-    home.packages = with pkgs; [net-news-wire];
+    home.packages = with pkgs; [ net-news-wire ];
   };
 
   programs = {

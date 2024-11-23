@@ -2,7 +2,8 @@
   self,
   username,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./nginx.nix
@@ -17,7 +18,10 @@
   networking = {
     hostName = "Astrid";
     networkmanager.enable = true; # Easiest to use and most distros use this by default.
-    firewall.allowedTCPPorts = [80 443];
+    firewall.allowedTCPPorts = [
+      80
+      443
+    ];
   };
 
   time.timeZone = "America/Chicago";

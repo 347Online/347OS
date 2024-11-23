@@ -2,7 +2,8 @@
   self,
   username,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware.nix
   ];
@@ -26,7 +27,7 @@
   };
 
   # Enables cross-build to Intel systems
-  boot.binfmt.emulatedSystems = ["x86_64-linux"];
+  boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
 
   # DO NOT EDIT
   system.stateVersion = "24.11";

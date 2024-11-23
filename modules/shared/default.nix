@@ -5,7 +5,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./games
     ./programs

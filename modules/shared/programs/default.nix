@@ -4,7 +4,8 @@
   pkgs,
   nvim,
   ...
-}: {
+}:
+{
   imports = [
     ./gui
     ./zsh
@@ -43,31 +44,33 @@
     (lib.mkIf config.shared.nixvim.enable nvim)
   ];
 
-  programs = let
-    shellAliases = {
-      cat = "bat";
-      ls = "eza";
-      tree = "eza --tree";
-      diff = "delta";
+  programs =
+    let
+      shellAliases = {
+        cat = "bat";
+        ls = "eza";
+        tree = "eza --tree";
+        diff = "delta";
 
-      branch =
-        # sh
-        "git branch --show-current";
+        branch =
+          # sh
+          "git branch --show-current";
 
-      branchhelp =
-        # sh
-        ''
-          git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
-        '';
+        branchhelp =
+          # sh
+          ''
+            git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
+          '';
 
-      nvim-next =
-        # sh
-        "nix run ~/src/nix-systems#nvim";
+        nvim-next =
+          # sh
+          "nix run ~/src/nix-systems#nvim";
+      };
+    in
+    {
+      ssh.enable = true;
+      home-manager.enable = true;
+      bash.shellAliases = shellAliases;
+      zsh.shellAliases = shellAliases;
     };
-  in {
-    ssh.enable = true;
-    home-manager.enable = true;
-    bash.shellAliases = shellAliases;
-    zsh.shellAliases = shellAliases;
-  };
 }

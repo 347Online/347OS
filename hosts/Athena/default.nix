@@ -2,12 +2,13 @@
   self,
   username,
   ...
-}: {
+}:
+{
   stylix.image = "${self}/wallpapers/sunset.jpg";
 
   homebrew = {
-    taps = ["qmk/qmk"];
-    brews = ["qmk/qmk/qmk"];
+    taps = [ "qmk/qmk" ];
+    brews = [ "qmk/qmk/qmk" ];
     casks = [
       "krita"
       "element"

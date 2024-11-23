@@ -2,7 +2,8 @@
   self,
   username,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
   ];

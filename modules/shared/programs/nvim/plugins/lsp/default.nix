@@ -2,7 +2,8 @@
   self,
   system,
   ...
-}: {
+}:
+{
   imports = [
     ./lspsaga.nix
   ];
@@ -20,7 +21,7 @@
         enable = true;
         settings = {
           nixpkgs.expr = "import <nixpkgs> { }";
-          formatting.command = ["nixfmt"];
+          formatting.command = [ "nixfmt" ];
           options = {
             linux.expr = "(builtins.getFlake \"${self}\").nixosConfigurations.Aspen.options";
             darwin.expr = "(builtins.getFlake \"${self}\").darwinConfigurations.Athena.options";

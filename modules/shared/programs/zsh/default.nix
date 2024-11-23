@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -6,9 +7,7 @@
     autosuggestion.enable = true;
 
     initExtraFirst =
-      /*
-      sh
-      */
+      # sh
       ''
         # TODO: Rework this config for .zshrc in dotfiles, remove readFile kludge
         # TODO: Remove Powerlevel10k in favor of oh my posh or similar

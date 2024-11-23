@@ -3,11 +3,12 @@
   lib,
   inputs,
   ...
-}: {
-  imports = [inputs.nix-minecraft.nixosModules.minecraft-servers];
-  nixpkgs.overlays = [inputs.nix-minecraft.overlay];
+}:
+{
+  imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
+  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
-  users.users.katie.extraGroups = ["minecraft"];
+  users.users.katie.extraGroups = [ "minecraft" ];
 
   services.minecraft-servers = {
     enable = true;

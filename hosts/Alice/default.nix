@@ -4,7 +4,8 @@
   pkgs,
   vscode-extensions,
   ...
-}: {
+}:
+{
   stylix.image = "${self}/wallpapers/desert.jpg";
 
   darwin.dock = {
@@ -17,7 +18,7 @@
   };
 
   home-manager.users.${username} = {
-    home.packages = with pkgs; [awscli2];
+    home.packages = with pkgs; [ awscli2 ];
     shared.codium.extraExtensions = with vscode-extensions; [
       open-vsx.redhat.java
       open-vsx.vscjava.vscode-java-debug

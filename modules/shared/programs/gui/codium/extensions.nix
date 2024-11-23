@@ -3,9 +3,11 @@
   pkgs,
   vscode-extensions,
   ...
-}: {
-  programs.vscode.extensions = with vscode-extensions;
-  with pkgs.vscode-extensions;
+}:
+{
+  programs.vscode.extensions =
+    with vscode-extensions;
+    with pkgs.vscode-extensions;
     [
       # Essentials
       dbaeumer.vscode-eslint
