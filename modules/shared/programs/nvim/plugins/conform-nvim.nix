@@ -60,7 +60,7 @@
         typescriptreact = ["prettierd" "eslint_d"];
 
         lua = ["stylua"];
-        nix = ["alejandra"];
+        nix = ["nixfmt"];
         yaml = ["yamllint" "yamlfmt"];
       };
     };

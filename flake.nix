@@ -209,7 +209,7 @@
               nvim = mkNvim {inherit pkgs specialArgs;};
             in [
               nvim
-              alejandra
+              nixfmt-rfc-style
               git
               vim
               lvm2

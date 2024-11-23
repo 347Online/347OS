@@ -20,7 +20,7 @@
         enable = true;
         settings = {
           nixpkgs.expr = "import <nixpkgs> { }";
-          formatting.command = ["alejandra"];
+          formatting.command = ["nixfmt"];
           options = {
             linux.expr = "(builtins.getFlake \"${self}\").nixosConfigurations.Aspen.options";
             darwin.expr = "(builtins.getFlake \"${self}\").darwinConfigurations.Athena.options";

@@ -25,7 +25,6 @@
 
   home.packages = with pkgs; [
     _1password-cli
-    alejandra
     bat
     eslint_d
     eza
@@ -34,6 +33,7 @@
     mise
     moreutils
     nixd
+    nixfmt-rfc-style
     nix-search-cli
     prettierd
     ripgrep
