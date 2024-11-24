@@ -12,6 +12,7 @@
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticDashSubstitutionEnabled = false;
       AppleEnableSwipeNavigateWithScrolls = true;
+      ApplePressAndHoldEnabled = false;
       KeyRepeat = 2;
     };
 
