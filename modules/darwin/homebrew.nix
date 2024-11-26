@@ -23,10 +23,10 @@ lib.mkIf config.darwin.homebrew.enable {
     masApps = {
       "1Password for Safari" = 1569813296;
       "Broadcasts" = 1469995354;
+      "Dark Reader for Safari" = 1438243180;
       "Fantastical" = 975937182;
       "GoodLinks" = 1474335294;
       "Magic Lasso" = 1198047227;
-      "Noir" = 1592917505;
       "Numbers" = 409203825;
       # "Overcast" = 888422857; # Currently broken
       "Pages" = 409201541;
