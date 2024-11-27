@@ -1,6 +1,3 @@
-{ pkgs, ... }:
 {
-  extraPlugins = with pkgs.vimPlugins; [
-    vim-be-good
-  ];
+  plugins.vim-be-good.enable = true;
 }
