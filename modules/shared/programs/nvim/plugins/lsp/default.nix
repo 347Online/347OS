@@ -12,6 +12,7 @@
     enable = true;
 
     servers = {
+      denols.enable = true;
       eslint.enable = true;
       gopls.enable = true;
       html.enable = true;
