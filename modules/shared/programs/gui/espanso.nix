@@ -6,6 +6,10 @@
       base = {
         matches = [
           {
+            replace = "‎ ";
+            trigger = ";invis";
+          }
+          {
             replace = "Canyon, TX";
             trigger = ";loc";
           }
