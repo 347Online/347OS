@@ -50,15 +50,11 @@
             trigger = ";li";
           }
           {
-            replace = "+1 (806) 654-6903";
-            trigger = ";mph";
-          }
-          {
             replace = "1410 Ponderosa St Unit 231 Canyon, TX, 79015";
             trigger = ";mail";
           }
           {
-            replace = "+1 (806) 654-6933";
+            replace = "8066546933";
             trigger = ";ph";
           }
           {
