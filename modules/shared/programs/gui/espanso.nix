@@ -18,7 +18,7 @@
             trigger = ";comp";
           }
           {
-            replace = "rtfd";
+            replace = "01/03/1997";
             trigger = ";dob";
           }
           {
@@ -62,10 +62,6 @@
             trigger = ";ph";
           }
           {
-            replace = "rtfd";
-            trigger = ";ph";
-          }
-          {
             replace = "she/her/hers";
             trigger = ";pro";
           }
@@ -90,7 +86,7 @@
             trigger = "a11y";
           }
           {
-            replace = "Text";
+            replace = "💀";
             trigger = ":skull:";
           }
         ];
