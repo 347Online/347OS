@@ -165,7 +165,7 @@
                 environment.pathsToLink = [ "/share/zsh" ];
                 home-manager = {
                   backupFileExtension = "bakk";
-                  sharedModules = [ nur.hmModules.nur ];
+                  sharedModules = [ nur.modules.homeManager.default ];
                   extraSpecialArgs = mkExtraSpecialArgs pkgs;
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
@@ -202,7 +202,7 @@
                 nixpkgs.config.allowUnfree = true;
                 home-manager = {
                   backupFileExtension = "bakk";
-                  sharedModules = [ nur.hmModules.nur ];
+                  sharedModules = [ nur.modules.homeManager.default ];
                   extraSpecialArgs = mkExtraSpecialArgs pkgs;
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
