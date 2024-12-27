@@ -225,9 +225,10 @@
         system:
         let
           pkgs = mkPkgs system;
+          specialArgs = mkSpecialArgs pkgs;
         in
         nixpkgs.lib.nixosSystem {
-          specialArgs = mkSpecialArgs pkgs;
+          inherit specialArgs;
 
           modules = [
             stylix.nixosModules.stylix
