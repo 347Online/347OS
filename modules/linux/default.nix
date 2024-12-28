@@ -31,6 +31,7 @@
         # pcscd.enable = true;
         openssh.enable = true;
         printing.enable = true;
+        fwupd.enable = true;
         # udev.packages = with pkgs; [
         #   yubikey-personalization
         #   libu2f-host
@@ -56,6 +57,10 @@
       environment.systemPackages = with pkgs; [
         vim
         killall
+        pciutils
+        usbutils
+        screen
+        ookla-speedtest
       ];
     }
 
@@ -72,6 +77,7 @@
 
       environment.systemPackages = with pkgs; [
         acpi
+        firefox
       ];
 
       home-manager = {

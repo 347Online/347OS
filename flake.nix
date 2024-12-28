@@ -268,6 +268,7 @@
       darwinConfigurations."Alice" = mkDarwin "x86_64-darwin" ./hosts/Alice;
 
       nixosConfigurations."Aspen" = mkLinux "x86_64-linux" ./hosts/Aspen;
+      nixosConfigurations."Amber" = mkLinux "x86_64-linux" ./hosts/Amber;
       nixosConfigurations."Astrid" = mkLinux "aarch64-linux" ./hosts/Astrid;
 
       nixosConfigurations."ISO-ARM" = mkIso "aarch64-linux";

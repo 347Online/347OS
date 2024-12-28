@@ -1,5 +1,5 @@
 {
   programs.ledger = {
-    enable = true;
+    # enable = true;
   };
 }

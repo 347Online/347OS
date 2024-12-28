@@ -8,7 +8,7 @@
 {
   imports = [
     ./codium
-    ./firefox
+    # ./firefox
 
     ./espanso.nix
     ./wezterm.nix
