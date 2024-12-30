@@ -9,6 +9,7 @@
     ./gitsigns.nix
     ./indent-blankline.nix
     ./lazygit.nix
+    ./leetcode-nvim.nix
     ./lualine.nix
     ./luasnip.nix
     ./nix.nix
