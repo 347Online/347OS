@@ -23,6 +23,8 @@ in
   darwin.gui.enable = lib.mkDefault true;
   darwin.homebrew.enable = lib.mkDefault true;
 
+  environment.systemPackages = with pkgs; [ ookla-speedtest ];
+
   # See ./pam.nix
   # security.pam.enableSudoTouchIdAuth = true;
   security.pam.enableCustomSudoTouchIdAuth = true;
