@@ -10,6 +10,7 @@
     ./keyd.nix
     ./nix.nix
     ./options.nix
+    ./plasma.nix
     ../shared/stylix.nix
   ];
 

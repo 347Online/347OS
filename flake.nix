@@ -53,6 +53,12 @@
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
@@ -67,6 +73,7 @@
       nix-vscode-extensions,
       nixvim,
       stylix,
+      plasma-manager,
       ...
     }:
     let
@@ -187,7 +194,10 @@
                 nixpkgs.config.allowUnfree = true;
                 home-manager = {
                   backupFileExtension = "bakk";
-                  sharedModules = [ nur.modules.homeManager.default ];
+                  sharedModules = [
+                    nur.modules.homeManager.default
+                    plasma-manager.homeManagerModules.plasma-manager
+                  ];
                   extraSpecialArgs = mkExtraSpecialArgs pkgs;
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
