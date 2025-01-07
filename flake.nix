@@ -2,7 +2,7 @@
   description = "Katie's Nix Systems";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -41,11 +41,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-darwin.follows = "nix-darwin";
       inputs.home-manager.follows = "home-manager";
-    };
-
-    tsc-nvim = {
-      flake = false;
-      url = "github:dmmulroy/tsc.nvim";
     };
 
     stylix = {
@@ -88,19 +83,6 @@
           system = pkgs.system;
         in
         inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
-          pkgs = pkgs.extend (
-            final: prev: {
-              vimPlugins = prev.vimPlugins.extend (
-                final': prev': {
-                  tsc-nvim = prev.vimUtils.buildVimPlugin {
-                    pname = "tsc-nvim";
-                    src = inputs.tsc-nvim;
-                    version = inputs.tsc-nvim.shortRev;
-                  };
-                }
-              );
-            }
-          );
           module = ./modules/shared/programs/nvim;
           extraSpecialArgs = {
             inherit util;
