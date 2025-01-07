@@ -99,7 +99,6 @@
             # webcord
             # element-desktop # TODO: Only if a private machine
             # obsidian
-            paper-plane
           ];
         };
       };
