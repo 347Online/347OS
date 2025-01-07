@@ -38,7 +38,7 @@
         # ];
       };
 
-      users.users.katie = {
+      users.users.${username} = {
         isNormalUser = true;
         shell = pkgs.zsh;
         extraGroups = [ "wheel" ];
@@ -69,7 +69,10 @@
     }
 
     (lib.mkIf config.linux.gui.enable {
-      programs._1password-gui.enable = true;
+      programs._1password-gui = {
+        enable = true;
+        polkitPolicyOwners = [ username ];
+      };
 
       networking.networkmanager.enable = true;
 

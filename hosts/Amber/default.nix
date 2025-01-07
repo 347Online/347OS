@@ -8,6 +8,8 @@
     ./hardware-configuration.nix
   ];
 
+  linux.gui.enable = true;
+
   stylix.image = "${self}/wallpapers/neon-city.jpg";
 
   networking.hostName = "Amber";
@@ -21,7 +23,7 @@
     shared.gaming.enable = true;
   };
 
-  linux.gui.enable = true;
+  programs.steam.enable = true;
 
   # DO NOT EDIT
   system.stateVersion = "24.11";
