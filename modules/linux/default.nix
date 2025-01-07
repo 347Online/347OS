@@ -54,18 +54,20 @@
 
       # home.file = util.toHomeFiles ./dotfiles;
 
-      environment.systemPackages = with pkgs; [
-        vim
-        killall
-        pciutils
-        usbutils
-        screen
-        ookla-speedtest
-        python3
-        nodejs
-        gcc
-        gnumake
-      ];
+      environment.systemPackages =
+        let
+          essentials = (import ../shared/programs/essentials.nix pkgs);
+        in
+        with pkgs;
+        [
+          vim
+          killall
+          pciutils
+          usbutils
+          gcc
+          gnumake
+        ]
+        ++ essentials;
     }
 
     (lib.mkIf config.linux.gui.enable {

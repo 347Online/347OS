@@ -24,24 +24,19 @@
     ./zoxide.nix
   ];
 
-  home.packages = with pkgs; [
-    _1password-cli
-    bat
-    eslint_d
-    eza
-    delta
-    fd
-    mise
-    moreutils
-    nixd
-    nixfmt-rfc-style
-    nix-search-cli
-    prettierd
-    ripgrep
-    rustup
+  home.packages =
+    let
+      essentials = (import ./essentials.nix pkgs);
+    in
+    with pkgs;
+    [
+      _1password-cli
+      eslint_d
+      prettierd
 
-    (lib.mkIf config.shared.nixvim.enable nvim)
-  ];
+      (lib.mkIf config.shared.nixvim.enable nvim)
+    ]
+    ++ essentials;
 
   programs =
     let
