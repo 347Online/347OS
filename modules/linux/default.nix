@@ -61,6 +61,10 @@
         usbutils
         screen
         ookla-speedtest
+        python3
+        nodejs
+        gcc
+        gnumake
       ];
     }
 
