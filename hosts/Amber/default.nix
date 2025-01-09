@@ -21,6 +21,20 @@
 
   home-manager.users.${username} = {
     shared.gaming.enable = true;
+
+    programs.ssh.matchBlocks = {
+      Astrid = {
+        hostname = "192.168.4.110";
+        user = username;
+        forwardAgent = true;
+      };
+      Aspen = {
+        hostname = "fatgirl.cloud";
+        user = username;
+        port = 5892;
+        forwardAgent = true;
+      };
+    };
   };
 
   programs.steam.enable = true;
