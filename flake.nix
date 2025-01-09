@@ -43,6 +43,11 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    nvim-emmet = {
+      url = "github:olrtg/nvim-emmet";
+      flake = false;
+    };
+
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -90,6 +95,19 @@
           system = pkgs.system;
         in
         inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+          pkgs = pkgs.extend (
+            final: prev: {
+              vimPlugins = prev.vimPlugins.extend (
+                final': prev': {
+                  nvim-emmet = prev.vimUtils.buildVimPlugin {
+                    pname = "nvim-emmet";
+                    version = inputs.nvim-emmet.shortRev;
+                    src = inputs.nvim-emmet;
+                  };
+                }
+              );
+            }
+          );
           module = ./modules/shared/programs/nvim;
           extraSpecialArgs = {
             inherit util;
