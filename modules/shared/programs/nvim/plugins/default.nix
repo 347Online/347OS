@@ -7,6 +7,7 @@
     ./conform-nvim.nix
     ./fugitive.nix
     ./gitsigns.nix
+    ./hex.nix
     ./indent-blankline.nix
     ./lazygit.nix
     ./lualine.nix
