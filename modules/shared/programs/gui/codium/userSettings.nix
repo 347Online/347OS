@@ -96,6 +96,7 @@
     "liveServer.settings.donotShowInfoMsg" = true;
     "redhat.telemetry.enabled" = false;
     "search.useGlobalIgnoreFiles" = true;
+    "database-client.autoSync" = false;
 
     "sonarlint.focusOnNewCode" = true;
     "sonarlint.disableTelemetry" = true;
