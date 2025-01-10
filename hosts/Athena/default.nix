@@ -16,7 +16,10 @@
   };
 
   home-manager.users.${username} = {
-    shared.gaming.enable = true;
+    shared = {
+      personal.enable = true;
+      gaming.enable = true;
+    };
 
     programs.ssh.matchBlocks = {
       Astrid = {
