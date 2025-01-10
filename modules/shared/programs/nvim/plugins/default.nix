@@ -14,6 +14,7 @@
     ./luasnip.nix
     ./nix.nix
     ./nvim-autopairs.nix
+    ./nvim-emmet.nix
     ./nvim-jdtls.nix
     ./oil.nix
     ./otter.nix

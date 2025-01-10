@@ -746,6 +746,22 @@
         "type": "github"
       }
     },
+    "nvim-emmet": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717158539,
+        "narHash": "sha256-LgKASQ1xBL8ugxK1g4R3BLQ3ha05cFtZaSYvd2Hy73c=",
+        "owner": "olrtg",
+        "repo": "nvim-emmet",
+        "rev": "cde4fb2968704aae5c18b7f8a9bc2508767bb78d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "olrtg",
+        "repo": "nvim-emmet",
+        "type": "github"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -781,6 +797,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
         "nur": "nur",
+        "nvim-emmet": "nvim-emmet",
         "plasma-manager": "plasma-manager",
         "stylix": "stylix"
       }
