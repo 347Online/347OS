@@ -9,7 +9,7 @@
   imports = [
     ./codium
 
-    ./discord.nix
+    ./messaging.nix
     ./espanso.nix
     ./wezterm.nix
   ];
