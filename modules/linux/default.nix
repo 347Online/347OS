@@ -66,8 +66,11 @@
         [
           vim
           killall
+          file
           pciutils
           usbutils
+          lm_sensors
+          wl-clipboard
           gcc
           gnumake
         ]
