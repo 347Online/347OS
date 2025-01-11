@@ -19,7 +19,7 @@
 
   home-manager.users.${username} = {
     home.packages = with pkgs; [ awscli2 ];
-    shared.codium.extraExtensions = with vscode-extensions; [
+    user.codium.extraExtensions = with vscode-extensions; [
       open-vsx.redhat.java
       open-vsx.vscjava.vscode-java-debug
       open-vsx.vscjava.vscode-java-test

@@ -35,7 +35,7 @@
       eslint_d
       prettierd
 
-      (lib.mkIf config.shared.nixvim.enable nvim)
+      (lib.mkIf config.user.nixvim.enable nvim)
     ]
     ++ essentials;
 

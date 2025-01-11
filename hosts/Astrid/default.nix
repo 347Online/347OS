@@ -12,7 +12,7 @@
   stylix.image = "${self}/wallpapers/desert.jpg";
 
   home-manager.users.${username} = {
-    shared.nixvim.enable = false;
+    user.nixvim.enable = false;
   };
 
   networking = {

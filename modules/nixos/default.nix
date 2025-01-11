@@ -11,7 +11,7 @@
     ./nix.nix
     ./options.nix
     ./plasma.nix
-    ../shared/stylix.nix
+    ../user/stylix.nix
   ];
 
   config = lib.mkMerge [
@@ -60,7 +60,7 @@
 
       environment.systemPackages =
         let
-          essentials = (import ../shared/programs/essentials.nix pkgs);
+          essentials = (import ../user/programs/essentials.nix pkgs);
         in
         with pkgs;
         [
@@ -77,7 +77,7 @@
         ++ essentials;
     }
 
-    (lib.mkIf config.linux.gui.enable {
+    (lib.mkIf config.nixos.gui.enable {
       programs._1password-gui = {
         enable = true;
         polkitPolicyOwners = [ username ];
@@ -95,17 +95,6 @@
         acpi
         firefox
       ];
-
-      home-manager = {
-        users.${username} = {
-          home.packages = with pkgs; [
-            # Electron Apps
-            # webcord
-            # element-desktop # TODO: Only if a private machine
-            # obsidian
-          ];
-        };
-      };
     })
   ];
 }

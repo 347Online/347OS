@@ -4,6 +4,6 @@
   config,
   ...
 }:
-lib.mkIf config.shared.gaming.enable {
+lib.mkIf config.user.gaming.enable {
   home.packages = with pkgs; [ prismlauncher ];
 }

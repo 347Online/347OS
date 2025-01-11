@@ -17,7 +17,7 @@ in
     ./options.nix
     ./pam.nix
     ./prefs.nix
-    ../shared/stylix.nix
+    ../user/stylix.nix
   ];
 
   darwin.gui.enable = lib.mkDefault true;
@@ -25,7 +25,7 @@ in
 
   environment.systemPackages =
     let
-      essentials = (import ../shared/programs/essentials.nix pkgs);
+      essentials = (import ../user/programs/essentials.nix pkgs);
     in
     essentials
     ++ [

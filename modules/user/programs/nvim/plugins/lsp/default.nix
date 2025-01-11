@@ -1,6 +1,6 @@
 {
-  self,
   system,
+  flakeDir,
   ...
 }:
 {
@@ -23,9 +23,9 @@
           nixpkgs.expr = "import <nixpkgs> { }";
           formatting.command = [ "nixfmt" ];
           options = {
-            linux.expr = "(builtins.getFlake \"${self}\").nixosConfigurations.Aspen.options";
-            darwin.expr = "(builtins.getFlake \"${self}\").darwinConfigurations.Athena.options";
-            shared.expr = "(builtins.getFlake \"${self}\").packages.${system}.homeConfigurations.katie.options";
+            nixos.expr = "(builtins.getFlake \"${flakeDir}\").nixosConfigurations.Aspen.options";
+            darwin.expr = "(builtins.getFlake \"${flakeDir}\").darwinConfigurations.Athena.options";
+            user.expr = "(builtins.getFlake \"${flakeDir}\").packages.${system}.homeConfigurations.katie.options";
           };
         };
       };

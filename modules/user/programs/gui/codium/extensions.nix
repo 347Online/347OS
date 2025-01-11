@@ -39,5 +39,5 @@
       # asvetliakov.vscode-neovim
       vscodevim.vim
     ]
-    ++ config.shared.codium.extraExtensions;
+    ++ config.user.codium.extraExtensions;
 }

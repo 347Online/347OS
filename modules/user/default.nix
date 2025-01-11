@@ -31,8 +31,8 @@
       home.stateVersion = "23.11";
     }
 
-    (lib.mkIf config.shared.gui.enable {
-      shared.codium.enable = true;
+    (lib.mkIf config.user.gui.enable {
+      user.codium.enable = true;
     })
   ];
 }

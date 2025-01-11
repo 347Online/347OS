@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   options = {
-    linux = {
+    nixos = {
       gui.enable = lib.mkEnableOption "graphical interface and programs";
     };
   };

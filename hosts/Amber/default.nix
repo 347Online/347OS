@@ -8,7 +8,7 @@
     ./hardware-configuration.nix
   ];
 
-  linux.gui.enable = true;
+  nixos.gui.enable = true;
 
   stylix.image = "${self}/wallpapers/neon-city.jpg";
 
@@ -20,7 +20,7 @@
   };
 
   home-manager.users.${username} = {
-    shared = {
+    user = {
       personal.enable = true;
       gaming.enable = true;
     };

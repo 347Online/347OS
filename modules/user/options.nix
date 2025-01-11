@@ -1,7 +1,7 @@
 { lib, config, ... }:
 {
   options = {
-    shared = {
+    user = {
       codium = {
         enable = lib.mkEnableOption "vscodium setup";
 
@@ -19,10 +19,10 @@
     };
 
     # DO NOT SET MANUALLY
-    shared.gui.enable = lib.mkEnableOption "graphical interface and programs";
+    user.gui.enable = lib.mkEnableOption "graphical interface and programs";
   };
 
   config = {
-    shared.nixvim.enable = lib.mkDefault true;
+    user.nixvim.enable = lib.mkDefault true;
   };
 }

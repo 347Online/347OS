@@ -3,7 +3,7 @@
   config,
   ...
 }:
-lib.mkIf config.shared.gui.enable {
+lib.mkIf config.user.gui.enable {
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;

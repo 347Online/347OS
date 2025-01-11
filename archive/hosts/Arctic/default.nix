@@ -13,8 +13,8 @@
   networking.hostName = "Arctic";
   time.timeZone = "America/Chicago";
 
-  linux.gaming.enable = true;
-  linux.gui.enable = true;
+  nixos.gaming.enable = true;
+  nixos.gui.enable = true;
 
   home-manager.users.${username} = {
     programs.ssh.matchBlocks = {

@@ -9,10 +9,10 @@
     ./minecraft.nix
   ];
 
-  config = lib.mkIf config.shared.gaming.enable {
+  config = lib.mkIf config.user.gaming.enable {
     assertions = [
       {
-        assertion = config.shared.personal.enable;
+        assertion = config.user.personal.enable;
         message = "Gaming can only be enabled on personal devices.";
       }
     ];

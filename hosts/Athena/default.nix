@@ -16,7 +16,7 @@
   };
 
   home-manager.users.${username} = {
-    shared = {
+    user = {
       personal.enable = true;
       gaming.enable = true;
     };

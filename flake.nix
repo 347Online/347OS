@@ -108,7 +108,7 @@
               );
             }
           );
-          module = ./modules/shared/programs/nvim;
+          module = ./modules/user/programs/nvim;
           extraSpecialArgs = {
             inherit util;
           } // specialArgs;
@@ -147,7 +147,7 @@
 
       baseModulesHomeManager = [
         nixvim.homeManagerModules.nixvim
-        ./modules/shared
+        ./modules/user
       ];
 
       mkPkgs =
@@ -181,7 +181,7 @@
                   extraSpecialArgs = mkExtraSpecialArgs pkgs;
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
-                      shared.gui.enable = lib.mkForce config.darwin.gui.enable;
+                      user.gui.enable = lib.mkForce config.darwin.gui.enable;
                     }
                   ];
                 };
@@ -193,7 +193,7 @@
           ];
         };
 
-      mkLinux =
+      mkNixos =
         system: module:
         let
           pkgs = mkPkgs system;
@@ -221,14 +221,14 @@
                   extraSpecialArgs = mkExtraSpecialArgs pkgs;
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
-                      shared.gui.enable = lib.mkForce config.linux.gui.enable;
+                      user.gui.enable = lib.mkForce config.nixos.gui.enable;
                     }
                   ];
                 };
               }
             )
 
-            ./modules/linux
+            ./modules/nixos
             module
           ];
         };
@@ -275,13 +275,13 @@
     {
       # TODO: hosts.nix file loaded by flake.nix
       # Could provide the relevant functions like mkDarwin
-      # mkDarwin and mkLinux could call a mkHome
+      # mkDarwin and mkNixos could call a mkUser
       darwinConfigurations."Athena" = mkDarwin "aarch64-darwin" ./hosts/Athena;
       darwinConfigurations."Alice" = mkDarwin "x86_64-darwin" ./hosts/Alice;
 
-      nixosConfigurations."Aspen" = mkLinux "x86_64-linux" ./hosts/Aspen;
-      nixosConfigurations."Amber" = mkLinux "x86_64-linux" ./hosts/Amber;
-      nixosConfigurations."Astrid" = mkLinux "aarch64-linux" ./hosts/Astrid;
+      nixosConfigurations."Aspen" = mkNixos "x86_64-linux" ./hosts/Aspen;
+      nixosConfigurations."Amber" = mkNixos "x86_64-linux" ./hosts/Amber;
+      nixosConfigurations."Astrid" = mkNixos "aarch64-linux" ./hosts/Astrid;
 
       nixosConfigurations."ISO-ARM" = mkIso "aarch64-linux";
       nixosConfigurations."ISO-INTEL" = mkIso "x86_64-linux";
@@ -307,9 +307,9 @@
               {
                 stylix.image = ./wallpapers/desert.jpg;
                 nix.package = pkgs.nix;
-                shared.gui.enable = true;
+                user.gui.enable = true;
               }
-              ./modules/shared/stylix.nix
+              ./modules/user/stylix.nix
             ] ++ baseModulesHomeManager;
           };
         }

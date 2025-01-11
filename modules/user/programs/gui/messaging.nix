@@ -5,7 +5,7 @@
   util,
   ...
 }:
-lib.mkIf config.shared.personal.enable {
+lib.mkIf (config.user.gui.enable && config.user.personal.enable) {
   home.packages =
     let
       discordPkg = (
