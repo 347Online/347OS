@@ -46,6 +46,7 @@
         ls = "eza";
         tree = "eza --tree";
         diff = "delta";
+        gg = "lazygit";
 
         branch =
           # sh
