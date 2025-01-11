@@ -8,6 +8,7 @@ pkgs: with pkgs; [
   fzf
   git
   go
+  htop
   moreutils
   nixd
   nixfmt-rfc-style
@@ -20,5 +21,4 @@ pkgs: with pkgs; [
   screen
   tmux
   zoxide
-
 ]
