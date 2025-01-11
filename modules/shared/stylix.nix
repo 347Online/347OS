@@ -1,7 +1,6 @@
 {
   pkgs,
   util,
-  isDarwin,
   ...
 }:
 {
@@ -15,7 +14,7 @@
         package = pkgs.nerd-fonts.jetbrains-mono;
         name = "JetBrainsMono Nerd Font";
       };
-      sizes.terminal = util.mkIfElse isDarwin 13 9;
+      sizes.terminal = util.mkIfElse pkgs.stdenv.isDarwin 13 9;
     };
   };
 }

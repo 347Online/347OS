@@ -2,7 +2,6 @@
   pkgs,
   lib,
   util,
-  isDarwin,
   homeDirectory,
   ...
 }:
@@ -11,7 +10,7 @@
     let
       workspace_dir = "${homeDirectory}/.local/share/nvim/jdtls-workspace";
       configuration =
-        util.mkIfElse isDarwin "${workspace_dir}/config_mac"
+        util.mkIfElse pkgs.stdenv.isDarwin "${workspace_dir}/config_mac"
           "${workspace_dir}/config_linux";
     in
     {

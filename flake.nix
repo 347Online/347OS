@@ -118,19 +118,21 @@
         pkgs:
         let
           system = pkgs.system;
-        in
-        {
-          inherit
-            self
-            inputs
-            username
-            util
-            system
-            ;
-          inherit (pkgs.stdenv) isDarwin;
           homeDirectory = util.mkHomeDirectory pkgs username;
-          vscode-extensions = nix-vscode-extensions.extensions.${system};
-        };
+          args = {
+            inherit
+              self
+              inputs
+              username
+              homeDirectory
+              util
+              system
+              ;
+            flakeDir = "${homeDirectory}/src/nix-systems";
+            vscode-extensions = nix-vscode-extensions.extensions.${system};
+          };
+        in
+        args;
 
       mkExtraSpecialArgs =
         pkgs:
