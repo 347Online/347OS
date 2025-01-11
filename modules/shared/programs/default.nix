@@ -3,6 +3,7 @@
   config,
   pkgs,
   nvim,
+  flakeDir,
   ...
 }:
 {
@@ -58,7 +59,7 @@
 
         nvim-next =
           # sh
-          "nix run ~/src/nix-systems#nvim";
+          "nix run ${flakeDir}#nvim";
       };
     in
     {

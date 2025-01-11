@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, flakeDir, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -13,6 +13,7 @@
         # TODO: Remove Powerlevel10k in favor of oh my posh or similar
         # Powerlevel10k Zsh theme
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        export FLAKE_DIR="${flakeDir}"
         ${builtins.readFile ./.zshrc}
       '';
   };
