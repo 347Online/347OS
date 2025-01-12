@@ -13,6 +13,7 @@
 
     ./nix.nix
     ./options.nix
+    ./scripts.nix
   ];
 
   config = lib.mkMerge [
