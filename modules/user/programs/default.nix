@@ -35,6 +35,7 @@
       _1password-cli
       eslint_d
       prettierd
+      sops
 
       (lib.mkIf config.user.nixvim.enable nvim)
     ]
