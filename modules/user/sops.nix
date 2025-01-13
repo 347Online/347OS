@@ -1,7 +1,7 @@
-{ homeDirectory, ... }:
+{ self, homeDirectory, ... }:
 {
   sops = {
-    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFile = self + builtins.toPath "/secrets.yaml";
     defaultSopsFormat = "yaml";
 
     age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
