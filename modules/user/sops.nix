@@ -12,6 +12,8 @@
       in
       {
         syncthing-gui-passwd.path = "${basePath}/syncthing-gui-passwd.txt";
+        "personal-info-expansions.yml".path =
+          "${homeDirectory}/.config/espanso/match/personal-info-expansions.yml";
       };
   };
 }
