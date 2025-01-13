@@ -84,6 +84,7 @@
       nixvim,
       stylix,
       plasma-manager,
+      sops-nix,
       ...
     }:
     let
@@ -172,6 +173,7 @@
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
             stylix.darwinModules.stylix
+            sops-nix.darwinModules.sops
             (
               {
                 lib,
@@ -182,7 +184,10 @@
                 environment.pathsToLink = [ "/share/zsh" ];
                 home-manager = {
                   backupFileExtension = "bakk";
-                  sharedModules = [ nur.modules.homeManager.default ];
+                  sharedModules = [
+                    nur.modules.homeManager.default
+                    sops-nix.homeManagerModules.sops
+                  ];
                   extraSpecialArgs = mkExtraSpecialArgs pkgs;
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
@@ -209,6 +214,7 @@
           modules = [
             home-manager.nixosModules.home-manager
             stylix.nixosModules.stylix
+            sops-nix.nixosModules.sops
             (
               {
                 lib,
@@ -222,6 +228,7 @@
                   sharedModules = [
                     nur.modules.homeManager.default
                     plasma-manager.homeManagerModules.plasma-manager
+                    sops-nix.homeManagerModules.sops
                   ];
                   extraSpecialArgs = mkExtraSpecialArgs pkgs;
                   users.${username}.imports = baseModulesHomeManager ++ [
@@ -309,6 +316,7 @@
 
             modules = [
               stylix.homeManagerModules.stylix
+              sops-nix.homeManagerModules.sops
               {
                 stylix.image = ./wallpapers/desert.jpg;
                 nix.package = pkgs.nix;
