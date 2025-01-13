@@ -14,6 +14,7 @@
     ./nix.nix
     ./options.nix
     ./scripts.nix
+    ./sops.nix
   ];
 
   config = lib.mkMerge [
