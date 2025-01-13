@@ -21,6 +21,7 @@
     ./ledger.nix
     ./less.nix
     ./neomutt.nix
+    ./syncthing.nix
     ./tmux.nix
     ./zoxide.nix
   ];
