@@ -1,11 +1,12 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
   services.espanso = {
     enable = true;
-    package = pkgs.espanso-wayland;
+    package = lib.mkIf pkgs.stdenv.isLinux pkgs.espanso-wayland;
 
     configs.default.show_notifications = false;
 
