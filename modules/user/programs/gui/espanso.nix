@@ -7,12 +7,18 @@
     enable = true;
     package = pkgs.espanso-wayland;
 
+    configs.default.show_notifications = false;
+
     matches = {
       base = {
         matches = [
           {
             replace = "‎ ";
             trigger = ";invis";
+          }
+          {
+            replace = "she/her/hers";
+            trigger = ";pro";
           }
           {
             replace = "katiejanzen@347online.me";
