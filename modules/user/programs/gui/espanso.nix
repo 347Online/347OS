@@ -13,6 +13,17 @@
       base = {
         matches = [
           {
+            replace = "{{today}}";
+            trigger = ";tod";
+            vars = [
+              {
+                name = "today";
+                type = "date";
+                params.format = "%m/%d/%Y";
+              }
+            ];
+          }
+          {
             replace = "‎ ";
             trigger = ";invis";
           }
