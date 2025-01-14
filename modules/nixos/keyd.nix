@@ -39,6 +39,8 @@
             left = "home";
             # Move cursor to the end of the line
             right = "end";
+            # Delete whole line
+            backspace = "C-u";
 
             # As soon as 'tab' is pressed (but not yet released), switch to the 'app_switch_state' overlay
             tab = "swapm(app_switch_state, A-tab)";
