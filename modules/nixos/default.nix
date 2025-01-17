@@ -45,6 +45,7 @@
         extraGroups = [
           "wheel"
           "input"
+          "keyd"
         ];
       };
 
@@ -66,6 +67,7 @@
         [
           vim
           killall
+          keyd
           file
           pciutils
           usbutils
