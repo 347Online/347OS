@@ -18,6 +18,7 @@ pkgs: with pkgs; [
   python3
   ripgrep
   rustup
+  trunk
   screen
   tmux
   zoxide
