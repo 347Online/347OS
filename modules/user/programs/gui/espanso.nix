@@ -49,6 +49,10 @@
             trigger = ";ln";
           }
           {
+            replace = "Full Stack Software Engineer";
+            trigger = ";hl";
+          }
+          {
             replace = "https://github.com/347Online";
             trigger = ";gh";
           }
