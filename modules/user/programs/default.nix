@@ -51,18 +51,22 @@
         gg = "lazygit";
 
         branch =
-          # sh
+          # bash
           "git branch --show-current";
 
         branchhelp =
-          # sh
+          # bash
           ''
             git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
           '';
 
         nvim-next =
-          # sh
+          # bash
           "nix run ${flakeDir}#nvim";
+
+        secedit =
+          # bash
+          "sops ${flakeDir}/secrets.yaml";
       };
     in
     {
