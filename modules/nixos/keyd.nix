@@ -33,9 +33,12 @@
             right = "end";
             up = "C-home";
             down = "C-end";
+            tab = "swapm(app_switch_state, A-tab)";
           };
 
           "meta_mac+shift".z = "C-y";
+
+          "app_switch_state:A" = { };
         };
       };
     };
