@@ -13,7 +13,7 @@
         "
       }
 
-        session="main"
+        session="$(basename $PWD)"
 
         while getopts ":s:h" opt; do
           case $opt in
