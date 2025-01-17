@@ -12,6 +12,7 @@
     enable = true;
 
     servers = {
+      emmet_language_server.enable = true;
       eslint.enable = true;
       gopls.enable = true;
       html.enable = true;
