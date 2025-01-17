@@ -1,7 +1,17 @@
 { pkgs, flakeDir, ... }:
-{
-  home.packages = [
-    (pkgs.writeShellScriptBin "eds" ''
+let
+
+  secedit = (
+    pkgs.writeShellScriptBin "secedit" ''
+      cd ${flakeDir}
+      if sops secrets.yaml; then
+        git commit secrets.yaml -m "Secrets"
+      fi
+    ''
+  );
+
+  eds = (
+    pkgs.writeShellScriptBin "eds" ''
       usage () {
         echo "Usage: eds [OPTIONS] [FILES...]
         [OPTIONS]
@@ -55,6 +65,12 @@
         fi
 
         tmux attach-session -t "$session"
-    '')
+    ''
+  );
+in
+{
+  home.packages = [
+    secedit
+    eds
   ];
 }

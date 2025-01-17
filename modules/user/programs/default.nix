@@ -63,10 +63,6 @@
         nvim-next =
           # bash
           "nix run ${flakeDir}#nvim";
-
-        secedit =
-          # bash
-          "sops ${flakeDir}/secrets.yaml";
       };
     in
     {

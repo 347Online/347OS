@@ -28,7 +28,6 @@
       ra = "rebase --abort";
       re = "rebase --edit-todo";
       cp = "cherry-pick";
-      csec = "commit -m Secrets";
     };
     extraConfig = {
       core.editor = "nvim";
