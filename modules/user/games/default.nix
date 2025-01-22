@@ -16,9 +16,5 @@
         message = "Gaming can only be enabled on personal devices.";
       }
     ];
-
-    home.packages = with pkgs; [
-      heroic
-    ];
   };
 }
