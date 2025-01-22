@@ -8,7 +8,11 @@
     ./hardware-configuration.nix
   ];
 
-  nixos.gui.enable = true;
+  nixos = {
+    gaming.enable = true;
+    gui.enable = true;
+    personal.enable = true;
+  };
 
   stylix.image = "${self}/wallpapers/neon-city.jpg";
 
@@ -20,11 +24,6 @@
   };
 
   home-manager.users.${username} = {
-    user = {
-      personal.enable = true;
-      gaming.enable = true;
-    };
-
     programs.ssh.matchBlocks = {
       Astrid = {
         hostname = "192.168.4.110";
@@ -39,8 +38,6 @@
       };
     };
   };
-
-  programs.steam.enable = true;
 
   # DO NOT EDIT
   system.stateVersion = "24.11";

@@ -236,6 +236,8 @@
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
                       user.gui.enable = lib.mkForce config.nixos.gui.enable;
+                      user.personal.enable = lib.mkForce config.nixos.personal.enable;
+                      user.gaming.enable = lib.mkForce config.nixos.gaming.enable;
                     }
                   ];
                 };
