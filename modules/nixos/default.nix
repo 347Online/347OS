@@ -7,11 +7,13 @@
 }:
 {
   imports = [
+    ../user/stylix.nix
+
+    ./games.nix
     ./keyd.nix
     ./nix.nix
     ./options.nix
     ./plasma.nix
-    ../user/stylix.nix
   ];
 
   config = lib.mkMerge [
