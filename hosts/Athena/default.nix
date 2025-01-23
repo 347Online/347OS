@@ -9,7 +9,9 @@
   homebrew = {
     casks = [
       "krita"
+      # TODO: Messaging module mirroring NixOS
       "element"
+      "discord"
     ];
   };
 
