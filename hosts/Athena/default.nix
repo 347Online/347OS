@@ -1,5 +1,6 @@
 {
   self,
+  pkgs,
   username,
   ...
 }:
@@ -40,6 +41,6 @@
     "/Applications/Overcast.app"
     "/System/Applications/Messages.app"
     "/System/Applications/Mail.app"
-    "/Applications/TeamTalk5.app"
+    "${pkgs.teamtalk5}/Applications/TeamTalk5.app"
   ];
 }

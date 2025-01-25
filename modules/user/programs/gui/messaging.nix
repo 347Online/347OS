@@ -16,5 +16,6 @@ lib.mkIf (config.user.gui.enable && config.user.personal.enable) {
     [
       discordPkg
       element-desktop
+      teamtalk5
     ];
 }
