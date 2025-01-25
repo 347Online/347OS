@@ -2,10 +2,13 @@
   config,
   lib,
   username,
+  util,
   ...
 }:
 lib.mkIf config.nixos.gui.enable {
   home-manager.users.${username} = {
+    home.file = util.toHomeFiles ./dotfiles;
+
     programs.plasma = {
       enable = true;
 

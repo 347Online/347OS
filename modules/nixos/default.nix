@@ -10,11 +10,12 @@
   imports = [
     ../user/stylix.nix
 
+    ./plasma
+
     ./games.nix
     ./keyd.nix
     ./nix.nix
     ./options.nix
-    ./plasma.nix
   ];
 
   config = lib.mkMerge [
@@ -59,14 +60,6 @@
         enable = true;
         enableSSHSupport = true;
       };
-
-      home-manager.users.${username} =
-        let
-          dotfiles = util.toHomeFiles ./dotfiles;
-        in
-        {
-          home.file = dotfiles;
-        };
 
       environment.systemPackages =
         let
