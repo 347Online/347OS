@@ -655,11 +655,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1737768786,
-        "narHash": "sha256-Zmn8yWF+3WmQT7+z269vJmzB7DPnFkE6rabXpaMDHPM=",
+        "lastModified": 1737769104,
+        "narHash": "sha256-S8BLQLsgSEEt8+pUElcC/ldTR+LnjP5jUJYMaswSH3Y=",
         "owner": "347Online",
         "repo": "nixpkgs",
-        "rev": "629b850abd2f72353631ff022389763ef64d4843",
+        "rev": "912ad4dfb1ba641305b0a98e1fa6de9f9f86480b",
         "type": "github"
       },
       "original": {
