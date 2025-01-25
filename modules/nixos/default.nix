@@ -3,6 +3,7 @@
   pkgs,
   lib,
   username,
+  util,
   ...
 }:
 {
@@ -59,7 +60,13 @@
         enableSSHSupport = true;
       };
 
-      # home.file = util.toHomeFiles ./dotfiles;
+      home-manager.users.${username} =
+        let
+          dotfiles = util.toHomeFiles ./dotfiles;
+        in
+        {
+          home.file = dotfiles;
+        };
 
       environment.systemPackages =
         let
