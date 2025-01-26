@@ -1,4 +1,4 @@
-# Katie's Nix Configuration
+# 347OS
 
 This is my setup for managing my computing life with Nix
 
@@ -6,21 +6,19 @@ This is my setup for managing my computing life with Nix
 
 - Portable Neovim setup
 - Modules for system configuration for both NixOS or macOS via nix-darwin
-- Modules for portable userspace configuration via Home-Manager
+- Modules for portable userspace configuration via Home-Manager, including standalone
 - Host Configurations:
-  - Alice - Work Laptop
-  - Athena - Personal Laptop
-  - Aspen - Primary Home Server
+  - Amber - Personal Workstation
+  - Aspen - Home Server
   - Astrid - Home Server Satellite Unit
+  - Athena - Personal Laptop
 
 ## Usage
 
-### Mac
+### Neovim
 
 ```bash
-# Selects the appropriate config by hostname
-# Can optionally append #<HOSTNAME> to specify a specific host definition
-darwin-rebuild switch --flake <FLAKE_DIR>
+nix run "$FLAKE_DIR#nvim"
 ```
 
 ### Linux
@@ -28,11 +26,20 @@ darwin-rebuild switch --flake <FLAKE_DIR>
 ```bash
 # Selects the appropriate config by hostname
 # Can optionally append #<HOSTNAME> to specify a specific host definition
-sudo nixos-rebuild switch --flake <FLAKE_DIR>
+sudo nixos-rebuild switch --flake "$FLAKE_DIR"
 ```
 
-### Neovim
+### Mac
 
 ```bash
-nix run <FLAKE_DIR>#nvim
+# Selects the appropriate config by hostname
+# Can optionally append #<HOSTNAME> to specify a specific host definition
+darwin-rebuild switch --flake "$FLAKE_DIR"
+```
+
+### Generic Unix
+
+```bash
+# Portable Userspace for user 'katie'
+home-manager switch --flake "$FLAKE_DIR"
 ```
