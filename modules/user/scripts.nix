@@ -57,8 +57,8 @@ let
           tmux resize-pane -Z
           if ! [[ $PWD == "${flakeDir}"* ]]; then
             tmux new-window
-            tmux rename-window -t 3 "nix"
-            tmux send-keys -t "nix" 'cd "${flakeDir}"' C-m 'clear' C-m
+            tmux rename-window -t 3 "347OS"
+            tmux send-keys -t "347OS" 'cd "${flakeDir}"' C-m 'clear' C-m
           fi
           tmux select-window -t "editor"
           tmux send-keys -t "editor" "nvim $@" C-m
