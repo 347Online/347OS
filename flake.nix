@@ -140,7 +140,7 @@
               util
               system
               ;
-            flakeDir = "${homeDirectory}/src/nix-systems";
+            flakeDir = "${homeDirectory}/347OS";
             vscode-extensions = nix-vscode-extensions.extensions.${system};
           };
         in
