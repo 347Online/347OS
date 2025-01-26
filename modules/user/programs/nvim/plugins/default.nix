@@ -12,6 +12,7 @@
     ./lazygit.nix
     ./lualine.nix
     ./luasnip.nix
+    ./markdown-preview.nix
     ./nix.nix
     ./nvim-autopairs.nix
     ./nvim-emmet.nix
