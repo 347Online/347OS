@@ -1,6 +1,6 @@
 {
   self,
-  pkgs,
+  pkgs-custom,
   username,
   ...
 }:
@@ -41,6 +41,8 @@
     "/Applications/Overcast.app"
     "/System/Applications/Messages.app"
     "/System/Applications/Mail.app"
-    "${pkgs.teamtalk5}/Applications/TeamTalk5.app"
+    # TODO: Use from official nixpkgs if/when PR lands
+    # https://github.com/NixOS/nixpkgs/pull/376817
+    "${pkgs-custom.teamtalk5}/Applications/TeamTalk5.app"
   ];
 }

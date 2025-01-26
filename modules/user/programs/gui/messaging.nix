@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-custom,
   lib,
   config,
   util,
@@ -17,6 +18,8 @@ lib.mkIf (config.user.gui.enable && config.user.personal.enable) {
       discordPkg
       element-desktop
       # TODO: Enable on linux once I get it fixed
-      (lib.mkIf pkgs.stdenv.isDarwin teamtalk5)
+      # TODO: Use from official nixpkgs if/when PR lands
+      # https://github.com/NixOS/nixpkgs/pull/376817
+      (lib.mkIf pkgs.stdenv.isDarwin pkgs-custom.teamtalk5)
     ];
 }

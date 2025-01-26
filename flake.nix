@@ -2,10 +2,11 @@
   description = "Katie's Nix Systems";
 
   inputs = {
-    nixpkgs.url = "github:347Online/nixpkgs/dev";
     # Waiting for this PR to land in nixpkgs-unstable:
     # https://github.com/NixOS/nixpkgs/pull/374409
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/b7352212f8ce5de214da7c4296b7bcd59de37d43";
+    nixpkgs-custom.url = "github:347Online/nixpkgs/dev";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nur = {
@@ -77,6 +78,7 @@
     inputs@{
       self,
       nixpkgs,
+      nixpkgs-custom,
       nixos-hardware,
       nur,
       nix-darwin,
@@ -127,9 +129,11 @@
         let
           system = pkgs.system;
           homeDirectory = util.mkHomeDirectory pkgs username;
+          pkgs-custom = import nixpkgs-custom { inherit system; };
           args = {
             inherit
               self
+              pkgs-custom
               inputs
               username
               homeDirectory

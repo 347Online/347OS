@@ -653,19 +653,35 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs-custom": {
       "locked": {
-        "lastModified": 1737843702,
-        "narHash": "sha256-irqNuwXQCQX8+VRwrcVsSY/Caa+yH3sWRwZrsmvsskc=",
+        "lastModified": 1737855412,
+        "narHash": "sha256-7as6qc4rGQX1jj2XTPr77IdE7q/lK91IbDKPG0F6SyM=",
         "owner": "347Online",
         "repo": "nixpkgs",
-        "rev": "7ab03b8eb8ac56d83f2ce751f73812b372d9caa2",
+        "rev": "02055b7aa2039a8e3fc57ce7a8c3eab8b66c4137",
         "type": "github"
       },
       "original": {
         "owner": "347Online",
         "ref": "dev",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1737073348,
+        "narHash": "sha256-SkAKnNFOObtjrL98xy3brWvaLkrsqVzRNIkS8emYNBQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b7352212f8ce5de214da7c4296b7bcd59de37d43",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b7352212f8ce5de214da7c4296b7bcd59de37d43",
         "type": "github"
       }
     },
@@ -795,6 +811,7 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-custom": "nixpkgs-custom",
         "nixvim": "nixvim",
         "nur": "nur",
         "nvim-emmet": "nvim-emmet",
