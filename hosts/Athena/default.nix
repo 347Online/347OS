@@ -43,6 +43,6 @@
     "/System/Applications/Mail.app"
     # TODO: Use from official nixpkgs if/when PR lands
     # https://github.com/NixOS/nixpkgs/pull/376817
-    "${pkgs-custom.teamtalk5}/Applications/TeamTalk5.app"
+    # "${pkgs-custom.teamtalk5}/Applications/TeamTalk5.app"
   ];
 }

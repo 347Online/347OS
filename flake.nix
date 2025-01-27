@@ -129,7 +129,13 @@
         let
           system = pkgs.system;
           homeDirectory = util.mkHomeDirectory pkgs username;
-          pkgs-custom = import nixpkgs-custom { inherit system; };
+          pkgs-custom = import nixpkgs-custom {
+            inherit system;
+            config = {
+              allowUnfreePredicate = _: true;
+              allowUnsupportedSystem = true;
+            };
+          };
           args = {
             inherit
               self
