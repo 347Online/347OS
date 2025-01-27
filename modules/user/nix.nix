@@ -21,7 +21,6 @@
   nixpkgs = {
     config = {
       allowUnfree = true;
-      allowUnsupportedSystem = true;
       packageOverrides = pkgs: {
         inherit nur;
       };

@@ -7,19 +7,12 @@
   ...
 }:
 lib.mkIf (config.user.gui.enable && config.user.personal.enable) {
-  home.packages =
-    let
-      discordPkg = (
-        util.mkIfElse (pkgs.stdenv.isx86_64 or pkgs.stdenv.isDarwin) pkgs.discord pkgs.webcord
-      );
-    in
-    with pkgs;
-    [
-      discordPkg
-      element-desktop
-      # TODO: Enable on linux once I get it fixed
-      # TODO: Use from official nixpkgs if/when PR lands
-      # https://github.com/NixOS/nixpkgs/pull/376817
-      (lib.mkIf pkgs.stdenv.isDarwin pkgs-custom.teamtalk5)
-    ];
+  home.packages = with pkgs; [
+    element-desktop
+    # TODO: Enable on linux once I get it fixed
+    # TODO: Use from official nixpkgs if/when PR lands
+    # https://github.com/NixOS/nixpkgs/pull/376817
+    (lib.mkIf pkgs.stdenv.isDarwin pkgs-custom.teamtalk5)
+    (util.mkIfElse (pkgs.stdenv.isx86_64 || pkgs.stdenv.isDarwin) pkgs.discord pkgs.webcord)
+  ];
 }
