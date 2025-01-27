@@ -13,6 +13,10 @@ lib.mkIf config.nixos.gui.enable {
       enable = true;
 
       configFile = {
+        "networkmanagement.notifyrc" = {
+          "Event/ConnectionActivated".Action = "";
+          "Event/ConnectionDeactivated".Action = "";
+        };
         kdeglobals.Shortcuts = {
           Copy = "Copy";
           Paste = "Paste";
