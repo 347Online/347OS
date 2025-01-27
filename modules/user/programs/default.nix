@@ -21,6 +21,7 @@
     ./ledger.nix
     ./less.nix
     ./neomutt.nix
+    ./pandoc.nix
     ./syncthing.nix
     ./tmux.nix
     ./zoxide.nix
