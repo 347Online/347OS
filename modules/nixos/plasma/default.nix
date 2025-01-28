@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   username,
@@ -7,7 +8,12 @@
 }:
 lib.mkIf config.nixos.gui.enable {
   home-manager.users.${username} = {
-    home.file = util.toHomeFiles ./dotfiles;
+    home.file = lib.mkMerge [
+      (util.toHomeFiles ./dotfiles)
+      {
+        ".config/autostart/discord.desktop".enable = lib.mkIf (pkgs.system == "aarch64-linux") false;
+      }
+    ];
 
     programs.plasma = {
       enable = true;
