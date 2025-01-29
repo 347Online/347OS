@@ -1,5 +1,6 @@
+{ config, lib, ... }:
 {
   services.syncthing = {
-    enable = true;
+    enable = lib.mkIf config.user.personal.enable true;
   };
 }
