@@ -14,13 +14,13 @@ let
 
     (pkgs.writeShellScriptBin "eds" ''
       usage () {
-        echo "Usage: eds [OPTIONS] [FILES...]
+        echo "Usage: eds [OPTIONS] [DIRECTORY]
         [OPTIONS]
           -s <session>  name of new tmux session
           -h            show this help message
 
-        [FILES...]
-          File/Directory paths passed to editor
+        [DIRECTORY]
+          Directory paths passed to editor - NYI
         "
       }
 
@@ -56,10 +56,12 @@ let
         tmux rename-window -t 2 "scratch"
         tmux split-window -t "scratch" -v
         tmux resize-pane -Z
+        # TODO: Use passed in directory
         if ! [[ $PWD == "${flakeDir}"* ]]; then
           tmux new-window
           tmux rename-window -t 3 "347OS"
           tmux send-keys -t "347OS" 'cd "${flakeDir}"' C-m 'clear' C-m
+          tmux select-window -t "scratch"
         fi
         tmux select-window -t "editor"
         tmux send-keys -t "editor" "nvim $@" C-m
