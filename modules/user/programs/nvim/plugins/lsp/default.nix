@@ -12,11 +12,11 @@
     enable = true;
 
     servers = {
+      cssls.enable = true;
       emmet_language_server.enable = true;
       eslint.enable = true;
       gopls.enable = true;
       html.enable = true;
-      cssls.enable = true;
       lua_ls.enable = true;
       marksman.enable = true;
       nixd = {
@@ -31,6 +31,7 @@
           };
         };
       };
+      typos_lsp.enable = true;
       taplo.enable = true;
       ts_ls.enable = true;
       rust_analyzer = {

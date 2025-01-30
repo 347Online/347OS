@@ -35,8 +35,11 @@
     [
       _1password-cli
       eslint_d
+      mdformat
       prettierd
       sops
+      yamlfmt
+      yamllint
 
       (lib.mkIf config.user.nixvim.enable nvim)
     ]
