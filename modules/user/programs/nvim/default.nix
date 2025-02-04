@@ -31,20 +31,20 @@
   # TODO: Create some kinda option for this
 
   # Onedark kinda mood
-  colorschemes.onedark = {
-    enable = true;
-    settings = {
-      style = "warmer";
-    };
-  };
-
-  # Catppuccin kinda mood
-  # colorschemes.catppuccin = {
+  # colorschemes.onedark = {
   #   enable = true;
   #   settings = {
-  #     flavour = "mocha";
+  #     style = "warmer";
   #   };
   # };
+
+  # Catppuccin kinda mood
+  colorschemes.catppuccin = {
+    enable = true;
+    settings = {
+      flavour = "mocha";
+    };
+  };
 
   # VSCode kinda mood
   # colorschemes.vscode = {
