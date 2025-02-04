@@ -1,5 +1,0 @@
-{
-  plugins.mkdnflow = {
-    enable = true;
-  };
-}

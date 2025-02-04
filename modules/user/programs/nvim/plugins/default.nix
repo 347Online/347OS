@@ -14,7 +14,6 @@
     ./lualine.nix
     ./luasnip.nix
     ./markdown-preview.nix
-    ./mkdnflow.nix
     ./nix.nix
     ./nvim-autopairs.nix
     ./nvim-emmet.nix
