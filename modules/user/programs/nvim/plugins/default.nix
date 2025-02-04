@@ -2,6 +2,7 @@
   imports = [
     ./lsp
 
+    ./autolist-nvim.nix
     ./cmp.nix
     ./comment.nix
     ./conform-nvim.nix
