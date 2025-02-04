@@ -36,6 +36,7 @@
       _1password-cli
       eslint_d
       mdformat
+      pkgs.python312Packages.mdformat-frontmatter
       prettierd
       sops
       yamlfmt
