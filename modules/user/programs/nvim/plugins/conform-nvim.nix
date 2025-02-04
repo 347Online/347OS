@@ -51,7 +51,7 @@ rec {
       formatters_by_ft = {
         html = [ "prettierd" ];
         css = [ "prettierd" ];
-        markdown = [ "mdformat" ];
+        # markdown = [ "prettierd" ];
 
         json = [
           "prettierd"
