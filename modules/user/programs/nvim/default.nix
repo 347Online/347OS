@@ -8,6 +8,7 @@
   globals.mapleader = ",";
 
   opts = {
+    linebreak = true; # Don't split words when wrap is set
     foldenable = false;
     wrap = false;
     number = true;
