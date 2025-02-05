@@ -1,9 +1,10 @@
 {
+  pkgs,
+  config,
+  lib,
   username,
   homeDirectory,
   util,
-  config,
-  lib,
   ...
 }:
 {
@@ -24,7 +25,19 @@
 
         sessionVariables.EDITOR = "nvim";
 
-        file = util.toHomeFiles ./dotfiles;
+        file = lib.mkMerge [
+          (util.toHomeFiles ./dotfiles)
+          {
+            "Downloads/Katie Janzen Resume 2025.pdf" = {
+              enable = config.user.personal.enable;
+
+              source = pkgs.fetchurl {
+                url = "https://347online.me/resume.pdf";
+                hash = "sha256-f2haSLhCIqu83C/yandfCL8RESsP9Eb3zsA4r8bApEE=";
+              };
+            };
+          }
+        ];
       };
 
       news.display = "silent";
