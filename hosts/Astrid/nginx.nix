@@ -75,7 +75,6 @@
           forceSSL = true;
           globalRedirect = "fatgirl.cloud";
         };
-        # "bmc.fatgirl.cloud" = proxy {ip = "192.168.4.43";};
         "social.fatgirl.cloud" = {
           forceSSL = true;
           enableACME = true;
@@ -84,6 +83,10 @@
             proxyWebsockets = true;
             proxyPass = "http://192.168.4.55:3475";
           };
+        };
+        "sync.fatgirl.cloud" = proxy {
+          ip = "192.168.4.55";
+          port = 8384;
         };
         "transmission.fatgirl.cloud" = proxy {
           ip = "192.168.4.55";
