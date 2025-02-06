@@ -1,6 +1,5 @@
 {
   self,
-  username,
   ...
 }:
 {
@@ -13,11 +12,10 @@
 
   stylix.image = "${self}/wallpapers/desert.jpg";
 
-  home-manager.users.${username} = {
-    # home-config here
+  networking = {
+    firewall.allowedTCPPorts = [ 8384 ];
+    hostName = "Aspen";
   };
-
-  networking.hostName = "Aspen";
   time.timeZone = "America/Chicago";
 
   # Enables cross-build to ARM systems
