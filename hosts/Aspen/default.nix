@@ -1,5 +1,6 @@
 {
   self,
+  username,
   ...
 }:
 {
@@ -12,6 +13,9 @@
 
   stylix.image = "${self}/wallpapers/desert.jpg";
 
+  home-manager.users.${username} = {
+    services.syncthing.guiAddress = "0.0.0.0:8384";
+  };
   networking = {
     firewall.allowedTCPPorts = [ 8384 ];
     hostName = "Aspen";
