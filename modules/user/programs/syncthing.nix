@@ -6,7 +6,7 @@
 }:
 {
   services.syncthing = {
-    enable = lib.mkIf config.user.personal.enable true;
+    enable = true;
 
     passwordFile = builtins.toPath "${homeDirectory}/.secrets/syncthing-gui-passwd.txt";
 
