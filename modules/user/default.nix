@@ -27,6 +27,7 @@
 
         file = lib.mkMerge [
           (util.toHomeFiles ./dotfiles)
+          { ".face.icon".enable = config.user.gui.enable; }
           {
             "Downloads/Katie Janzen Resume 2025.pdf" = {
               enable = config.user.personal.enable;
