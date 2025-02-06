@@ -1,9 +1,11 @@
 {
   pkgs,
+  config,
+  lib,
   util,
   ...
 }:
-{
+lib.mkIf config.user.gui.enable {
   services.espanso = {
     enable = true;
     package =
