@@ -13,6 +13,7 @@
 
   home-manager.users.${username} = {
     user.nixvim.enable = false;
+    services.syncthing.enable = false;
   };
 
   networking = {
