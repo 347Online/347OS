@@ -46,12 +46,19 @@
 
   programs =
     let
+      # TODO: Move to scripts
       shellAliases = {
         cat = "bat";
         ls = "eza";
         tree = "eza --tree";
         diff = "delta";
         gg = "lazygit";
+
+        journal =
+          # bash
+          ''
+            nvim "~/Sync/Notes/journal-$(date +%Y-%m-%d).md"
+          '';
 
         branch =
           # bash
