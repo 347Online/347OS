@@ -39,6 +39,9 @@
     };
   };
 
+  # Enables cross-build to ARM systems
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   # DO NOT EDIT
   system.stateVersion = "24.11";
 }
