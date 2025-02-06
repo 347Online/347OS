@@ -87,6 +87,10 @@
             replace = "💀";
             trigger = ":skull:";
           }
+          {
+            replace = ''I do not use any LLM / "Generative AI" technologies in my software development stack. I find tremendous value from things like language servers or autoformatting commands/plugins, but I truly enjoy the art of programming and LLM technologies do not fit into my life or workflow'';
+            trigger = ";artif";
+          }
         ];
       };
     };
