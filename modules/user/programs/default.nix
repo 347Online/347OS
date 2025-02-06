@@ -3,6 +3,7 @@
   config,
   pkgs,
   nvim,
+  homeDirectory,
   flakeDir,
   ...
 }:
@@ -57,7 +58,7 @@
         journal =
           # bash
           ''
-            nvim "~/Sync/Notes/journal-$(date +%Y-%m-%d).md"
+            nvim "${homeDirectory}/Sync/Notes/journal/$(date +%Y-%m-%d).md"
           '';
 
         branch =
