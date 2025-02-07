@@ -29,7 +29,17 @@
           (util.toHomeFiles ./dotfiles)
           { ".face.icon".enable = config.user.gui.enable; }
           {
-            "Downloads/Katie Janzen Resume 2025.pdf" = {
+            "Desktop/Katie Janzen Cover Letter 2025.pdf" = {
+              enable = config.user.personal.enable;
+
+              source = pkgs.fetchurl {
+                url = "https://347online.me/cover-letter.pdf";
+                hash = "sha256-rlj3erQVH9X4vSPQSq4p5Sz3vIows3KJA4ZbBoqZDnc=";
+              };
+            };
+          }
+          {
+            "Desktop/Katie Janzen Resume 2025.pdf" = {
               enable = config.user.personal.enable;
 
               source = pkgs.fetchurl {
