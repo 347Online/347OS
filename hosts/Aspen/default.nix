@@ -15,7 +15,23 @@
 
   home-manager.users.${username} = {
     services.syncthing.guiAddress = "0.0.0.0:8384";
+
+    programs.ssh = {
+      matchBlocks = {
+        DeskPhone = {
+          hostname = "192.168.4.245";
+          user = "cisco";
+          extraOptions = {
+            MACs = "+hmac-sha1,hmac-sha1-96,hmac-md5,hmac-md5-96";
+            Ciphers = "+aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc";
+            HostkeyAlgorithms = "+ssh-rsa";
+            PubkeyAcceptedKeyTypes = "+ssh-rsa";
+          };
+        };
+      };
+    };
   };
+
   networking = {
     firewall = {
       allowedTCPPorts = [ 8384 ];
