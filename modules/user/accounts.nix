@@ -5,14 +5,10 @@
       realName = "Katie Janzen";
       userName = "katie@347online.me";
       address = "katie@347online.me";
+      aliases = [ "katiejanzen@347online.me" ];
       primary = true;
       flavor = "fastmail.com";
       passwordCommand = "op read 'op://Katie/Fastmail/App Password'";
-
-      neomutt = {
-        enable = true;
-        mailboxType = "imap";
-      };
 
       thunderbird = {
         enable = true;

@@ -22,7 +22,6 @@
     ./lazygit.nix
     ./ledger.nix
     ./less.nix
-    ./neomutt.nix
     ./pandoc.nix
     ./syncthing.nix
     ./tmux.nix
