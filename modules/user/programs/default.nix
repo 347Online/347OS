@@ -15,6 +15,7 @@
     ./bat.nix
     ./direnv.nix
     ./eza.nix
+    ./formatters.nix
     ./fzf.nix
     ./git.nix
     ./jq.nix
@@ -35,11 +36,7 @@
     with pkgs;
     [
       _1password-cli
-      eslint_d
-      prettierd
       sops
-      yamlfmt
-      yamllint
 
       (lib.mkIf config.user.nixvim.enable nvim)
     ]
