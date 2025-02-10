@@ -12,6 +12,7 @@
     ./games
     ./programs
 
+    ./email.nix
     ./nix.nix
     ./options.nix
     ./scripts.nix

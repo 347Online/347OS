@@ -9,8 +9,9 @@
   imports = [
     ./codium
 
-    ./messaging.nix
     ./espanso.nix
+    ./messaging.nix
+    ./thunderbird.nix
     ./wezterm.nix
   ];
 
