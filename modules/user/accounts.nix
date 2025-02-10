@@ -29,14 +29,6 @@ lib.mkIf config.user.personal.enable (
         aliases = [ "katiejanzen@347online.me" ];
         primary = true;
         flavor = "fastmail.com";
-
-        thunderbird = {
-          enable = true;
-
-          settings = id: {
-            "mail.smtpserver.smtp_${id}.authMethod" = 10;
-          };
-        };
       };
     };
   }
