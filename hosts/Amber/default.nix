@@ -19,10 +19,6 @@
   networking.hostName = "Amber";
   time.timeZone = "America/Chicago";
 
-  users.users.${username} = {
-    extraGroups = [ "networkmanager" ];
-  };
-
   home-manager.users.${username} = {
     programs.ssh.matchBlocks = {
       Astrid = {

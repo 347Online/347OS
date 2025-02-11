@@ -47,6 +47,7 @@
         isNormalUser = true;
         shell = pkgs.zsh;
         extraGroups = [
+          "networkmanager"
           "wheel"
         ];
       };
@@ -58,6 +59,8 @@
         enable = true;
         enableSSHSupport = true;
       };
+
+      networking.networkmanager.enable = true;
 
       environment.systemPackages =
         let
@@ -84,8 +87,6 @@
         enable = true;
         polkitPolicyOwners = [ username ];
       };
-
-      networking.networkmanager.enable = true;
 
       services.desktopManager.plasma6.enable = true;
       services.displayManager.sddm = {

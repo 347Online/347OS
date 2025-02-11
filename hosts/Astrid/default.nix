@@ -18,7 +18,6 @@
 
   networking = {
     hostName = "Astrid";
-    networkmanager.enable = true; # Easiest to use and most distros use this by default.
     firewall.allowedTCPPorts = [
       80
       443
