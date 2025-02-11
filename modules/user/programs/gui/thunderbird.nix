@@ -5,13 +5,22 @@
   util,
   ...
 }:
+let
+  ids = {
+    professional = "5c97026a5af6ad0f26987181ec12b552b33a4839794bde9497ff5540ec095f54";
+    personal = "845f9286400f42697fbb196d24c794efa933ce1d20e2b93a7cf770b69f96f6fc";
+  };
+in
 lib.mkIf config.user.gui.enable {
   accounts.email.accounts.Personal.thunderbird = {
     enable = true;
 
-    settings = id: {
-      "mail.smtpserver.smtp_${id}.authMethod" = 10;
-    };
+    settings =
+      id: with ids; {
+        "mail.smtpserver.smtp_${id}.authMethod" = 10;
+        "mail.identity.id_${professional}.label" = "Professional";
+        "mail.identity.id_${personal}.label" = "Personal";
+      };
 
     perIdentitySettings =
       id:
