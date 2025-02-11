@@ -3,7 +3,7 @@
     enable = true;
     keyboards = {
       default = {
-        ids = [ "*" ]; # what goes into the [id] section, here we select all keyboard
+        ids = [ "*" ];
         settings = {
           main = {
             capslock = "overload(control, esc)";
@@ -23,19 +23,25 @@
           "meta_mac:C" = {
             backspace = "macro(S-home 5ms backspace)";
             delete = "macro(S-end 5ms delete)";
-            z = "undo";
-            c = "copy";
-            v = "paste";
-            x = "cut";
-            l = "A-d";
-            r = "refresh";
+            tab = "swapm(app_switch_state, A-tab)";
+
             left = "home";
             right = "end";
             up = "C-home";
             down = "C-end";
-            tab = "swapm(app_switch_state, A-tab)";
+
+            x = "cut";
+            c = "copy";
+            v = "paste";
+
+            r = "refresh";
+            z = "undo";
+
+            # Focus Address Bar
+            l = "A-d";
           };
 
+          # Redo
           "meta_mac+shift".z = "C-y";
 
           "app_switch_state:A" = { };

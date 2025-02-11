@@ -48,8 +48,6 @@
         shell = pkgs.zsh;
         extraGroups = [
           "wheel"
-          "input"
-          "keyd"
         ];
       };
 
