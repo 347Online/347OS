@@ -11,6 +11,7 @@
 
     ./espanso.nix
     ./messaging.nix
+    ./shortwave.nix
     ./thunderbird.nix
     ./wezterm.nix
   ];
