@@ -41,6 +41,7 @@ lib.mkIf config.darwin.homebrew.enable {
       "raycast"
       "scroll-reverser"
       "setapp"
+      "thunderbird"
     ];
   };
 
