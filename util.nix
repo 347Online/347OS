@@ -72,6 +72,12 @@ let
     vimBind =
       mode: key: bind:
       if lib.hasPrefix ":" bind then vimBindCmd mode key bind else vimBindLua mode key bind;
+
+    dummy-package =
+      p: name:
+      p.runCommand name { } ''
+        mkdir $out
+      '';
   };
 in
 util

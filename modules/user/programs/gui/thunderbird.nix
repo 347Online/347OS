@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  util,
   ...
 }:
 lib.mkIf config.user.gui.enable {
@@ -44,16 +45,8 @@ lib.mkIf config.user.gui.enable {
   };
 
   programs.thunderbird = lib.mkMerge [
-    (lib.mkIf pkgs.stdenv.isDarwin {
-      darwinSetupWarning = false;
-    })
     {
       enable = true;
-      package = lib.mkIf pkgs.stdenv.isDarwin (
-        pkgs.runCommand "thunderbird" { } ''
-          mkdir $out
-        ''
-      );
 
       settings = {
         "mail.biff.play_sound" = false;
@@ -69,5 +62,9 @@ lib.mkIf config.user.gui.enable {
         };
       };
     }
+    (lib.mkIf pkgs.stdenv.isDarwin {
+      darwinSetupWarning = false;
+      package = util.dummy-package pkgs "thunderbird";
+    })
   ];
 }
