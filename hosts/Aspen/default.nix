@@ -14,6 +14,8 @@
   stylix.image = "${self}/wallpapers/desert.jpg";
 
   home-manager.users.${username} = {
+    user.personal.enable = true;
+
     services.syncthing.guiAddress = "0.0.0.0:8384";
 
     programs.ssh = {
