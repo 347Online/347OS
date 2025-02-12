@@ -6,7 +6,7 @@
 }:
 {
   sops = {
-    defaultSopsFile = self + builtins.toPath "/secrets.yaml";
+    defaultSopsFile = builtins.toPath "${self}/.secrets.yaml";
     defaultSopsFormat = "yaml";
 
     age.keyFile =
@@ -15,15 +15,11 @@
       in
       "${homeDirectory}/${osDir}/sops/age/keys.txt";
 
-    secrets =
-      let
-        basePath = "${homeDirectory}/.secrets";
-      in
-      {
-        "personal-info-expansions.yml".path =
-          "${homeDirectory}/.config/espanso/match/personal-info-expansions.yml";
+    secrets = {
+      syncthing-gui-passwd = { };
 
-        syncthing-gui-passwd.path = "${basePath}/syncthing-gui-passwd.txt";
-      };
+      "personal-info-expansions.yml".path =
+        "${homeDirectory}/.config/espanso/match/personal-info-expansions.yml";
+    };
   };
 }

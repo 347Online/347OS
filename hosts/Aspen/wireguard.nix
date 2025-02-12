@@ -1,9 +1,10 @@
+{ homeDirectory, ... }:
 {
   networking.wg-quick.interfaces = {
     wg0 = {
       address = [ "192.168.2.1/32" ];
       dns = [ "192.168.2.1" ];
-      privateKeyFile = "~/.secrets/wg/key";
+      privateKeyFile = "${homeDirectory}/.local/.secrets/wg/key";
 
       peers = [
         {

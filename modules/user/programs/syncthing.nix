@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  homeDirectory,
   ...
 }:
 {
@@ -27,7 +26,7 @@
       overrideDevices = true;
       overrideFolders = true;
 
-      passwordFile = builtins.toPath "${homeDirectory}/.secrets/syncthing-gui-passwd.txt";
+      passwordFile = builtins.toPath config.sops.secrets.syncthing-gui-passwd.path;
 
       settings = {
         inherit devices;
