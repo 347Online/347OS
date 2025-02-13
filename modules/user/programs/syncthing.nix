@@ -33,18 +33,34 @@
 
         gui.user = "katie";
 
-        folders = {
-          "~/Sync/Files" = {
-            devices = allDevices;
+        folders =
+          let
+            mkPath = name: "~/Sync/${name}";
+            mkFolderExt =
+              {
+                name,
+                devices ? allDevices,
+                extraConfig ? { },
+              }:
+              let
+                id = mkPath name;
+                folder = {
+                  inherit id devices;
+                  label = name;
+                  path = id;
+                } // extraConfig;
+              in
+              folder;
+            mkFolder = name: mkFolderExt { inherit name; };
+          in
+          {
+            files = mkFolder "Files";
+            notes = mkFolder "Notes";
+            roms = mkFolderExt {
+              name = "ROMs";
+              extraConfig.enable = lib.mkIf (!config.user.personal.enable) false;
+            };
           };
-          "~/Sync/Notes" = {
-            devices = allDevices;
-          };
-          "~/Sync/ROMs" = {
-            devices = allDevices;
-            enable = lib.mkIf (!config.user.personal.enable) false;
-          };
-        };
       };
     };
 }
