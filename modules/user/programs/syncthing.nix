@@ -6,19 +6,18 @@
 {
   services.syncthing =
     let
-      devices = {
-        Amber = {
-          id = "F3IMTHP-MIKJMWJ-SPUYHG2-CL4TWES-IHGWO2N-4SOHCOH-ZP2H4ST-FTNB4A4";
-          autoAcceptFolders = true;
-        };
-        Aspen = {
-          id = "3ORETYE-Q4EE3XR-TEK646E-4GQXSI5-CUVN3AF-LCSCJY5-KCOBPJ4-DPPT2AK";
-          autoAcceptFolders = true;
-        };
+      myDevices = {
+        Amber.id = "F3IMTHP-MIKJMWJ-SPUYHG2-CL4TWES-IHGWO2N-4SOHCOH-ZP2H4ST-FTNB4A4";
+        Aspen.id = "3ORETYE-Q4EE3XR-TEK646E-4GQXSI5-CUVN3AF-LCSCJY5-KCOBPJ4-DPPT2AK";
         Athena.id = "BG4POXA-BQIWLZV-7VKGOFX-T7DU2MQ-Q7A6ARE-Z7XHCTO-E3UWLNH-Y3Y4RQM";
         iPhone.id = "QIVADHQ-RRWEEOP-XDJDDLP-HQOPLKD-CJCVHQF-VJOOO44-JTGUZRM-GCID7AZ";
       };
-      allDevices = builtins.attrNames devices;
+      otherDevices = {
+        Stardust.id = "YCQVLK2-ZGPGGZO-IAVIRI7-W6GX7YO-WYBNXAX-66YAFTH-ZCXBM3H-2D6QLAF";
+      };
+      devices = myDevices // otherDevices;
+
+      defaultDevices = builtins.attrNames myDevices;
     in
     {
       enable = true;
@@ -39,16 +38,21 @@
             mkFolderExt =
               {
                 name,
-                devices ? allDevices,
-                extraConfig ? { },
+                id ? mkPath name,
+                path ? mkPath name,
+                devices ? defaultDevices,
+                enable ? true,
               }:
               let
-                id = mkPath name;
                 folder = {
-                  inherit id devices;
+                  inherit
+                    id
+                    devices
+                    enable
+                    path
+                    ;
                   label = name;
-                  path = id;
-                } // extraConfig;
+                };
               in
               folder;
             mkFolder = name: mkFolderExt { inherit name; };
@@ -58,7 +62,13 @@
             notes = mkFolder "Notes";
             roms = mkFolderExt {
               name = "ROMs";
-              extraConfig.enable = lib.mkIf (!config.user.personal.enable) false;
+              enable = lib.mkIf (!config.user.personal.enable) false;
+            };
+            wifezone = mkFolderExt {
+              name = "Wife Zone";
+              id = "we.are.us_we.are.love_we.are.one";
+              devices = defaultDevices ++ [ "Stardust" ];
+              enable = lib.mkIf (!config.user.personal.enable) false;
             };
           };
       };
