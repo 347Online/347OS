@@ -18,6 +18,7 @@
     ./nix.nix
     ./nvim-emmet.nix
     ./nvim-jdtls.nix
+    ./nvim-surround.nix
     ./oil.nix
     ./otter.nix
     ./scrollview.nix
