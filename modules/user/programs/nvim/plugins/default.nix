@@ -11,11 +11,11 @@
     ./hex.nix
     ./indent-blankline.nix
     ./lazygit.nix
+    ./lexima-vim.nix
     ./lualine.nix
     ./luasnip.nix
     ./markdown-preview.nix
     ./nix.nix
-    ./nvim-autopairs.nix
     ./nvim-emmet.nix
     ./nvim-jdtls.nix
     ./oil.nix
