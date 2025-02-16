@@ -7,7 +7,6 @@
 {
   sops = {
     defaultSopsFile = builtins.toPath "${self}/.secrets.yaml";
-    defaultSopsFormat = "yaml";
 
     age.keyFile =
       let

@@ -3,7 +3,6 @@
   pkgs,
   lib,
   username,
-  util,
   ...
 }:
 {
@@ -16,6 +15,7 @@
     ./keyd.nix
     ./nix.nix
     ./options.nix
+    ./sops.nix
   ];
 
   config = lib.mkMerge [
