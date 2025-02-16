@@ -8,9 +8,11 @@
     };
   };
 
-  users.users.nginx.extraGroups = [ "acme" ];
-  users.users.acme.extraGroups = [ "nginx" ];
-  users.users.katie.extraGroups = [ "nginx" ];
+  users.users = {
+    nginx.extraGroups = [ "acme" ];
+    acme.extraGroups = [ "nginx" ];
+    katie.extraGroups = [ "nginx" ];
+  };
 
   services.nginx = {
     enable = true;
@@ -87,6 +89,10 @@
         "sync.fatgirl.cloud" = proxy {
           ip = "192.168.4.55";
           port = 8384;
+        };
+        "firefox.fatgirl.cloud" = proxy {
+          ip = "192.168.4.55";
+          port = 5000;
         };
         "transmission.fatgirl.cloud" = proxy {
           ip = "192.168.4.55";
