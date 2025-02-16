@@ -36,7 +36,10 @@
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 8384 ];
+      allowedTCPPorts = [
+        8384
+        5000
+      ];
       allowedUDPPorts = [ 69 ];
     };
 
