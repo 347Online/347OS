@@ -1,5 +1,6 @@
 {
   self,
+  lib,
   username,
   ...
 }:
@@ -13,7 +14,7 @@
 
   home-manager.users.${username} = {
     user.nixvim.enable = false;
-    services.syncthing.enable = false;
+    services.syncthing.enable = lib.mkForce false;
   };
 
   networking = {
