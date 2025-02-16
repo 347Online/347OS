@@ -15,7 +15,7 @@
           "Arc"
           "Firefox"
         ];
-        default = "Safari";
+        default = "Firefox";
       };
       apps = lib.mkOption {
         type = listOf str;
