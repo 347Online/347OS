@@ -3,12 +3,17 @@
   config,
   lib,
   username,
+  homeDirectory,
   ...
 }:
 let
-  osDir = if pkgs.stdenv.isLinux then ".config" else throw "Library/Application Support????";
-  extensions._1password = "d634138d-c276-4fc8-924b-40a0ea21d284";
-  extList = (builtins.attrNames extensions) ++ [
+  profilePath =
+    if pkgs.stdenv.isLinux then
+      throw "${homeDirectory}/.mozilla/firefox/profiles/katie/????"
+    else
+      "${homeDirectory}/Library/Application Support/Firefox/Profiles/katie/";
+  ext._1password = "d634138d-c276-4fc8-924b-40a0ea21d284";
+  extList = (builtins.attrNames ext) ++ [
     "addons-search-detection@mozilla.com"
     "default-theme@mozilla.org"
     "formautofill@mozilla.org"
@@ -18,13 +23,12 @@ let
     "webcompat@mozilla.org"
   ];
 in
-with extensions;
 lib.mkIf config.user.gui.enable {
-  home.file."${osDir}/.mozilla/firefox/${username}/extension-preferences.json".text =
-    builtins.toJSON builtins.listToAttrs;
+  home.file."${profilePath}/extensions-preferences.json".text = builtins.toJSON { };
 
   programs.firefox = {
     enable = true;
+    package = lib.mkIf pkgs.stdenv.isDarwin null;
 
     profiles.${username} = {
       settings =
@@ -32,15 +36,19 @@ lib.mkIf config.user.gui.enable {
         in
         {
           "browser.aboutConfig.showWarning" = false;
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
           "browser.startup.homepage_override.mstone" = "ignore";
           "browser.startup.page" = 3;
           "browser.tabs.inTitlebar" = 1;
+          "browser.urlbar.suggest.quicksuggest.sponsored" = false;
           "browser.warnOnQuitShortcut" = false;
-
-          "extensions.quarantineIgnoredByUser.{${_1password}}" = true;
-
           "datareporting.policy.dataSubmissionPolicyBypassNotification" = true;
           "identity.sync.tokenserver.uri" = "https://firefox.fatgirl.cloud/1.0/sync/1.5";
+          "signon.rememberSignons" = false;
+
+          # TODO: Programmatically for all relevant extensions
+          "extensions.quarantineIgnoredByUser.{${ext._1password}}" = true;
 
           "browser.uiCustomization.state" = builtins.toJSON rec {
             placements = {
@@ -54,9 +62,8 @@ lib.mkIf config.user.gui.enable {
                 "stop-reload-button"
                 "urlbar-container"
                 "downloads-button"
-                "_${_1password}_-browser-action"
+                "_${ext._1password}_-browser-action"
                 "addon_darkreader_org-browser-action"
-                "unified-extensions-button"
               ];
               toolbar-menubar = [
                 "menubar-items"
