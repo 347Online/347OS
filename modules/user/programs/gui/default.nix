@@ -10,6 +10,7 @@
     ./codium
 
     ./espanso.nix
+    ./firefox.nix
     ./messaging.nix
     ./shortwave.nix
     ./thunderbird.nix
