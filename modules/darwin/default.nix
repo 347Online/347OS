@@ -79,7 +79,7 @@ in
     bash.enable = true;
   };
 
-  users.users."${username}" = {
+  users.users.${username} = {
     name = username;
     home = "/Users/${username}";
   };
