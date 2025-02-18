@@ -19,7 +19,12 @@ lib.mkIf config.nixos.gui.enable {
       enable = true;
       overrideConfig = true;
 
-      workspace.colorScheme = "standardizeddark";
+      workspace = {
+        colorScheme = "standardizeddark";
+        cursor = {
+          theme = "breeze_cursors";
+        };
+      };
 
       panels = [
         {
@@ -37,10 +42,10 @@ lib.mkIf config.nixos.gui.enable {
               iconTasks = {
                 launchers = [
                   "applications:systemsettings.desktop"
-                  "applications:org.kde.dolphin.desktop"
-                  "applications:firefox.desktop"
-                  "applications:thunderbird.desktop"
-                  "applications:org.wezfurlong.wezterm.desktop"
+                  "preferred://filemanager"
+                  "preferred://browser"
+                  "preferred://mailer"
+                  "preferred://terminal"
                 ];
               };
             }
@@ -88,8 +93,7 @@ lib.mkIf config.nixos.gui.enable {
         };
         kdeglobals = {
           General = {
-            "TerminalApplication" = "wezterm start --cwd .";
-            "TerminalService" = "org.wezfurlong.wezterm.desktop";
+            "TerminalApplication" = "org.wezfurlong.wezterm.desktop";
           };
           Shortcuts = {
             Copy = "Copy";
