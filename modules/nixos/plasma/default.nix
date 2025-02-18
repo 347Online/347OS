@@ -21,11 +21,55 @@ lib.mkIf config.nixos.gui.enable {
 
       workspace.colorScheme = "standardizeddark";
 
+      panels = [
+        {
+          height = 56;
+          location = "bottom";
+          widgets = [
+            {
+              kickoff = {
+                sortAlphabetically = true;
+                icon = "nix-snowflake-white";
+              };
+            }
+            "org.kde.plasma.pager"
+            {
+              iconTasks = {
+                launchers = [
+                  "applications:systemsettings.desktop"
+                  "applications:org.kde.dolphin.desktop"
+                  "applications:firefox.desktop"
+                  "applications:thunderbird.desktop"
+                  "applications:org.wezfurlong.wezterm.desktop"
+                ];
+              };
+            }
+            "org.kde.plasma.marginsseparator"
+            {
+              systemTray.items = {
+                shown = [ ];
+                hidden = [ ];
+              };
+            }
+            {
+              digitalClock = {
+                calendar.firstDayOfWeek = "sunday";
+                time.format = "12h";
+              };
+            }
+            "org.kde.plasma.showdesktop"
+          ];
+        }
+      ];
+
       window-rules = [
         {
           description = "WezTerm";
           match = {
-            window-class.value = "wezterm-gui";
+            window-class = {
+              value = "wezterm-gui";
+              match-whole = false;
+            };
           };
           apply = {
             desktopfile = {
@@ -37,16 +81,22 @@ lib.mkIf config.nixos.gui.enable {
       ];
 
       configFile = {
+        kded5rc."Module-browserintegrationreminder"."autoload" = false;
         "networkmanagement.notifyrc" = {
           "Event/ConnectionActivated".Action = "";
           "Event/ConnectionDeactivated".Action = "";
         };
-
-        kdeglobals.Shortcuts = {
-          Copy = "Copy";
-          Paste = "Paste";
-          Cut = "Cut";
-          Undo = "Undo";
+        kdeglobals = {
+          General = {
+            "TerminalApplication" = "wezterm start --cwd .";
+            "TerminalService" = "org.wezfurlong.wezterm.desktop";
+          };
+          Shortcuts = {
+            Copy = "Copy";
+            Paste = "Paste";
+            Cut = "Cut";
+            Undo = "Undo";
+          };
         };
         plasmanotifyrc.Notifications = {
           PopupPosition = "TopRight";
