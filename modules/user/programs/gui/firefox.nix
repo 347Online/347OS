@@ -9,7 +9,7 @@
 let
   profilePath =
     if pkgs.stdenv.isLinux then
-      throw "${homeDirectory}/.mozilla/firefox/profiles/katie/????"
+      "${homeDirectory}/.mozilla/firefox/katie/"
     else
       "${homeDirectory}/Library/Application Support/Firefox/Profiles/katie/";
   ext._1password = "d634138d-c276-4fc8-924b-40a0ea21d284";
@@ -24,7 +24,8 @@ let
   ];
 in
 lib.mkIf config.user.gui.enable {
-  home.file."${profilePath}/extensions-preferences.json".text = builtins.toJSON { };
+  # TODO: Extension preferences
+  # home.file."${profilePath}/extensions-preferences.json".text = builtins.toJSON { };
 
   programs.firefox = {
     enable = true;
