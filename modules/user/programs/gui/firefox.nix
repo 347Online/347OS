@@ -32,6 +32,36 @@ lib.mkIf config.user.gui.enable {
     package = lib.mkIf pkgs.stdenv.isDarwin null;
 
     profiles.${username} = {
+      search = {
+        force = true;
+        default = "Google (Fixed)";
+        order = [
+          "Google (Fixed)"
+          "DuckDuckGo"
+        ];
+        engines = {
+          Google.metaData.hidden = true;
+          Bing.metaData.hidden = true;
+          "Google (Fixed)" = {
+            metaData.alias = "@google";
+            urls = [
+              {
+                template = "https://www.google.com/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                  {
+                    name = "udm";
+                    value = "14";
+                  }
+                ];
+              }
+            ];
+          };
+        };
+      };
       settings =
         let
         in
