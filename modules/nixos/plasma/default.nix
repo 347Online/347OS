@@ -19,32 +19,29 @@ lib.mkIf config.nixos.gui.enable {
       enable = true;
       overrideConfig = true;
 
+      workspace.colorScheme = "standardizeddark";
+
+      window-rules = [
+        {
+          description = "WezTerm";
+          match = {
+            window-class.value = "wezterm-gui";
+          };
+          apply = {
+            desktopfile = {
+              value = "${pkgs.wezterm}/share/applications/org.wezfurlong.wezterm.desktop";
+              apply = "force";
+            };
+          };
+        }
+      ];
+
       configFile = {
         "networkmanagement.notifyrc" = {
           "Event/ConnectionActivated".Action = "";
           "Event/ConnectionDeactivated".Action = "";
         };
-        kwinrulesrc =
-          let
-            apps = {
-              wezterm = "ee5021f4-89ea-4fec-a2a3-8842ccf6cdd7";
-            };
-            appsList = builtins.attrValues apps;
-          in
-          {
-            General = {
-              count = builtins.length appsList;
-              rules = lib.strings.concatStringsSep "," appsList;
-            };
-            ${apps.wezterm} = {
-              Description = "Window settings for wezterm-gui";
-              desktopfile = "${pkgs.wezterm}/share/applications/org.wezfurlong.wezterm.desktop";
-              desktopfilerule = 2;
-              types = 1;
-              wmclass = "wezterm-gui";
-              wmclassmatch = 1;
-            };
-          };
+
         kdeglobals.Shortcuts = {
           Copy = "Copy";
           Paste = "Paste";
