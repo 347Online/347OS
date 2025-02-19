@@ -53,7 +53,8 @@
     };
 
     stylix = {
-      url = "github:danth/stylix";
+      # TODO: Unpin, see this issue: https://github.com/danth/stylix/issues/835
+      url = "github:danth/stylix/b00c9f46ae6c27074d24d2db390f0ac5ebcc329f";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
