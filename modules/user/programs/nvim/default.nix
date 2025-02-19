@@ -19,6 +19,7 @@
     expandtab = true;
     autoindent = true;
     smartindent = true;
+    breakindent = true;
     cursorline = true;
   };
 
