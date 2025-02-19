@@ -6,6 +6,7 @@
         mdformat-frontmatter
         mdformat-toc
         mdformat-tables
+        mdformat-footnote
       ]
     ))
     eslint_d
