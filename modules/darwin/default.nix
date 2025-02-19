@@ -54,7 +54,7 @@ in
       ++ config.darwin.dock.apps
       ++ [
         "/Applications/Fantastical.app"
-        "${wezterm}/Applications/wezterm.app"
+        "${ghostty}/Applications/ghostty.app"
 
         # Right-most apps
         "/System/Applications/System Settings.app"

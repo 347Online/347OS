@@ -78,7 +78,7 @@ lib.mkIf config.nixos.gui.enable {
           };
           apply = {
             desktopfile = {
-              value = "${pkgs.wezterm}/share/applications/org.wezfurlong.wezterm.desktop";
+              value = "${pkgs.ghostty}/share/applications/com.mitchellh.ghostty.desktop";
               apply = "force";
             };
           };
@@ -93,7 +93,7 @@ lib.mkIf config.nixos.gui.enable {
         };
         kdeglobals = {
           General = {
-            "TerminalApplication" = "org.wezfurlong.wezterm.desktop";
+            "TerminalApplication" = "com.mitchellh.ghostty.desktop";
           };
           Shortcuts = {
             Copy = "Copy";

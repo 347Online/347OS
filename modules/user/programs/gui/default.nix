@@ -11,10 +11,10 @@
 
     ./espanso.nix
     ./firefox.nix
+    ./ghostty.nix
     ./messaging.nix
     ./shortwave.nix
     ./thunderbird.nix
-    ./wezterm.nix
   ];
 
   programs.ssh.extraConfig = lib.mkIf config.user.gui.enable (
