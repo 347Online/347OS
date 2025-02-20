@@ -3,10 +3,11 @@
   home.packages = with pkgs; [
     (pkgs.mdformat.withPlugins (
       ps: with ps; [
-        mdformat-frontmatter
-        mdformat-toc
-        mdformat-tables
+        mdformat-beautysh
         mdformat-footnote
+        mdformat-frontmatter
+        mdformat-tables
+        mdformat-toc
       ]
     ))
     eslint_d
