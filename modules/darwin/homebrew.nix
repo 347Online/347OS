@@ -36,6 +36,7 @@ lib.mkIf config.darwin.homebrew.enable {
     casks = [
       "1password"
       "firefox"
+      "ghostty"
       "logi-options+"
       "monitorcontrol"
       "obsidian"

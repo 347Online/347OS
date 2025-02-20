@@ -54,7 +54,7 @@ in
       ++ config.darwin.dock.apps
       ++ [
         "/Applications/Fantastical.app"
-        "${ghostty}/Applications/ghostty.app"
+        "/Applications/Ghostty.app"
 
         # Right-most apps
         "/System/Applications/System Settings.app"
@@ -85,5 +85,5 @@ in
   };
 
   # DO NOT EDIT BELOW
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 }
