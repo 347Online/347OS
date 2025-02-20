@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  util,
   ...
 }:
 lib.mkIf config.user.gui.enable {
