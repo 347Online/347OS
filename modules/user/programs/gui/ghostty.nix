@@ -11,5 +11,12 @@ lib.mkIf config.user.gui.enable {
 
     enableZshIntegration = true;
     enableBashIntegration = true;
+
+    settings = {
+      auto-update = "download";
+      auto-update-channel = "tip";
+      cursor-style-blink = false;
+      shell-integration-features = [ "no-cursor" ];
+    };
   };
 }
