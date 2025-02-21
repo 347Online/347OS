@@ -12,6 +12,7 @@
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticDashSubstitutionEnabled = false;
       AppleEnableSwipeNavigateWithScrolls = true;
+      NSAutomaticInlinePredictionEnabled = false;
       ApplePressAndHoldEnabled = false;
       KeyRepeat = 2;
     };
@@ -30,19 +31,8 @@
       NSGlobalDomain = {
         NSAutomaticSpellingCorrectionEnabled = false;
         # TODO: PR got merged, use the built-in option
-        NSAutomaticInlinePredictionEnabled = false;
         TSWPAutomaticSpellingCorrection = false;
-
-        NSUserKeyEquivalents = {
-          # "Minimize" = "";
-        };
       };
-
-      # "com.apple.mail" = {
-      #   NSUserKeyEquivalents = {
-      #     Archive = "e";
-      #   };
-      # };
 
       "com.apple.dock" = {
         wvous-br-corner = 4;
