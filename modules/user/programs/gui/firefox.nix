@@ -83,7 +83,9 @@ lib.mkIf config.user.gui.enable {
           dirtyAreaCache = builtins.attrNames placements;
           currentVersion = 30;
         };
+
         "browser.aboutConfig.showWarning" = false;
+        "browser.toolbars.bookmarks.visibility" = "always";
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.startup.homepage_override.mstone" = "ignore";
