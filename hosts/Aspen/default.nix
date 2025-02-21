@@ -34,6 +34,8 @@
     };
   };
 
+  environment.enableAllTerminfo = true;
+
   networking = {
     firewall = {
       allowedTCPPorts = [
