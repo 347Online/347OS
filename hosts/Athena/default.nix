@@ -40,7 +40,6 @@
   darwin.dock.apps = [
     "/Applications/Overcast.app"
     "/System/Applications/Messages.app"
-    "/Applications/Thunderbird.app"
     # TODO: Use from official nixpkgs if/when PR lands
     # https://github.com/NixOS/nixpkgs/pull/376817
     # TODO: Broken

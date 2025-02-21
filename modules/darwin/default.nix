@@ -38,7 +38,6 @@ in
 
   system = {
     defaults.dock.persistent-apps =
-      with pkgs;
       [
         # System Apps
         "/System/Applications/App Store.app"
@@ -48,17 +47,17 @@ in
         (lib.mkIf (config.darwin.dock.browser == "Chrome") "/Applications/Google Chrome.app")
         (lib.mkIf (config.darwin.dock.browser == "Arc") "/Applications/Arc.app")
         (lib.mkIf (config.darwin.dock.browser == "Firefox") "/Applications/Firefox.app")
+        "/Applications/Thunderbird.app"
+        "/Applications/Fantastical.app"
         "/System/Applications/Music.app"
         "/Applications/Broadcasts.app"
       ]
       ++ config.darwin.dock.apps
       ++ [
-        "/Applications/Fantastical.app"
         "/Applications/Ghostty.app"
 
         # Right-most apps
         "/System/Applications/System Settings.app"
-        "/System/Applications/iPhone Mirroring.app"
       ];
     startup.chime = true;
 
