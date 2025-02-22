@@ -19,6 +19,15 @@ lib.mkIf config.nixos.gui.enable {
       enable = true;
       overrideConfig = true;
 
+      krunner = {
+        position = "center";
+        activateWhenTypingOnDesktop = false;
+        historyBehavior = "enableAutoComplete";
+        shortcuts.launch = "Search";
+      };
+
+      kwin.effects.minimization.animation = "magiclamp";
+
       workspace = {
         colorScheme = "standardizeddark";
         cursor = {
@@ -28,41 +37,60 @@ lib.mkIf config.nixos.gui.enable {
 
       panels = [
         {
-          height = 56;
-          location = "bottom";
+          height = 30;
+          location = "top";
           widgets = [
             {
-              kickoff = {
-                sortAlphabetically = true;
-                icon = "nix-snowflake-white";
+              kicker = {
+                settings.General.icon = "nix-snowflake-white";
               };
             }
-            "org.kde.plasma.pager"
-            {
-              iconTasks = {
-                launchers = [
-                  "applications:systemsettings.desktop"
-                  "preferred://filemanager"
-                  "preferred://browser"
-                  "preferred://mailer"
-                  "preferred://terminal"
-                ];
-              };
-            }
-            "org.kde.plasma.marginsseparator"
+            "org.kde.plasma.appmenu"
+            "org.kde.plasma.panelspacer"
             {
               systemTray.items = {
                 shown = [ ];
-                hidden = [ ];
+                hidden = [
+                  "org.kde.plasma.bluetooth"
+                  "org.kde.plasma.brightness"
+                  "org.kde.plasma.clipboard"
+                  "org.kde.plasma.networkmanagement"
+                  "org.kde.plasma.notifications"
+                  "org.kde.plasma.volume"
+                ];
               };
             }
             {
               digitalClock = {
                 calendar.firstDayOfWeek = "sunday";
                 time.format = "12h";
+                date.format.custom = "dddd MMM dd";
               };
             }
-            "org.kde.plasma.showdesktop"
+            "org.kde.plasma.notifications"
+          ];
+        }
+        {
+          height = 72;
+          location = "bottom";
+          hiding = "dodgewindows";
+          lengthMode = "fit";
+          widgets = [
+            {
+              iconTasks = {
+                launchers = [
+                  "preferred://filemanager"
+                  "preferred://browser"
+                  "preferred://mailer"
+                  "applications:org.kde.elisa.desktop"
+                  "applications:de.haeckerfelix.Shortwave.desktop"
+                  "preferred://terminal"
+                  "applications:systemsettings.desktop"
+                ];
+              };
+            }
+            "org.kde.plasma.marginsseparator"
+            "org.kde.plasma.trash"
           ];
         }
       ];
@@ -86,6 +114,7 @@ lib.mkIf config.nixos.gui.enable {
       ];
 
       configFile = {
+
         kded5rc."Module-browserintegrationreminder"."autoload" = false;
         "networkmanagement.notifyrc" = {
           "Event/ConnectionActivated".Action = "";
@@ -101,6 +130,11 @@ lib.mkIf config.nixos.gui.enable {
             Cut = "Cut";
             Undo = "Undo";
           };
+        };
+        kwinrc = {
+          Effect-overview.BorderActivate = 9;
+          ElectricBorders.BottomRight = "ShowDesktop";
+          Windows.ElectricBorderCornerRatio = 0.1;
         };
         plasmanotifyrc.Notifications = {
           PopupPosition = "TopRight";

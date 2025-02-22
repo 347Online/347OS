@@ -24,6 +24,7 @@
             backspace = "macro(S-home 5ms backspace)";
             delete = "macro(S-end 5ms delete)";
             tab = "swapm(app_switch_state, A-tab)";
+            space = "search";
 
             left = "home";
             right = "end";
