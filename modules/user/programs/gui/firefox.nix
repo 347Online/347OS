@@ -88,6 +88,8 @@ lib.mkIf config.user.gui.enable {
         "browser.toolbars.bookmarks.visibility" = "always";
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+        "browser.newtabpage.activity-stream.showSponsored" = false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.startup.homepage_override.mstone" = "ignore";
         "browser.startup.page" = 3;
         "browser.tabs.inTitlebar" = 1;
