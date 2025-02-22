@@ -2,8 +2,6 @@
   services.gotosocial = {
     enable = false;
 
-    openFirewall = true;
-
     settings = {
       application-name = "Social.FatGirl.Cloud";
       host = "social.fatgirl.cloud";

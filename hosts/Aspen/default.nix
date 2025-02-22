@@ -37,14 +37,7 @@
   environment.enableAllTerminfo = true;
 
   networking = {
-    firewall = {
-      allowedTCPPorts = [
-        8384
-        5000
-      ];
-      allowedUDPPorts = [ 69 ];
-    };
-
+    firewall.enable = false;
     hostName = "Aspen";
   };
   time.timeZone = "America/Chicago";
