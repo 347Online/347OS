@@ -18,6 +18,12 @@ lib.mkIf config.nixos.gui.enable {
     programs.plasma = {
       enable = true;
       overrideConfig = true;
+      shortcuts = {
+        plasmashell."activate application launcher" = [
+          "Alt+F1,Meta"
+          "Alt+F1,Activate Application Launcher"
+        ];
+      };
 
       krunner = {
         position = "center";
@@ -82,7 +88,9 @@ lib.mkIf config.nixos.gui.enable {
                   "preferred://filemanager"
                   "preferred://browser"
                   "preferred://mailer"
+                  # Music Player
                   "applications:org.kde.elisa.desktop"
+                  # Radio App
                   "applications:de.haeckerfelix.Shortwave.desktop"
                   "preferred://terminal"
                   "applications:systemsettings.desktop"
