@@ -45,6 +45,7 @@ lib.mkIf config.nixos.gui.enable {
         {
           height = 30;
           location = "top";
+          floating = false;
           widgets = [
             {
               kicker = {
@@ -81,6 +82,7 @@ lib.mkIf config.nixos.gui.enable {
           location = "bottom";
           hiding = "dodgewindows";
           lengthMode = "fit";
+          floating = false;
           widgets = [
             {
               iconTasks = {
