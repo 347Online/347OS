@@ -10,6 +10,11 @@
     ./nginx.nix
   ];
 
+  sops.secrets.adguard-home-passwd-file = {
+    sopsFile = ./.secrets.yaml;
+    mode = "0666";
+  };
+
   stylix.image = "${self}/wallpapers/desert.jpg";
 
   home-manager.users.${username} = {

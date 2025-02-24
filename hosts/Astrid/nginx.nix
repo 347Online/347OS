@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   security.acme = {
     certs."fatgirl.cloud".extraDomainNames = [ "www.fatgirl.cloud" ];
@@ -86,6 +87,19 @@
             proxyPass = "http://192.168.4.55:3475";
           };
         };
+        "dns.fatgirl.cloud" =
+          proxy {
+            ip = "192.168.4.55";
+            port = 41419;
+          }
+          // {
+            basicAuthFile = config.sops.secrets.adguard-home-passwd-file.path;
+            extraConfig =
+              # nginx
+              ''
+                proxy_set_header Host $host;
+              '';
+          };
         "sync.fatgirl.cloud" = proxy {
           ip = "192.168.4.55";
           port = 8384;
