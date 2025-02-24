@@ -148,6 +148,7 @@ lib.mkIf config.nixos.gui.enable {
         };
         plasmanotifyrc.Notifications = {
           PopupPosition = "TopRight";
+          PopupTimeout = 3000;
         };
       };
     };
