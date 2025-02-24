@@ -62,24 +62,27 @@
 
       networking.networkmanager.enable = true;
 
-      environment.systemPackages =
-        let
-          essentials = (import ../user/programs/essentials.nix pkgs);
-        in
-        with pkgs;
-        [
-          vim
-          killall
-          keyd
-          file
-          pciutils
-          usbutils
-          lm_sensors
-          wl-clipboard
-          gcc
-          gnumake
-        ]
-        ++ essentials;
+      environment = {
+        enableAllTerminfo = true;
+        systemPackages =
+          let
+            essentials = (import ../user/programs/essentials.nix pkgs);
+          in
+          with pkgs;
+          [
+            vim
+            killall
+            keyd
+            file
+            pciutils
+            usbutils
+            lm_sensors
+            wl-clipboard
+            gcc
+            gnumake
+          ]
+          ++ essentials;
+      };
     }
 
     (lib.mkIf config.nixos.gui.enable {
@@ -88,10 +91,12 @@
         polkitPolicyOwners = [ username ];
       };
 
-      services.desktopManager.plasma6.enable = true;
-      services.displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
+      services = {
+        desktopManager.plasma6.enable = true;
+        displayManager.sddm = {
+          enable = true;
+          wayland.enable = true;
+        };
       };
 
       environment.systemPackages = with pkgs; [
