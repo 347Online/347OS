@@ -90,10 +90,7 @@ lib.mkIf config.nixos.gui.enable {
                   "preferred://filemanager"
                   "preferred://browser"
                   "preferred://mailer"
-                  # Music Player
                   "applications:org.kde.elisa.desktop"
-                  # Radio App
-                  "applications:de.haeckerfelix.Shortwave.desktop"
                   "preferred://terminal"
                   "applications:systemsettings.desktop"
                 ];

@@ -13,7 +13,6 @@
     ./firefox.nix
     ./ghostty.nix
     ./messaging.nix
-    ./shortwave.nix
     ./thunderbird.nix
   ];
 
