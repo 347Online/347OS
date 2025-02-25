@@ -8,8 +8,8 @@
 {
   imports = [
     ./codium
+    ./espanso
 
-    ./espanso.nix
     ./firefox.nix
     ./ghostty.nix
     ./messaging.nix
