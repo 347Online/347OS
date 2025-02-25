@@ -1,18 +1,17 @@
 {
-  self,
   pkgs,
   homeDirectory,
   ...
 }:
 {
   sops = {
-    defaultSopsFile = builtins.toPath "${self}/.secrets.yaml";
+    defaultSopsFile = ./.user-secrets.yaml;
 
     age.keyFile =
-      let
-        osDir = if pkgs.stdenv.isDarwin then "Library/Application Support" else ".config";
-      in
-      "${homeDirectory}/${osDir}/sops/age/keys.txt";
+      if pkgs.stdenv.isDarwin then
+        "${homeDirectory}/Library/Application Support/sops/age/keys.txt"
+      else
+        "${homeDirectory}/.config/sops/age/keys.txt";
 
     secrets = {
       syncthing-gui-passwd = { };
