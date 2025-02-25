@@ -37,6 +37,7 @@ lib.mkIf config.darwin.homebrew.enable {
       "1password"
       "firefox"
       "ghostty"
+      "google-chrome"
       "logi-options+"
       "monitorcontrol"
       "obsidian"
