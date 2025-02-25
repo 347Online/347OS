@@ -55,6 +55,8 @@ matches:
       replace: ENC[AES256_GCM,data:nHyCgKRhmTaqO3rPhusHVkB1eg==,iv:AXF2xwlOAU47MgbKVHTIEBpFxd712lSygOGMpZpaUTk=,tag:bzJRAbePkW+dQvAxaQqrDw==,type:str]
     - trigger: ENC[AES256_GCM,data:ijSha934Vw==,iv:wSPpcn/DXZrbPizgU7dkgqzMZxxfX4hfhELPQBqpnvw=,tag:ij3y+f0j5M8gxmd4uNlasQ==,type:str]
       replace: ENC[AES256_GCM,data:PBbnhWTovWVuPmwEWd0=,iv:d6oUIKivqnPcjE2dg+Pz/aa+WY0vDHrjptES2yzs1/g=,tag:QNtUDQr50DcY1wnvcLkpng==,type:str]
+    - trigger: ENC[AES256_GCM,data:gCckZtXFSA==,iv:CHw8yo6I54QtiZAjNZGqvO8sjzEzuE80a0V93xZfIEE=,tag:rR0Wtve+A/euzJoVCfyhwg==,type:str]
+      replace: ENC[AES256_GCM,data:1LR1SdanCpnjbbXfV6tp+3EyJIit3TyK8+FCKbWkdPT1fK7ADEFuSxdQRhTjT0hiKHE5WAakuqUjXasbjd1FXfzCXSgGSTb0bi3YLrtttW7RxsYqKLkjlMZpf2XBse5JIoTBzbkj/sAit1w4DCPDnuyiVUwLX6Ca31hZWnian1Zx,iv:SaPyFfVbfGaRsSSurPjzaAs54eNEtfPMxm1ip1JiXWs=,tag:QfKGLIgnvS1YyaYMa2mAzA==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -70,8 +72,8 @@ sops:
             UHJNdkVDT2UyWlozYWxtSzZJNG5OVGsKShHBhCJ9iSSkQUgIdoQ9D74S6BUs1G/6
             3UlLap5XRd8Xg3o7TRWhlutm5XsV4R3AvPACuREuBv+edC6sZKevsw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-25T20:29:12Z"
-    mac: ENC[AES256_GCM,data:ObW88NPr0ii5w7h9By9hv2g85aJTwyfV4BFjfNTLZZIX+z6AgbtHRqeBo909SWa5NmGqaOFvNBD7Zp9Xeq7pGHtowXf/HucV5VYTtWs948fzQmcvaJvVx00QIkr+P6Uxz1kGZV46V9SwdpvyuP7c4IWlDgVq30wPBlyIPzYhZJk=,iv:pTzvp22YQ/T+yfeI60ZL7zP4yOCWWyWjujSR0ZQQlaU=,tag:yrRF6W9Fx6mnGY5hd3ojLw==,type:str]
+    lastmodified: "2025-02-25T21:01:30Z"
+    mac: ENC[AES256_GCM,data:YNNZnIUj7XVmFEyEVTpah8cW55Ddf6IGVFJFZC/kuuAUU7PIKfiu0jlfWkiIxx/uh9dxqC4CLMMY5g4UO47+CYtvgeB9ieXeqSFxbq3hbhLjGclNoQLjqe269yWr+NiGp1L0nM+TtqVtX9MHAAfBAdKhg5muBCQDT/MiZOgLzcs=,iv:QWTxxZdU4adDo6QTgCuy78NslWm0vQjyd1EXO6jLF+8=,tag:7MRgm1ylAJzPynmz8J6vUA==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.9.4
