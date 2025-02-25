@@ -1,5 +1,7 @@
 { config, ... }:
 {
+  sops.secrets.adguard-home-passwd-file.mode = "0666";
+
   security.acme = {
     certs."fatgirl.cloud".extraDomainNames = [ "www.fatgirl.cloud" ];
     acceptTerms = true;
