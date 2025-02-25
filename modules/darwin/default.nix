@@ -40,8 +40,6 @@ in
   system = {
     defaults.dock.persistent-apps =
       [
-        # System Apps
-        "/System/Applications/App Store.app"
         (lib.mkIf (
           config.darwin.dock.browser == "Safari"
         ) "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app")
