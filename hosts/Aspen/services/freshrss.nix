@@ -6,7 +6,7 @@
   };
 
   services.freshrss = {
-    enable = false;
+    enable = true;
 
     baseUrl = "http://192.168.4.55/freshrss";
     defaultUser = username;
