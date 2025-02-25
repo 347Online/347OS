@@ -14,6 +14,8 @@
     ./games.nix
     ./keyd.nix
     ./nix.nix
+    ./sops.nix
+
     ./options.nix
     ./sops.nix
   ];
