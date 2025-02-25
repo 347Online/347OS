@@ -15,7 +15,6 @@ in
     ./homebrew.nix
     ./nix.nix
     ./options.nix
-    ./pam.nix
     ./prefs.nix
     ../user/stylix.nix
   ];
@@ -32,9 +31,11 @@ in
       # System packages
     ];
 
-  # See ./pam.nix
-  # security.pam.enableSudoTouchIdAuth = true;
-  security.pam.enableCustomSudoTouchIdAuth = true;
+  security.pam.services.sudo_local = {
+    enable = true;
+    touchIdAuth = true;
+    reattach = true;
+  };
 
   system = {
     defaults.dock.persistent-apps =
