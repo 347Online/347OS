@@ -3,9 +3,16 @@
   config,
   lib,
   util,
+  homeDirectory,
   ...
 }:
 lib.mkIf config.user.gui.enable {
+  sops.secrets."personal-info-expansions.yml" = {
+    sopsFile = ./personal-info-expansions.yml;
+    key = "";
+    path = "${homeDirectory}/.config/espanso/match/personal-info-expansions.yml";
+  };
+
   services.espanso = {
     enable = true;
     package =
