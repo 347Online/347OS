@@ -13,6 +13,8 @@
 
   stylix.image = "${self}/wallpapers/desert.jpg";
 
+  sops.defaultSopsFile = ./.aspen-secrets.yaml;
+
   home-manager.users.${username} = {
     user.personal.enable = true;
 
