@@ -100,6 +100,7 @@ lib.mkIf config.user.gui.enable {
         "extensions.formautofill.creditCards.enabled" = false;
         "identity.sync.tokenserver.uri" = "https://firefox.fatgirl.cloud/1.0/sync/1.5";
         "signon.rememberSignons" = false;
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
       };
     };
   };
