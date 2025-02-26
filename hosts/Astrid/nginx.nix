@@ -115,7 +115,6 @@
         };
         "rss.fatgirl.cloud" = proxy {
           ip = "192.168.4.55";
-          urlpath = "freshrss";
         };
         "transmission.fatgirl.cloud" = proxy {
           ip = "192.168.4.55";
