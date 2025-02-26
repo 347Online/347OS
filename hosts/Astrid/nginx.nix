@@ -54,9 +54,12 @@
           {
             ip ? "127.0.0.1",
             port ? null,
+            urlpath ? null,
           }:
           base {
-            "/".proxyPass = "http://${ip}${if port != null then ":${toString port}" else ""}";
+            "/".proxyPass = "http://${ip}${if port != null then ":${toString port}" else ""}${
+              if urlpath != null then "/${urlpath}" else ""
+            }";
           };
       in
       {
@@ -107,6 +110,10 @@
         "firefox.fatgirl.cloud" = proxy {
           ip = "192.168.4.55";
           port = 5000;
+        };
+        "rss.fatgirl.cloud" = proxy {
+          ip = "192.168.4.55";
+          urlpath = "freshrss";
         };
         "transmission.fatgirl.cloud" = proxy {
           ip = "192.168.4.55";
