@@ -1,9 +1,6 @@
 { config, username, ... }:
 {
-  sops.secrets.freshrss-passwd = {
-    sopsFile = ../.secrets.yaml;
-    mode = "0666";
-  };
+  sops.secrets.freshrss-passwd.mode = "0666";
 
   services.freshrss = {
     enable = true;
