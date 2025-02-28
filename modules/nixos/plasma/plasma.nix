@@ -1,10 +1,11 @@
 {
   pkgs,
+  config,
   lib,
   util,
   ...
 }:
-{
+lib.mkIf config.user.gui.enable {
   home.file = lib.mkMerge [
     (util.toHomeFiles ./dotfiles)
     {
