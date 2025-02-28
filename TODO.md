@@ -8,6 +8,7 @@
 - Network Time Protocol / NTP server
 - Overseer / Media Request interface
 - Switch from Plex -> JellyFin
+- Invidious
 - DLNA
 - Kiwix / Free Information Mirrors
 - LDAP
