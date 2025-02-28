@@ -136,10 +136,6 @@
           homeDirectory = util.mkHomeDirectory pkgs username;
           pkgs-custom = import nixpkgs-custom {
             inherit system;
-            config = {
-              allowUnfreePredicate = _: true;
-              allowUnsupportedSystem = true;
-            };
           };
           args = {
             inherit
@@ -252,7 +248,6 @@
                 ...
               }:
               {
-                nixpkgs.config.allowUnfree = true;
                 home-manager = {
                   backupFileExtension = "bakk";
                   sharedModules = [

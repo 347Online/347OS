@@ -13,8 +13,4 @@
     };
     nixPath = [ "nixpkgs=${nixpkgs}" ];
   };
-
-  nixpkgs = {
-    config.allowUnfree = true;
-  };
 }

@@ -1,7 +1,7 @@
 {
   nixpkgs,
-  nur,
   inputs,
+  lib,
   ...
 }:
 {
@@ -18,12 +18,14 @@
     };
     nixPath = [ "nixpkgs=${nixpkgs}" ];
   };
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      packageOverrides = pkgs: {
-        inherit nur;
-      };
-    };
-  };
+
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "1password-cli"
+      "discord"
+      "ookla-speedtest"
+      "onepassword-password-manager"
+      "vscode-extension-ms-vsliveshare-vsliveshare"
+    ];
 }

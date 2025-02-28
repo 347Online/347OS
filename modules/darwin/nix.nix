@@ -12,9 +12,4 @@
     };
     nixPath = [ "nixpkgs=${nixpkgs}" ];
   };
-
-  nixpkgs = {
-    hostPlatform = "aarch64-darwin";
-    config.allowUnfree = true;
-  };
 }
