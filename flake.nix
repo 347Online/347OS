@@ -2,7 +2,7 @@
   description = "Katie's Nix Systems";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/632f04521e847173c54fa72973ec6c39a371211c";
     nixpkgs-custom.url = "github:347Online/nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
