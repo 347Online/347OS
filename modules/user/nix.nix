@@ -26,6 +26,7 @@
       "discord"
       "ookla-speedtest"
       "onepassword-password-manager"
+      "teamtalk5"
       "vscode-extension-ms-vsliveshare-vsliveshare"
     ];
 }
