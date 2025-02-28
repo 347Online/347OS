@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  nixpkgs,
   ...
 }:
 {
@@ -11,7 +11,7 @@
       experimental-features = "nix-command flakes";
       trusted-users = [ "katie" ];
     };
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = [ "nixpkgs=${nixpkgs}" ];
   };
 
   nixpkgs = {

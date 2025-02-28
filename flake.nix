@@ -2,49 +2,50 @@
   description = "Katie's Nix Systems";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/632f04521e847173c54fa72973ec6c39a371211c";
+    nixpkgs-pinned.url = "github:NixOS/nixpkgs/632f04521e847173c54fa72973ec6c39a371211c";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/632f04521e847173c54fa72973ec6c39a371211c"; # TODO: Unpin, ergo unstable
     nixpkgs-custom.url = "github:347Online/nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nil = {
       url = "github:oxalica/nil";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.nix-darwin.follows = "nix-darwin";
       inputs.home-manager.follows = "home-manager";
     };
@@ -57,42 +58,44 @@
     stylix = {
       # TODO: Unpin, see this issue: https://github.com/danth/stylix/issues/835
       url = "github:danth/stylix/b00c9f46ae6c27074d24d2db390f0ac5ebcc329f";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.home-manager.follows = "home-manager";
     };
 
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.home-manager.follows = "home-manager";
     };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
   outputs =
     inputs@{
       self,
-      nixpkgs,
+      nixpkgs-pinned,
+      nixpkgs-unstable,
       nixpkgs-custom,
       nixos-hardware,
-      nur,
-      nix-darwin,
+
       home-manager,
+      nix-darwin,
       nix-homebrew,
       nix-vscode-extensions,
       nixvim,
-      stylix,
+      nur,
       plasma-manager,
       sops-nix,
+      stylix,
       ...
     }:
     let
@@ -129,7 +132,7 @@
         };
 
       mkSpecialArgs =
-        pkgs:
+        pkgs: channel:
         let
           system = pkgs.system;
           homeDirectory = util.mkHomeDirectory pkgs username;
@@ -150,6 +153,7 @@
               util
               system
               ;
+            nixpkgs = channel;
             flakeDir = "${homeDirectory}/347OS";
             vscode-extensions = nix-vscode-extensions.extensions.${system};
           };
@@ -157,9 +161,9 @@
         args;
 
       mkExtraSpecialArgs =
-        pkgs:
+        pkgs: channel:
         let
-          specialArgs = mkSpecialArgs pkgs;
+          specialArgs = mkSpecialArgs pkgs channel;
         in
         specialArgs
         // {
@@ -173,19 +177,26 @@
       ];
 
       mkPkgs =
-        system:
-        import nixpkgs {
+        {
+          system,
+          channel ? nixpkgs-pinned,
+        }:
+        import channel {
           inherit system;
           overlays = [ nur.overlays.default ];
         };
 
       mkDarwin =
-        system: module:
+        {
+          system ? "aarch64-darwin",
+          module,
+          channel ? nixpkgs-pinned,
+        }:
         let
-          pkgs = mkPkgs system;
+          pkgs = mkPkgs { inherit system channel; };
         in
         nix-darwin.lib.darwinSystem {
-          specialArgs = mkSpecialArgs pkgs;
+          specialArgs = mkSpecialArgs pkgs channel;
           modules = [
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
@@ -205,7 +216,7 @@
                     nur.modules.homeManager.default
                     sops-nix.homeManagerModules.sops
                   ];
-                  extraSpecialArgs = mkExtraSpecialArgs pkgs;
+                  extraSpecialArgs = mkExtraSpecialArgs pkgs channel;
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
                       user.gui.enable = lib.mkForce config.darwin.gui.enable;
@@ -221,12 +232,16 @@
         };
 
       mkNixos =
-        system: module:
+        {
+          system,
+          module,
+          channel ? nixpkgs-pinned,
+        }:
         let
-          pkgs = mkPkgs system;
+          pkgs = mkPkgs { inherit system channel; };
         in
-        nixpkgs.lib.nixosSystem {
-          specialArgs = mkSpecialArgs pkgs;
+        channel.lib.nixosSystem {
+          specialArgs = mkSpecialArgs pkgs channel;
 
           modules = [
             home-manager.nixosModules.home-manager
@@ -247,7 +262,7 @@
                     plasma-manager.homeManagerModules.plasma-manager
                     sops-nix.homeManagerModules.sops
                   ];
-                  extraSpecialArgs = mkExtraSpecialArgs pkgs;
+                  extraSpecialArgs = mkExtraSpecialArgs pkgs channel;
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
                       user.gui.enable = lib.mkForce config.nixos.gui.enable;
@@ -267,10 +282,11 @@
       mkIso =
         system:
         let
-          pkgs = mkPkgs system;
-          specialArgs = mkSpecialArgs pkgs;
+          channel = nixpkgs-pinned;
+          pkgs = mkPkgs { inherit system channel; };
+          specialArgs = mkSpecialArgs pkgs channel;
         in
-        nixpkgs.lib.nixosSystem {
+        channel.lib.nixosSystem {
           inherit specialArgs;
 
           modules = [
@@ -307,23 +323,38 @@
       # TODO: hosts.nix file loaded by flake.nix
       # Could provide the relevant functions like mkDarwin
       # mkDarwin and mkNixos could call a mkUser
-      darwinConfigurations."Athena" = mkDarwin "aarch64-darwin" ./hosts/Athena;
-      darwinConfigurations."Alice" = mkDarwin "x86_64-darwin" ./hosts/Alice;
+      darwinConfigurations."Athena" = mkDarwin {
+        module = ./hosts/Athena;
+      };
 
-      nixosConfigurations."Aspen" = mkNixos "x86_64-linux" ./hosts/Aspen;
-      nixosConfigurations."Amber" = mkNixos "x86_64-linux" ./hosts/Amber;
-      nixosConfigurations."Astrid" = mkNixos "aarch64-linux" ./hosts/Astrid;
+      nixosConfigurations."Aspen" = mkNixos {
+        system = "x86_64-linux";
+        module = ./hosts/Aspen;
+      };
+
+      nixosConfigurations."Amber" = mkNixos {
+        system = "x86_64-linux";
+        module = ./hosts/Amber;
+        # channel = nixpkgs-unstable; # TODO: Uncomment
+      };
+
+      nixosConfigurations."Astrid" = mkNixos {
+        system = "aarch64-linux";
+        module = ./hosts/Astrid;
+      };
 
       nixosConfigurations."ISO-ARM" = mkIso "aarch64-linux";
       nixosConfigurations."ISO-INTEL" = mkIso "x86_64-linux";
 
+      # TODO: Use flake-utils or whatever for this, it's not worth it
       packages = util.forAllSystems (
         {
           pkgs,
           system,
         }:
         let
-          specialArgs = mkSpecialArgs pkgs;
+          channel = nixpkgs-unstable;
+          specialArgs = mkSpecialArgs pkgs channel;
         in
         {
           nvim = mkNvim { inherit pkgs specialArgs; };
@@ -331,7 +362,7 @@
           homeConfigurations."katie" = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
 
-            extraSpecialArgs = mkExtraSpecialArgs pkgs;
+            extraSpecialArgs = mkExtraSpecialArgs pkgs channel;
 
             modules = [
               stylix.homeManagerModules.stylix

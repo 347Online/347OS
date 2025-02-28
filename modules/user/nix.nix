@@ -1,5 +1,5 @@
 {
-  pkgs,
+  nixpkgs,
   nur,
   inputs,
   ...
@@ -7,7 +7,7 @@
 {
   nix = {
     registry = {
-      nixpkgs.flake = inputs.nixpkgs;
+      nixpkgs.flake = inputs.nixpkgs-unstable;
       nixos-hardware.flake = inputs.nixos-hardware;
     };
     settings = {
@@ -16,7 +16,7 @@
         "flakes"
       ];
     };
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = [ "nixpkgs=${nixpkgs}" ];
   };
   nixpkgs = {
     config = {
