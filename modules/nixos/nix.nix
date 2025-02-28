@@ -19,7 +19,9 @@
     builtins.elem (lib.getName pkg) [
       "1password"
       "1password-cli"
+      "minecraft-server"
       "ookla-speedtest"
+      "plexmediaserver"
       "steam"
       "steam-unwrapped"
     ];
