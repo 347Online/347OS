@@ -46,8 +46,6 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.nix-darwin.follows = "nix-darwin";
-      inputs.home-manager.follows = "home-manager";
     };
 
     nvim-emmet = {
