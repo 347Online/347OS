@@ -105,6 +105,10 @@
                 proxy_set_header Host $host;
               '';
           };
+        "watch.fatgirl.cloud" = proxy {
+          ip = "192.168.4.55";
+          port = 2294;
+        };
         "sync.fatgirl.cloud" = proxy {
           ip = "192.168.4.55";
           port = 8384;
