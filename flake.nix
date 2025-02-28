@@ -2,9 +2,6 @@
   description = "Katie's Nix Systems";
 
   inputs = {
-    # Waiting for this PR to land in nixpkgs-unstable:
-    # https://github.com/NixOS/nixpkgs/pull/374409
-    # nixpkgs.url = "github:NixOS/nixpkgs/b7352212f8ce5de214da7c4296b7bcd59de37d43";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-custom.url = "github:347Online/nixpkgs";
 
