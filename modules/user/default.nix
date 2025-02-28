@@ -59,7 +59,7 @@
     }
 
     (lib.mkIf config.user.gui.enable {
-      user.codium.enable = true;
+      user.codium.enable = lib.mkDefault true;
     })
   ];
 }

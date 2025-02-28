@@ -10,11 +10,20 @@
     ./extensions.nix
   ];
 
-  stylix.targets.vscode.enable = false;
+  config = lib.mkIf config.user.codium.enable {
+    assertions = [
+      {
+        assertion = config.user.gui.enable;
+        message = "Codium can only be enabled on GUI systems";
+      }
+    ];
 
-  programs.vscode = lib.mkIf config.user.codium.enable {
-    # enable = true;
-    package = pkgs.vscodium;
-    mutableExtensionsDir = false;
+    stylix.targets.vscode.enable = false;
+
+    programs.vscode = {
+      enable = true;
+      package = pkgs.vscodium;
+      mutableExtensionsDir = false;
+    };
   };
 }
