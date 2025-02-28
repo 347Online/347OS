@@ -1,6 +1,8 @@
 {
+  system,
   nixpkgs,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -11,5 +13,14 @@
       download-buffer-size = 524312500;
     };
     nixPath = [ "nixpkgs=${nixpkgs}" ];
+  };
+
+  nixpkgs = {
+    hostPlatform = system;
+    config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "ookla-speedtest"
+      ];
   };
 }
