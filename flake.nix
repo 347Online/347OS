@@ -327,7 +327,7 @@
       nixosConfigurations."Amber" = mkNixos {
         system = "x86_64-linux";
         module = ./hosts/Amber;
-        # channel = nixpkgs-unstable; # TODO: Uncomment
+        channel = nixpkgs-unstable;
       };
 
       nixosConfigurations."Astrid" = mkNixos {
