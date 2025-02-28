@@ -1,6 +1,6 @@
 {
+  nixpkgs,
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -10,7 +10,7 @@
       experimental-features = "nix-command flakes";
       download-buffer-size = 524312500;
     };
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = [ "nixpkgs=${nixpkgs}" ];
   };
 
   nixpkgs = {
