@@ -5,7 +5,7 @@
   ...
 }:
 {
-  programs.vscode.extensions =
+  programs.vscode.profiles.default.extensions =
     with vscode-extensions;
     with pkgs.vscode-extensions;
     [

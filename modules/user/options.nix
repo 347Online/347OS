@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  util,
+  ...
+}:
 {
   options = {
     user = {
@@ -24,5 +29,6 @@
 
   config = {
     user.nixvim.enable = lib.mkDefault true;
+    user.codium.enable = util.mkIfElse config.user.gui.enable (lib.mkDefault true) false;
   };
 }

@@ -1,10 +1,9 @@
 {
-  lib,
   pkgs,
   ...
 }:
 {
-  programs.vscode.userSettings = {
+  programs.vscode.profiles.default.userSettings = {
     "editor.acceptSuggestionOnCommitCharacter" = false;
     "editor.accessibilitySupport" = "off";
     "editor.autoClosingBrackets" = "never";
