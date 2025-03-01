@@ -87,6 +87,7 @@
       nixpkgs-pinned,
       nixpkgs-unstable,
       nixpkgs-custom,
+      flake-parts,
       nixos-hardware,
 
       home-manager,
