@@ -22,6 +22,15 @@ lib.mkIf config.user.gui.enable {
         "mail.identity.id_${personal}.label" = "Personal";
       };
 
+    messageFilters = [
+      {
+        name = "Mark as Read on Archive";
+        type = "128";
+        action = "Mark read";
+        condition = "ALL";
+      }
+    ];
+
     perIdentitySettings =
       id:
       let

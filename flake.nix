@@ -24,7 +24,9 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      # TODO: Switch back to upstream after this PR lands:
+      # https://github.com/nix-community/home-manager/pull/6558
+      url = "github:347Online/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
