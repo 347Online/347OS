@@ -8,7 +8,6 @@
 - Network Time Protocol / NTP server
 - Overseer / Media Request interface
 - Switch from Plex -> JellyFin
-- Invidious
 - DLNA
 - Kiwix / Free Information Mirrors
 - LDAP
@@ -16,6 +15,7 @@
 
 ## Config:
 
+- KDE Connect / Alternative
 - Thunderbird Mail Filters
 - CardDAV / CalDAV --- Started in Home-Manager, but not being used for anything
 - Fix auto ingesting media into plex/jellyfin/whatever
