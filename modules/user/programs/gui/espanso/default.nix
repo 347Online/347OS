@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  util,
   homeDirectory,
   ...
 }:
@@ -15,22 +14,7 @@ lib.mkIf config.user.gui.enable {
 
   services.espanso = {
     enable = true;
-    package =
-      let
-        espanso-linux = pkgs.espanso-wayland;
-        espanso-darwin = pkgs.espanso.overrideAttrs (
-          final: prev: {
-            buildInputs = prev.buildInputs ++ [ pkgs.libpng ];
-            postPatch = ''
-              ${prev.postPatch}
-
-              substituteInPlace espanso-modulo/build.rs \
-                --replace-fail '"--with-libpng=builtin"' '"--with-libpng=sys"'
-            '';
-          }
-        );
-      in
-      util.mkIfElse pkgs.stdenv.isLinux espanso-linux espanso-darwin;
+    package = lib.mkIf pkgs.stdenv.isLinux pkgs.espanso-wayland;
 
     configs.default.show_notifications = false;
 

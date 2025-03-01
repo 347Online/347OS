@@ -8,7 +8,7 @@
 }:
 lib.mkIf (config.user.gui.enable && config.user.personal.enable) {
   home.packages = with pkgs; [
-    element-desktop
+    (lib.mkIf pkgs.stdenv.isLinux element-desktop)
     # TODO: Enable on linux once I get it fixed
     # TODO: Use from official nixpkgs if/when PR lands
     # https://github.com/NixOS/nixpkgs/pull/376817

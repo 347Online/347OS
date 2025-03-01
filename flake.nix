@@ -322,6 +322,7 @@
       # mkDarwin and mkNixos could call a mkUser
       darwinConfigurations."Athena" = mkDarwin {
         module = ./hosts/Athena;
+        channel = nixpkgs-unstable;
       };
 
       nixosConfigurations."Aspen" = mkNixos {
