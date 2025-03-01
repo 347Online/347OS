@@ -34,9 +34,7 @@ lib.mkIf config.user.gui.enable {
 
     workspace = {
       colorScheme = "standardizeddark";
-      cursor = {
-        theme = "breeze_cursors";
-      };
+      cursor.theme = "breeze_cursors";
     };
 
     panels = [
