@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs-pinned.url = "github:NixOS/nixpkgs/632f04521e847173c54fa72973ec6c39a371211c";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/632f04521e847173c54fa72973ec6c39a371211c"; # TODO: Unpin, ergo unstable
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-custom.url = "github:347Online/nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -55,9 +55,11 @@
 
     stylix = {
       # TODO: Unpin, see this issue: https://github.com/danth/stylix/issues/835
+      # ERROR: Plasma WILL crash if this is unpinned before this issue is resolved
       url = "github:danth/stylix/b00c9f46ae6c27074d24d2db390f0ac5ebcc329f";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.home-manager.follows = "home-manager";
+      # inputs.nur.follows = "nur"; # TODO: Uncomment this after stylix update
     };
 
     nix-minecraft = {
