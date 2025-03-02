@@ -426,11 +426,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740853778,
-        "narHash": "sha256-PFEnD0bavT/qebfUErXIsIsnQdfkjngS9F0XnXJHq+4=",
+        "lastModified": 1740895544,
+        "narHash": "sha256-6XVuy9kVxRY27FXRsQxtO018LZYL3nrsa6dVf+Cxq/8=",
         "owner": "347Online",
         "repo": "home-manager",
-        "rev": "55d7cfc1b821a9a440a51fa3870db048f30a61d3",
+        "rev": "c2f68501b3e2ef3f3357bb84320377c57d7c87ed",
         "type": "github"
       },
       "original": {
