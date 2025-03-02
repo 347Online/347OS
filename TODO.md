@@ -16,11 +16,11 @@
 ## Config:
 
 - KDE Connect / Alternative
-- Thunderbird Mail Filters
 - CardDAV / CalDAV --- Started in Home-Manager, but not being used for anything
 - Fix auto ingesting media into plex/jellyfin/whatever
 - Switch from Firefox to one of the downstreams/forks
 - Fix espanso-wayland: Potential workarounds [here](https://github.com/NixOS/nixpkgs/issues/249364)
+- Wikiman?
 
 ## Hardware:
 
