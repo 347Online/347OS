@@ -24,6 +24,7 @@
     ./less.nix
     ./pandoc.nix
     ./syncthing.nix
+    ./tealdeer.nix
     ./tmux.nix
     ./zoxide.nix
   ];
