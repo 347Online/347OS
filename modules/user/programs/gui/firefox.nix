@@ -85,14 +85,16 @@ lib.mkIf config.user.gui.enable {
         };
 
         "browser.aboutConfig.showWarning" = false;
-        "browser.toolbars.bookmarks.visibility" = "always";
+        "browser.formfill.enable" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.startup.homepage_override.mstone" = "ignore";
         "browser.startup.page" = 3;
         "browser.tabs.inTitlebar" = 1;
+        "browser.toolbars.bookmarks.visibility" = "always";
         "browser.urlbar.suggest.quicksuggest.sponsored" = false;
         "browser.warnOnQuitShortcut" = false;
         "datareporting.policy.dataSubmissionPolicyBypassNotification" = true;
@@ -100,7 +102,6 @@ lib.mkIf config.user.gui.enable {
         "extensions.formautofill.creditCards.enabled" = false;
         "identity.sync.tokenserver.uri" = "https://firefox.fatgirl.cloud/1.0/sync/1.5";
         "signon.rememberSignons" = false;
-        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
       };
     };
   };
