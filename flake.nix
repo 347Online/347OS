@@ -2,6 +2,7 @@
   description = "Katie's Nix Systems";
 
   inputs = {
+    # TODO: Next time you update this, switch Arukenia back to pinned
     nixpkgs-pinned.url = "github:NixOS/nixpkgs/632f04521e847173c54fa72973ec6c39a371211c";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-custom.url = "github:347Online/nixpkgs";
@@ -329,6 +330,12 @@
       nixosConfigurations."Aspen" = mkNixos {
         system = "x86_64-linux";
         module = ./hosts/Aspen;
+      };
+
+      nixosConfigurations."Arukenia" = mkNixos {
+        system = "x86_64-linux";
+        module = ./hosts/Arukenia;
+        channel = nixpkgs-unstable;
       };
 
       nixosConfigurations."Amber" = mkNixos {
