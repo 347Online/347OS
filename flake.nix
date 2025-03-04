@@ -331,6 +331,11 @@
         module = ./hosts/Aspen;
       };
 
+      nixosConfigurations."Arukenia" = mkNixos {
+        system = "x86_64-linux";
+        module = ./hosts/Arukenia;
+      };
+
       nixosConfigurations."Amber" = mkNixos {
         system = "x86_64-linux";
         module = ./hosts/Amber;
