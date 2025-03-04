@@ -21,7 +21,3 @@
 - Switch from Firefox to one of the downstreams/forks
 - Fix espanso-wayland: Potential workarounds [here](https://github.com/NixOS/nixpkgs/issues/249364)
 - Wikiman?
-
-## Hardware:
-
-- NAS / DAS
