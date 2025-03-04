@@ -8,6 +8,7 @@
     ./freshrss.nix
     ./gotosocial.nix
     ./invidious.nix
+    ./jellyfin.nix
     ./mysql.nix
     ./plex.nix
     ./transmission.nix

@@ -124,6 +124,10 @@
           ip = "192.168.4.55";
           port = 9091;
         };
+        "jellyfin.fatgirl.cloud" = proxy {
+          ip = "192.168.4.55";
+          port = "8096";
+        };
         "plex.fatgirl.cloud" =
           proxy {
             ip = "192.168.4.55";
