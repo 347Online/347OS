@@ -344,11 +344,6 @@
         channel = nixpkgs-unstable;
       };
 
-      nixosConfigurations."Astrid" = mkNixos {
-        system = "aarch64-linux";
-        module = ./hosts/Astrid;
-      };
-
       nixosConfigurations."ISO-ARM" = mkIso "aarch64-linux";
       nixosConfigurations."ISO-INTEL" = mkIso "x86_64-linux";
 

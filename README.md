@@ -10,7 +10,7 @@ This is my setup for managing my computing life with Nix
 - Host Configurations:
   - Amber - Personal Workstation
   - Aspen - Home Server
-  - Astrid - Home Server Satellite Unit
+  - Arukenia - Home Server Satellite Unit
   - Athena - Personal Laptop
 
 ## Usage
