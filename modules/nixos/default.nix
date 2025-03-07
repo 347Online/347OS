@@ -35,7 +35,7 @@
       };
 
       services = {
-        fail2ban.enable = true;
+        fail2ban.enable = lib.mkDefault config.networking.firewall.enable;
         fwupd.enable = true;
         openssh.enable = true;
         # pcscd.enable = true;
