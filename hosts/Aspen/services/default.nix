@@ -12,5 +12,6 @@
     ./mysql.nix
     ./plex.nix
     ./transmission.nix
+    # ./wireguard.nix
   ];
 }

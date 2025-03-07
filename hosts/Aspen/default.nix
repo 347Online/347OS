@@ -8,7 +8,6 @@
     ./services
 
     ./hardware-configuration.nix
-    # ./wireguard.nix
   ];
 
   stylix.image = "${self}/wallpapers/desert.jpg";
