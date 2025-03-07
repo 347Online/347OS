@@ -1,20 +1,18 @@
-{ homeDirectory, ... }:
+{ config, ... }:
 {
+  sops.secrets.wireguard-private-key.mode = "0666";
+
   networking.wg-quick.interfaces = {
     wg0 = {
-      address = [ "192.168.2.1/32" ];
+      privateKeyFile = config.sops.secrets.wireguard-private-key.path;
+      address = [ "192.168.2.5/32" ];
       dns = [ "192.168.2.1" ];
-      privateKeyFile = "${homeDirectory}/.local/.secrets/wg/key";
 
       peers = [
         {
           publicKey = "FZhZ/zhB8X34nCsYFjNDuSGqrb+OUzG7/HPyZSgsiB8=";
-          allowedIPs = [
-            "192.168.2.1/32"
-            "192.168.2.2/32"
-            "0.0.0.0/0"
-          ];
-          endpoint = "wlg.duckdns.org:51820";
+          allowedIPs = [ "0.0.0.0/0" ];
+          endpoint = "218.101.21.232:51820";
         }
       ];
     };
