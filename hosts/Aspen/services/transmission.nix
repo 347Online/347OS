@@ -3,6 +3,7 @@
     enable = true;
     openRPCPort = true;
     settings = {
+      download-dir = "/Media/Downloads";
       rpc-authentication-required = true;
       rpc-bind-address = "0.0.0.0";
       rpc-whitelist-enabled = false;
