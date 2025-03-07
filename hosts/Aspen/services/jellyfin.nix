@@ -26,5 +26,6 @@
     lidarr.enable = true;
     radarr.enable = true;
     sonarr.enable = true;
+    prowlarr.enable = true;
   };
 }
