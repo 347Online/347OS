@@ -3,6 +3,7 @@
   config,
   lib,
   util,
+  homeDirectory,
   ...
 }:
 lib.mkIf config.user.gui.enable {
@@ -12,6 +13,10 @@ lib.mkIf config.user.gui.enable {
       ".config/autostart/discord.desktop".enable = lib.mkIf (pkgs.system == "aarch64-linux") false;
     }
   ];
+
+  programs.zsh.shellAliases.unfuck-plasma =
+    # bash
+    ''qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "$(cat ${homeDirectory}/.local/share/plasma-manager/data/desktop_script_panels.js)"'';
 
   programs.plasma = {
     enable = true;
