@@ -35,10 +35,11 @@
       };
 
       services = {
-        # pcscd.enable = true;
-        openssh.enable = true;
-        printing.enable = true;
+        fail2ban.enable = true;
         fwupd.enable = true;
+        openssh.enable = true;
+        # pcscd.enable = true;
+        printing.enable = true;
         # udev.packages = with pkgs; [
         #   yubikey-personalization
         #   libu2f-host
