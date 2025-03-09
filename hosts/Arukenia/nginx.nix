@@ -107,7 +107,7 @@
           };
         "request.fatgirl.cloud" = proxy {
           ip = "192.168.4.55";
-          port = 5055;
+          port = 16329;
         };
         "watch.fatgirl.cloud" = proxy {
           ip = "192.168.4.55";
