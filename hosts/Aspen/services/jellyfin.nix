@@ -1,28 +1,38 @@
 {
   users = {
-    groups = {
-      media = { };
-    };
-
-    users = {
-      bazarr.extraGroups = [ "media" ];
-      jellyfin.extraGroups = [ "media" ];
-      lidarr.extraGroups = [ "media" ];
-      radarr.extraGroups = [ "media" ];
-      sonarr.extraGroups = [ "media" ];
+    groups.media = { };
+    users.media = {
+      group = "media";
+      isNormalUser = true;
     };
   };
 
   services = {
-    bazarr.enable = true;
-    jellyfin.enable = true;
+    prowlarr.enable = true;
     ombi = {
       enable = true;
       port = 16329;
     };
-    lidarr.enable = true;
-    radarr.enable = true;
-    sonarr.enable = true;
-    prowlarr.enable = true;
+
+    bazarr = {
+      enable = true;
+      group = "media";
+    };
+    jellyfin = {
+      enable = true;
+      group = "media";
+    };
+    lidarr = {
+      enable = true;
+      group = "media";
+    };
+    radarr = {
+      enable = true;
+      group = "media";
+    };
+    sonarr = {
+      enable = true;
+      group = "media";
+    };
   };
 }
