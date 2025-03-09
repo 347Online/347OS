@@ -23,15 +23,14 @@
     };
 
     programs.ssh.matchBlocks = {
-      Astrid = {
-        hostname = "192.168.4.110";
+      Arukenia = {
+        hostname = "192.168.4.40";
         user = username;
         forwardAgent = true;
       };
       Aspen = {
-        hostname = "fatgirl.cloud";
+        hostname = "192.168.4.55";
         user = username;
-        port = 5892;
         forwardAgent = true;
       };
     };
