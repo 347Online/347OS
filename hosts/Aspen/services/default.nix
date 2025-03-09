@@ -10,7 +10,6 @@
     ./invidious.nix
     ./jellyfin.nix
     ./mysql.nix
-    ./plex.nix
     ./transmission.nix
     ./wireguard.nix
   ];
