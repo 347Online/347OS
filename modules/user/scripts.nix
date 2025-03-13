@@ -1,6 +1,19 @@
-{ pkgs, flakeDir, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  homeDirectory,
+  flakeDir,
+  ...
+}:
 let
   scripts = [
+    (lib.mkIf config.user.gui.enable (
+      pkgs.writeShellScriptBin "get-resume" ''
+        curl -L https://347online.me/resume.pdf -o "${homeDirectory}/Desktop/Katie Janzen Resumé 2025.pdf"
+        curl -L https://347online.me/cover-letter.pdf -o "${homeDirectory}/Desktop/Katie Janzen Cover Letter 2025.pdf"
+      ''
+    ))
     (pkgs.writeShellScriptBin "newgit" ''
       mkdir $1 && (cd $1 && git init)
     '')

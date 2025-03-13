@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   lib,
   username,
@@ -29,26 +28,6 @@
         file = lib.mkMerge [
           (util.toHomeFiles ./dotfiles)
           { ".face.icon".enable = config.user.gui.enable; }
-          {
-            "Desktop/Katie Janzen Cover Letter 2025.pdf" = {
-              enable = config.user.personal.enable;
-
-              source = pkgs.fetchurl {
-                url = "https://347online.me/cover-letter.pdf";
-                hash = "sha256-rlj3erQVH9X4vSPQSq4p5Sz3vIows3KJA4ZbBoqZDnc=";
-              };
-            };
-          }
-          {
-            "Desktop/Katie Janzen Resume 2025.pdf" = {
-              enable = config.user.personal.enable;
-
-              source = pkgs.fetchurl {
-                url = "https://347online.me/resume.pdf";
-                hash = "sha256-f2haSLhCIqu83C/yandfCL8RESsP9Eb3zsA4r8bApEE=";
-              };
-            };
-          }
         ];
       };
 
