@@ -38,26 +38,30 @@ in
   };
 
   system = {
-    defaults.dock.persistent-apps =
-      [
-        (lib.mkIf (
-          config.darwin.dock.browser == "Safari"
-        ) "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app")
-        (lib.mkIf (config.darwin.dock.browser == "Chrome") "/Applications/Google Chrome.app")
-        (lib.mkIf (config.darwin.dock.browser == "Arc") "/Applications/Arc.app")
-        (lib.mkIf (config.darwin.dock.browser == "Firefox") "/Applications/Firefox.app")
-        "/Applications/Thunderbird.app"
-        "/Applications/Fantastical.app"
-        "/System/Applications/Music.app"
-        "/Applications/Broadcasts.app"
-      ]
-      ++ config.darwin.dock.apps
-      ++ [
-        "/Applications/Ghostty.app"
+    defaults.dock = {
+      show-recents = false;
+      persistent-others = [ ];
+      persistent-apps =
+        [
+          (lib.mkIf (
+            config.darwin.dock.browser == "Safari"
+          ) "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app")
+          (lib.mkIf (config.darwin.dock.browser == "Chrome") "/Applications/Google Chrome.app")
+          (lib.mkIf (config.darwin.dock.browser == "Arc") "/Applications/Arc.app")
+          (lib.mkIf (config.darwin.dock.browser == "Firefox") "/Applications/Firefox.app")
+          "/Applications/Thunderbird.app"
+          "/Applications/Fantastical.app"
+          "/System/Applications/Music.app"
+          "/Applications/Broadcasts.app"
+        ]
+        ++ config.darwin.dock.apps
+        ++ [
+          "/Applications/Ghostty.app"
 
-        # Right-most apps
-        "/System/Applications/System Settings.app"
-      ];
+          # Right-most apps
+          "/System/Applications/System Settings.app"
+        ];
+    };
     startup.chime = true;
 
     activationScripts.postActivation.text = ''

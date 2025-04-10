@@ -17,8 +17,12 @@ lib.mkIf config.darwin.homebrew.enable {
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      cleanup = "zap";
+      cleanup = "uninstall";
     };
+
+    brews = [
+      "mas"
+    ];
 
     masApps = {
       "1Password for Safari" = 1569813296;
@@ -27,6 +31,7 @@ lib.mkIf config.darwin.homebrew.enable {
       "Fantastical" = 975937182;
       "GoodLinks" = 1474335294;
       "Magic Lasso" = 1198047227;
+      "Keynote" = 409183694;
       "Numbers" = 409203825;
       # "Overcast" = 888422857; # Currently broken
       "Pages" = 409201541;
