@@ -66,6 +66,7 @@ in
 
     activationScripts.postActivation.text = ''
       killall Dock
+      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
     '';
   };
 
