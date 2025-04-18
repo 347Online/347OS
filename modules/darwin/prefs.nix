@@ -69,9 +69,17 @@
         CriticalUpdateInstall = 1;
       };
 
+      "com.apple.symbolichotkeys" = {
+        AppleSymbolicHotKeys = {
+          "64".enabled = false;
+          "65".enabled = false;
+        };
+      };
+
       "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
       "com.apple.ImageCapture".disableHotPlug = true;
       "com.apple.commerce".AutoUpdate = true;
+      "com.apple.HIToolbox".AppleFnUsageType = 1;
 
       "com.pilotmoon.scroll-reverser" = {
         StartAtLogin = true;
