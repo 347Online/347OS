@@ -50,21 +50,15 @@
         diff = "delta";
         gg = "lazygit";
 
-        journal =
-          # bash
-          ''
-            nvim "${homeDirectory}/Sync/Notes/journal/$(date +%Y-%m-%d).md"
-          '';
+        journal = ''
+          nvim "${homeDirectory}/Sync/Notes/journal/$(date +%Y-%m-%d).md"
+        '';
 
-        branch =
-          # bash
-          "git branch --show-current";
+        branch = "git branch --show-current";
 
-        branchhelp =
-          # bash
-          ''
-            git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
-          '';
+        branchhelp = ''
+          git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
+        '';
       };
     in
     {

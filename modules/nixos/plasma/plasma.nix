@@ -14,9 +14,9 @@ lib.mkIf config.user.gui.enable {
     }
   ];
 
-  programs.zsh.shellAliases.unfuck-plasma =
-    # bash
-    ''qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "$(cat ${homeDirectory}/.local/share/plasma-manager/data/desktop_script_panels.js)"'';
+  programs.zsh.shellAliases.unfuck-plasma = ''
+    qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "$(cat ${homeDirectory}/.local/share/plasma-manager/data/desktop_script_panels.js)"
+  '';
 
   programs.plasma = {
     enable = true;
