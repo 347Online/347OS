@@ -16,7 +16,6 @@ in
     ./nix.nix
     ./options.nix
     ./prefs.nix
-    ../user/stylix.nix
   ];
 
   darwin.gui.enable = lib.mkDefault true;
