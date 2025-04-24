@@ -11,7 +11,6 @@ pkgs: with pkgs; [
   htop
   moreutils
   neovim
-  nixd
   nixfmt-rfc-style
   nix-search-cli
   nodejs
