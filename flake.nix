@@ -77,12 +77,10 @@
       ...
     }:
     let
-      username = "katie";
-
       util = import ./util.nix inputs;
 
       mkSpecialArgs =
-        pkgs:
+        { pkgs, username }:
         let
           system = pkgs.system;
           homeDirectory = util.mkHomeDirectory pkgs username;
@@ -107,9 +105,9 @@
         args;
 
       mkExtraSpecialArgs =
-        pkgs:
+        { pkgs, username }:
         let
-          specialArgs = mkSpecialArgs pkgs;
+          specialArgs = mkSpecialArgs { inherit pkgs username; };
         in
         specialArgs
         // {
@@ -131,12 +129,13 @@
         {
           system ? "aarch64-darwin",
           module,
+          username ? "katie",
         }:
         let
           pkgs = mkPkgs system;
         in
         nix-darwin.lib.darwinSystem {
-          specialArgs = mkSpecialArgs pkgs;
+          specialArgs = mkSpecialArgs { inherit pkgs username; };
           modules = [
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
@@ -155,7 +154,7 @@
                     nur.modules.homeManager.default
                     sops-nix.homeManagerModules.sops
                   ];
-                  extraSpecialArgs = mkExtraSpecialArgs pkgs;
+                  extraSpecialArgs = mkExtraSpecialArgs { inherit pkgs username; };
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
                       user.gui.enable = lib.mkForce config.darwin.gui.enable;
@@ -176,12 +175,13 @@
         {
           system,
           module,
+          username ? "katie",
         }:
         let
           pkgs = mkPkgs system;
         in
         nixpkgs.lib.nixosSystem {
-          specialArgs = mkSpecialArgs pkgs;
+          specialArgs = mkSpecialArgs { inherit pkgs username; };
 
           modules = [
             home-manager.nixosModules.home-manager
@@ -200,7 +200,7 @@
                     plasma-manager.homeManagerModules.plasma-manager
                     sops-nix.homeManagerModules.sops
                   ];
-                  extraSpecialArgs = mkExtraSpecialArgs pkgs;
+                  extraSpecialArgs = mkExtraSpecialArgs { inherit pkgs username; };
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
                       user.gui.enable = lib.mkForce config.nixos.gui.enable;
@@ -218,10 +218,13 @@
         };
 
       mkIso =
-        system:
+        {
+          system,
+          username ? "nixos",
+        }:
         let
           pkgs = mkPkgs { inherit system; };
-          specialArgs = mkSpecialArgs pkgs;
+          specialArgs = mkSpecialArgs { inherit pkgs username; };
         in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -254,6 +257,10 @@
       darwinConfigurations."Athena" = mkDarwin {
         module = ./hosts/Athena;
       };
+      darwinConfigurations."Alice" = mkDarwin {
+        module = ./hosts/Alice;
+        username = "kjanzen";
+      };
 
       nixosConfigurations."Aspen" = mkNixos {
         system = "x86_64-linux";
@@ -274,29 +281,31 @@
       nixosConfigurations."ISO-INTEL" = mkIso "x86_64-linux";
 
       # TODO: Use flake-utils or whatever for this, it's not worth it
-      packages = util.forAllSystems (
-        {
-          pkgs,
-          system,
-        }:
-        let
-          specialArgs = mkSpecialArgs pkgs;
-        in
-        {
-          homeConfigurations."katie" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-
-            extraSpecialArgs = mkExtraSpecialArgs pkgs;
-
-            modules = [
-              sops-nix.homeManagerModules.sops
-              {
-                nix.package = pkgs.nix;
-                user.gui.enable = true;
-              }
-            ] ++ baseModulesHomeManager;
-          };
-        }
-      );
+      # TODO: Figure out how to genericize this over arbitrary username
+      # packages = util.forAllSystems (
+      #   {
+      #     pkgs,
+      #     system,
+      #   }:
+      #   let
+      #     username = "katie";
+      #     specialArgs = mkSpecialArgs {inherit pkgs; username = "katie";};
+      #   in
+      #   {
+      #     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+      #       inherit pkgs;
+      #
+      #       extraSpecialArgs = mkExtraSpecialArgs {inherit pkgs username;};
+      #
+      #       modules = [
+      #         sops-nix.homeManagerModules.sops
+      #         {
+      #           nix.package = pkgs.nix;
+      #           user.gui.enable = true;
+      #         }
+      #       ] ++ baseModulesHomeManager;
+      #     };
+      #   }
+      # );
     };
 }
