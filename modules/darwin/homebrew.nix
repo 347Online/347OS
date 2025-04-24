@@ -17,7 +17,6 @@ lib.mkIf config.darwin.homebrew.enable {
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      cleanup = "uninstall";
     };
 
     brews = [
@@ -45,7 +44,6 @@ lib.mkIf config.darwin.homebrew.enable {
       "google-chrome"
       "logi-options+"
       "monitorcontrol"
-      "obsidian"
       "raycast"
       "scroll-reverser"
       "setapp"
