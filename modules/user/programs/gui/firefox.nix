@@ -101,7 +101,6 @@ lib.mkIf config.user.gui.enable {
         "datareporting.policy.dataSubmissionPolicyBypassNotification" = true;
         "extensions.formautofill.addresses.enabled" = false;
         "extensions.formautofill.creditCards.enabled" = false;
-        "identity.sync.tokenserver.uri" = "https://firefox.fatgirl.cloud/1.0/sync/1.5";
         "signon.rememberSignons" = false;
       };
     };
