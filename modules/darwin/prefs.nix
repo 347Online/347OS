@@ -34,6 +34,8 @@
         TSWPAutomaticSpellingCorrection = false;
       };
 
+      "com.apple.messages.text".EmojiReplacement = 1;
+
       "com.apple.dock" = {
         wvous-br-corner = 4;
         wvous-br-modifier = 1048576;
