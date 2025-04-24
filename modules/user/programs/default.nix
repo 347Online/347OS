@@ -18,6 +18,7 @@
     ./fzf.nix
     ./git.nix
     ./jq.nix
+    ./language-servers.nix
     ./lazygit.nix
     ./ledger.nix
     ./less.nix
