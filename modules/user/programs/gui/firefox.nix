@@ -16,15 +16,16 @@ lib.mkIf config.user.gui.enable {
     profiles.${username} = {
       search = {
         force = true;
-        default = "Google (Fixed)";
+        default = "google-fixed";
         order = [
-          "Google (Fixed)"
-          "DuckDuckGo"
+          "google-fixed"
+          "ddg"
         ];
         engines = {
-          Google.metaData.hidden = true;
-          Bing.metaData.hidden = true;
-          "Google (Fixed)" = {
+          google.metaData.hidden = true;
+          bing.metaData.hidden = true;
+          google-fixed = {
+            name = "Google (Fixed)";
             metaData.alias = "@google";
             urls = [
               {
