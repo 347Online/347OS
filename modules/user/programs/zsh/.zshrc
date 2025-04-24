@@ -23,5 +23,6 @@ setopt hist_ignore_dups
 setopt hist_save_no_dups
 setopt hist_find_no_dups
 
+eval "$(tinty generate-completion zsh)"
 # Activate syntax highlighting in manpages
 eval "$(batman --export-env)"

@@ -37,6 +37,7 @@
     [
       _1password-cli
       sops
+      tinty
 
       (lib.mkIf config.user.nixvim.enable nvim)
     ]
