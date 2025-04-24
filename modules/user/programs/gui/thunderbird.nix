@@ -13,7 +13,7 @@ let
 in
 lib.mkIf config.user.gui.enable {
   accounts.email.accounts.Personal.thunderbird = {
-    enable = true;
+    enable = lib.mkDefault config.user.personal.enable;
 
     settings =
       id: with ids; {
