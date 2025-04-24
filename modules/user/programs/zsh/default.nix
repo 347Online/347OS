@@ -1,4 +1,9 @@
-{ pkgs, flakeDir, ... }:
+{
+  pkgs,
+  lib,
+  flakeDir,
+  ...
+}:
 {
   programs.zsh = {
     enable = true;
@@ -6,15 +11,14 @@
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
 
-    initExtraFirst =
-      # sh
-      ''
-        # TODO: Rework this config for .zshrc in dotfiles, remove readFile kludge
-        # TODO: Remove Powerlevel10k in favor of oh my posh or similar
-        # Powerlevel10k Zsh theme
-        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        export FLAKE_DIR="${flakeDir}"
-        ${builtins.readFile ./.zshrc}
-      '';
+    initContent =
+      lib.mkBefore
+        # sh
+        ''
+          # Powerlevel10k Zsh theme
+          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+          export FLAKE_DIR="${flakeDir}"
+          ${builtins.readFile ./.zshrc}
+        '';
   };
 }
