@@ -200,6 +200,8 @@
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
                       user.gui.enable = lib.mkForce config.darwin.gui.enable;
+                      user.personal.enable = lib.mkForce config.darwin.personal.enable;
+                      user.gaming.enable = lib.mkForce config.darwin.gaming.enable;
                     }
                   ];
                 };

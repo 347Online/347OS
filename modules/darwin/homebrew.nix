@@ -50,6 +50,8 @@ lib.mkIf config.darwin.homebrew.enable {
       "scroll-reverser"
       "setapp"
       "thunderbird"
+
+      (lib.mkIf config.darwin.gaming.enable "prismlauncher")
     ];
   };
 
