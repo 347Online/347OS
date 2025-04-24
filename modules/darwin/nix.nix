@@ -3,6 +3,7 @@
   nixpkgs,
   pkgs,
   lib,
+  username,
   ...
 }:
 {
@@ -13,7 +14,7 @@
       options = "--delete-older-than 30d";
     };
     settings = {
-      trusted-users = [ "katie" ];
+      trusted-users = [ username ];
       experimental-features = "nix-command flakes";
       download-buffer-size = 524312500;
     };

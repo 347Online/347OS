@@ -1,3 +1,4 @@
+{ homeDirectory, ... }:
 {
   system.keyboard = {
     enableKeyMapping = true;
@@ -128,7 +129,7 @@
         autoClosePopup = true;
         captureWithoutDesktopIcons = true;
         deletePopupAfterDragging = true;
-        exportPath = "/Users/katie/Library/Mobile Documents/com~apple~CloudDocs/Files/Screenshots";
+        exportPath = "${homeDirectory}/Library/Mobile Documents/com~apple~CloudDocs/Files/Screenshots";
         freezeScreen = true;
         popupAskForDestinationWhenSaving = false;
         showMenuBarIcon = true;
