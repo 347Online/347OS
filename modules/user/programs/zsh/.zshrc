@@ -7,9 +7,9 @@ test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 bindkey -e
-
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
