@@ -7,8 +7,6 @@
 }:
 {
   imports = [
-    ../user/stylix.nix
-
     ./plasma
 
     ./games.nix

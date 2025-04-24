@@ -1,5 +1,4 @@
 {
-  self,
   lib,
   username,
   ...
@@ -11,8 +10,6 @@
   ];
 
   sops.defaultSopsFile = ./.arukenia-secrets.yaml;
-
-  stylix.image = "${self}/wallpapers/desert.jpg";
 
   home-manager.users.${username} = {
     user.nixvim.enable = false;

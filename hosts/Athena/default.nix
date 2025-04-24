@@ -1,12 +1,9 @@
 {
-  self,
   pkgs-custom,
   username,
   ...
 }:
 {
-  stylix.image = "${self}/wallpapers/sunset.jpg";
-
   homebrew = {
     casks = [
       "krita"

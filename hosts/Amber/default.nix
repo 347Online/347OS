@@ -1,5 +1,4 @@
 {
-  self,
   username,
   ...
 }:
@@ -13,8 +12,6 @@
     gui.enable = true;
     personal.enable = true;
   };
-
-  stylix.image = "${self}/wallpapers/neon-city.jpg";
 
   networking.hostName = "Amber";
   time.timeZone = "America/Chicago";

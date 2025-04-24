@@ -1,5 +1,4 @@
 {
-  self,
   username,
   ...
 }:
@@ -9,8 +8,6 @@
 
     ./hardware-configuration.nix
   ];
-
-  stylix.image = "${self}/wallpapers/desert.jpg";
 
   sops.defaultSopsFile = ./.aspen-secrets.yaml;
 
