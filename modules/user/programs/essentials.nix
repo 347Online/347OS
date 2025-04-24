@@ -20,6 +20,7 @@ pkgs: with pkgs; [
   rustup
   trunk
   screen
+  shellcheck
   tmux
   zoxide
 ]
