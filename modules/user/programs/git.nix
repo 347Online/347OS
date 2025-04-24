@@ -1,3 +1,4 @@
+{ homeDirectory, ... }:
 {
   programs.git = {
     enable = true;
@@ -33,7 +34,10 @@
     extraConfig = {
       core.editor = "nvim";
       core.pager = "LESS='FR --redraw-on-quit' delta";
-      init.defaultBranch = "main";
+      init = {
+        defaultBranch = "main";
+        templatedir = "${homeDirectory}/.git_template";
+      };
       push.autoSetupRemote = true;
       pull.ff = "only";
       rerere.enabled = true;
