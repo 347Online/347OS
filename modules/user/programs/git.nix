@@ -37,6 +37,10 @@
       push.autoSetupRemote = true;
       pull.ff = "only";
       rerere.enabled = true;
+      url = {
+        "git@github.com:347Online".insteadOf = "https://github.com/347Online";
+        "git@github.com:amplify-education".insteadOf = "https://github.com/amplify-education";
+      };
     };
   };
 }
