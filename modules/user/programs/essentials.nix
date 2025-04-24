@@ -10,6 +10,7 @@ pkgs: with pkgs; [
   go
   htop
   moreutils
+  neovim
   nixd
   nixfmt-rfc-style
   nix-search-cli

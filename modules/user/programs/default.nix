@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  nvim,
   homeDirectory,
   flakeDir,
   ...
@@ -38,8 +37,6 @@
       _1password-cli
       sops
       tinty
-
-      (lib.mkIf config.user.nixvim.enable nvim)
     ]
     ++ essentials;
 
@@ -68,10 +65,6 @@
           ''
             git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
           '';
-
-        nvim-next =
-          # bash
-          "nix run ${flakeDir}#nvim";
       };
     in
     {

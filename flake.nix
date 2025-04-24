@@ -42,16 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nvim-emmet = {
-      url = "github:olrtg/nvim-emmet";
-      flake = false;
-    };
-
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -81,7 +71,6 @@
       nix-darwin,
       nix-homebrew,
       nix-vscode-extensions,
-      nixvim,
       nur,
       plasma-manager,
       sops-nix,
@@ -91,34 +80,6 @@
       username = "katie";
 
       util = import ./util.nix inputs;
-
-      mkNvim =
-        {
-          pkgs,
-          specialArgs ? { },
-        }:
-        let
-          system = pkgs.system;
-        in
-        inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
-          pkgs = pkgs.extend (
-            final: prev: {
-              vimPlugins = prev.vimPlugins.extend (
-                final': prev': {
-                  nvim-emmet = prev.vimUtils.buildVimPlugin {
-                    pname = "nvim-emmet";
-                    version = inputs.nvim-emmet.shortRev;
-                    src = inputs.nvim-emmet;
-                  };
-                }
-              );
-            }
-          );
-          module = ./modules/user/programs/nvim;
-          extraSpecialArgs = {
-            inherit util;
-          } // specialArgs;
-        };
 
       mkSpecialArgs =
         pkgs:
@@ -153,11 +114,9 @@
         specialArgs
         // {
           inherit util;
-          nvim = mkNvim { inherit pkgs specialArgs; };
         };
 
       baseModulesHomeManager = [
-        nixvim.homeManagerModules.nixvim
         ./modules/user
       ];
 
@@ -275,18 +234,12 @@
                   "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
                 ];
 
-                environment.systemPackages =
-                  with pkgs;
-                  let
-                    nvim = mkNvim { inherit pkgs specialArgs; };
-                  in
-                  [
-                    nvim
-                    nixfmt-rfc-style
-                    git
-                    vim
-                    lvm2
-                  ];
+                environment.systemPackages = with pkgs; [
+                  nixfmt-rfc-style
+                  git
+                  neovim
+                  lvm2
+                ];
 
                 nixpkgs.hostPlatform = system;
               }
@@ -330,8 +283,6 @@
           specialArgs = mkSpecialArgs pkgs;
         in
         {
-          nvim = mkNvim { inherit pkgs specialArgs; };
-
           homeConfigurations."katie" = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
 
