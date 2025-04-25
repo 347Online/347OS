@@ -20,7 +20,10 @@
 
       gaming.enable = lib.mkEnableOption "gaming";
 
-      nixvim.enable = lib.mkEnableOption "nixvim setup";
+      firefox.extraPinnedItems = lib.mkOption {
+        type = with lib.types; listOf str;
+        default = [ ];
+      };
     };
 
     # DO NOT SET MANUALLY
@@ -28,7 +31,6 @@
   };
 
   config = {
-    user.nixvim.enable = lib.mkDefault true;
     # user.codium.enable = util.mkIfElse config.user.gui.enable (lib.mkDefault true) false;
   };
 }

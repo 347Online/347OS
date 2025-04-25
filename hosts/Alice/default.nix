@@ -48,8 +48,14 @@
       serverless
       yarn
     ];
-    user.codium.extraExtensions = with vscode-extensions; [
-    ];
+    user = {
+      codium.extraExtensions = with vscode-extensions; [
+      ];
+
+      firefox.extraPinnedItems = [
+        "plugin_okta_com-browser-action"
+      ];
+    };
     programs.zsh.initContent =
       # sh
       ''
