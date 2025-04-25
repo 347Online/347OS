@@ -24,6 +24,7 @@
       "docker-credential-helper-ecr"
       "nginx"
       "nvm"
+      "pipx"
       "pyenv"
       "pyenv-virtualenv"
     ];
