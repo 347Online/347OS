@@ -12,11 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -69,7 +64,6 @@
 
       home-manager,
       nix-darwin,
-      nix-homebrew,
       nix-vscode-extensions,
       nur,
       plasma-manager,
@@ -138,7 +132,6 @@
           specialArgs = mkSpecialArgs { inherit pkgs username; };
           modules = [
             home-manager.darwinModules.home-manager
-            nix-homebrew.darwinModules.nix-homebrew
             sops-nix.darwinModules.sops
             (
               {
