@@ -42,22 +42,17 @@ in
       persistent-others = [ ];
       persistent-apps =
         [
-          (lib.mkIf (
-            config.darwin.dock.browser == "Safari"
-          ) "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app")
-          (lib.mkIf (config.darwin.dock.browser == "Chrome") "/Applications/Google Chrome.app")
-          (lib.mkIf (config.darwin.dock.browser == "Arc") "/Applications/Arc.app")
-          (lib.mkIf (config.darwin.dock.browser == "Firefox") "/Applications/Firefox.app")
-          "/Applications/Thunderbird.app"
+          config.darwin.dock.browserAppPath
+          config.darwin.dock.emailAppPath
+
           "/Applications/Fantastical.app"
           "/System/Applications/Music.app"
           "/Applications/Broadcasts.app"
         ]
         ++ config.darwin.dock.apps
         ++ [
-          "/Applications/Ghostty.app"
-
           # Right-most apps
+          "/Applications/Ghostty.app"
           "/System/Applications/System Settings.app"
         ];
     };

@@ -7,7 +7,7 @@
 }:
 {
   darwin.dock = {
-    browser = "Firefox";
+    emailApp = "Mail";
     apps = [
       "/Applications/Slack.app"
     ];

@@ -1,18 +1,18 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
-  options = with lib.types; {
+  options = {
     darwin = {
       gui.enable = lib.mkEnableOption "graphical interface and programs";
       gaming.enable = lib.mkEnableOption "gaming";
       personal.enable = lib.mkEnableOption "this machine as a personal device, as opposed to a work device";
       homebrew.enable = lib.mkEnableOption "homebrew setup";
       loginItems = lib.mkOption {
-        type = listOf str;
+        type = with lib.types; listOf str;
         default = [ ];
       };
       dock = {
-        browser = lib.mkOption {
-          type = enum [
+        browserApp = lib.mkOption {
+          type = lib.types.enum [
             "Chrome"
             "Safari"
             "Arc"
@@ -20,8 +20,39 @@
           ];
           default = "Firefox";
         };
+        browserAppPath =
+          let
+            paths = {
+              Safari = "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app";
+              Chrome = "/Applications/Google Chrome.app";
+              Arc = "/Applications/Arc.app";
+              Firefox = "/Applications/Firefox.app";
+            };
+          in
+          lib.mkOption {
+            type = lib.types.str;
+            default = paths.${config.darwin.dock.browserApp};
+          };
+        emailApp = lib.mkOption {
+          type = lib.types.enum [
+            "Thunderbird"
+            "Mail"
+          ];
+          default = "Thunderbird";
+        };
+        emailAppPath =
+          let
+            paths = {
+              Thunderbird = "/Applications/Thunderbird.app";
+              Mail = "/System/Applications/Mail.app";
+            };
+          in
+          lib.mkOption {
+            type = lib.types.str;
+            default = paths.${config.darwin.dock.emailApp};
+          };
         apps = lib.mkOption {
-          type = listOf str;
+          type = with lib.types; listOf str;
           default = [ ];
         };
       };
