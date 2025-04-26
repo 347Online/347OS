@@ -58,6 +58,16 @@ lib.mkIf config.user.gui.enable {
           "mail.identity.id_${id}.archive_granularity" = 0;
           "mail.identity.id_${id}.archive_keep_folder_structure" = false;
           "mail.identity.id_${id}.archive_recreate_inbox" = false;
+
+          "mail.server.server_${id}.ageLimit" = 30;
+          "mail.server.server_${id}.applyToFlaggedMessages" = false;
+          "mail.server.server_${id}.autosync_max_age_days" = 30;
+          "mail.server.server_${id}.cleanupBodies" = false;
+          "mail.server.server_${id}.daysToKeepBodies" = 30;
+          "mail.server.server_${id}.daysToKeepHdrs" = 30;
+          "mail.server.server_${id}.downloadByDate" = false;
+          "mail.server.server_${id}.downloadUnreadOnly" = false;
+          "mail.server.server_${id}.numHdrsToKeep" = 2000;
         }
       ];
   };
@@ -69,8 +79,6 @@ lib.mkIf config.user.gui.enable {
       settings = {
         "mail.biff.play_sound" = false;
         "mail.biff.show_alert" = false;
-        "mail.server.default.authMethod" = 0;
-        "mail.smtpserver.default.authMethod" = 0;
         "mailnews.start_page.enabled" = false;
       };
 
