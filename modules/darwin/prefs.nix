@@ -127,6 +127,7 @@
         ];
         analyticsAllowed = true;
         autoClosePopup = true;
+        captureCursor = true;
         captureWithoutDesktopIcons = true;
         deletePopupAfterDragging = true;
         exportPath = "${homeDirectory}/Library/Mobile Documents/com~apple~CloudDocs/Files/Screenshots";
