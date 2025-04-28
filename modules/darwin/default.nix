@@ -66,7 +66,7 @@ in
 
   home-manager.users.${username} = {
     # home.file = toHomeFiles ./dotfiles;
-    user.codium.enable = false; # Currently broken on aarch64-darwin?
+    # user.codium.enable = false; # Currently broken on aarch64-darwin?
     home.packages = with pkgs; [
       net-news-wire
     ];

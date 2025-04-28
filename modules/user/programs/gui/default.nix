@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    # ./codium
+    ./codium
     ./espanso
 
     ./firefox.nix

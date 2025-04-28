@@ -84,7 +84,7 @@
     "rust-analyzer.showUnlinkedFileNotification" = false;
 
     "nix.enableLanguageServer" = true;
-    "nix.serverPath" = "${pkgs.nil}/bin/nil";
+    "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
 
     "extensions.experimental.affinity" = {
       "asvetliakov.vscode-neovim" = 1;
@@ -96,41 +96,6 @@
     "redhat.telemetry.enabled" = false;
     "search.useGlobalIgnoreFiles" = true;
     "database-client.autoSync" = false;
-
-    "sonarlint.focusOnNewCode" = true;
-    "sonarlint.disableTelemetry" = true;
-    "sonarlint.rules" = {
-      "typescript:S6759" = {
-        "level" = "off";
-      };
-      "typescript:S1854" = {
-        "level" = "off";
-      };
-      "typescript:S6564" = {
-        "level" = "off";
-      };
-      "typescript:S6606" = {
-        "level" = "off";
-      };
-      "typescript:S1135" = {
-        "level" = "off";
-      };
-      "typescript:S1186" = {
-        "level" = "off";
-      };
-      "typescript:S6571" = {
-        "level" = "off";
-      };
-      "typescript:S101" = {
-        "level" = "off";
-      };
-      "typescript:S6509" = {
-        "level" = "off";
-      };
-      "typescript:S4325" = {
-        "level" = "off";
-      };
-    };
 
     "[json]" = {
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
