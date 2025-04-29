@@ -35,6 +35,12 @@
         TSWPAutomaticSpellingCorrection = false;
       };
 
+      "com.apple.AppStore" = {
+        AutoPlayVideoSetting = "off";
+        InAppReviewEnabled = false;
+        UserSetAutoPlayVideoSetting = true;
+      };
+
       "com.apple.messages.text".EmojiReplacement = 1;
 
       "com.apple.dock" = {
