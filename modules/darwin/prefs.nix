@@ -90,6 +90,23 @@
       "com.apple.commerce".AutoUpdate = true;
       "com.apple.HIToolbox".AppleFnUsageType = 1;
 
+      "com.setapp.DesktopClient" = {
+        EnableLauncher = false;
+        LaunchAppAfterInstall = true;
+        ShouldLoadFinderSyncExtensionOnLaunch = false;
+        ShowAppsReleaseNotes = false;
+        StyleLauncher = 1;
+        shouldBlockNewAppsNotifications = true;
+        shouldBlockSoundsKey = false;
+        shouldBlockSpecialOffersNotifications = true;
+        shouldBlockSuccessfulAppUpdatesNotifications = true;
+        shouldDisableFeedbackWindow = true;
+        shouldDisableNotificationBadgeInDockTile = true;
+        shouldDisableNotificationBadgeInMenuBar = true;
+        shouldDisableRateRecentAppWindow = true;
+        shouldShowNewTaglines = false;
+      };
+
       "com.pilotmoon.scroll-reverser" = {
         StartAtLogin = true;
         HideIcon = true;
