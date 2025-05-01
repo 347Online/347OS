@@ -36,6 +36,7 @@
     with pkgs;
     [
       _1password-cli
+      mise
       pre-commit
       sops
       tinty
