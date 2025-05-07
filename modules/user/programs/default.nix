@@ -54,7 +54,7 @@
         gg = "lazygit";
 
         journal = ''
-          nvim "${homeDirectory}/Sync/Notes/journal/$(date +%Y-%m-%d).md" -c "norm G" -c "startinsert"
+          nvim "${homeDirectory}/Sync/Notes/journal/$(date +%Y-%m-%d).md" -c "norm Go" -c "startinsert" -c "set nomodified" -c "set wrap"
         '';
 
         branch = "git branch --show-current";
