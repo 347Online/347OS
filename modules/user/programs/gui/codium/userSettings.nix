@@ -12,6 +12,7 @@
     "editor.autoClosingQuotes" = "never";
     "editor.autoSurround" = "never";
     "editor.codeLens" = false;
+    "editor.fontFamily" = "JetBrainsMono Nerd Font";
     "editor.fontLigatures" = true;
     "editor.formatOnSave" = true;
     "editor.inlayHints.enabled" = "offUnlessPressed";
@@ -44,6 +45,7 @@
 
     "terminal.external.osxExec" = "wezterm";
     "terminal.external.linuxExec" = "wezterm";
+    "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
     "terminal.integrated.mouseWheelScrollSensitivity" = 0.1;
     "terminal.integrated.customGlyphs" = true;
     "terminal.integrated.defaultProfile.osx" = "zsh";
