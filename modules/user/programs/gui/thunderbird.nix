@@ -89,8 +89,7 @@ lib.mkIf config.user.gui.enable {
       };
     }
     (lib.mkIf pkgs.stdenv.isDarwin {
-      darwinSetupWarning = false;
-      package = util.dummy-package pkgs "thunderbird";
+      package = util.dummy-package pkgs "thunderbird"; # TODO: switch from homebrew installation to version packaged in nixpkgs
     })
   ];
 }
