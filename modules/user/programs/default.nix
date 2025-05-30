@@ -53,9 +53,7 @@
         diff = "delta";
         gg = "lazygit";
 
-        journal = ''
-          nvim "${homeDirectory}/Sync/Notes/journal/$(date +%Y-%m-%d).md" -c "norm Go" -c "startinsert" -c "set nomodified" -c "set wrap"
-        '';
+        journal = "nvim -c 'VimwikiMakeDiaryNote'";
 
         branch = "git branch --show-current";
 
