@@ -38,6 +38,7 @@ in
   };
 
   system = {
+    primaryUser = username;
     defaults.dock = {
       show-recents = false;
       persistent-others = [ ];
