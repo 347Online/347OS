@@ -79,6 +79,8 @@ lib.mkIf config.user.gui.enable {
       settings = {
         "mail.biff.play_sound" = false;
         "mail.biff.show_alert" = false;
+        "mail.prompt_purge_threshold" = true;
+        "mail.purge.ask" = false;
         "mailnews.start_page.enabled" = false;
       };
 
