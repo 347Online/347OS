@@ -12,6 +12,7 @@
     ))
     eslint_d
     prettierd
+    stylua
     yamlfmt
     yamllint
   ];
