@@ -40,6 +40,7 @@
       pre-commit
       sops
       tinty
+      yq
     ]
     ++ essentials;
 
