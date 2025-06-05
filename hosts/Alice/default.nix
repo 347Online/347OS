@@ -45,7 +45,10 @@
     };
     home.packages = with pkgs; [
       nodemon
+      open-policy-agent
       serverless
+      tflint
+      tfupdate
       yarn
     ];
     user = {
