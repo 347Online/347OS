@@ -81,6 +81,7 @@ lib.mkIf config.user.gui.enable {
         "mail.biff.show_alert" = false;
         "mail.prompt_purge_threshold" = true;
         "mail.purge.ask" = false;
+        "mail.shell.checkDefaultClient" = true;
         "mailnews.start_page.enabled" = false;
       };
 
