@@ -19,6 +19,8 @@
 
   homebrew = {
     casks = [
+      # TODO: Aren't these open source? Can't we enable these with programs.*.enable on mac and linux, if it's a personal machine?
+      "inkscape"
       "krita"
       # TODO: Messaging module mirroring NixOS
       "element"
