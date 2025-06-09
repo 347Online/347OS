@@ -41,6 +41,11 @@
         UserSetAutoPlayVideoSetting = true;
       };
 
+      # Requires Full Disk Access permission for Terminal Emulator
+      "com.apple.mail".NSUserKeyEquivalents = {
+        Archive = "a";
+      };
+
       "com.apple.messages.text".EmojiReplacement = 1;
 
       "com.apple.dock" = {
