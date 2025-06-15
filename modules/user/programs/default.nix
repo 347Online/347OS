@@ -53,6 +53,8 @@
         tree = "eza --tree";
         diff = "delta";
         gg = "lazygit";
+        vi = "nvim";
+        vim = "nvim";
 
         journal = "nvim -c 'VimwikiMakeDiaryNote'";
 
