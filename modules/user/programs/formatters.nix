@@ -12,6 +12,9 @@
     ))
     eslint_d
     prettierd
+    shellcheck
+    shfmt
+    sqlfluff
     stylua
     yamlfmt
     yamllint

@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    bash-language-server
     lua-language-server
     nixd
     taplo-lsp
