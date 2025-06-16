@@ -7,7 +7,7 @@
 }:
 {
   darwin.dock = {
-    emailApp = "Mail";
+    email.enable = false;
     apps = [
       "/Applications/Slack.app"
     ];

@@ -33,24 +33,28 @@
             type = lib.types.str;
             default = paths.${config.darwin.dock.browserApp};
           };
-        emailApp = lib.mkOption {
-          type = lib.types.enum [
-            "Thunderbird"
-            "Mail"
-          ];
-          default = "Thunderbird";
-        };
-        emailAppPath =
-          let
-            paths = {
-              Thunderbird = "/Applications/Thunderbird.app";
-              Mail = "/System/Applications/Mail.app";
-            };
-          in
-          lib.mkOption {
-            type = lib.types.str;
-            default = paths.${config.darwin.dock.emailApp};
+        email = {
+          enable = lib.mkEnableOption "email app in dock";
+          app = lib.mkOption {
+            type = lib.types.enum [
+              "Thunderbird"
+              "Mail"
+            ];
+            default = "Thunderbird";
           };
+          path =
+            let
+              inherit (config.darwin.dock.email) app;
+              paths = {
+                Thunderbird = "/Applications/Thunderbird.app";
+                Mail = "/System/Applications/Mail.app";
+              };
+            in
+            lib.mkOption {
+              type = lib.types.nullOr lib.types.str;
+              default = paths.${app};
+            };
+        };
         apps = lib.mkOption {
           type = with lib.types; listOf str;
           default = [ ];
