@@ -20,6 +20,7 @@ in
 
   darwin.gui.enable = lib.mkDefault true;
   darwin.homebrew.enable = lib.mkDefault true;
+  darwin.dock.email.enable = lib.mkDefault true;
 
   environment.systemPackages =
     let
@@ -45,7 +46,12 @@ in
       persistent-apps =
         [
           config.darwin.dock.browserAppPath
-          config.darwin.dock.emailAppPath
+          (
+            let
+              cfg = config.darwin.dock.email;
+            in
+            lib.mkIf cfg.enable cfg.path
+          )
 
           "/Applications/Fantastical.app"
           "/System/Applications/Music.app"
