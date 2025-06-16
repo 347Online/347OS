@@ -1,4 +1,9 @@
-{ homeDirectory, ... }:
+{
+  pkgs,
+  lib,
+  homeDirectory,
+  ...
+}:
 {
   programs.git = {
     enable = true;
@@ -32,8 +37,10 @@
       cp = "cherry-pick";
     };
     extraConfig = {
-      core.editor = "nvim";
-      core.pager = "LESS='FR --redraw-on-quit' delta";
+      core = {
+        editor = "nvim";
+        pager = "LESS='FR --redraw-on-quit' delta";
+      };
       init = {
         defaultBranch = "main";
         templatedir = "${homeDirectory}/.git_template";
@@ -45,6 +52,14 @@
         "git@github.com:347Online".insteadOf = "https://github.com/347Online";
         "git@github.com:amplify-education".insteadOf = "https://github.com/amplify-education";
       };
+
+      # Signing
+      user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEEVpmuZ4Rfr6QJpaR89FMuo7Y/DrAH/6Fp9Rneej11e";
+      gpg = {
+        format = "ssh";
+        ssh.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      };
+      commit.gpgsign = true;
     };
   };
 }
