@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  nvim,
   homeDirectory,
   flakeDir,
   ...
@@ -19,6 +18,7 @@
     ./fzf.nix
     ./git.nix
     ./jq.nix
+    ./language-servers.nix
     ./lazygit.nix
     ./ledger.nix
     ./less.nix
@@ -36,9 +36,11 @@
     with pkgs;
     [
       _1password-cli
+      mise
+      pre-commit
       sops
-
-      (lib.mkIf config.user.nixvim.enable nvim)
+      tinty
+      yq
     ]
     ++ essentials;
 
@@ -51,26 +53,16 @@
         tree = "eza --tree";
         diff = "delta";
         gg = "lazygit";
+        vi = "nvim";
+        vim = "nvim";
 
-        journal =
-          # bash
-          ''
-            nvim "${homeDirectory}/Sync/Notes/journal/$(date +%Y-%m-%d).md"
-          '';
+        journal = "nvim -c 'VimwikiMakeDiaryNote'";
 
-        branch =
-          # bash
-          "git branch --show-current";
+        branch = "git branch --show-current";
 
-        branchhelp =
-          # bash
-          ''
-            git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
-          '';
-
-        nvim-next =
-          # bash
-          "nix run ${flakeDir}#nvim";
+        branchhelp = ''
+          git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
+        '';
       };
     in
     {

@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   username,
@@ -29,6 +30,9 @@
           (util.toHomeFiles ./dotfiles)
           { ".face.icon".enable = config.user.gui.enable; }
         ];
+
+        packages = [ pkgs.nerd-fonts.jetbrains-mono ];
+
       };
 
       news.display = "silent";

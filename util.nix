@@ -1,6 +1,6 @@
-{ nixpkgs-unstable, ... }:
+{ nixpkgs, ... }:
 let
-  lib = nixpkgs-unstable.lib;
+  lib = nixpkgs.lib;
   util = rec {
     linuxSystems = [
       "aarch64-linux"
@@ -19,12 +19,12 @@ let
       f rec {
         inherit system;
 
-        pkgs = import nixpkgs-unstable {
+        pkgs = import nixpkgs {
           inherit system;
         };
       };
 
-    forSystems = f: systems: nixpkgs-unstable.lib.genAttrs systems (system: (forSystem system f));
+    forSystems = f: systems: nixpkgs.lib.genAttrs systems (system: (forSystem system f));
 
     forAllSystems = f: forSystems f supportedSystems;
 

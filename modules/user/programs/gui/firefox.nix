@@ -16,15 +16,16 @@ lib.mkIf config.user.gui.enable {
     profiles.${username} = {
       search = {
         force = true;
-        default = "Google (Fixed)";
+        default = "google-fixed";
         order = [
-          "Google (Fixed)"
-          "DuckDuckGo"
+          "google-fixed"
+          "ddg"
         ];
         engines = {
-          Google.metaData.hidden = true;
-          Bing.metaData.hidden = true;
-          "Google (Fixed)" = {
+          google.metaData.hidden = true;
+          bing.metaData.hidden = true;
+          google-fixed = {
+            name = "Google (Fixed)";
             metaData.alias = "@google";
             urls = [
               {
@@ -68,7 +69,7 @@ lib.mkIf config.user.gui.enable {
               "downloads-button"
               "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action"
               "addon_darkreader_org-browser-action"
-            ];
+            ] ++ config.user.firefox.extraPinnedItems;
             toolbar-menubar = [
               "menubar-items"
             ];
@@ -100,7 +101,6 @@ lib.mkIf config.user.gui.enable {
         "datareporting.policy.dataSubmissionPolicyBypassNotification" = true;
         "extensions.formautofill.addresses.enabled" = false;
         "extensions.formautofill.creditCards.enabled" = false;
-        "identity.sync.tokenserver.uri" = "https://firefox.fatgirl.cloud/1.0/sync/1.5";
         "signon.rememberSignons" = false;
       };
     };

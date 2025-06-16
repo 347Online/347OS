@@ -5,19 +5,12 @@
   ...
 }:
 lib.mkIf config.darwin.homebrew.enable {
-  nix-homebrew = {
-    enable = true;
-    user = username;
-    autoMigrate = true;
-  };
-
   homebrew = {
     enable = true;
 
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      cleanup = "uninstall";
     };
 
     brews = [
@@ -45,11 +38,12 @@ lib.mkIf config.darwin.homebrew.enable {
       "google-chrome"
       "logi-options+"
       "monitorcontrol"
-      "obsidian"
       "raycast"
       "scroll-reverser"
       "setapp"
       "thunderbird"
+
+      (lib.mkIf config.darwin.gaming.enable "prismlauncher")
     ];
   };
 

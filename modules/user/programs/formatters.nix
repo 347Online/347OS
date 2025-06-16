@@ -7,11 +7,15 @@
         mdformat-footnote
         mdformat-frontmatter
         mdformat-tables
-        mdformat-toc
+        # mdformat-toc
       ]
     ))
     eslint_d
     prettierd
+    shellcheck
+    shfmt
+    sqlfluff
+    stylua
     yamlfmt
     yamllint
   ];

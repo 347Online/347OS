@@ -1,3 +1,4 @@
+{ homeDirectory, ... }:
 {
   system.keyboard = {
     enableKeyMapping = true;
@@ -33,6 +34,19 @@
         # TODO: PR got merged, use the built-in option
         TSWPAutomaticSpellingCorrection = false;
       };
+
+      "com.apple.AppStore" = {
+        AutoPlayVideoSetting = "off";
+        InAppReviewEnabled = false;
+        UserSetAutoPlayVideoSetting = true;
+      };
+
+      # Requires Full Disk Access permission for Terminal Emulator
+      "com.apple.mail".NSUserKeyEquivalents = {
+        Archive = "a";
+      };
+
+      "com.apple.messages.text".EmojiReplacement = 1;
 
       "com.apple.dock" = {
         wvous-br-corner = 4;
@@ -81,6 +95,23 @@
       "com.apple.commerce".AutoUpdate = true;
       "com.apple.HIToolbox".AppleFnUsageType = 1;
 
+      "com.setapp.DesktopClient" = {
+        EnableLauncher = false;
+        LaunchAppAfterInstall = true;
+        ShouldLoadFinderSyncExtensionOnLaunch = false;
+        ShowAppsReleaseNotes = false;
+        StyleLauncher = 1;
+        shouldBlockNewAppsNotifications = true;
+        shouldBlockSoundsKey = false;
+        shouldBlockSpecialOffersNotifications = true;
+        shouldBlockSuccessfulAppUpdatesNotifications = true;
+        shouldDisableFeedbackWindow = true;
+        shouldDisableNotificationBadgeInDockTile = true;
+        shouldDisableNotificationBadgeInMenuBar = true;
+        shouldDisableRateRecentAppWindow = true;
+        shouldShowNewTaglines = false;
+      };
+
       "com.pilotmoon.scroll-reverser" = {
         StartAtLogin = true;
         HideIcon = true;
@@ -124,9 +155,10 @@
         ];
         analyticsAllowed = true;
         autoClosePopup = true;
+        captureCursor = true;
         captureWithoutDesktopIcons = true;
         deletePopupAfterDragging = true;
-        exportPath = "/Users/katie/Library/Mobile Documents/com~apple~CloudDocs/Files/Screenshots";
+        exportPath = "${homeDirectory}/Library/Mobile Documents/com~apple~CloudDocs/Files/Screenshots";
         freezeScreen = true;
         popupAskForDestinationWhenSaving = false;
         showMenuBarIcon = true;

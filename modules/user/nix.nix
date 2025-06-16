@@ -11,7 +11,7 @@
       options = "--delete-older-than 30d";
     };
     registry = {
-      nixpkgs.flake = inputs.nixpkgs-unstable;
+      nixpkgs.flake = inputs.nixpkgs;
       nixos-hardware.flake = inputs.nixos-hardware;
     };
     settings = {

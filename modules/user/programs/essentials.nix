@@ -10,7 +10,7 @@ pkgs: with pkgs; [
   go
   htop
   moreutils
-  nixd
+  neovim
   nixfmt-rfc-style
   nix-search-cli
   nodejs
@@ -20,6 +20,7 @@ pkgs: with pkgs; [
   rustup
   trunk
   screen
+  shellcheck
   tmux
   zoxide
 ]

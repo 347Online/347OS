@@ -1,20 +1,29 @@
 {
-  self,
+  lib,
   username,
   ...
 }:
 {
   imports = [
     ./hardware-configuration.nix
+    ./nginx.nix
   ];
 
-  stylix.image = "${self}/wallpapers/desert.jpg";
+  sops.defaultSopsFile = ./.arukenia-secrets.yaml;
 
   home-manager.users.${username} = {
-    # home-config here
+    user.nixvim.enable = false;
+    services.syncthing.enable = lib.mkForce false;
   };
 
-  networking.hostName = "Arukenia";
+  networking = {
+    hostName = "Arukenia";
+    firewall.allowedTCPPorts = [
+      80
+      443
+    ];
+  };
+
   time.timeZone = "America/Chicago";
 
   # DO NOT EDIT

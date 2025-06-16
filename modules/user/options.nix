@@ -8,7 +8,10 @@
   options = {
     user = {
       codium = {
-        enable = lib.mkEnableOption "vscodium setup";
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = util.mkIfElse config.user.gui.enable true (lib.mkForce false);
+        };
 
         extraExtensions = lib.mkOption {
           type = with lib.types; listOf package;
@@ -20,15 +23,13 @@
 
       gaming.enable = lib.mkEnableOption "gaming";
 
-      nixvim.enable = lib.mkEnableOption "nixvim setup";
+      firefox.extraPinnedItems = lib.mkOption {
+        type = with lib.types; listOf str;
+        default = [ ];
+      };
     };
 
     # DO NOT SET MANUALLY
     user.gui.enable = lib.mkEnableOption "graphical interface and programs";
-  };
-
-  config = {
-    user.nixvim.enable = lib.mkDefault true;
-    # user.codium.enable = util.mkIfElse config.user.gui.enable (lib.mkDefault true) false;
   };
 }
