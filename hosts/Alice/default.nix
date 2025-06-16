@@ -53,6 +53,7 @@
     ];
     user = {
       codium.extraExtensions = with vscode-extensions; [
+        open-vsx.hashicorp.terraform
       ];
 
       firefox.extraPinnedItems = [
