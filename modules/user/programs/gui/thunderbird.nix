@@ -12,6 +12,12 @@ let
   };
 in
 lib.mkIf config.user.gui.enable {
+  accounts.calendar.accounts.Personal.thunderbird = {
+    enable = lib.mkDefault config.user.personal.enable;
+  };
+  accounts.contact.accounts.Personal.thunderbird = {
+    enable = lib.mkDefault config.user.personal.enable;
+  };
   accounts.email.accounts.Personal.thunderbird = {
     enable = lib.mkDefault config.user.personal.enable;
 

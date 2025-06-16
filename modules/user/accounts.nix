@@ -11,7 +11,7 @@ lib.mkIf config.user.personal.enable (
         remote = {
           inherit userName passwordCommand;
           type = "caldav";
-          url = "caldav.fastmail.com";
+          url = "https://caldav.fastmail.com";
         };
       };
       contact.accounts.Personal = {
@@ -19,7 +19,7 @@ lib.mkIf config.user.personal.enable (
         remote = {
           inherit userName passwordCommand;
           type = "carddav";
-          url = "carddav.fastmail.com";
+          url = "https://carddav.fastmail.com/dav/addressbooks/user/${userName}/Default";
         };
       };
       email.accounts.Personal = {
