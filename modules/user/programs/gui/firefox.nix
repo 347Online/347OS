@@ -101,6 +101,7 @@ lib.mkIf config.user.gui.enable {
         "datareporting.policy.dataSubmissionPolicyBypassNotification" = true;
         "extensions.formautofill.addresses.enabled" = false;
         "extensions.formautofill.creditCards.enabled" = false;
+        "sidebar.revamp" = false;
         "signon.rememberSignons" = false;
       };
     };
