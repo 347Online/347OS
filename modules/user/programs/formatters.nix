@@ -10,6 +10,7 @@
         # mdformat-toc
       ]
     ))
+    djlint
     eslint_d
     prettierd
     shellcheck
