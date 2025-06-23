@@ -29,7 +29,7 @@
     ];
 
     casks = [
-      "docker"
+      "docker-desktop"
     ];
   };
 
