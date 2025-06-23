@@ -190,21 +190,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-custom": {
-      "locked": {
-        "lastModified": 1740858223,
-        "narHash": "sha256-evVRT8gtZlQ97aydEJwR3AqmYFQhmR/0Mxckr6ETHtk=",
-        "owner": "347Online",
-        "repo": "nixpkgs",
-        "rev": "15a6b658017a43e757e1b178790e5e58746f95fe",
-        "type": "github"
-      },
-      "original": {
-        "owner": "347Online",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1748740939,
@@ -275,7 +260,6 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-custom": "nixpkgs-custom",
         "nur": "nur",
         "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix"

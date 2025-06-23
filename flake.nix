@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-custom.url = "github:347Online/nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -53,7 +52,6 @@
     inputs@{
       self,
       nixpkgs,
-      nixpkgs-custom,
       flake-parts,
       nixos-hardware,
 
@@ -73,14 +71,10 @@
         let
           system = pkgs.system;
           homeDirectory = util.mkHomeDirectory pkgs username;
-          pkgs-custom = import nixpkgs-custom {
-            inherit system;
-          };
           args = {
             inherit
               self
               nixpkgs
-              pkgs-custom
               inputs
               username
               homeDirectory

@@ -12,8 +12,6 @@
 
   sops.defaultSopsFile = ./.astrid-secrets.yaml;
 
-  stylix.image = "${self}/wallpapers/desert.jpg";
-
   home-manager.users.${username} = {
     user.nixvim.enable = false;
     services.syncthing.enable = lib.mkForce false;

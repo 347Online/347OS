@@ -8,8 +8,6 @@
     ./hardware.nix
   ];
 
-  stylix.image = "${self}/wallpapers/neon-city.jpg";
-
   networking.hostName = "Arctic";
   time.timeZone = "America/Chicago";
 
