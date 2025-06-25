@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   options = {
     darwin = {
@@ -46,7 +51,7 @@
             let
               inherit (config.darwin.dock.email) app;
               paths = {
-                Thunderbird = "/Applications/Thunderbird.app";
+                Thunderbird = "${pkgs.thunderbird}/Applications/Thunderbird.app";
                 Mail = "/System/Applications/Mail.app";
               };
             in

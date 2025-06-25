@@ -41,7 +41,6 @@ lib.mkIf config.darwin.homebrew.enable {
       "raycast"
       "scroll-reverser"
       "setapp"
-      "thunderbird"
 
       (lib.mkIf config.darwin.gaming.enable "prismlauncher")
     ];
