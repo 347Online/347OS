@@ -38,6 +38,7 @@
         bind C-x kill-session
 
         set -ag terminal-overrides ",$TERM:Tc"
+        set -as terminal-features ",*:hyperlinks"
       '';
   };
 }
