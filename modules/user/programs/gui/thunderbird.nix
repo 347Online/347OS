@@ -11,15 +11,15 @@ let
     personal = "845f9286400f42697fbb196d24c794efa933ce1d20e2b93a7cf770b69f96f6fc";
   };
 in
-lib.mkIf config.user.gui.enable {
+lib.mkIf (config.user.gui.enable && config.user.personal.enable) {
   accounts.calendar.accounts.Personal.thunderbird = {
-    enable = lib.mkDefault config.user.personal.enable;
+    enable = lib.mkDefault true;
   };
   accounts.contact.accounts.Personal.thunderbird = {
-    enable = lib.mkDefault config.user.personal.enable;
+    enable = lib.mkDefault true;
   };
   accounts.email.accounts.Personal.thunderbird = {
-    enable = lib.mkDefault config.user.personal.enable;
+    enable = lib.mkDefault true;
 
     settings =
       id: with ids; {
