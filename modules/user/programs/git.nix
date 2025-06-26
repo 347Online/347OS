@@ -18,6 +18,7 @@
     aliases = rec {
       br = "branch";
       c = "commit";
+      ccret = "commit --all --message 'Secrets'";
       co = "checkout";
       p = "push";
       pf = "push --force-with-lease";
@@ -29,8 +30,8 @@
       statsu = s;
       unstage = "restore --staged";
       last = "log -1 HEAD";
-      prev = last;
-      ri = "rebase -i";
+      lc = "! git rev-parse HEAD | xargs echo -n";
+      ri = "rebase --interactive";
       rc = "rebase --continue";
       ra = "rebase --abort";
       re = "rebase --edit-todo";

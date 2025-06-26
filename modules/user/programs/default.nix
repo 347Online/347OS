@@ -56,13 +56,15 @@
         vi = "nvim";
         vim = "nvim";
 
-        journal = "nvim -c 'VimwikiMakeDiaryNote'";
+        branch =
+          # sh
+          "git branch --show-current";
 
-        branch = "git branch --show-current";
-
-        branchhelp = ''
-          git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
-        '';
+        branchhelp =
+          # sh
+          ''
+            git branch --list | rg -v '^\s+?\*|\+' | fzf | awk '{$1=$1};1'
+          '';
       };
     in
     {
