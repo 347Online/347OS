@@ -11,6 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,6 +59,7 @@
 
       home-manager,
       nix-darwin,
+      nix-homebrew,
       nix-vscode-extensions,
       nur,
       plasma-manager,
@@ -122,6 +125,7 @@
           modules = [
             home-manager.darwinModules.home-manager
             sops-nix.darwinModules.sops
+            nix-homebrew.darwinModules.nix-homebrew
             (
               {
                 lib,

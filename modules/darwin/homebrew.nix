@@ -5,11 +5,19 @@
   ...
 }:
 lib.mkIf config.darwin.homebrew.enable {
+  nix-homebrew = {
+    enable = true;
+
+    user = username;
+    autoMigrate = true;
+  };
+
   homebrew = {
     enable = true;
 
     onActivation = {
       autoUpdate = true;
+      cleanup = "zap";
       upgrade = true;
     };
 

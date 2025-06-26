@@ -34,15 +34,6 @@
   };
 
   home-manager.users.${username} = {
-    accounts.email.accounts.Amplify = {
-      thunderbird.enable = true;
-
-      userName = "kjanzen@amplify.com";
-      realName = "Katie Janzen";
-      address = "kjanzen@amplify.com";
-      primary = true;
-      flavor = "gmail.com";
-    };
     home.packages = with pkgs; [
       nodemon
       open-policy-agent
