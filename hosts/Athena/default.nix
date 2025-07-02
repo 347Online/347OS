@@ -20,6 +20,7 @@
       # TODO: Messaging module mirroring NixOS
       "element"
       "discord"
+      "transmission"
     ];
   };
 
