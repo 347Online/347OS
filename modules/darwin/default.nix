@@ -22,14 +22,17 @@ in
   darwin.homebrew.enable = lib.mkDefault true;
   darwin.dock.email.enable = lib.mkDefault true;
 
-  environment.systemPackages =
-    let
-      essentials = (import ../user/programs/essentials.nix pkgs);
-    in
-    essentials
-    ++ [
-      # System packages
-    ];
+  environment = {
+    enableAllTerminfo = true;
+    systemPackages =
+      let
+        essentials = (import ../user/programs/essentials.nix pkgs);
+      in
+      essentials
+      ++ [
+        # System packages
+      ];
+  };
 
   security.pam.services.sudo_local = {
     enable = true;
