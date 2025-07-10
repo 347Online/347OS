@@ -67,6 +67,8 @@
       ...
     }:
     let
+      defaultUsername = "katie";
+
       util = import ./util.nix inputs;
 
       mkSpecialArgs =
@@ -115,7 +117,7 @@
         {
           system ? "aarch64-darwin",
           module,
-          username ? "katie",
+          username ? defaultUsername,
         }:
         let
           pkgs = mkPkgs system;
@@ -161,7 +163,7 @@
         {
           system,
           module,
-          username ? "katie",
+          username ? defaultUsername,
         }:
         let
           pkgs = mkPkgs system;
@@ -202,44 +204,8 @@
             module
           ];
         };
-
-      mkIso =
-        {
-          system,
-          username ? "nixos",
-        }:
-        let
-          pkgs = mkPkgs { inherit system; };
-          specialArgs = mkSpecialArgs { inherit pkgs username; };
-        in
-        nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-
-          modules = [
-            (
-              { modulesPath, ... }:
-              {
-                imports = [
-                  "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
-                ];
-
-                environment.systemPackages = with pkgs; [
-                  nixfmt-rfc-style
-                  git
-                  neovim
-                  lvm2
-                ];
-
-                nixpkgs.hostPlatform = system;
-              }
-            )
-          ];
-        };
     in
     {
-      # TODO: hosts.nix file loaded by flake.nix
-      # Could provide the relevant functions like mkDarwin
-      # mkDarwin and mkNixos could call a mkUser
       darwinConfigurations."Athena" = mkDarwin {
         module = ./hosts/Athena;
       };
@@ -262,36 +228,5 @@
         system = "x86_64-linux";
         module = ./hosts/Amber;
       };
-
-      nixosConfigurations."ISO-ARM" = mkIso "aarch64-linux";
-      nixosConfigurations."ISO-INTEL" = mkIso "x86_64-linux";
-
-      # TODO: Use flake-utils or whatever for this, it's not worth it
-      # TODO: Figure out how to genericize this over arbitrary username
-      # packages = util.forAllSystems (
-      #   {
-      #     pkgs,
-      #     system,
-      #   }:
-      #   let
-      #     username = "katie";
-      #     specialArgs = mkSpecialArgs {inherit pkgs; username = "katie";};
-      #   in
-      #   {
-      #     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-      #       inherit pkgs;
-      #
-      #       extraSpecialArgs = mkExtraSpecialArgs {inherit pkgs username;};
-      #
-      #       modules = [
-      #         sops-nix.homeManagerModules.sops
-      #         {
-      #           nix.package = pkgs.nix;
-      #           user.gui.enable = true;
-      #         }
-      #       ] ++ baseModulesHomeManager;
-      #     };
-      #   }
-      # );
     };
 }

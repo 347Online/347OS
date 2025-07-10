@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  username,
   ...
 }:
 {
@@ -32,7 +33,7 @@
       settings = {
         inherit devices;
 
-        gui.user = "katie";
+        gui.user = username;
 
         folders =
           let
