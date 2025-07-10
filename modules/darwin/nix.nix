@@ -1,14 +1,12 @@
 {
   system,
   nixpkgs,
-  pkgs,
   lib,
   username,
   ...
 }:
 {
   nix = {
-    package = pkgs.nix;
     gc = {
       automatic = true;
       options = "--delete-older-than 30d";
