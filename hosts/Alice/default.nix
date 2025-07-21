@@ -23,6 +23,7 @@
       "amplify-education/astrotools/meta"
       "docker-credential-helper-ecr"
       "nginx"
+      "opa"
       "pipx"
       "pyenv"
       "pyenv-virtualenv"
@@ -36,7 +37,6 @@
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       nodemon
-      open-policy-agent
       serverless
       tflint
       tfupdate
