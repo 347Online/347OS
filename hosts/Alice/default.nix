@@ -30,6 +30,7 @@
     ];
 
     casks = [
+      "dbeaver-community"
       "docker-desktop"
     ];
   };
