@@ -54,6 +54,7 @@ lib.mkIf config.darwin.homebrew.enable {
       ]
       ++ lib.optionals config.darwin.gaming.enable [
         "multipatch"
+        "openemu"
         "prismlauncher"
       ];
 

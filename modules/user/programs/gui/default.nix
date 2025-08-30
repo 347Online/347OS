@@ -11,6 +11,7 @@
     ./espanso
 
     ./firefox.nix
+    ./gaming.nix
     ./ghostty.nix
     ./messaging.nix
     ./thunderbird.nix
