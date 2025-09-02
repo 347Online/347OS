@@ -6,5 +6,6 @@
       "cd"
     ];
     enableZshIntegration = true;
+    enableBashIntegration = true;
   };
 }
