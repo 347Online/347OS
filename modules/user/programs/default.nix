@@ -1,9 +1,5 @@
 {
-  lib,
-  config,
   pkgs,
-  homeDirectory,
-  flakeDir,
   ...
 }:
 {
@@ -22,6 +18,7 @@
     ./lazygit.nix
     ./ledger.nix
     ./less.nix
+    ./mise.nix
     ./pandoc.nix
     ./syncthing.nix
     ./tealdeer.nix
