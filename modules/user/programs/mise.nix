@@ -11,9 +11,9 @@
         python = [ "latest" ];
         go = [ "latest" ];
       };
-    };
-    settings = {
-      idiomatic_version_file_enable_tools = [ "node" ];
+      settings = {
+        idiomatic_version_file_enable_tools = [ "node" ];
+      };
     };
   };
 }
