@@ -15,6 +15,7 @@
         type = with lib.types; listOf str;
         default = [ ];
       };
+
       dock = {
         browserApp = lib.mkOption {
           type = lib.types.enum [
@@ -56,7 +57,7 @@
               };
             in
             lib.mkOption {
-              type = lib.types.nullOr lib.types.str;
+              type = with lib.types; nullOr str;
               default = paths.${app};
             };
         };
@@ -64,6 +65,12 @@
           type = with lib.types; listOf str;
           default = [ ];
         };
+      };
+
+      # TODO: Port this change over to nixos and user
+      unfree-allowed = lib.mkOption {
+        type = with lib.types; listOf str;
+        default = [ ];
       };
     };
   };

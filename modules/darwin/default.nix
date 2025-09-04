@@ -18,9 +18,11 @@ in
     ./prefs.nix
   ];
 
-  darwin.gui.enable = lib.mkDefault true;
-  darwin.homebrew.enable = lib.mkDefault true;
-  darwin.dock.email.enable = lib.mkDefault true;
+  darwin = {
+    dock.email.enable = lib.mkDefault true;
+    gui.enable = lib.mkDefault true;
+    homebrew.enable = lib.mkDefault true;
+  };
 
   environment = {
     enableAllTerminfo = true;

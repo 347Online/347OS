@@ -1,6 +1,7 @@
 {
   system,
   nixpkgs,
+  config,
   lib,
   username,
   ...
@@ -22,9 +23,6 @@
   nixpkgs = {
     hostPlatform = system;
     config.allowUnfreePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "ookla-speedtest"
-      ];
+      pkg: builtins.elem (lib.getName pkg) (config.darwin.unfree-allowed ++ [ "ookla-speedtest" ]);
   };
 }

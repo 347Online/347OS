@@ -1,6 +1,7 @@
 {
   nixpkgs,
   inputs,
+  config,
   lib,
   ...
 }:
@@ -26,12 +27,15 @@
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:
-    builtins.elem (lib.getName pkg) [
-      "1password-cli"
-      "discord"
-      "ookla-speedtest"
-      "onepassword-password-manager"
-      "teamtalk5"
-      "vscode-extension-ms-vsliveshare-vsliveshare"
-    ];
+    builtins.elem (lib.getName pkg) (
+      config.user.unfree-allowed
+      ++ [
+        "1password-cli"
+        "discord"
+        "ookla-speedtest"
+        "onepassword-password-manager"
+        "teamtalk5"
+        "vscode-extension-ms-vsliveshare-vsliveshare"
+      ]
+    );
 }

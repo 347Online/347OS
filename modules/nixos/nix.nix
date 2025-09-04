@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   lib,
   nixpkgs,
   username,
@@ -21,13 +22,16 @@
   };
   nixpkgs.config.allowUnfreePredicate =
     pkg:
-    builtins.elem (lib.getName pkg) [
-      "1password"
-      "1password-cli"
-      "minecraft-server"
-      "ookla-speedtest"
-      "plexmediaserver"
-      "steam"
-      "steam-unwrapped"
-    ];
+    builtins.elem (lib.getName pkg) (
+      config.nixos.unfree-allowed
+      ++ [
+        "1password"
+        "1password-cli"
+        "minecraft-server"
+        "ookla-speedtest"
+        "plexmediaserver"
+        "steam"
+        "steam-unwrapped"
+      ]
+    );
 }

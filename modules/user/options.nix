@@ -27,6 +27,11 @@
         type = with lib.types; listOf str;
         default = [ ];
       };
+
+      unfree-allowed = lib.mkOption {
+        type = with lib.types; listOf str;
+        default = [ ];
+      };
     };
 
     # DO NOT SET MANUALLY
