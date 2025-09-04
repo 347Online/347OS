@@ -48,26 +48,25 @@ in
     defaults.dock = {
       show-recents = false;
       persistent-others = [ ];
-      persistent-apps =
-        [
-          config.darwin.dock.browserAppPath
-          (
-            let
-              cfg = config.darwin.dock.email;
-            in
-            lib.mkIf cfg.enable cfg.path
-          )
+      persistent-apps = [
+        config.darwin.dock.browserAppPath
+        (
+          let
+            cfg = config.darwin.dock.email;
+          in
+          lib.mkIf cfg.enable cfg.path
+        )
 
-          "/Applications/Fantastical.app"
-          "/System/Applications/Music.app"
-          "/Applications/Broadcasts.app"
-        ]
-        ++ config.darwin.dock.apps
-        ++ [
-          # Right-most apps
-          "/Applications/Ghostty.app"
-          "/System/Applications/System Settings.app"
-        ];
+        "/Applications/Fantastical.app"
+        "/System/Applications/Music.app"
+        "/Applications/Broadcasts.app"
+      ]
+      ++ config.darwin.dock.apps
+      ++ [
+        # Right-most apps
+        "/Applications/Ghostty.app"
+        "/System/Applications/System Settings.app"
+      ];
     };
     startup.chime = true;
 

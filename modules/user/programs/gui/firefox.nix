@@ -69,7 +69,8 @@ lib.mkIf config.user.gui.enable {
               "downloads-button"
               "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action"
               "addon_darkreader_org-browser-action"
-            ] ++ config.user.firefox.extraPinnedItems;
+            ]
+            ++ config.user.firefox.extraPinnedItems;
             toolbar-menubar = [
               "menubar-items"
             ];

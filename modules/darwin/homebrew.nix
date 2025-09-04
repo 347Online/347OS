@@ -39,24 +39,23 @@ lib.mkIf config.darwin.homebrew.enable {
       "StopTheMadness Pro" = 6471380298;
     };
 
-    casks =
-      [
-        "1password"
-        "firefox"
-        "ghostty"
-        "google-chrome"
-        "logi-options+"
-        "monitorcontrol"
-        "raycast"
-        "scroll-reverser"
-        "setapp"
+    casks = [
+      "1password"
+      "firefox"
+      "ghostty"
+      "google-chrome"
+      "logi-options+"
+      "monitorcontrol"
+      "raycast"
+      "scroll-reverser"
+      "setapp"
 
-      ]
-      ++ lib.optionals config.darwin.gaming.enable [
-        "multipatch"
-        "openemu"
-        "prismlauncher"
-      ];
+    ]
+    ++ lib.optionals config.darwin.gaming.enable [
+      "multipatch"
+      "openemu"
+      "prismlauncher"
+    ];
 
   };
 
