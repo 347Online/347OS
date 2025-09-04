@@ -1,15 +1,18 @@
 {
   username,
   pkgs,
-  lib,
   ...
 }:
 {
-  darwin.dock = {
-    email.enable = false;
-    apps = [
-      "/Applications/Slack.app"
-    ];
+  darwin = {
+    dock = {
+      email.enable = false;
+      apps = [
+        "/Applications/Slack.app"
+      ];
+    };
+
+    unfree-allowed = [ "claude-code" ];
   };
 
   homebrew = {
@@ -36,6 +39,7 @@
 
   home-manager.users.${username} = {
     home.packages = with pkgs; [
+      claude-code
       nodemon
       serverless
       tflint
