@@ -14,19 +14,14 @@ let
 
     supportedSystems = linuxSystems ++ darwinSystems;
 
-    forSystem =
-      system: f:
-      f rec {
-        inherit system;
-
-        pkgs = import nixpkgs {
-          inherit system;
-        };
-      };
-
-    forSystems = f: systems: nixpkgs.lib.genAttrs systems (system: (forSystem system f));
-
-    forAllSystems = f: forSystems f supportedSystems;
+    forAllSystems =
+      f:
+      builtins.listToAttrs (
+        builtins.map (system: {
+          name = system;
+          value = f system;
+        }) supportedSystems
+      );
 
     mkIfElse =
       condition: trueValue: falseValue:

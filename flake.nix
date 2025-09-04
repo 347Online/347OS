@@ -206,27 +206,33 @@
         };
     in
     {
-      darwinConfigurations."Athena" = mkDarwin {
-        module = ./hosts/Athena;
-      };
-      darwinConfigurations."Alice" = mkDarwin {
-        module = ./hosts/Alice;
-        username = "kjanzen";
-      };
-
-      nixosConfigurations."Aspen" = mkNixos {
-        system = "x86_64-linux";
-        module = ./hosts/Aspen;
+      darwinConfigurations = {
+        Athena = mkDarwin {
+          module = ./hosts/Athena;
+        };
+        Alice = mkDarwin {
+          module = ./hosts/Alice;
+          username = "kjanzen";
+        };
       };
 
-      nixosConfigurations."Arukenia" = mkNixos {
-        system = "x86_64-linux";
-        module = ./hosts/Arukenia;
+      nixosConfigurations = {
+        Aspen = mkNixos {
+          system = "x86_64-linux";
+          module = ./hosts/Aspen;
+        };
+
+        Arukenia = mkNixos {
+          system = "x86_64-linux";
+          module = ./hosts/Arukenia;
+        };
+
+        Amber = mkNixos {
+          system = "x86_64-linux";
+          module = ./hosts/Amber;
+        };
       };
 
-      nixosConfigurations."Amber" = mkNixos {
-        system = "x86_64-linux";
-        module = ./hosts/Amber;
-      };
+      formatter = util.forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
     };
 }
