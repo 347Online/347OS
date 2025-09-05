@@ -7,6 +7,11 @@
 }:
 let
   inherit (pkgs.nur.repos.rycee) firefox-addons;
+  getBrowserAction =
+    name:
+    "${firefox-addons.${name}.addonId}-browser-action"
+    |> lib.strings.stringAsChars (x: if (builtins.match "^[{}.@]$" x) != null then "_" else x)
+    |> lib.strings.toLower;
 in
 lib.mkIf config.user.gui.enable {
   programs.firefox = {
@@ -56,33 +61,49 @@ lib.mkIf config.user.gui.enable {
 
       settings = {
         "browser.uiCustomization.state" = builtins.toJSON rec {
-          placements = {
-            widget-overflow-fixed-list = [ ];
-            "unified-extensions-area" = [
-              "ublock0_raymondhill_net-browser-action"
-              "_34daeb50-c2d2-4f14-886a-7160b24d66a4_-browser-action"
-            ];
-            nav-bar = [
-              "back-button"
-              "forward-button"
-              "stop-reload-button"
-              "urlbar-container"
-              "downloads-button"
-              "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action"
-              "addon_darkreader_org-browser-action"
-            ]
-            ++ config.user.firefox.extraPinnedItems;
-            toolbar-menubar = [
-              "menubar-items"
-            ];
-            TabsToolbar = [
-              "alltabs-button"
-              "tabbrowser-tabs"
-              "new-tab-button"
-            ];
-            vertical-tabs = [ ];
-            PersonalToolbar = [ "personal-bookmarks" ];
-          };
+          placements =
+            let
+              actions =
+                [
+                  "darkreader"
+                  "instapaper-official"
+                  "onepassword-password-manager"
+                  "ublock-origin"
+                  "youtube-shorts-block"
+                ]
+                |> builtins.map (name: {
+                  inherit name;
+                  value = (getBrowserAction name);
+                })
+                |> builtins.listToAttrs;
+            in
+            {
+              widget-overflow-fixed-list = [ ];
+              unified-extensions-area = [
+                # This keeps ublock from pinning itself
+                actions.ublock-origin
+                actions.youtube-shorts-block
+              ];
+              nav-bar = [
+                "back-button"
+                "forward-button"
+                "stop-reload-button"
+                "urlbar-container"
+                "downloads-button"
+                actions.onepassword-password-manager
+                actions.instapaper-official
+                actions.darkreader
+              ]
+              ++ config.user.firefox.extraPinnedItems;
+              toolbar-menubar = [ "menubar-items" ];
+              TabsToolbar = [
+                "alltabs-button"
+                "tabbrowser-tabs"
+                "new-tab-button"
+              ];
+              vertical-tabs = [ ];
+              PersonalToolbar = [ "personal-bookmarks" ];
+            };
           dirtyAreaCache = builtins.attrNames placements;
           currentVersion = 30;
         };
