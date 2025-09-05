@@ -32,9 +32,9 @@
       ++ [
         "1password-cli"
         "discord"
-        "ookla-speedtest"
+        "instapaper-official"
         "onepassword-password-manager"
-        "teamtalk5"
+        "ookla-speedtest"
         "vscode-extension-ms-vsliveshare-vsliveshare"
       ]
     );

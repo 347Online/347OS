@@ -48,6 +48,7 @@ lib.mkIf config.user.gui.enable {
 
       extensions.packages = with firefox-addons; [
         darkreader
+        instapaper-official
         onepassword-password-manager
         ublock-origin
         youtube-shorts-block
