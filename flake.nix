@@ -69,6 +69,12 @@
     let
       defaultUsername = "katie";
 
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "pipe-operators"
+      ];
+
       util = import ./util.nix inputs;
 
       mkSpecialArgs =
@@ -83,6 +89,7 @@
               inputs
               username
               homeDirectory
+              experimental-features
               util
               system
               ;

@@ -3,6 +3,7 @@
   inputs,
   config,
   lib,
+  experimental-features,
   ...
 }:
 {
@@ -16,11 +17,8 @@
       nixos-hardware.flake = inputs.nixos-hardware;
     };
     settings = {
+      inherit experimental-features;
       download-buffer-size = 524288000;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
     };
     nixPath = [ "nixpkgs=${nixpkgs}" ];
   };

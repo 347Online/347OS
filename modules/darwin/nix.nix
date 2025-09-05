@@ -4,6 +4,7 @@
   config,
   lib,
   username,
+  experimental-features,
   ...
 }:
 {
@@ -13,8 +14,8 @@
       options = "--delete-older-than 30d";
     };
     settings = {
+      inherit experimental-features;
       trusted-users = [ username ];
-      experimental-features = "nix-command flakes";
       download-buffer-size = 524312500;
     };
     nixPath = [ "nixpkgs=${nixpkgs}" ];

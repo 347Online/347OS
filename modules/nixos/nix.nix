@@ -4,6 +4,7 @@
   lib,
   nixpkgs,
   username,
+  experimental-features,
   ...
 }:
 {
@@ -12,10 +13,9 @@
       automatic = true;
       options = "--delete-older-than 30d";
     };
-    package = pkgs.nix;
     settings = {
+      inherit experimental-features;
       download-buffer-size = 524288000;
-      experimental-features = "nix-command flakes";
       trusted-users = [ username ];
     };
     nixPath = [ "nixpkgs=${nixpkgs}" ];
