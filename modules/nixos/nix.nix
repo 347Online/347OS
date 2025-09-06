@@ -1,10 +1,10 @@
 {
-  pkgs,
   config,
   lib,
   nixpkgs,
   username,
   experimental-features,
+  overlays,
   ...
 }:
 {
@@ -20,18 +20,22 @@
     };
     nixPath = [ "nixpkgs=${nixpkgs}" ];
   };
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) (
-      config.nixos.unfree-allowed
-      ++ [
-        "1password"
-        "1password-cli"
-        "minecraft-server"
-        "ookla-speedtest"
-        "plexmediaserver"
-        "steam"
-        "steam-unwrapped"
-      ]
-    );
+
+  nixpkgs = {
+    inherit overlays;
+    config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) (
+        config.nixos.unfree-allowed
+        ++ [
+          "1password"
+          "1password-cli"
+          "minecraft-server"
+          "ookla-speedtest"
+          "plexmediaserver"
+          "steam"
+          "steam-unwrapped"
+        ]
+      );
+  };
 }

@@ -74,6 +74,10 @@
         "flakes"
         "pipe-operators"
       ];
+      overlays = [
+        nix-vscode-extensions.overlays.default
+        nur.overlays.default
+      ];
 
       util = import ./util.nix inputs;
 
@@ -89,6 +93,7 @@
               username
               homeDirectory
               experimental-features
+              overlays
               util
               system
               ;

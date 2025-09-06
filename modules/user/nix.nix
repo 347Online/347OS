@@ -4,6 +4,7 @@
   config,
   lib,
   experimental-features,
+  overlays,
   ...
 }:
 {
@@ -23,17 +24,19 @@
     nixPath = [ "nixpkgs=${nixpkgs}" ];
   };
 
-  nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ];
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) (
-      config.user.unfree-allowed
-      ++ [
-        "1password-cli"
-        "discord"
-        "instapaper-official"
-        "onepassword-password-manager"
-        "ookla-speedtest"
-      ]
-    );
+  nixpkgs = {
+    inherit overlays;
+    config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) (
+        config.user.unfree-allowed
+        ++ [
+          "1password-cli"
+          "discord"
+          "instapaper-official"
+          "onepassword-password-manager"
+          "ookla-speedtest"
+        ]
+      );
+  };
 }
