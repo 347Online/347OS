@@ -23,6 +23,7 @@
     nixPath = [ "nixpkgs=${nixpkgs}" ];
   };
 
+  nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ];
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) (

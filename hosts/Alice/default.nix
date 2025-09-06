@@ -2,7 +2,6 @@
   username,
   pkgs,
   lib,
-  vscode-extensions,
   ...
 }:
 {
@@ -44,7 +43,7 @@
       yarn
     ];
     user = {
-      codium.extraExtensions = with vscode-extensions; [
+      codium.extraExtensions = with pkgs; [
         open-vsx.hashicorp.terraform
       ];
 

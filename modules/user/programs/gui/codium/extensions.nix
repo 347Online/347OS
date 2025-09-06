@@ -1,13 +1,12 @@
 {
   config,
   pkgs,
-  vscode-extensions,
   ...
 }:
 {
   programs.vscode.profiles.default.extensions =
+    with pkgs;
     with vscode-extensions;
-    with pkgs.vscode-extensions;
     [
       # Essentials
       dbaeumer.vscode-eslint
