@@ -25,16 +25,21 @@
   };
 
   home-manager.users.${username} = {
-    programs.ssh.matchBlocks = {
-      Arukenia = {
-        hostname = "192.168.4.40";
-        user = username;
-        forwardAgent = true;
-      };
-      Aspen = {
-        hostname = "192.168.4.55";
-        user = username;
-        forwardAgent = true;
+    programs.ssh = {
+      enableDefaultConfig = false;
+
+      matchBlocks = {
+        "*" = { };
+        Aspen = {
+          hostname = "192.168.4.55";
+          user = username;
+          forwardAgent = true;
+        };
+        Astrid = {
+          hostname = "192.168.4.119";
+          user = username;
+          forwardAgent = true;
+        };
       };
     };
   };
