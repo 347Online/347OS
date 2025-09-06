@@ -15,7 +15,6 @@ lib.mkIf config.user.personal.enable (
         };
       };
       contact.accounts.Personal = {
-        primary = true;
         remote = {
           inherit userName passwordCommand;
           type = "carddav";

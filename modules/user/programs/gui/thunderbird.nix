@@ -78,24 +78,22 @@ lib.mkIf (config.user.gui.enable && config.user.personal.enable) {
       ];
   };
 
-  programs.thunderbird = lib.mkMerge [
-    {
-      enable = true;
+  programs.thunderbird = {
+    enable = true;
 
-      settings = {
-        "mail.biff.play_sound" = false;
-        "mail.biff.show_alert" = false;
-        "mail.prompt_purge_threshold" = true;
-        "mail.purge.ask" = false;
-        "mail.shell.checkDefaultClient" = true;
-        "mailnews.start_page.enabled" = false;
-      };
+    settings = {
+      "mail.biff.play_sound" = false;
+      "mail.biff.show_alert" = false;
+      "mail.prompt_purge_threshold" = true;
+      "mail.purge.ask" = false;
+      "mail.shell.checkDefaultClient" = true;
+      "mailnews.start_page.enabled" = false;
+    };
 
-      profiles = {
-        main = {
-          isDefault = true;
-        };
+    profiles = {
+      main = {
+        isDefault = true;
       };
-    }
-  ];
+    };
+  };
 }
