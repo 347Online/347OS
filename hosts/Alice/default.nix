@@ -43,8 +43,8 @@
       yarn
     ];
     user = {
-      codium.extraExtensions = with pkgs; [
-        open-vsx.hashicorp.terraform
+      codium.extraExtensions = with pkgs.open-vsx; [
+        hashicorp.terraform
       ];
 
       firefox.extraPinnedItems = [

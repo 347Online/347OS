@@ -5,14 +5,13 @@
 }:
 {
   programs.vscode.profiles.default.extensions =
-    with pkgs;
-    with vscode-extensions;
+    with pkgs.open-vsx;
     [
       # Essentials
       dbaeumer.vscode-eslint
       eamodio.gitlens
       mkhl.direnv
-      ms-vsliveshare.vsliveshare
+      pkgs.vscode-marketplace.ms-vsliveshare.vsliveshare
       ms-python.python
       jnoortheen.nix-ide
 
@@ -23,7 +22,7 @@
       bmalehorn.vscode-fish
       tamasfe.even-better-toml
       mechatroner.rainbow-csv
-      open-vsx.yoavbls.pretty-ts-errors
+      yoavbls.pretty-ts-errors
 
       # Visuals
       pkief.material-icon-theme
@@ -31,11 +30,10 @@
       bradlc.vscode-tailwindcss
 
       # Utilities
-      open-vsx."1password".op-vscode
+      pkgs.open-vsx."1password".op-vscode
       ritwickdey.liveserver
-      vscode-marketplace.cweijan.vscode-database-client2
+      pkgs.vscode-marketplace.cweijan.vscode-database-client2
       ms-vscode.hexeditor
-      # asvetliakov.vscode-neovim
       vscodevim.vim
     ]
     ++ config.user.codium.extraExtensions;

@@ -34,7 +34,6 @@
         "instapaper-official"
         "onepassword-password-manager"
         "ookla-speedtest"
-        "vscode-extension-ms-vsliveshare-vsliveshare"
       ]
     );
 }
