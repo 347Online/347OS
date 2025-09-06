@@ -78,10 +78,9 @@
       util = import ./util.nix inputs;
 
       mkSpecialArgs =
-        { pkgs, username }:
+        { system, username }:
         let
-          system = pkgs.system;
-          homeDirectory = util.mkHomeDirectory pkgs username;
+          homeDirectory = util.mkHomeDirectory system username;
           args = {
             inherit
               self
@@ -100,9 +99,9 @@
         args;
 
       mkExtraSpecialArgs =
-        { pkgs, username }:
+        { system, username }:
         let
-          specialArgs = mkSpecialArgs { inherit pkgs username; };
+          specialArgs = mkSpecialArgs { inherit system username; };
         in
         specialArgs
         // {
@@ -113,24 +112,14 @@
         ./modules/user
       ];
 
-      mkPkgs =
-        system:
-        import nixpkgs {
-          inherit system;
-          overlays = [ nur.overlays.default ];
-        };
-
       mkDarwin =
         {
           system ? "aarch64-darwin",
           module,
           username ? defaultUsername,
         }:
-        let
-          pkgs = mkPkgs system;
-        in
         nix-darwin.lib.darwinSystem {
-          specialArgs = mkSpecialArgs { inherit pkgs username; };
+          specialArgs = mkSpecialArgs { inherit system username; };
           modules = [
             home-manager.darwinModules.home-manager
             sops-nix.darwinModules.sops
@@ -149,7 +138,7 @@
                     nur.modules.homeManager.default
                     sops-nix.homeManagerModules.sops
                   ];
-                  extraSpecialArgs = mkExtraSpecialArgs { inherit pkgs username; };
+                  extraSpecialArgs = mkExtraSpecialArgs { inherit system username; };
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
                       user.gui.enable = lib.mkForce config.darwin.gui.enable;
@@ -172,11 +161,8 @@
           module,
           username ? defaultUsername,
         }:
-        let
-          pkgs = mkPkgs system;
-        in
         nixpkgs.lib.nixosSystem {
-          specialArgs = mkSpecialArgs { inherit pkgs username; };
+          specialArgs = mkSpecialArgs { inherit system username; };
 
           modules = [
             home-manager.nixosModules.home-manager
@@ -195,7 +181,7 @@
                     plasma-manager.homeManagerModules.plasma-manager
                     sops-nix.homeManagerModules.sops
                   ];
-                  extraSpecialArgs = mkExtraSpecialArgs { inherit pkgs username; };
+                  extraSpecialArgs = mkExtraSpecialArgs { inherit system username; };
                   users.${username}.imports = baseModulesHomeManager ++ [
                     {
                       user.gui.enable = lib.mkForce config.nixos.gui.enable;

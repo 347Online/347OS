@@ -31,7 +31,19 @@ let
       ];
 
     mkHomeDirectory =
-      pkgs: username: if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
+      system: username:
+      let
+        mkLinuxLikeHome =
+          homePath:
+          if (!lib.strings.hasSuffix "linux" system) then
+            builtins.warn "Unknown OS system double ${system}, homeDirectory location may be incorrect" homePath
+          else
+            homePath;
+      in
+      if lib.strings.hasSuffix "darwin" system then
+        "/Users/${username}"
+      else
+        mkLinuxLikeHome "/home/${username}";
 
     listFilesRecursive =
       dir: acc:
