@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  cfg = config.programs.tmux;
+in
 {
   programs.tmux = {
     enable = true;
@@ -36,6 +39,7 @@
         bind % split-window -h -c "#{pane_current_path}"
         bind c new-window -c "#{pane_current_path}"
         bind C-x kill-session
+        bind C-${cfg.shortcut} last-window
 
         set -ag terminal-overrides ",$TERM:Tc"
         set -as terminal-features ",*:hyperlinks"
