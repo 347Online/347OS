@@ -5,6 +5,7 @@ in
 {
   programs.tmux = {
     enable = true;
+
     baseIndex = 1;
     sensibleOnTop = false;
     mouse = true;

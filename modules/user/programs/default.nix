@@ -20,6 +20,7 @@
     ./less.nix
     ./mise.nix
     ./pandoc.nix
+    ./ssh.nix
     ./syncthing.nix
     ./tealdeer.nix
     ./tmux.nix
@@ -64,7 +65,6 @@
       };
     in
     {
-      ssh.enable = true;
       home-manager.enable = true;
       bash.shellAliases = shellAliases;
       zsh.shellAliases = shellAliases;

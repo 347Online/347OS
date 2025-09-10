@@ -26,10 +26,7 @@
 
   home-manager.users.${username} = {
     programs.ssh = {
-      enableDefaultConfig = false;
-
       matchBlocks = {
-        "*" = { };
         Aspen = {
           hostname = "192.168.4.55";
           user = username;
