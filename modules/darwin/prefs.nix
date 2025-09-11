@@ -160,7 +160,9 @@
         deletePopupAfterDragging = true;
         exportPath = "${homeDirectory}/Library/Mobile Documents/com~apple~CloudDocs/Files/Screenshots";
         freezeScreen = true;
+        onboardingDisplayed = true;
         popupAskForDestinationWhenSaving = false;
+        popupOnLeftEdge = false;
         showMenuBarIcon = true;
       };
     };
