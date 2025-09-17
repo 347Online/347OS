@@ -12,6 +12,9 @@
     "editor.autoClosingQuotes" = "never";
     "editor.autoSurround" = "never";
     "editor.codeLens" = false;
+    "editor.codeActionsOnSave" = {
+      "source.fixAll.eslint" = true;
+    };
     "editor.fontFamily" = "JetBrainsMono Nerd Font";
     "editor.fontLigatures" = true;
     "editor.formatOnSave" = true;
