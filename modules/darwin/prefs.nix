@@ -95,6 +95,9 @@
       "com.apple.commerce".AutoUpdate = true;
       "com.apple.HIToolbox".AppleFnUsageType = 1;
 
+      "com.apple.AppleMultitouchTrackpad".Clicking = 1;
+      "com.apple.driver.AppleBluetoothMultitouch.trackpad".Clicking = 1;
+
       "com.setapp.DesktopClient" = {
         EnableLauncher = false;
         LaunchAppAfterInstall = true;
