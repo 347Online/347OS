@@ -36,6 +36,7 @@
           "instapaper-official"
           "onepassword-password-manager"
           "ookla-speedtest"
+          "zoom"
         ]
       );
   };

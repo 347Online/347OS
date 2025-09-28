@@ -25,6 +25,7 @@
   };
 
   home-manager.users.${username} = {
+    user.personal.zoom.enable = true;
     programs.ssh = {
       matchBlocks = {
         Aspen = {

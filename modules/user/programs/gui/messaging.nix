@@ -6,8 +6,9 @@
   ...
 }:
 lib.mkIf (config.user.gui.enable && config.user.personal.enable) {
-  home.packages = with pkgs; [
-    (lib.mkIf pkgs.stdenv.isLinux element-desktop)
+  home.packages = [
+    (lib.mkIf pkgs.stdenv.isLinux pkgs.element-desktop)
     (util.mkIfElse (pkgs.stdenv.isx86_64 || pkgs.stdenv.isDarwin) pkgs.discord pkgs.webcord)
+    (lib.mkIf config.user.personal.zoom.enable pkgs.zoom-us)
   ];
 }
