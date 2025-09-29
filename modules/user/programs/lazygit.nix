@@ -3,7 +3,10 @@
     enable = true;
 
     settings = {
-      git.autoFetch = false;
+      git = {
+        autoFetch = false;
+        overrideGpg = true;
+      };
       promptToReturnFromSubprocess = false;
       os = {
         editPreset = "nvim-remote";
