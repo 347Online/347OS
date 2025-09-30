@@ -48,6 +48,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -57,6 +62,7 @@
       flake-parts,
       nixos-hardware,
 
+      ghostty,
       home-manager,
       nix-darwin,
       nix-homebrew,
@@ -77,6 +83,7 @@
       overlays = [
         nix-vscode-extensions.overlays.default
         nur.overlays.default
+        ghostty.overlays.default
       ];
 
       util = import ./util.nix inputs;
