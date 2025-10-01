@@ -53,6 +53,11 @@
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    kclip = {
+      url = "github:347Online/kclip-cli";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -64,6 +69,7 @@
 
       ghostty,
       home-manager,
+      kclip,
       nix-darwin,
       nix-homebrew,
       nix-vscode-extensions,
@@ -84,6 +90,8 @@
         nix-vscode-extensions.overlays.default
         nur.overlays.default
         ghostty.overlays.default
+        # TODO: Fix the overlay in kclip-cli package
+        (final: prev: { kclip-cli = kclip.packages.${prev.system}.default; })
       ];
 
       util = import ./util.nix inputs;
