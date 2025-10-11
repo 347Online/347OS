@@ -9,7 +9,7 @@
     [
       # Essentials
       dbaeumer.vscode-eslint
-      eamodio.gitlens
+      pkgs.open-vsx-release.eamodio.gitlens
       mkhl.direnv
       pkgs.vscode-marketplace.ms-vsliveshare.vsliveshare
       ms-python.python
