@@ -11,6 +11,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     nur = {
@@ -242,6 +247,11 @@
         Amber = mkNixos {
           system = "x86_64-linux";
           module = ./hosts/Amber;
+        };
+
+        Arctic = mkNixos {
+          system = "aarch64-linux";
+          module = ./hosts/Arctic;
         };
       };
 
