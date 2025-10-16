@@ -197,7 +197,7 @@
                   backupFileExtension = "bakk";
                   sharedModules = [
                     nur.modules.homeManager.default
-                    plasma-manager.homeManagerModules.plasma-manager
+                    plasma-manager.homeModules.plasma-manager
                     sops-nix.homeManagerModules.sops
                   ];
                   extraSpecialArgs = mkExtraSpecialArgs { inherit system username; };

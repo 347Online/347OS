@@ -38,7 +38,7 @@ lib.mkIf config.user.gui.enable {
     kwin.effects.minimization.animation = "magiclamp";
 
     workspace = {
-      colorScheme = "standardizeddark";
+      colorScheme = "BreezeDark";
       cursor.theme = "breeze_cursors";
     };
 
