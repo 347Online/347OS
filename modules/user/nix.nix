@@ -31,6 +31,7 @@
       builtins.elem (lib.getName pkg) (
         config.user.unfree-allowed
         ++ [
+          "1password"
           "1password-cli"
           "discord"
           "instapaper-official"

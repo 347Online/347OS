@@ -2,6 +2,7 @@
   pkgs,
   lib,
   homeDirectory,
+  util,
   ...
 }:
 {
@@ -58,7 +59,9 @@
       user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEEVpmuZ4Rfr6QJpaR89FMuo7Y/DrAH/6Fp9Rneej11e";
       gpg = {
         format = "ssh";
-        ssh.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        ssh.program =
+          util.mkIfElse pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+            "${pkgs._1password-gui}/share/1password/op-ssh-sign";
       };
       commit.gpgsign = true;
     };
