@@ -1,4 +1,4 @@
-{ homeDirectory, ... }:
+{ lib, homeDirectory, ... }:
 {
   system.keyboard = {
     enableKeyMapping = true;
@@ -84,10 +84,28 @@
       };
 
       "com.apple.symbolichotkeys" = {
-        AppleSymbolicHotKeys = {
-          "64".enabled = false;
-          "65".enabled = false;
-        };
+        AppleSymbolicHotKeys =
+          lib.mapAttrs'
+            (_: name: {
+              inherit name;
+              value.enabled = false;
+            })
+            {
+              # Screenshots
+              SavePictureOfScreenAsAFile = "28";
+              CopyPictureOfScreenToTheClipboard = "29";
+              SavePictureOfSelectedAreaAsAFile = "30";
+              CopyPictureOfSelectedAreaToTheClipboard = "31";
+              ScreenshotAndRecordingOptions = "184";
+
+              # Input Sources
+              SelectThePreviousInputSource = "60";
+              SelectNextSourceInInputMenu = "61";
+
+              # Spotlight
+              ShowSpotlightSearch = "64";
+              ShowFinderSearchWindow = "65";
+            };
       };
 
       "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
