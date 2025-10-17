@@ -23,6 +23,7 @@
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
+  boot.kernelParams = [ "apple_dcp.show_notch=1" ];
   boot.extraModulePackages = [ ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
