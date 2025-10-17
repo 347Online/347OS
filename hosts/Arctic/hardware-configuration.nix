@@ -14,7 +14,6 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.nixos-apple-silicon.nixosModules.default
-    # ./apple-silicon-support
   ];
 
   boot.initrd.availableKernelModules = [
