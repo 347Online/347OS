@@ -110,6 +110,9 @@ lib.mkIf config.user.gui.enable {
 
         "browser.aboutConfig.showWarning" = false;
         "browser.formfill.enable" = false;
+        "browser.ml.chat.enabled" = false;
+        "browser.ml.enable" = false;
+        "browser.ml.linkPreview.enabled" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
@@ -117,6 +120,8 @@ lib.mkIf config.user.gui.enable {
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.startup.homepage_override.mstone" = "ignore";
         "browser.startup.page" = 3;
+        "browser.tabs.groups.smart.enabled" = false;
+        "browser.tabs.groups.smart.userEnabled" = false;
         "browser.tabs.inTitlebar" = 1;
         "browser.toolbars.bookmarks.visibility" = "always";
         "browser.urlbar.suggest.quicksuggest.sponsored" = false;
@@ -124,6 +129,7 @@ lib.mkIf config.user.gui.enable {
         "datareporting.policy.dataSubmissionPolicyBypassNotification" = true;
         "extensions.formautofill.addresses.enabled" = false;
         "extensions.formautofill.creditCards.enabled" = false;
+        "extensions.ml.enabled" = false;
         "sidebar.revamp" = false;
         "signon.rememberSignons" = false;
       };
