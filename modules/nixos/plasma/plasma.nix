@@ -121,8 +121,22 @@ lib.mkIf config.user.gui.enable {
       }
     ];
 
-    configFile = {
+    powerdevil = {
+      AC = {
+        dimKeyboard.enable = true;
+        keyboardBrightness = 25;
+      };
+      battery = {
+        dimKeyboard.enable = true;
+        keyboardBrightness = 10;
+      };
+      lowBattery = {
+        dimKeyboard.enable = true;
+        keyboardBrightness = 1;
+      };
+    };
 
+    configFile = {
       kded5rc."Module-browserintegrationreminder"."autoload" = false;
       "networkmanagement.notifyrc" = {
         "Event/ConnectionActivated".Action = "";

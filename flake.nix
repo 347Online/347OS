@@ -44,7 +44,9 @@
     };
 
     plasma-manager = {
-      url = "github:nix-community/plasma-manager";
+      # TODO: Point back to upstream when this PR lands: https://github.com/nix-community/plasma-manager/pull/537
+      # url = "github:nix-community/plasma-manager";
+      url = "github:347Online/plasma-manager/keyboard-backlight-brightness";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
