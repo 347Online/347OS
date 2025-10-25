@@ -1,11 +1,11 @@
 {
-  system,
-  nixpkgs,
+  inputs,
   config,
   lib,
   username,
   experimental-features,
   overlays,
+  system,
   ...
 }:
 {
@@ -19,7 +19,7 @@
       trusted-users = [ username ];
       download-buffer-size = 524312500;
     };
-    nixPath = [ "nixpkgs=${nixpkgs}" ];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
 
   nixpkgs = {

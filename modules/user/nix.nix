@@ -1,5 +1,4 @@
 {
-  nixpkgs,
   inputs,
   config,
   lib,
@@ -21,7 +20,7 @@
       inherit experimental-features;
       download-buffer-size = 524288000;
     };
-    nixPath = [ "nixpkgs=${nixpkgs}" ];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
 
   nixpkgs = {
