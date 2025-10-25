@@ -138,10 +138,6 @@
             inherit util;
           };
 
-        baseModulesHomeManager = [
-          ./modules/user
-        ];
-
         mkDarwin =
           {
             system ? "aarch64-darwin",
@@ -169,7 +165,8 @@
                       sops-nix.homeManagerModules.sops
                     ];
                     extraSpecialArgs = mkExtraSpecialArgs { inherit system username; };
-                    users.${username}.imports = baseModulesHomeManager ++ [
+                    users.${username}.imports = [
+                      ./modules/user
                       {
                         user.gui.enable = lib.mkForce config.darwin.gui.enable;
                         user.personal.enable = lib.mkForce config.darwin.personal.enable;
@@ -212,7 +209,8 @@
                       sops-nix.homeManagerModules.sops
                     ];
                     extraSpecialArgs = mkExtraSpecialArgs { inherit system username; };
-                    users.${username}.imports = baseModulesHomeManager ++ [
+                    users.${username}.imports = [
+                      ./modules/user
                       {
                         user.gui.enable = lib.mkForce config.nixos.gui.enable;
                         user.personal.enable = lib.mkForce config.nixos.personal.enable;
