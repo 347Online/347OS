@@ -88,178 +88,195 @@
       sops-nix,
       ...
     }:
-    let
-      defaultUsername = "katie";
+    (
+      let
+        defaultUsername = "katie";
 
-      experimental-features = [
-        "nix-command"
-        "flakes"
-        "pipe-operators"
-      ];
-      overlays = [
-        nix-vscode-extensions.overlays.default
-        nur.overlays.default
-        ghostty.overlays.default
-        # TODO: Fix the overlay in kclip-cli package
-        (final: prev: { kclip-cli = kclip.packages.${prev.system}.default; })
-      ];
+        experimental-features = [
+          "nix-command"
+          "flakes"
+          "pipe-operators"
+        ];
+        overlays = [
+          nix-vscode-extensions.overlays.default
+          nur.overlays.default
+          ghostty.overlays.default
+          # TODO: Fix the overlay in kclip-cli package
+          (final: prev: { kclip-cli = kclip.packages.${prev.system}.default; })
+        ];
 
-      util = import ./util.nix inputs;
+        util = import ./util.nix inputs;
 
-      mkSpecialArgs =
-        { system, username }:
-        let
-          homeDirectory = util.mkHomeDirectory system username;
-          args = {
-            inherit
-              self
-              nixpkgs
-              inputs
-              username
-              homeDirectory
-              experimental-features
-              overlays
-              util
-              system
-              ;
-            flakeDir = "${homeDirectory}/347OS";
+        mkSpecialArgs =
+          { system, username }:
+          let
+            homeDirectory = util.mkHomeDirectory system username;
+            args = {
+              inherit
+                self
+                nixpkgs
+                inputs
+                username
+                homeDirectory
+                experimental-features
+                overlays
+                util
+                system
+                ;
+              flakeDir = "${homeDirectory}/347OS";
+            };
+          in
+          args;
+
+        mkExtraSpecialArgs =
+          { system, username }:
+          let
+            specialArgs = mkSpecialArgs { inherit system username; };
+          in
+          specialArgs
+          // {
+            inherit util;
           };
-        in
-        args;
 
-      mkExtraSpecialArgs =
-        { system, username }:
-        let
-          specialArgs = mkSpecialArgs { inherit system username; };
-        in
-        specialArgs
-        // {
-          inherit util;
+        baseModulesHomeManager = [
+          ./modules/user
+        ];
+
+        mkDarwin =
+          {
+            system ? "aarch64-darwin",
+            module,
+            username ? defaultUsername,
+          }:
+          nix-darwin.lib.darwinSystem {
+            specialArgs = mkSpecialArgs { inherit system username; };
+            modules = [
+              home-manager.darwinModules.home-manager
+              sops-nix.darwinModules.sops
+              nix-homebrew.darwinModules.nix-homebrew
+              (
+                {
+                  lib,
+                  config,
+                  ...
+                }:
+                {
+                  environment.pathsToLink = [ "/share/zsh" ];
+                  home-manager = {
+                    backupFileExtension = "bakk";
+                    sharedModules = [
+                      nur.modules.homeManager.default
+                      sops-nix.homeManagerModules.sops
+                    ];
+                    extraSpecialArgs = mkExtraSpecialArgs { inherit system username; };
+                    users.${username}.imports = baseModulesHomeManager ++ [
+                      {
+                        user.gui.enable = lib.mkForce config.darwin.gui.enable;
+                        user.personal.enable = lib.mkForce config.darwin.personal.enable;
+                        user.gaming.enable = lib.mkForce config.darwin.gaming.enable;
+                      }
+                    ];
+                  };
+                }
+              )
+
+              ./modules/darwin
+              module
+            ];
+          };
+
+        mkNixos =
+          {
+            system,
+            module,
+            username ? defaultUsername,
+          }:
+          nixpkgs.lib.nixosSystem {
+            specialArgs = mkSpecialArgs { inherit system username; };
+
+            modules = [
+              home-manager.nixosModules.home-manager
+              sops-nix.nixosModules.sops
+              (
+                {
+                  lib,
+                  config,
+                  ...
+                }:
+                {
+                  home-manager = {
+                    backupFileExtension = "bakk";
+                    sharedModules = [
+                      nur.modules.homeManager.default
+                      plasma-manager.homeModules.plasma-manager
+                      sops-nix.homeManagerModules.sops
+                    ];
+                    extraSpecialArgs = mkExtraSpecialArgs { inherit system username; };
+                    users.${username}.imports = baseModulesHomeManager ++ [
+                      {
+                        user.gui.enable = lib.mkForce config.nixos.gui.enable;
+                        user.personal.enable = lib.mkForce config.nixos.personal.enable;
+                        user.gaming.enable = lib.mkForce config.nixos.gaming.enable;
+                      }
+                    ];
+                  };
+                }
+              )
+
+              ./modules/nixos
+              module
+            ];
+          };
+      in
+      {
+        darwinConfigurations = {
+          Athena = mkDarwin {
+            module = ./hosts/Athena;
+          };
+          Alice = mkDarwin {
+            module = ./hosts/Alice;
+            username = "kjanzen";
+          };
         };
 
-      baseModulesHomeManager = [
-        ./modules/user
-      ];
+        nixosConfigurations = {
+          Aspen = mkNixos {
+            system = "x86_64-linux";
+            module = ./hosts/Aspen;
+          };
 
-      mkDarwin =
-        {
-          system ? "aarch64-darwin",
-          module,
-          username ? defaultUsername,
-        }:
-        nix-darwin.lib.darwinSystem {
-          specialArgs = mkSpecialArgs { inherit system username; };
-          modules = [
-            home-manager.darwinModules.home-manager
-            sops-nix.darwinModules.sops
-            nix-homebrew.darwinModules.nix-homebrew
-            (
-              {
-                lib,
-                config,
-                ...
-              }:
-              {
-                environment.pathsToLink = [ "/share/zsh" ];
-                home-manager = {
-                  backupFileExtension = "bakk";
-                  sharedModules = [
-                    nur.modules.homeManager.default
-                    sops-nix.homeManagerModules.sops
-                  ];
-                  extraSpecialArgs = mkExtraSpecialArgs { inherit system username; };
-                  users.${username}.imports = baseModulesHomeManager ++ [
-                    {
-                      user.gui.enable = lib.mkForce config.darwin.gui.enable;
-                      user.personal.enable = lib.mkForce config.darwin.personal.enable;
-                      user.gaming.enable = lib.mkForce config.darwin.gaming.enable;
-                    }
-                  ];
-                };
-              }
-            )
+          Arukenia = mkNixos {
+            system = "x86_64-linux";
+            module = ./hosts/Arukenia;
+          };
 
-            ./modules/darwin
-            module
-          ];
+          Amber = mkNixos {
+            system = "x86_64-linux";
+            module = ./hosts/Amber;
+          };
+
+          Arctic = mkNixos {
+            system = "aarch64-linux";
+            module = ./hosts/Arctic;
+          };
         };
 
-      mkNixos =
-        {
-          system,
-          module,
-          username ? defaultUsername,
-        }:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = mkSpecialArgs { inherit system username; };
-
-          modules = [
-            home-manager.nixosModules.home-manager
-            sops-nix.nixosModules.sops
-            (
-              {
-                lib,
-                config,
-                ...
-              }:
-              {
-                home-manager = {
-                  backupFileExtension = "bakk";
-                  sharedModules = [
-                    nur.modules.homeManager.default
-                    plasma-manager.homeModules.plasma-manager
-                    sops-nix.homeManagerModules.sops
-                  ];
-                  extraSpecialArgs = mkExtraSpecialArgs { inherit system username; };
-                  users.${username}.imports = baseModulesHomeManager ++ [
-                    {
-                      user.gui.enable = lib.mkForce config.nixos.gui.enable;
-                      user.personal.enable = lib.mkForce config.nixos.personal.enable;
-                      user.gaming.enable = lib.mkForce config.nixos.gaming.enable;
-                    }
-                  ];
-                };
-              }
-            )
-
-            ./modules/nixos
-            module
-          ];
-        };
-    in
-    {
-      darwinConfigurations = {
-        Athena = mkDarwin {
-          module = ./hosts/Athena;
-        };
-        Alice = mkDarwin {
-          module = ./hosts/Alice;
-          username = "kjanzen";
-        };
-      };
-
-      nixosConfigurations = {
-        Aspen = mkNixos {
-          system = "x86_64-linux";
-          module = ./hosts/Aspen;
-        };
-
-        Arukenia = mkNixos {
-          system = "x86_64-linux";
-          module = ./hosts/Arukenia;
-        };
-
-        Amber = mkNixos {
-          system = "x86_64-linux";
-          module = ./hosts/Amber;
-        };
-
-        Arctic = mkNixos {
-          system = "aarch64-linux";
-          module = ./hosts/Arctic;
-        };
-      };
-
-      formatter = util.forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
-    };
+        # formatter = util.forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+      }
+    )
+    // (flake-parts.lib.mkFlake { inherit inputs; } (
+      top@{ ... }:
+      {
+        systems = [
+          "aarch64-darwin"
+          "aarch64-linux"
+          "x86_64-linux"
+        ];
+        perSystem =
+          { pkgs, ... }:
+          {
+            formatter = pkgs.nixfmt-tree;
+          };
+      }
+    ));
 }
