@@ -267,11 +267,10 @@
     // (flake-parts.lib.mkFlake { inherit inputs; } (
       top@{ ... }:
       {
-        systems = [
-          "aarch64-darwin"
-          "aarch64-linux"
-          "x86_64-linux"
+        imports = [
+          ./darwin.nix
         ];
+
         perSystem =
           { pkgs, ... }:
           {
