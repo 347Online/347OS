@@ -1,32 +1,28 @@
 {
-  self,
   username,
+  lib,
   ...
 }:
 {
   imports = [
-    ./hardware.nix
+    ./hardware-configuration.nix
   ];
+
+  nixos = {
+    gui.enable = true;
+    personal.enable = true;
+  };
 
   networking.hostName = "Arctic";
   time.timeZone = "America/Chicago";
 
-  nixos.gaming.enable = true;
-  nixos.gui.enable = true;
+  hardware.asahi.peripheralFirmwareDirectory = ./firmware;
 
-  home-manager.users.${username} = {
-    programs.ssh.matchBlocks = {
-      Aspen = {
-        hostname = "fatgirl.cloud";
-        user = username;
-        port = 5892;
-      };
-    };
+  services.libinput = {
+    enable = true;
+    touchpad.disableWhileTyping = true;
   };
 
-  # Enables cross-build to Intel systems
-  boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
-
   # DO NOT EDIT
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
 }
