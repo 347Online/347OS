@@ -118,6 +118,7 @@ lib.mkIf config.user.gui.enable {
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.newtabpage.activity-stream.showWeather" = false;
         "browser.startup.homepage_override.mstone" = "ignore";
         "browser.startup.page" = 3;
         "browser.tabs.groups.smart.enabled" = false;
