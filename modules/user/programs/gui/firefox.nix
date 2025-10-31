@@ -117,6 +117,7 @@ lib.mkIf config.user.gui.enable {
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
+        "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.showWeather" = false;
         "browser.startup.homepage_override.mstone" = "ignore";
@@ -125,9 +126,11 @@ lib.mkIf config.user.gui.enable {
         "browser.tabs.groups.smart.userEnabled" = false;
         "browser.tabs.inTitlebar" = 1;
         "browser.toolbars.bookmarks.visibility" = "always";
+        "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
         "browser.urlbar.suggest.quicksuggest.sponsored" = false;
         "browser.warnOnQuitShortcut" = false;
         "datareporting.policy.dataSubmissionPolicyBypassNotification" = true;
+        "extensions.autoDisableScopes" = 0;
         "extensions.formautofill.addresses.enabled" = false;
         "extensions.formautofill.creditCards.enabled" = false;
         "extensions.ml.enabled" = false;
