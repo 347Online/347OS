@@ -6,15 +6,8 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-apple-silicon = {
-      url = "github:nix-community/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -75,7 +68,6 @@
       self,
       nixpkgs,
       flake-parts,
-      nixos-hardware,
 
       ghostty,
       home-manager,
