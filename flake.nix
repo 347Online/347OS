@@ -68,20 +68,17 @@
       flake-parts,
       ...
     }:
-    (flake-parts.lib.mkFlake { inherit inputs; } (
-      { ... }:
-      {
-        imports = [
-          ./darwin.nix
-          ./util.nix
-          ./variables.nix
-        ];
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        ./darwin.nix
+        ./util.nix
+        ./variables.nix
+      ];
 
-        perSystem =
-          { pkgs, ... }:
-          {
-            formatter = pkgs.nixfmt-tree;
-          };
-      }
-    ));
+      perSystem =
+        { pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt-tree;
+        };
+    };
 }
