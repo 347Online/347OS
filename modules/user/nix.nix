@@ -12,10 +12,7 @@
       automatic = true;
       options = "--delete-older-than 30d";
     };
-    registry = {
-      nixpkgs.flake = inputs.nixpkgs;
-      nixos-hardware.flake = inputs.nixos-hardware;
-    };
+    registry.nixpkgs.flake = inputs.nixpkgs;
     settings = {
       inherit experimental-features;
       download-buffer-size = 524288000;

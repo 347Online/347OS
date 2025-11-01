@@ -1,28 +1,26 @@
-{ nixpkgs, ... }:
+{ inputs, ... }:
 let
-  lib = nixpkgs.lib;
+  aarch64-darwin = "aarch64-darwin";
+  aarch64-linux = "aarch64-linux";
+  x86_64-linux = "x86_64-linux";
+
+  lib = inputs.nixpkgs.lib;
+
+  defaultUsername = "katie";
+
+  experimental-features = [
+    "nix-command"
+    "flakes"
+    "pipe-operators"
+  ];
+  overlays = [
+    inputs.nix-vscode-extensions.overlays.default
+    inputs.nur.overlays.default
+    inputs.ghostty.overlays.default
+    # TODO: Fix the overlay in kclip-cli package
+    (final: prev: { kclip-cli = inputs.kclip.packages.${prev.system}.default; })
+  ];
   util = rec {
-    linuxSystems = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
-
-    darwinSystems = [
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
-
-    supportedSystems = linuxSystems ++ darwinSystems;
-
-    forAllSystems =
-      f:
-      builtins.listToAttrs (
-        builtins.map (system: {
-          name = system;
-          value = f system;
-        }) supportedSystems
-      );
-
     mkIfElse =
       condition: trueValue: falseValue:
       lib.mkMerge [
@@ -44,6 +42,132 @@ let
         "/Users/${username}"
       else
         mkLinuxLikeHome "/home/${username}";
+
+    mkSpecialArgs =
+      {
+        system,
+        username ? defaultUsername,
+      }:
+      let
+        homeDirectory = util.mkHomeDirectory system username;
+        inherit (inputs) nixpkgs;
+      in
+      {
+        inherit
+          # self
+          nixpkgs
+          inputs
+          username
+          homeDirectory
+          experimental-features
+          overlays
+          util
+          system
+          ;
+
+        flakeDir = "${homeDirectory}/347OS";
+      };
+
+    mkExtraSpecialArgs =
+      {
+        system,
+        username ? defaultUsername,
+      }:
+      let
+        specialArgs = mkSpecialArgs { inherit system username; };
+      in
+      specialArgs
+      // {
+        inherit util;
+      };
+
+    mkDarwin =
+      {
+        module,
+        system ? aarch64-darwin,
+        username ? defaultUsername,
+      }:
+      inputs.nix-darwin.lib.darwinSystem {
+        specialArgs = util.mkSpecialArgs { inherit system username; };
+        modules = [
+          inputs.home-manager.darwinModules.home-manager
+          inputs.sops-nix.darwinModules.sops
+          inputs.nix-homebrew.darwinModules.nix-homebrew
+          (
+            {
+              lib,
+              config,
+              ...
+            }:
+            {
+              environment.pathsToLink = [ "/share/zsh" ];
+              home-manager = {
+                backupFileExtension = "bakk";
+                sharedModules = [
+                  inputs.nur.modules.homeManager.default
+                  inputs.sops-nix.homeManagerModules.sops
+                ];
+                extraSpecialArgs = util.mkExtraSpecialArgs { inherit system username; };
+                users.${username}.imports = [
+                  ./modules/user
+                  {
+                    user.gui.enable = lib.mkForce config.darwin.gui.enable;
+                    user.personal.enable = lib.mkForce config.darwin.personal.enable;
+                    user.gaming.enable = lib.mkForce config.darwin.gaming.enable;
+                  }
+                ];
+              };
+            }
+          )
+
+          ./modules/darwin
+          module
+        ];
+      };
+
+    mkNixos =
+      {
+        module,
+        system,
+        username ? defaultUsername,
+      }:
+      inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = util.mkSpecialArgs { inherit system username; };
+
+        modules = [
+          inputs.home-manager.nixosModules.home-manager
+          inputs.sops-nix.nixosModules.sops
+          (
+            {
+              lib,
+              config,
+              ...
+            }:
+            {
+              home-manager = {
+                backupFileExtension = "bakk";
+                sharedModules = [
+                  inputs.nur.modules.homeManager.default
+                  inputs.plasma-manager.homeModules.plasma-manager
+                  inputs.sops-nix.homeManagerModules.sops
+                ];
+                extraSpecialArgs = util.mkExtraSpecialArgs { inherit system username; };
+                users.${username}.imports = [
+                  ./modules/user
+                  {
+                    user.gui.enable = lib.mkForce config.nixos.gui.enable;
+                    user.personal.enable = lib.mkForce config.nixos.personal.enable;
+                    user.gaming.enable = lib.mkForce config.nixos.gaming.enable;
+                  }
+                ];
+              };
+            }
+          )
+
+          ./modules/nixos
+          module
+        ];
+      };
 
     listFilesRecursive =
       dir: acc:
@@ -87,4 +211,6 @@ let
       '';
   };
 in
-util
+{
+  flake = { inherit util; };
+}
