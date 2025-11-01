@@ -3,7 +3,6 @@
   config,
   lib,
   homeDirectory,
-  flakeDir,
   ...
 }:
 let
@@ -16,13 +15,6 @@ let
     ))
     (pkgs.writeShellScriptBin "newgit" ''
       mkdir $1 && (cd $1 && git init)
-    '')
-
-    (pkgs.writeShellScriptBin "secedit" ''
-      cd ${flakeDir}
-      if sops secrets.yaml; then
-        git commit secrets.yaml -m "Secrets"
-      fi
     '')
 
     (pkgs.writeShellScriptBin "eds" ''
@@ -69,13 +61,6 @@ let
         tmux rename-window -t 2 "scratch"
         tmux split-window -t "scratch" -v
         tmux resize-pane -Z
-        # TODO: Use passed in directory
-        if ! [[ $PWD == "${flakeDir}"* ]]; then
-          tmux new-window
-          tmux rename-window -t 3 "347OS"
-          tmux send-keys -t "347OS" 'cd "${flakeDir}"' C-m 'clear' C-m
-          tmux select-window -t "scratch"
-        fi
         tmux select-window -t "editor"
         tmux send-keys -t "editor" "nvim $@" C-m
       fi

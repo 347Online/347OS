@@ -39,23 +39,17 @@ let
         system,
         username ? defaultUsername,
       }:
-      let
-        homeDirectory = util.mkHomeDirectory system username;
-        inherit (inputs) nixpkgs;
-      in
       {
         inherit
-          nixpkgs
           inputs
           username
-          homeDirectory
           experimental-features
           overlays
           util
           system
           ;
 
-        flakeDir = "${homeDirectory}/347OS";
+        homeDirectory = util.mkHomeDirectory system username;
       };
 
     mkExtraSpecialArgs =

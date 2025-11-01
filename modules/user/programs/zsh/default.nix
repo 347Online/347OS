@@ -1,6 +1,5 @@
 {
   pkgs,
-  flakeDir,
   ...
 }:
 {
@@ -35,7 +34,6 @@
         eval "$(batman --export-env)"
 
         export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
-        export FLAKE_DIR="${flakeDir}"
       '';
   };
 }

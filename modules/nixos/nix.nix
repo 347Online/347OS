@@ -1,7 +1,7 @@
 {
+  inputs,
   config,
   lib,
-  nixpkgs,
   username,
   experimental-features,
   overlays,
@@ -18,7 +18,7 @@
       download-buffer-size = 524288000;
       trusted-users = [ username ];
     };
-    nixPath = [ "nixpkgs=${nixpkgs}" ];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
 
   nixpkgs = {
