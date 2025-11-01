@@ -11,8 +11,6 @@
         "/Applications/Slack.app"
       ];
     };
-
-    unfree-allowed = [ "claude-code" ];
   };
 
   homebrew = {
@@ -39,7 +37,6 @@
 
   home-manager.users.${username} = {
     home.packages = with pkgs; [
-      claude-code
       nodemon
       serverless
       tflint
