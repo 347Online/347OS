@@ -19,21 +19,6 @@ let
         (lib.mkIf (!condition) falseValue)
       ];
 
-    mkHomeDirectory =
-      system: username:
-      let
-        mkLinuxLikeHome =
-          homePath:
-          if (!lib.strings.hasSuffix "linux" system) then
-            builtins.warn "Unknown OS system double ${system}, homeDirectory location may be incorrect" homePath
-          else
-            homePath;
-      in
-      if lib.strings.hasSuffix "darwin" system then
-        "/Users/${username}"
-      else
-        mkLinuxLikeHome "/home/${username}";
-
     mkSpecialArgs =
       {
         system,
@@ -49,20 +34,13 @@ let
           system
           ;
 
-        homeDirectory = util.mkHomeDirectory system username;
-      };
-
-    mkExtraSpecialArgs =
-      {
-        system,
-        username ? defaultUsername,
-      }:
-      let
-        specialArgs = mkSpecialArgs { inherit system username; };
-      in
-      specialArgs
-      // {
-        inherit util;
+        homeDirectory =
+          if lib.strings.hasSuffix "darwin" system then
+            "/Users/${username}"
+          else if lib.strings.hasSuffix "linux" system then
+            "/home/${username}"
+          else
+            throw "Home Directory could not be determined due to unrecognized system double: '${system}'";
       };
 
     mkDarwin =
@@ -72,7 +50,7 @@ let
         username ? defaultUsername,
       }:
       inputs.nix-darwin.lib.darwinSystem {
-        specialArgs = util.mkSpecialArgs { inherit system username; };
+        specialArgs = mkSpecialArgs { inherit system username; };
         modules = [
           inputs.home-manager.darwinModules.home-manager
           inputs.sops-nix.darwinModules.sops
@@ -91,7 +69,7 @@ let
                   inputs.nur.modules.homeManager.default
                   inputs.sops-nix.homeManagerModules.sops
                 ];
-                extraSpecialArgs = util.mkExtraSpecialArgs { inherit system username; };
+                extraSpecialArgs = mkSpecialArgs { inherit system username; };
                 users.${username}.imports = [
                   ./modules/user
                   {
@@ -116,7 +94,7 @@ let
         username ? defaultUsername,
       }:
       inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = util.mkSpecialArgs { inherit system username; };
+        specialArgs = mkSpecialArgs { inherit system username; };
 
         modules = [
           inputs.home-manager.nixosModules.home-manager
@@ -135,7 +113,7 @@ let
                   inputs.plasma-manager.homeModules.plasma-manager
                   inputs.sops-nix.homeManagerModules.sops
                 ];
-                extraSpecialArgs = util.mkExtraSpecialArgs { inherit system username; };
+                extraSpecialArgs = mkSpecialArgs { inherit system username; };
                 users.${username}.imports = [
                   ./modules/user
                   {
