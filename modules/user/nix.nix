@@ -1,5 +1,4 @@
 {
-  nixpkgs,
   inputs,
   config,
   lib,
@@ -13,15 +12,12 @@
       automatic = true;
       options = "--delete-older-than 30d";
     };
-    registry = {
-      nixpkgs.flake = inputs.nixpkgs;
-      nixos-hardware.flake = inputs.nixos-hardware;
-    };
+    registry.nixpkgs.flake = inputs.nixpkgs;
     settings = {
       inherit experimental-features;
       download-buffer-size = 524288000;
     };
-    nixPath = [ "nixpkgs=${nixpkgs}" ];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
 
   nixpkgs = {
