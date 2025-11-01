@@ -12,9 +12,6 @@
       ];
     };
 
-    unfree-allowed = [ "claude-code" ];
-  };
-
   homebrew = {
     taps = [
       "amplify-education/astrotools"
@@ -39,7 +36,6 @@
 
   home-manager.users.${username} = {
     home.packages = with pkgs; [
-      claude-code
       nodemon
       serverless
       tflint
