@@ -17,7 +17,7 @@
     settings = {
       inherit experimental-features;
       trusted-users = [ username ];
-      download-buffer-size = 524312500;
+      # download-buffer-size = 524312500;
     };
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };

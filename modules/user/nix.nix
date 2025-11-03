@@ -15,7 +15,7 @@
     registry.nixpkgs.flake = inputs.nixpkgs;
     settings = {
       inherit experimental-features;
-      download-buffer-size = 524288000;
+      # download-buffer-size = 524288000;
     };
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
