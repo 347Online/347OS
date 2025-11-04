@@ -111,6 +111,7 @@ lib.mkIf config.user.gui.enable {
         "browser.aboutConfig.showWarning" = false;
         "browser.formfill.enable" = false;
         "browser.ml.chat.enabled" = false;
+        "browser.ml.chat.menu" = false;
         "browser.ml.enable" = false;
         "browser.ml.linkPreview.enabled" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
