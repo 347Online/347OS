@@ -116,6 +116,9 @@
       "com.apple.AppleMultitouchTrackpad".Clicking = 1;
       "com.apple.driver.AppleBluetoothMultitouch.trackpad".Clicking = 1;
 
+      "com.apple.screencapture".location =
+        "~/Library/Mobile Documents/com~apple~CloudDocs/Files/Screenshots";
+
       "com.setapp.DesktopClient" = {
         EnableLauncher = false;
         LaunchAppAfterInstall = true;
