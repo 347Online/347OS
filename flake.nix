@@ -73,9 +73,9 @@
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
+        ./modules
+
         ./darwin.nix
-        ./util.nix
-        ./variables.nix
       ];
 
       perSystem =

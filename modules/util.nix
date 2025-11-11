@@ -71,7 +71,7 @@ let
                 ];
                 extraSpecialArgs = mkSpecialArgs { inherit system username; };
                 users.${username}.imports = [
-                  ./modules/user
+                  ./legacyModules/user
                   {
                     user.gui.enable = lib.mkForce config.darwin.gui.enable;
                     user.personal.enable = lib.mkForce config.darwin.personal.enable;
@@ -82,7 +82,7 @@ let
             }
           )
 
-          ./modules/darwin
+          ./legacyModules/darwin
           module
         ];
       };
@@ -115,7 +115,7 @@ let
                 ];
                 extraSpecialArgs = mkSpecialArgs { inherit system username; };
                 users.${username}.imports = [
-                  ./modules/user
+                  ./legacyModules/user
                   {
                     user.gui.enable = lib.mkForce config.nixos.gui.enable;
                     user.personal.enable = lib.mkForce config.nixos.personal.enable;
@@ -126,7 +126,7 @@ let
             }
           )
 
-          ./modules/nixos
+          ./legacyModules/nixos
           module
         ];
       };
