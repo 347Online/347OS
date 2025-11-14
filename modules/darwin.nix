@@ -10,10 +10,10 @@ in
   flake = {
     darwinConfigurations = {
       Athena = util.mkDarwin {
-        module = ./hosts/Athena;
+        module = ./hosts/Athena.nix;
       };
       Alice = util.mkDarwin {
-        module = ./hosts/Alice;
+        module = ./hosts/Alice.nix;
         username = "kjanzen";
       };
     };
