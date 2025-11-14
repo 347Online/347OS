@@ -159,22 +159,6 @@ let
         }) (listFilesRecursive dir "")
       );
 
-    vimBindLua = mode: key: bind: {
-      inherit mode key;
-      options.silent = true;
-      action.__raw = bind;
-    };
-
-    vimBindCmd = mode: key: bind: {
-      inherit mode key;
-      options.silent = true;
-      action = bind;
-    };
-
-    vimBind =
-      mode: key: bind:
-      if lib.hasPrefix ":" bind then vimBindCmd mode key bind else vimBindLua mode key bind;
-
     dummy-package =
       p: name:
       p.runCommand name { } ''
