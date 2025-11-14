@@ -7,10 +7,10 @@
   flake = {
     darwinConfigurations = {
       Athena = config.flake.util.mkDarwin {
-        module = ./hosts/Athena.nix;
+        module = ./Athena.nix;
       };
       Alice = config.flake.util.mkDarwin {
-        module = ./hosts/Alice.nix;
+        module = ./Alice.nix;
         username = "kjanzen";
       };
     };

@@ -1,6 +1,7 @@
 {
   imports = [
-    ./darwin.nix
+    ./hosts
+
     ./util.nix
     ./variables.nix
   ];
