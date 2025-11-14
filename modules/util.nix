@@ -3,7 +3,7 @@
   config,
   lib,
   ...
-}:
+}@top:
 let
   inherit (config.flake.variables)
     defaultUsername
@@ -55,6 +55,9 @@ let
           inputs.home-manager.darwinModules.home-manager
           inputs.sops-nix.darwinModules.sops
           inputs.nix-homebrew.darwinModules.nix-homebrew
+
+          config.flake.darwinModules.essentials
+
           (
             {
               lib,
@@ -68,6 +71,8 @@ let
                 sharedModules = [
                   inputs.nur.modules.homeManager.default
                   inputs.sops-nix.homeManagerModules.sops
+
+                  top.config.flake.homeModules.essentials
                 ];
                 extraSpecialArgs = mkSpecialArgs { inherit system username; };
                 users.${username}.imports = [
@@ -95,10 +100,12 @@ let
       }:
       inputs.nixpkgs.lib.nixosSystem {
         specialArgs = mkSpecialArgs { inherit system username; };
-
         modules = [
           inputs.home-manager.nixosModules.home-manager
           inputs.sops-nix.nixosModules.sops
+
+          config.flake.nixosModules.essentials
+
           (
             {
               lib,
@@ -112,6 +119,8 @@ let
                   inputs.nur.modules.homeManager.default
                   inputs.plasma-manager.homeModules.plasma-manager
                   inputs.sops-nix.homeManagerModules.sops
+
+                  top.config.flake.homeModules.essentials
                 ];
                 extraSpecialArgs = mkSpecialArgs { inherit system username; };
                 users.${username}.imports = [

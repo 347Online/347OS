@@ -26,14 +26,9 @@ in
 
   environment = {
     enableAllTerminfo = true;
-    systemPackages =
-      let
-        essentials = (import ../user/programs/essentials.nix pkgs);
-      in
-      essentials
-      ++ [
-        # System packages
-      ];
+    systemPackages = [
+      # System packages
+    ];
   };
 
   security.pam.services.sudo_local = {

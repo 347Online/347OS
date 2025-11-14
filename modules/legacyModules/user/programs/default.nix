@@ -27,19 +27,13 @@
     ./zoxide.nix
   ];
 
-  home.packages =
-    let
-      essentials = (import ./essentials.nix pkgs);
-    in
-    with pkgs;
-    [
-      _1password-cli
-      pre-commit
-      sops
-      tinty
-      yq
-    ]
-    ++ essentials;
+  home.packages = with pkgs; [
+    _1password-cli
+    pre-commit
+    sops
+    tinty
+    yq
+  ];
 
   programs =
     let
