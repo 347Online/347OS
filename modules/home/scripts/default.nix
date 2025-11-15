@@ -67,6 +67,11 @@ let
 
       tmux attach-session -t "$session"
     '')
+
+    (pkgs.writeShellScriptBin "journal" ''
+      cd "${homeDirectory}/Sync/Notes"
+      nvim -c "WikiJournal"
+    '')
   ];
 in
 {
