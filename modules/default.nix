@@ -1,8 +1,10 @@
 {
   imports = [
+    ./darwin
+    ./home
     ./hosts
+    ./nixos
 
-    ./essentials.nix
     ./util.nix
     ./variables.nix
   ];
