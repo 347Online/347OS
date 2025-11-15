@@ -84,7 +84,7 @@ let
           inputs.sops-nix.darwinModules.sops
           inputs.nix-homebrew.darwinModules.nix-homebrew
 
-          config.flake.darwinModules.essentials
+          config.flake.darwinModules.default
 
           (
             {
@@ -100,11 +100,10 @@ let
                   inputs.nur.modules.homeManager.default
                   inputs.sops-nix.homeManagerModules.sops
 
-                  top.config.flake.homeModules.essentials
+                  top.config.flake.homeModules.default
                 ];
                 extraSpecialArgs = mkSpecialArgs { inherit system username; };
                 users.${username}.imports = [
-                  ./legacyModules/user
                   {
                     user.gui.enable = lib.mkForce config.darwin.gui.enable;
                     user.personal.enable = lib.mkForce config.darwin.personal.enable;
@@ -115,7 +114,6 @@ let
             }
           )
 
-          ./legacyModules/darwin
           module
         ];
       };
@@ -132,7 +130,7 @@ let
           inputs.home-manager.nixosModules.home-manager
           inputs.sops-nix.nixosModules.sops
 
-          config.flake.nixosModules.essentials
+          config.flake.nixosModules.default
 
           (
             {
@@ -148,11 +146,10 @@ let
                   inputs.plasma-manager.homeModules.plasma-manager
                   inputs.sops-nix.homeManagerModules.sops
 
-                  top.config.flake.homeModules.essentials
+                  top.config.flake.homeModules.default
                 ];
                 extraSpecialArgs = mkSpecialArgs { inherit system username; };
                 users.${username}.imports = [
-                  ./legacyModules/user
                   {
                     user.gui.enable = lib.mkForce config.nixos.gui.enable;
                     user.personal.enable = lib.mkForce config.nixos.personal.enable;
@@ -163,7 +160,6 @@ let
             }
           )
 
-          ./legacyModules/nixos
           module
         ];
       };
