@@ -13,11 +13,11 @@
       imports = [
         ./games
         ./programs
+        ./scripts
 
         ./accounts.nix
         ./nix.nix
         ./options.nix
-        ./scripts.nix
         ./sops.nix
       ];
 
