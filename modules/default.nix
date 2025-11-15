@@ -2,7 +2,6 @@
   imports = [
     ./darwin
     ./home
-    ./hosts
     ./nixos
 
     ./util.nix
