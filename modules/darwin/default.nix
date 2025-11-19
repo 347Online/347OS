@@ -31,6 +31,9 @@
         enableAllTerminfo = true;
         systemPackages = [
           # System packages
+          (pkgs.writeShellScriptBin "bundle-id" ''
+            osascript -e "id of app \"$1\"" | tr -d '\n'
+          '')
         ]
         ++ util.mkEssentials pkgs;
       };
