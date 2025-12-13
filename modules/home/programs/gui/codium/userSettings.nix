@@ -4,6 +4,8 @@
 }:
 {
   programs.vscode.profiles.default.userSettings = {
+    "chat.agent.enabled" = false;
+
     "editor.acceptSuggestionOnCommitCharacter" = false;
     "editor.accessibilitySupport" = "off";
     "editor.autoClosingBrackets" = "never";
