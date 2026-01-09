@@ -189,6 +189,12 @@
         popupOnLeftEdge = false;
         showMenuBarIcon = true;
       };
+
+      "at.EternalStorms.Yoink-setapp" = {
+        shouldHideOnLaunch = true;
+        showMenuBarIcon = false;
+        windowCorner = 5;
+      };
     };
   };
 }
