@@ -10,7 +10,9 @@ lib.mkIf config.user.gui.enable {
   home.file = lib.mkMerge [
     (util.toHomeFiles ./dotfiles)
     {
-      ".config/autostart/discord.desktop".enable = lib.mkIf (pkgs.system == "aarch64-linux") false;
+      ".config/autostart/discord.desktop".enable = lib.mkIf (
+        pkgs.stdenv.hostPlatform.system == "aarch64-linux"
+      ) false;
     }
   ];
 

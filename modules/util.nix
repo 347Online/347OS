@@ -33,7 +33,7 @@ let
         htop
         moreutils
         neovim
-        nixfmt-rfc-style
+        nixfmt
         nix-search-cli
         nodejs
         ookla-speedtest

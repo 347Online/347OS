@@ -6,7 +6,7 @@
     lua-language-server
     nixd
     sqls
-    taplo-lsp
+    taplo
     typescript-language-server
     vscode-langservers-extracted
   ];
