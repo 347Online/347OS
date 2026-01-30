@@ -6,11 +6,6 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
