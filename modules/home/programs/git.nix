@@ -14,31 +14,31 @@
       ".DS_Store"
       ".mise.*.toml"
     ];
-    userName = "347Online | Katie Janzen";
-    userEmail = "katiejanzen@347online.me";
-    aliases = rec {
-      br = "branch";
-      c = "commit";
-      ccret = "commit --all --message 'Secrets'";
-      co = "checkout";
-      p = "push";
-      pf = "push --force-with-lease";
-      pl = "pull";
-      pr = "pull --rebase=interactive";
-      pm = "pull --no-rebase";
-      s = "status";
-      st = s;
-      statsu = s;
-      unstage = "restore --staged";
-      last = "log -1 HEAD";
-      lc = "! git rev-parse HEAD | xargs echo -n";
-      ri = "rebase --interactive";
-      rc = "rebase --continue";
-      ra = "rebase --abort";
-      re = "rebase --edit-todo";
-      cp = "cherry-pick";
-    };
     extraConfig = {
+      user.name = "347Online | Katie Janzen";
+      user.email = "katiejanzen@347online.me";
+      alias = rec {
+        br = "branch";
+        c = "commit";
+        ccret = "commit --all --message 'Secrets'";
+        co = "checkout";
+        p = "push";
+        pf = "push --force-with-lease";
+        pl = "pull";
+        pr = "pull --rebase=interactive";
+        pm = "pull --no-rebase";
+        s = "status";
+        st = s;
+        statsu = s;
+        unstage = "restore --staged";
+        last = "log -1 HEAD";
+        lc = "! git rev-parse HEAD | xargs echo -n";
+        ri = "rebase --interactive";
+        rc = "rebase --continue";
+        ra = "rebase --abort";
+        re = "rebase --edit-todo";
+        cp = "cherry-pick";
+      };
       core = {
         editor = "nvim";
         pager = "LESS='FR --redraw-on-quit' delta";
