@@ -35,6 +35,8 @@
       pkgs.vscode-marketplace.cweijan.vscode-database-client2
       ms-vscode.hexeditor
       vscodevim.vim
+      pkgs.vscode-marketplace.liaronce.gml-support
+      pkgs.vscode-marketplace.vscode-icons-team.vscode-icons
     ]
     ++ config.user.codium.extraExtensions;
 }
