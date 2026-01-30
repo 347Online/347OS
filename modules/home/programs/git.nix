@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   homeDirectory,
   util,
   ...
@@ -14,9 +13,11 @@
       ".DS_Store"
       ".mise.*.toml"
     ];
-    extraConfig = {
-      user.name = "347Online | Katie Janzen";
-      user.email = "katiejanzen@347online.me";
+    settings = {
+      user = {
+        name = "347Online | Katie Janzen";
+        email = "katiejanzen@347online.me";
+      };
       alias = rec {
         br = "branch";
         c = "commit";
