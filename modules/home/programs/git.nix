@@ -8,10 +8,11 @@
   programs.git = {
     enable = true;
     ignores = [
-      "scratch/"
-      "Session.vim"
       ".DS_Store"
       ".mise.*.toml"
+      "Session.vim"
+      "make.ts"
+      "scratch/"
     ];
     settings = {
       user = {
