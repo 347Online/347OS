@@ -2,6 +2,7 @@ pkgs: with pkgs; [
   bat
   coreutils
   delta
+  deno
   direnv
   eza
   fd
@@ -13,7 +14,6 @@ pkgs: with pkgs; [
   neovim
   nix-search-cli
   nixfmt-rfc-style
-  nodejs
   ookla-speedtest
   python3
   ripgrep
