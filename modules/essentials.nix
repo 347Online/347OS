@@ -1,0 +1,26 @@
+pkgs: with pkgs; [
+  bat
+  coreutils
+  delta
+  direnv
+  eza
+  fd
+  fzf
+  git
+  go
+  htop
+  moreutils
+  neovim
+  nix-search-cli
+  nixfmt-rfc-style
+  nodejs
+  ookla-speedtest
+  python3
+  ripgrep
+  rustup
+  screen
+  shellcheck
+  tmux
+  trunk
+  zoxide
+]
