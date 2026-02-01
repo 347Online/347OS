@@ -188,11 +188,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765657769,
-        "narHash": "sha256-X5O2ZXGbjZpmUP3LRmX0pFOMThasT/vJmIp9ZBxYYYg=",
+        "lastModified": 1769975693,
+        "narHash": "sha256-nXLl2INVjAJ3oFQQBySUwdYaY1g3Vo6E33Z8kGxsYmc=",
         "owner": "347Online",
         "repo": "kclip-cli",
-        "rev": "6d0cd8e1e2ffdd15f94bf35ab5547ed366c51a24",
+        "rev": "a115b732db0aa43631645f0ec435cf0be1f11339",
         "type": "github"
       },
       "original": {
