@@ -113,24 +113,6 @@
         "type": "github"
       }
     },
-    "flake-utils_2": {
-      "inputs": {
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "ghostty": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -181,18 +163,20 @@
     "kclip": {
       "inputs": {
         "fenix": "fenix",
-        "flake-utils": "flake-utils_2",
+        "flake-parts": [
+          "flake-parts"
+        ],
         "naersk": "naersk",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1769975693,
-        "narHash": "sha256-nXLl2INVjAJ3oFQQBySUwdYaY1g3Vo6E33Z8kGxsYmc=",
+        "lastModified": 1769978010,
+        "narHash": "sha256-Sgw0OGSiZVIwmJTO7PUhK5uTV03rCHfL9IkH6oAX8oQ=",
         "owner": "347Online",
         "repo": "kclip-cli",
-        "rev": "a115b732db0aa43631645f0ec435cf0be1f11339",
+        "rev": "c8188b1a7be50e2f38e14666f30ecb9be5617138",
         "type": "github"
       },
       "original": {
@@ -436,21 +420,6 @@
       }
     },
     "systems": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_2": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

@@ -13,8 +13,7 @@
       inputs.nix-vscode-extensions.overlays.default
       inputs.nur.overlays.default
       inputs.ghostty.overlays.default
-      # TODO: Fix the overlay in kclip-cli package
-      (final: prev: { kclip-cli = inputs.kclip.packages.${prev.system}.default; })
+      inputs.kclip.overlays.default
     ];
   };
 }
