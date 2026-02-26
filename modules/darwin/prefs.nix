@@ -26,6 +26,13 @@
         WebAutomaticSpellingCorrectionEnabled = false;
         WebKitTabToLinksPreferenceKey = true;
       };
+
+      # TODO: Replace this with idiomatic solution after #1716 is closed
+      # https://github.com/nix-darwin/nix-darwin/issues/1716
+      "/Library/Preferences/SystemConfiguration/com.apple.airport.preferences" = {
+        AutoHotspotMode = "Never";
+        JoinModeFallback = [ "DoNothing" ];
+      };
     };
 
     CustomUserPreferences = {
