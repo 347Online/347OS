@@ -33,10 +33,10 @@ lib.mkIf config.darwin.homebrew.enable {
       # "Fantastical" = "com.flexibits.fantastical2.mac"; # TODO: PR nix-darwin to support bundle ids
       "GoodLinks" = 1474335294;
       "Magic Lasso" = 1198047227;
-      "Keynote" = 409183694;
-      "Numbers" = 409203825;
+      "Keynote" = 361285480;
+      "Numbers" = 361304891;
       # "Overcast" = 888422857; # Currently broken
-      "Pages" = 409201541;
+      "Pages" = 361309726;
       "StopTheMadness Pro" = 6471380298;
     };
 
