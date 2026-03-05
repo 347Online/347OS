@@ -31,7 +31,6 @@ lib.mkIf config.darwin.homebrew.enable {
       "Dark Reader for Safari" = 1438243180;
       "Fantastical" = 975937182;
       # "Fantastical" = "com.flexibits.fantastical2.mac"; # TODO: PR nix-darwin to support bundle ids
-      "GoodLinks" = 1474335294;
       "Magic Lasso" = 1198047227;
       "Keynote" = 361285480;
       "Numbers" = 361304891;
