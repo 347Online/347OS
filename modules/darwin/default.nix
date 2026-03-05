@@ -38,6 +38,13 @@
         ++ util.mkEssentials pkgs;
       };
 
+      # TODO: Enable after PR has landed in nix-darwin
+      # https://github.com/nix-darwin/nix-darwin/pull/1720
+      # networking.wifi = {
+      #   AskToJoinNetworks = "Off";
+      #   AskToJoinHotspots = "Never";
+      # };
+
       security.pam.services.sudo_local = {
         enable = true;
         touchIdAuth = true;
