@@ -33,6 +33,7 @@
           "instapaper-official"
           "onepassword-password-manager"
           "ookla-speedtest"
+          "super-agent"
           "zoom"
         ]
       );

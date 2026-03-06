@@ -51,13 +51,17 @@ lib.mkIf config.user.gui.enable {
         };
       };
 
-      extensions.packages = with firefox-addons; [
-        darkreader
-        instapaper-official
-        onepassword-password-manager
-        ublock-origin
-        youtube-shorts-block
-      ];
+      extensions.packages =
+        with firefox-addons;
+        [
+          darkreader
+          instapaper-official
+          onepassword-password-manager
+          super-agent
+          ublock-origin
+          youtube-shorts-block
+        ]
+        ++ config.user.firefox.extraExtensions;
 
       settings = {
         "browser.uiCustomization.state" = builtins.toJSON rec {

@@ -47,9 +47,12 @@
         hashicorp.terraform
       ];
 
-      firefox.extraPinnedItems = [
-        "plugin_okta_com-browser-action"
-      ];
+      firefox = {
+        extraExtensions = with pkgs.nur.repos.rycee.firefox-addons; [ better-saml-account-chooser ];
+        extraPinnedItems = [
+          "plugin_okta_com-browser-action"
+        ];
+      };
     };
     programs.zsh.initContent =
       # sh

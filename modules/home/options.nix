@@ -26,9 +26,15 @@
 
       gaming.enable = lib.mkEnableOption "gaming";
 
-      firefox.extraPinnedItems = lib.mkOption {
-        type = with lib.types; listOf str;
-        default = [ ];
+      firefox = {
+        extraExtensions = lib.mkOption {
+          type = with lib.types; listOf package;
+          default = [ ];
+        };
+        extraPinnedItems = lib.mkOption {
+          type = with lib.types; listOf str;
+          default = [ ];
+        };
       };
 
       unfree-allowed = lib.mkOption {
