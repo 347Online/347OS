@@ -11,6 +11,7 @@
         "/Applications/Slack.app"
       ];
     };
+    unfree-allowed = [ "okta-browser-plugin" ];
   };
 
   homebrew = {
@@ -48,7 +49,10 @@
       ];
 
       firefox = {
-        extraExtensions = with pkgs.nur.repos.rycee.firefox-addons; [ better-saml-account-chooser ];
+        extraExtensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          better-saml-account-chooser
+          okta-browser-plugin
+        ];
         extraPinnedItems = [
           "plugin_okta_com-browser-action"
         ];
