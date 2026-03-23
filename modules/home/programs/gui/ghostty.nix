@@ -65,7 +65,7 @@ lib.mkIf config.user.gui.enable {
 
     settings = {
       auto-update = "download";
-      auto-update-channel = "tip";
+      auto-update-channel = "stable";
       confirm-close-surface = false;
       cursor-style-blink = false;
       shell-integration-features = [ "no-cursor" ];
