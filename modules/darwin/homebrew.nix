@@ -46,6 +46,7 @@ lib.mkIf config.darwin.homebrew.enable {
       "google-chrome"
       "logi-options+"
       "monitorcontrol"
+      "obsidian"
       "raycast"
       "scroll-reverser"
       "setapp"

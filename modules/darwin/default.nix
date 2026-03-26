@@ -73,6 +73,7 @@
           ++ config.darwin.dock.apps
           ++ [
             # Right-most apps
+            "/Applications/Obsidian.app"
             "/Applications/Ghostty.app"
             "/System/Applications/System Settings.app"
           ];

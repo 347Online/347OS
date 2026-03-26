@@ -14,6 +14,7 @@
     ./gaming.nix
     ./ghostty.nix
     ./messaging.nix
+    ./obsidian.nix
     ./thunderbird.nix
   ];
 
