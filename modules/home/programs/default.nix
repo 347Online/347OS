@@ -24,6 +24,7 @@
     ./syncthing.nix
     ./tealdeer.nix
     ./tmux.nix
+    ./yt-dlp.nix
     ./zoxide.nix
   ];
 
