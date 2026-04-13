@@ -1,11 +1,11 @@
 {
   inputs,
-  config,
+  self,
   lib,
   ...
 }@top:
 let
-  inherit (config.flake.variables)
+  inherit (self.variables)
     defaultUsername
     experimental-features
     overlays
@@ -58,7 +58,7 @@ let
           inputs.sops-nix.darwinModules.sops
           inputs.nix-homebrew.darwinModules.nix-homebrew
 
-          config.flake.darwinModules.default
+          self.darwinModules.default
 
           (
             {
@@ -74,7 +74,7 @@ let
                   inputs.nur.modules.homeManager.default
                   inputs.sops-nix.homeManagerModules.sops
 
-                  top.config.flake.homeModules.default
+                  self.homeModules.default
                 ];
                 extraSpecialArgs = mkSpecialArgs { inherit system username; };
                 users.${username}.imports = [
@@ -104,7 +104,7 @@ let
           inputs.home-manager.nixosModules.home-manager
           inputs.sops-nix.nixosModules.sops
 
-          config.flake.nixosModules.default
+          self.nixosModules.default
 
           (
             {
@@ -120,7 +120,7 @@ let
                   inputs.plasma-manager.homeModules.plasma-manager
                   inputs.sops-nix.homeManagerModules.sops
 
-                  top.config.flake.homeModules.default
+                  self.homeModules.default
                 ];
                 extraSpecialArgs = mkSpecialArgs { inherit system username; };
                 users.${username}.imports = [
