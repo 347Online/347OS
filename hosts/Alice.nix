@@ -68,5 +68,6 @@
         export PATH="$PYENV_ROOT/bin:$PATH"
         eval "$(pyenv init --path && pyenv init - && pyenv virtualenv-init -)"
       '';
+    programs.mise.globalConfig.tools.python = [ "3.12" ];
   };
 }
