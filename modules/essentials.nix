@@ -8,6 +8,7 @@ pkgs: with pkgs; [
   fd
   fzf
   git
+  gnused
   go
   htop
   moreutils
