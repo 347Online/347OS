@@ -1,5 +1,0 @@
-{
-  services.atftpd = {
-    enable = true;
-  };
-}
