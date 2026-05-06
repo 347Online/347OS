@@ -9,8 +9,9 @@ let
   scripts = [
     (lib.mkIf config.user.gui.enable (
       pkgs.writeShellScriptBin "get-resume" ''
-        curl -L https://347online.me/resume.pdf -o "${homeDirectory}/Desktop/Katie Janzen Resumé 2025.pdf"
-        curl -L https://347online.me/cover-letter.pdf -o "${homeDirectory}/Desktop/Katie Janzen Cover Letter 2025.pdf"
+        year="$(date +%Y)"
+        curl -L https://347online.me/resume.pdf -o "${homeDirectory}/Desktop/Katie Janzen Resumé $year.pdf"
+        curl -L https://347online.me/cover-letter.pdf -o "${homeDirectory}/Desktop/Katie Janzen Cover Letter $year.pdf"
       ''
     ))
     (pkgs.writeShellScriptBin "newgit" ''
