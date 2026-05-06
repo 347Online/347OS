@@ -8,11 +8,6 @@
       util,
       ...
     }:
-    let
-      mkLoginItem = app: ''
-        osascript -e 'tell application "System Events" to make login item at end with properties {path:"${app}", hidden:true}'
-      '';
-    in
     {
       imports = [
         ./homebrew.nix
