@@ -125,6 +125,7 @@ lib.mkIf config.user.gui.enable {
         "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.showWeather" = false;
+        "browser.newtabpage.activity-stream.widgets.weather.enabled" = false;
         "browser.startup.homepage_override.mstone" = "ignore";
         "browser.startup.page" = 3;
         "browser.tabs.groups.smart.enabled" = false;
