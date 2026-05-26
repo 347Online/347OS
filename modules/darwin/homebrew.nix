@@ -22,22 +22,23 @@ lib.mkIf config.darwin.homebrew.enable {
     };
 
     brews = [
-      "mas"
+      # "mas"
     ];
 
-    masApps = {
-      "1Password for Safari" = 1569813296;
-      "Broadcasts" = 1469995354;
-      "Dark Reader for Safari" = 1438243180;
-      "Fantastical" = 975937182;
-      # "Fantastical" = "com.flexibits.fantastical2.mac"; # TODO: PR nix-darwin to support bundle ids
-      "Magic Lasso" = 1198047227;
-      "Keynote" = 361285480;
-      "Numbers" = 361304891;
-      # "Overcast" = 888422857; # Currently broken
-      "Pages" = 361309726;
-      "StopTheMadness Pro" = 6471380298;
-    };
+    # TODO: Uncomment after re-pinning to 26.05
+    # masApps = {
+    #   "1Password for Safari" = 1569813296;
+    #   "Broadcasts" = 1469995354;
+    #   "Dark Reader for Safari" = 1438243180;
+    #   "Fantastical" = 975937182;
+    #   # "Fantastical" = "com.flexibits.fantastical2.mac"; # TODO: PR nix-darwin to support bundle ids
+    #   "Magic Lasso" = 1198047227;
+    #   "Keynote" = 361285480;
+    #   "Numbers" = 361304891;
+    #   # "Overcast" = 888422857; # Currently broken
+    #   "Pages" = 361309726;
+    #   "StopTheMadness Pro" = 6471380298;
+    # };
 
     casks = [
       "1password"
