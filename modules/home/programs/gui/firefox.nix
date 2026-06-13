@@ -125,6 +125,10 @@ lib.mkIf config.user.gui.enable {
         "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.showWeather" = false;
+        "browser.newtabpage.activity-stream.widgets.clocks.enabled" = false;
+        "browser.newtabpage.activity-stream.widgets.focusTimer.enabled" = false;
+        "browser.newtabpage.activity-stream.widgets.lists.enabled" = false;
+        "browser.newtabpage.activity-stream.widgets.sportsWidget.enabled" = false;
         "browser.newtabpage.activity-stream.widgets.weather.enabled" = false;
         "browser.startup.homepage_override.mstone" = "ignore";
         "browser.startup.page" = 3;
