@@ -121,11 +121,13 @@ lib.mkIf config.user.gui.enable {
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        "browser.newtabpage.activity-stream.feeds.topsites" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.showWeather" = false;
         "browser.newtabpage.activity-stream.widgets.clocks.enabled" = false;
+        "browser.newtabpage.activity-stream.widgets.enabled" = false;
         "browser.newtabpage.activity-stream.widgets.focusTimer.enabled" = false;
         "browser.newtabpage.activity-stream.widgets.lists.enabled" = false;
         "browser.newtabpage.activity-stream.widgets.sportsWidget.enabled" = false;
