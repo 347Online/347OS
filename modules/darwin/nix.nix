@@ -25,7 +25,6 @@
   nixpkgs = {
     inherit overlays;
     hostPlatform = system;
-    config.allowUnfreePredicate =
-      pkg: builtins.elem (lib.getName pkg) (config.darwin.unfree-allowed ++ [ "ookla-speedtest" ]);
+    config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) (config.darwin.unfree-allowed);
   };
 }

@@ -11,11 +11,11 @@ pkgs: with pkgs; [
   gnused
   go
   htop
+  librespeed-cli
   moreutils
   neovim
   nix-search-cli
   nixfmt-rfc-style
-  ookla-speedtest
   python3
   ripgrep
   rustup
