@@ -1,4 +1,12 @@
+{ self, ... }:
 {
+  imports = [
+    ./homebrew.nix
+    ./nix.nix
+    ./options.nix
+    ./prefs.nix
+  ];
+
   flake.darwinModules.default =
     {
       config,
@@ -9,11 +17,11 @@
       ...
     }:
     {
-      imports = [
-        ./homebrew.nix
-        ./nix.nix
-        ./options.nix
-        ./prefs.nix
+      imports = with self.darwinModules; [
+        homebrew
+        nix
+        options
+        prefs
       ];
 
       darwin = {

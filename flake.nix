@@ -76,6 +76,22 @@
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
+        # TODO: Remove
+        (
+          { lib, ... }:
+          {
+            options.flake.darwinModules = lib.mkOption {
+              type = lib.types.lazyAttrsOf lib.types.raw;
+              default = { };
+              description = ''
+                Darwin modules
+
+                You may use this for reusable pieces of configuration, service modules, etc.
+              '';
+            };
+          }
+        )
+
         ./hosts
         ./modules
       ];
