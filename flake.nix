@@ -7,6 +7,9 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    # TODO: Remove this tempfix after this PR lands:
+    # https://github.com/zhaofengli/nix-homebrew/pull/164
+    nix-homebrew.inputs.brew-src.url = "github:Homebrew/brew/6.0.13";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
