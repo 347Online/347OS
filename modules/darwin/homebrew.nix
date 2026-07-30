@@ -51,7 +51,7 @@ lib.mkIf config.darwin.homebrew.enable {
       "raycast"
       "scroll-reverser"
       "setapp"
-
+      "whatcable"
     ]
     ++ lib.optionals config.darwin.gaming.enable [
       "multipatch"
