@@ -21,6 +21,7 @@ pkgs: with pkgs; [
   rustup
   screen
   shellcheck
+  tesseract
   tmux
   trunk
   zoxide
