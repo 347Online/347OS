@@ -26,7 +26,10 @@
   };
 
   home-manager.users.${username} = {
-    home.packages = with pkgs; [ qmk ];
+    home.packages = with pkgs; [
+      qmk
+      tenacity
+    ];
     user.personal.zoom.enable = true;
     programs.ssh = {
       matchBlocks = {
