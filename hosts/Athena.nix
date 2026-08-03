@@ -1,5 +1,6 @@
 {
   username,
+  pkgs,
   ...
 }:
 {
@@ -25,6 +26,7 @@
   };
 
   home-manager.users.${username} = {
+    home.packages = with pkgs; [ qmk ];
     user.personal.zoom.enable = true;
     programs.ssh = {
       matchBlocks = {
