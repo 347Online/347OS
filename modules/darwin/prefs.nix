@@ -204,6 +204,13 @@
             showMenuBarIcon = false;
             windowCorner = 5;
           };
+
+          "net.rafaelconde.Hand-Mirror-setapp" = {
+            hasNewFeatureToHighlight = false;
+            isInMiddleOfOnboarding = false;
+            selectedAppIcon = "AppIcon_Classic";
+            selectedNotchPreference = true;
+          };
         };
       };
     };
