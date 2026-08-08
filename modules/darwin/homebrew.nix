@@ -72,6 +72,7 @@
         PATH = "/opt/homebrew/bin:/opt/homebrew/sbin\${PATH+:$PATH}";
         MANPATH = "/opt/homebrew/share/man\${MANPATH+:$MANPATH}:";
         INFOPATH = "/opt/homebrew/share/info:\${INFOPATH:-}";
+        NONINTERACTIVE = "1";
       };
     };
 }
