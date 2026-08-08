@@ -20,6 +20,7 @@ pkgs: with pkgs; [
   ripgrep
   rustup
   screen
+  secretspec
   shellcheck
   tesseract
   tmux

@@ -15,7 +15,7 @@
           system = final.system;
           config.allowUnfree = true;
         };
-        inherit (unstable) ruby_4_0;
+        inherit (unstable) ruby_4_0 secretspec;
       })
       inputs.nix-vscode-extensions.overlays.default
       inputs.nur.overlays.default
