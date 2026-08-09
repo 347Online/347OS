@@ -16,10 +16,12 @@
           config.allowUnfree = true;
         };
         inherit (unstable)
+          gamescope
           neovim
           secretspec
           ;
       })
+
       inputs.nix-vscode-extensions.overlays.default
       inputs.nur.overlays.default
       inputs.ghostty.overlays.default
