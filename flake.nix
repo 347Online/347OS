@@ -13,7 +13,7 @@
 
     jovian-nixos = {
       url = "github:Jovian-Experiments/jovian-NixOS";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nix-darwin = {
