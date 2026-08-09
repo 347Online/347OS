@@ -4,7 +4,7 @@
   ...
 }:
 {
-  programs.vscode.profiles.default.extensions =
+  programs.vscodium.profiles.default.extensions =
     with pkgs.open-vsx;
     [
       # Essentials

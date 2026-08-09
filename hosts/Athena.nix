@@ -32,7 +32,7 @@
     ];
     user.personal.zoom.enable = true;
     programs.ssh = {
-      matchBlocks = {
+      settings = {
         Aspen = {
           hostname = "192.168.4.55";
           user = username;

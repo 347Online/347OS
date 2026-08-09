@@ -28,7 +28,8 @@
       overrideDevices = true;
       overrideFolders = true;
 
-      passwordFile = builtins.toPath config.sops.secrets.syncthing-gui-passwd.path;
+      # TODO: Replace this with a definition for guiCredentials
+      # passwordFile = builtins.toPath config.sops.secrets.syncthing-gui-passwd.path;
 
       settings = {
         inherit devices;

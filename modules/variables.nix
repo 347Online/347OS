@@ -15,7 +15,10 @@
           system = final.system;
           config.allowUnfree = true;
         };
-        inherit (unstable) ruby_4_0 secretspec;
+        inherit (unstable)
+          neovim
+          secretspec
+          ;
       })
       inputs.nix-vscode-extensions.overlays.default
       inputs.nur.overlays.default
