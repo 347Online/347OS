@@ -11,6 +11,11 @@
     # https://github.com/zhaofengli/nix-homebrew/pull/164
     nix-homebrew.inputs.brew-src.url = "github:Homebrew/brew/6.0.13";
 
+    jovian-nixos = {
+      url = "github:Jovian-Experiments/jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -103,6 +103,7 @@ let
         modules = [
           inputs.home-manager.nixosModules.home-manager
           inputs.sops-nix.nixosModules.sops
+          inputs.jovian-nixos.nixosModules.default
 
           self.nixosModules.default
 

@@ -39,5 +39,7 @@
   nixos.gui.enable = true;
   nixos.gaming.enable = true;
 
+  jovian.steam.enable = true;
+
   system.stateVersion = "26.05"; # Did you read the comment?
 }

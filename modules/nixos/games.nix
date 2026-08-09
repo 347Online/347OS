@@ -6,9 +6,15 @@
   ...
 }:
 lib.mkIf config.nixos.gaming.enable {
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
+  jovian = {
+    steam = {
+      user = username;
+      updater.splash = "vendor";
+    };
+
+    steamos = {
+      useSteamOSConfig = true;
+    };
   };
 
   home-manager.users.${username} = {
