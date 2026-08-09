@@ -14,7 +14,7 @@ pkgs: with pkgs; [
   moreutils
   neovim
   nix-search-cli
-  nixfmt-rfc-style
+  nixfmt
   ookla-speedtest
   python3
   ripgrep
