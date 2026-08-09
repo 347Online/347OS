@@ -1,5 +1,6 @@
 {
   self,
+  inputs,
   ...
 }:
 {
@@ -12,6 +13,13 @@
       Alice = self.util.mkDarwin {
         module = ./Alice.nix;
         username = "kjanzen";
+      };
+    };
+
+    nixosConfigurations = {
+      Amber = self.util.mkNixos {
+        system = "x86_64-linux";
+        module = ./Amber;
       };
     };
   };

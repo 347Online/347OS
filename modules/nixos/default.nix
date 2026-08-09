@@ -49,6 +49,7 @@
             isNormalUser = true;
             shell = pkgs.zsh;
             extraGroups = [
+              "input"
               "networkmanager"
               "wheel"
             ];

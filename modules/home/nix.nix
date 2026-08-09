@@ -31,6 +31,7 @@
           "1password-cli"
           "discord"
           "instapaper-official"
+          "obsidian"
           "onepassword-password-manager"
           "ookla-speedtest"
           "super-agent"
