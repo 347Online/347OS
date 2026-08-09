@@ -40,7 +40,7 @@
           news.display = "silent";
 
           # DO NOT EDIT BELOW
-          home.stateVersion = "23.11";
+          home.stateVersion = "26.05";
         }
 
         (lib.mkIf config.user.gui.enable {
