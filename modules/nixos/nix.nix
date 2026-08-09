@@ -35,6 +35,8 @@
           "plexmediaserver"
           "steam"
           "steam-unwrapped"
+          "steamdeck-hw-theme"
+          "steam-jupiter-unwrapped"
         ]
       );
   };
