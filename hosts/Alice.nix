@@ -36,6 +36,8 @@
     ];
   };
 
+  networking.hostName = "Alice";
+
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       nodemon

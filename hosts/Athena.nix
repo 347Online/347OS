@@ -25,6 +25,8 @@
     ];
   };
 
+  networking.hostName = "Athena";
+
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       qmk
