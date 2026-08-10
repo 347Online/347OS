@@ -20,14 +20,16 @@
     ];
 
     brews = [
-      "awscli"
       "amplify-education/astrotools/meta"
+
+      "awscli"
       "docker-credential-helper-ecr"
       "nginx"
       "opa"
       "pipx"
       "pyenv"
       "pyenv-virtualenv"
+      "tfenv"
     ];
 
     casks = [
