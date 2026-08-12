@@ -146,6 +146,7 @@ lib.mkIf config.user.gui.enable {
         "extensions.formautofill.addresses.enabled" = false;
         "extensions.formautofill.creditCards.enabled" = false;
         "extensions.ml.enabled" = false;
+        "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
         "sidebar.revamp" = false;
         "signon.rememberSignons" = false;
       };
