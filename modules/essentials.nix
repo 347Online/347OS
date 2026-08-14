@@ -24,6 +24,7 @@ pkgs: with pkgs; [
   shellcheck
   tesseract
   tmux
+  tree-sitter
   trunk
   zoxide
 ]
