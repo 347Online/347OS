@@ -16,7 +16,10 @@
 
   homebrew = {
     taps = [
-      "amplify-education/astrotools"
+      {
+        name = "amplify-education/astrotools";
+        trusted = true;
+      }
     ];
 
     brews = [
