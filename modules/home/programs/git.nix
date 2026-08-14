@@ -12,6 +12,7 @@
       ".mise.*.toml"
       "Session.vim"
       "make.ts"
+      "scratch.*"
       "scratch/"
     ];
     settings = {
