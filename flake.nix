@@ -72,6 +72,14 @@
         flake-parts.follows = "flake-parts";
       };
     };
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        flake-parts.follows = "flake-parts";
+      };
+    };
   };
 
   outputs =

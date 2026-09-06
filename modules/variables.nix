@@ -17,15 +17,15 @@
         };
         inherit (unstable)
           gamescope
-          neovim
           secretspec
           ;
       })
 
-      inputs.nix-vscode-extensions.overlays.default
-      inputs.nur.overlays.default
       inputs.ghostty.overlays.default
       inputs.kclip.overlays.default
+      inputs.neovim-nightly-overlay.overlays.default
+      inputs.nix-vscode-extensions.overlays.default
+      inputs.nur.overlays.default
     ];
   };
 }

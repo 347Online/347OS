@@ -120,6 +120,7 @@ lib.mkIf config.user.gui.enable {
         "browser.ai.control.smartTabGroups" = "blocked";
         "browser.ai.control.smartWindow" = "blocked";
         "browser.ai.control.translations" = "blocked";
+        "browser.discovery.enabled" = false;
         "browser.formfill.enable" = false;
         "browser.ml.chat.enabled" = false;
         "browser.ml.chat.menu" = false;
