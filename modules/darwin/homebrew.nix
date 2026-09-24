@@ -47,7 +47,6 @@
           "1password"
           "firefox"
           "ghostty"
-          "google-chrome"
           "logi-options+"
           "monitorcontrol"
           "obsidian"
