@@ -60,26 +60,28 @@
         defaults.dock = {
           show-recents = false;
           persistent-others = [ ];
-          persistent-apps = [
-            config.darwin.dock.browserAppPath
-            (
-              let
-                cfg = config.darwin.dock.email;
-              in
-              lib.mkIf cfg.enable cfg.path
-            )
+          persistent-apps =
+            let
+              cfg = config.darwin.dock;
+              browserAppPath = cfg.browserAppPath;
+              calendarAppPath = "/Applications/Fantastical.app";
+              emailPath = lib.mkIf cfg.email.enable cfg.email.path;
+            in
+            [
+              browserAppPath
+              calendarAppPath
+              emailPath
 
-            "/Applications/Fantastical.app"
-            "/System/Applications/Music.app"
-            "/Applications/Broadcasts.app"
-          ]
-          ++ config.darwin.dock.apps
-          ++ [
-            # Right-most apps
-            "/Applications/Obsidian.app"
-            "/Applications/Ghostty.app"
-            "/System/Applications/System Settings.app"
-          ];
+              "/System/Applications/Music.app"
+              "/Applications/Broadcasts.app"
+            ]
+            ++ config.darwin.dock.apps
+            ++ [
+              # Right-most apps
+              "/Applications/Obsidian.app"
+              "/Applications/Ghostty.app"
+              "/System/Applications/System Settings.app"
+            ];
         };
         startup.chime = true;
 
