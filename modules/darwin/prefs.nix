@@ -200,6 +200,7 @@
           };
 
           "at.EternalStorms.Yoink-setapp" = {
+            ess_showWhatsNewOnUpateMAS = false;
             shouldHideOnLaunch = true;
             showMenuBarIcon = false;
             windowCorner = 5;
