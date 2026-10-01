@@ -146,6 +146,7 @@ lib.mkIf config.user.gui.enable {
         "browser.newtabpage.activity-stream.widgets.lists.enabled" = false;
         "browser.newtabpage.activity-stream.widgets.sportsWidget.enabled" = false;
         "browser.newtabpage.activity-stream.widgets.weather.enabled" = false;
+        "browser.nova.enabled" = false;
         "browser.smartwindow.memories.generateFromConversation" = false;
         "browser.smartwindow.memories.generateFromHistory" = false;
         "browser.startup.homepage_override.mstone" = "ignore";
