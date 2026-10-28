@@ -65,6 +65,7 @@
         ];
       };
     };
+    services.syncthing.enable = false;
     programs.zsh.initContent =
       # sh
       ''

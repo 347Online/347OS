@@ -23,7 +23,7 @@
       defaultDevices = builtins.attrNames myDevices;
     in
     {
-      enable = true;
+      enable = lib.mkDefault true;
 
       overrideDevices = true;
       overrideFolders = true;
