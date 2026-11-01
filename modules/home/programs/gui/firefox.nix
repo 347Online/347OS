@@ -101,7 +101,6 @@ lib.mkIf config.user.gui.enable {
               ++ config.user.firefox.extraPinnedItems;
               toolbar-menubar = [ "menubar-items" ];
               TabsToolbar = [
-                "alltabs-button"
                 "tabbrowser-tabs"
                 "new-tab-button"
               ];
