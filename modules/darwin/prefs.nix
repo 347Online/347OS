@@ -40,6 +40,7 @@
         CustomUserPreferences = {
           NSGlobalDomain = {
             NSAutomaticSpellingCorrectionEnabled = false;
+            NSSmartReplyEnabled = false;
             # TODO: PR got merged, use the built-in option
             TSWPAutomaticSpellingCorrection = false;
           };
